@@ -1,4 +1,4 @@
-ECHO Run Absolute for Windows.
+@ECHO OFF
 
 :: TODO: Should implement this file.
 
