@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./app.js"
+    "test": "mocha"
   },
   "dependencies": {
     "debug": "~2.2.0",
