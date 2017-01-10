@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This file is providing some APIs to get absolute path information.
+
+source ./scripts/platform_info
+
+function get_script_dir() {
+  echo $(get_absolute_dir)/script
+}
+
+function get_absolute_dir() {
+  echo $(cd $(dirname $0)/..; pwd -P)
+}
+
+function get_node_dir() {
+  echo $(get_absolute_dir)/platform/$(get_platform_name)
+}
+
+function get_server_dir() {
+  echo $(get_absolute_dir)/server
+}
