@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "test": "mocha"
+    "test": "make test-all"
   }
 }
