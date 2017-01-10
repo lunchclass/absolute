@@ -1,6 +1,6 @@
-:; # For Linux/Mac
-:; ./scripts/posix.sh; exit $?
+:; # Bootstrap code for Mac/Linux
+:; cd $(dirname $0) && ./scripts/run $@; exit $?
 
-:; # For Windows
+:; # Bootstrap code for Windows
 @ECHO OFF
-./scripts/windows.cmd
+cd %~dp0 && scripts\win-bash\bash scripts\run %*
