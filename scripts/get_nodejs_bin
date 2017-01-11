@@ -4,29 +4,30 @@ NODEJS_WIN_x64="win-x64"
 NODEJS_WIN_x86="win-x86"
 NODEJS_LINUX_x64="linux-x64"
 NODEJS_LINUX_x86="linux-x86"
-NODEJS_LATEST7X_VERSION="node-v7.4.0"   # This is temporary how we can get latest version from the dist repo?
+# TODO : This is temporal fixed version. Need to get latest or specific version from dist repository
+NODEJS_LATEST7X_VERSION="node-v7.4.0"
 
 source ./scripts/path_info
 
 # Get the nodeJS binary for running platform
 # $1 : platform name
-function get_platform_bin() {
+function get_nodejs_binary() {
   platform_name=$1
   if [ "$platform_name" = "linux_x86_64" ]; then
-    node_file_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x64"
-    node_archive_file="$node_file_name.tar.gz"
+    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x64"
+    target_node_archive_file="$target_node_platform_name.tar.gz"
   elif [ "$platform_name" = "linux_x86" ]; then
-    node_file_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x86"
-    node_archive_file"$node_file_name.tar.gz"
+    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x86"
+    target_node_archive_file"$target_node_platform_name.tar.gz"
   elif [ "$platform_name" = "windows_x86_64" ]; then
-    node_file_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x64"
-    node_archive_file"$node_file_name.zip"
+    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x64"
+    target_node_archive_file"$target_node_platform_name.zip"
   elif [ "$platform_name" = "windows_x86" ]; then
-    node_file_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x86"
-    node_archive_file"$node_file_name.zip"
+    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x86"
+    target_node_archive_file"$target_node_platform_name.zip"
   fi
 
-  target_url="$NODEJS_7x_LATEST_URL/$node_archive_file"
+  target_url="$NODEJS_7x_LATEST_URL/$target_node_archive_file"
 
   target_node_dir=$(get_node_dir)
 
@@ -35,12 +36,13 @@ function get_platform_bin() {
     return
   fi
 
-  extract_archive "$target_node_dir/$node_archive_file" "$target_node_dir"; rm -f $target_node_dir/$node_archive_file
+  extract_archive "$target_node_dir/$target_node_archive_file" \
+  "$target_node_dir"; rm -f $target_node_dir/$target_node_archive_file
 
-
-  # FIXME(Jaecule) : This workaround is for removing dir of archive file need more graceful way
-  mv $target_node_dir/$node_file_name/* "$target_node_dir/"
-  rmdir "$target_node_dir/$node_file_name"
+  # FIXME(Jaecule) : This workaround is for removing dir
+  # of archive file need more graceful way
+  mv $target_node_dir/$target_node_platform_name/* "$target_node_dir/"
+  rmdir "$target_node_dir/$target_node_platform_name"
 }
 
 # Get the download file to given path
@@ -91,7 +93,8 @@ function extract_archive() {
         *.tar.gz) tar xvzf $1 -C $dest ;;
         *.gz) gunzip $1 > $dest ;;
         *.tar) tar xvf $1 -C $dest ;;
-        # FIXME(Jaechul): Current our win-bash doens't support unzip! So this woudn't run on windows
+        # FIXME(Jaechul): Current our win-bash doens't support unzip!
+        # So this woudn't run on windows
         *.zip) unzip $1 -d $dest ;;
         *.7z) 7z x $1 -o $dest ;;
         *) echo "extract: '$1' - unknown archive method" ;;
