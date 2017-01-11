@@ -2,7 +2,7 @@
 
 source ./scripts/path_info
 source ./scripts/platform_info
-source ./scripts/get_platform_bin
+source ./scripts/get_nodejs_bin
 
 function run_server() {
   platform_name=$(get_platform_name)
@@ -23,7 +23,7 @@ function run_server() {
 
 
 if [ ! -d $(get_node_dir) ]; then
-  get_platform_bin $(get_platform_name)
+  get_nodejs_binary $(get_platform_name)
 fi
 
 run_server
