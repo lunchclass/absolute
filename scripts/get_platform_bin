@@ -35,18 +35,12 @@ function get_platform_bin() {
     return
   fi
 
-  extract_archive "$target_node_dir/$node_archive_file" "$target_node_dir"
-  #mv /home/jclee/gits/absolute/platform/linux_x86_64/node-v7.4.0-linux-x64/* /home/jclee/gits/absolute/platform/linux_x86_64/
+  extract_archive "$target_node_dir/$node_archive_file" "$target_node_dir"; rm -f $target_node_dir/$node_archive_file
 
-  sleep 3
 
-  ls "$target_node_dir/$node_file_name/*"
   # FIXME(Jaecule) : This workaround is for removing dir of archive file need more graceful way
-  echo mv "$target_node_dir/$node_file_name/*" "$target_node_dir/"
-  mv "$target_node_dir/$node_file_name/*" "$target_node_dir/"
-
+  mv $target_node_dir/$node_file_name/* "$target_node_dir/"
   rmdir "$target_node_dir/$node_file_name"
-  rm -f $target_node_dir/$node_archive_file
 }
 
 # Get the download file to given path
