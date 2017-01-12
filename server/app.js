@@ -10,8 +10,8 @@ var app = express();
 
 // CERTI_FILE FOR HTTPS
 var options = {
-	key: fs.readFileSync('./certi/key.pem'),
-	cert: fs.readFileSync('./certi/cert.pem')
+  key: fs.readFileSync('./certi/key.pem'),
+  cert: fs.readFileSync('./certi/cert.pem')
 };
 
 app.use('/', index);
