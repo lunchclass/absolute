@@ -80,26 +80,24 @@ function donwload_file_to_path() {
 # $2 : path of uncompressed files
 # Remarks : if $2 is not given, uncompress files to current path
 function extract_archive() {
-    if [ -z "$2" ]; then
-      dest="./"
-    else
-      dest="$2"
-    fi
+  if [ -z "$2" ]; then
+    dest="./"
+  else
+    dest="$2"
+  fi
 
-    if [ -f "$1" ] ; then
-      # NAME=${1%.*}
-      # mkdir $NAME && cd $NAME
-      case $1 in
-        *.tar.gz) tar xvzf $1 -C $dest ;;
-        *.gz) gunzip $1 > $dest ;;
-        *.tar) tar xvf $1 -C $dest ;;
-        # FIXME(Jaechul): Current our win-bash doens't support unzip!
-        # So this woudn't run on windows
-        *.zip) unzip $1 -d $dest ;;
-        *.7z) 7z x $1 -o $dest ;;
-        *) echo "extract: '$1' - unknown archive method" ;;
-      esac
-    else
-      echo "$1 - file does not exist"
-    fi
+  if [ -f "$1" ] ; then
+    case $1 in
+      *.tar.gz) tar xvzf $1 -C $dest ;;
+      *.gz) gunzip $1 > $dest ;;
+      *.tar) tar xvf $1 -C $dest ;;
+      # FIXME(Jaechul): Current our win-bash doens't support unzip!
+      # So this woudn't run on windows
+      *.zip) unzip $1 -d $dest ;;
+      *.7z) 7z x $1 -o $dest ;;
+      *) echo "extract: '$1' - unknown archive method" ;;
+    esac
+  else
+    echo "$1 - file does not exist"
+  fi
 }
