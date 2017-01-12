@@ -1,8 +1,9 @@
 #!/bin/bash
 
+source ./scripts/get_nodejs_bin
 source ./scripts/path_info
 source ./scripts/platform_info
-source ./scripts/get_nodejs_bin
+
 
 function run_server() {
   platform_name=$(get_platform_name)
