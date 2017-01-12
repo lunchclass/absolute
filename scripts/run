@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ./scripts/get_nodejs_bin
 source ./scripts/path_info
 source ./scripts/platform_info
 
@@ -14,9 +15,14 @@ function run_server() {
     $(get_node_dir)/npm.cmd install $(get_server_dir) --prefix $(get_server_dir)
     $(get_node_dir)/npm.cmd start --prefix $(get_server_dir)
   else
+    PATH=$PATH:$(get_node_dir)/bin
     $(get_node_dir)/bin/npm install $(get_server_dir) --prefix $(get_server_dir)
     $(get_node_dir)/bin/npm start --prefix $(get_server_dir)
   fi
 }
+
+if [ ! -d $(get_node_dir) ]; then
+  get_nodejs_binary $(get_platform_name)
+fi
 
 run_server
