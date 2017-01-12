@@ -2,8 +2,17 @@ var express = require('express');
 var index = require('./routes/index');
 
 var debug = require('debug')('absolute-signage:server');
+
+var fs = require('fs');
 var http = require('http');
+var https = require('https');
 var app = express();
+
+// CERTI_FILE FOR HTTPS
+var options = {
+	key: fs.readFileSync('./certi/key.pem'),
+	cert: fs.readFileSync('./certi/cert.pem')
+};
 
 app.use('/', index);
 
@@ -30,7 +39,7 @@ module.exports = app;
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-var server = http.createServer(app);
+var server = https.createServer(options, app);
 
 server.listen(port);
 server.on('error', onError);
