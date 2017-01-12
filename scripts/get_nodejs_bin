@@ -1,4 +1,6 @@
 #!/bin/bash
+source ./scripts/path_info
+
 NODEJS_7x_LATEST_URL="https://nodejs.org/dist/latest-v7.x"
 NODEJS_WIN_x64="win-x64"
 NODEJS_WIN_x86="win-x86"
@@ -6,8 +8,6 @@ NODEJS_LINUX_x64="linux-x64"
 NODEJS_LINUX_x86="linux-x86"
 # TODO : This is temporal fixed version. Need to get latest or specific version from dist repository
 NODEJS_LATEST7X_VERSION="node-v7.4.0"
-
-source ./scripts/path_info
 
 # Get the nodeJS binary for running platform
 # $1 : platform name
