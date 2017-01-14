@@ -67,7 +67,7 @@
       var notificationOptions = options || {};
 
       registration.showNotification(notificationTitle, notificationOptions);
-	};
+    };
 
     // Connect to server
     function connectToServer () {
