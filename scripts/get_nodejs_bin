@@ -1,11 +1,14 @@
 #!/bin/bash
+
 source ./scripts/path_info
+source ./scripts/util
 
 NODEJS_7x_LATEST_URL="https://nodejs.org/dist/latest-v7.x"
 NODEJS_WIN_x64="win-x64"
 NODEJS_WIN_x86="win-x86"
 NODEJS_LINUX_x64="linux-x64"
 NODEJS_LINUX_x86="linux-x86"
+NODEJS_MAC_x64="darwin-x64"
 # TODO : This is temporal fixed version. Need to get latest or specific version from dist repository
 NODEJS_LATEST7X_VERSION="node-v7.4.0"
 
@@ -18,20 +21,23 @@ function get_nodejs_binary() {
     target_node_archive_file="$target_node_platform_name.tar.gz"
   elif [ "$platform_name" = "linux_x86" ]; then
     target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x86"
-    target_node_archive_file"$target_node_platform_name.tar.gz"
+    target_node_archive_file="$target_node_platform_name.tar.gz"
   elif [ "$platform_name" = "windows_x86_64" ]; then
     target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x64"
-    target_node_archive_file"$target_node_platform_name.zip"
+    target_node_archive_file="$target_node_platform_name.zip"
   elif [ "$platform_name" = "windows_x86" ]; then
     target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x86"
-    target_node_archive_file"$target_node_platform_name.zip"
+    target_node_archive_file="$target_node_platform_name.zip"
+  elif [ "$platform_name" = "darwin_x86_64" ]; then
+    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_MAC_x64"
+    target_node_archive_file="$target_node_platform_name.tar.gz"
   fi
 
   target_url="$NODEJS_7x_LATEST_URL/$target_node_archive_file"
 
   target_node_dir=$(get_node_dir)
 
-  donwload_file_to_path "$target_url" "$target_node_dir"
+  download_file_to_path "$target_url" "$target_node_dir"
   if [ ! "$?" = "0" ]; then
     return
   fi
@@ -48,23 +54,23 @@ function get_nodejs_binary() {
 # Get the download file to given path
 # $1 : download url
 # $2 : file to locate
-# Out: 0 if success to donwload file else negative
-function donwload_file_to_path() {
+# Out: 0 if success to download file else negative
+function download_file_to_path() {
   url=$1
   path=$2
   if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Invalid donwload url or path url : $1 path : $2"
+    echo "Invalid download url or path url : $1 path : $2"
     return -1
   fi
 
-  echo "download from $target_url to $target_path"
+  echo "download from $url to $path"
 
-  if [ ! -d "$target_path" ]; then
-    echo "targetPath does not exist. create $target_path"
-    mkdir $target_path
+  if [ ! -d "$path" ]; then
+    echo "targetPath does not exist. create $path"
+    mkdir $path
   fi
 
-  wget $url -P $path
+  download_file $url $path
   if [ "$?" != "0" ]; then
     echo "Failed to download"
     return -2
