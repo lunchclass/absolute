@@ -34,14 +34,31 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+// PORT
+var http_port = normalizePort(process.env.PORT || '3000');
+var https_port = normalizePort(process.env.PORT || '3005');
+app.set('port', https_port);
 
-var server = https.createServer(options, app);
+// HTTP Connection should be redirecting to HTTPS Atomatically
+var http_server = http.createServer((req, res) => {
+  let host = (req.headers['host'].split(':'));
+  let port = ":" + https_port;
+  let https_location = "https://" + host[0] + port + req.url;
+  debug("unsecure-connection => Location: "+ https_location);
+  res.writeHead(301, {"Location": https_location});
+  res.end();
+});
+http_server.listen(http_port);
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+// HTTPS Server
+var https_server = https.createServer(options, (req, res) => {
+  debug("secure-connection");
+  app(req,res);
+});
+
+https_server.listen(https_port);
+https_server.on('error', onError);
+https_server.on('listening', onListening);
 
 // Normalize a port into a number, string, or false.
 function normalizePort(val) {
@@ -87,7 +104,7 @@ function onError(error) {
 
 // Event listener for HTTP server "listening" event.
 function onListening() {
-  var addr = server.address();
+  var addr = https_server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
