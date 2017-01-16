@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# This file is providing some utility APIs (e.g. download_file)
+
+source "./scripts/platform_info"
+
+# Check whether the specified command can use in this platform or not.
+# NOTE: This function will not be working on Windows.
+# Return: 0 if the command can use in this platform.
+function can_use_command() {
+  type "$1" > /dev/null 2>&1
+  return $?
+}
+
+function is_windows() {
+  platform_name=$(get_platform_name)
+  if [ "$platform_name" = "windows_x86" \
+      -o "$platform_name" = "windows_x86_64" ]; then
+    return 0;
+  fi
+  return 1;
+}
+
+# Download file in remote URL starting with http(s).
+# $1: Remote file url which is start with http(s).
+# $2: The location where the file will be downloaded.
+# Return: 0 if the file is downloaded successfully.
+function download_file() {
+  if is_windows || can_use_command wget; then
+    wget $1 -P $2
+    return $?
+  fi
+  cd $2 && { curl -LO $1 ; cd -; }
+  return $?
+}
