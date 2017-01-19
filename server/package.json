@@ -1,9 +1,9 @@
 {
-  "name": "absolute-signage",
+  "name": "absolute",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./app.js"
+    "start": "node ./server"
   },
   "dependencies": {
     "debug": "~2.2.0",
