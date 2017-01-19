@@ -1,0 +1,5 @@
+node_modules
+platform
+*.swp
+*.tar.gz
+*.zip
