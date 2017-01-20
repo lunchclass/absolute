@@ -6,13 +6,13 @@
     var self = this;
 
     function getFirebaseToken() {
-    };
+    }
 
     function deleteFirebaseToken() {
-    };
+    }
 
     function requestPushPermission() {
-    };
+    }
 
     /**
      * Register firebase push
