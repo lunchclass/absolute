@@ -1,30 +1,31 @@
-(function (global, factory) {
+(function(global, factory) {
   'use strict';
-  global.fcm = new (factory(global, global.document))();
-})(typeof window !== 'undefined' ? window : this, function (w, d) {
-  var fcm = function () {
+  global.fcm = new factory(global, global.document)();
+})(typeof window !== 'undefined' ? window : this, function(w, d) {
+  var fcm = function() {
     var self = this;
 
-    function getFirebaseToken () {
-    }
+    function getFirebaseToken() {
+    };
 
-    function deleteFirebaseToken () {
-    }
+    function deleteFirebaseToken() {
+    };
 
-    function requestPushPermission () {
-    }
+    function requestPushPermission() {
+    };
 
     /**
      * Register firebase push
      */
-    self.register = function () {
+    self.register = function() {
     };
 
     /**
      * Unregister firebase push
      */
-    self.unregister = function () {
+    self.unregister = function() {
     };
   };
   return fcm;
 });
+
