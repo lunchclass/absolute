@@ -13,13 +13,13 @@ function run_server() {
   if [ "$platform_name" = "node-v7.3.0-win-x64" \
       -o "$platform_name" = "node-v7.3.0-win-x86" ]; then
     $(get_node_dir)/npm.cmd install $(get_server_dir) --prefix $(get_server_dir)
-	$(get_node_dir)/npm.cmd stop --prefix $(get_server_dir)
+    $(get_node_dir)/npm.cmd stop --prefix $(get_server_dir)
     $(get_node_dir)/npm.cmd start --prefix $(get_server_dir) &
   else
     PATH=$PATH:$(get_node_dir)/bin
     $(get_node_dir)/bin/npm install $(get_server_dir) --prefix $(get_server_dir)
     $(get_node_dir)/bin/npm stop --prefix $(get_server_dir)
-	$(get_node_dir)/bin/npm start --prefix $(get_server_dir) &
+	  $(get_node_dir)/bin/npm start --prefix $(get_server_dir) &
   fi
 }
 
