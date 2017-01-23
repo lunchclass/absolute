@@ -19,7 +19,7 @@ function run_server() {
     PATH=$PATH:$(get_node_dir)/bin
     $(get_node_dir)/bin/npm install $(get_server_dir) --prefix $(get_server_dir)
     $(get_node_dir)/bin/npm stop --prefix $(get_server_dir)
-	  $(get_node_dir)/bin/npm start --prefix $(get_server_dir) &
+    $(get_node_dir)/bin/npm start --prefix $(get_server_dir) &
   fi
 }
 
