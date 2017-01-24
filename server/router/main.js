@@ -1,6 +1,5 @@
-module.exports = function(app)
-{
-  app.post('/api/client',function(req,res){
+module.exports = function(app) {
+  app.post('/api/client',function(req,res) {
     // Add new client
     const clientToken = req.headers['authorization'];
     if(clientToken) {
@@ -9,7 +8,7 @@ module.exports = function(app)
       res.sendStatus(200);
     }
     else {
-      res.sendStatus(400); // token not found
+      res.sendStatus(400); // bad request
     }
   });
 
