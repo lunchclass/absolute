@@ -3,4 +3,7 @@ node_js:
   - "node"
 install:
   - npm install -g mocha
-script: cd server && mocha ./test/*.js
+env:
+  - TEST_DIR=server
+  - TEST_DIR=client
+script: cd $TEST_DIR && mocha ./test/*.js
