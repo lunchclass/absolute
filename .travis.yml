@@ -3,3 +3,4 @@ node_js:
   - "node"
 install:
   - npm install -g mocha
+script: cd server && mocha ./test/*.js
