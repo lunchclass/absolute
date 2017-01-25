@@ -6,8 +6,7 @@ module.exports = function(app) {
       console.log('Store client token : ' + clientToken);
       // StoreClient token to DB
       res.sendStatus(200);
-    }
-    else {
+    } else {
       res.sendStatus(400); // bad request
     }
   });
