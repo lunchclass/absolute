@@ -16,7 +16,8 @@ const router = require('./router/main.js')(app);
 
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.urlencoded({
-  extended: true}));
+  extended: true
+}));
 app.use(bodyParser.json());
 
 httpsServer.run(app, config.serverInfo);
