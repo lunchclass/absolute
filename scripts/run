@@ -16,6 +16,7 @@ function run_server() {
     $(get_node_dir)/npm.cmd start --prefix $(get_server_dir)
   else
     PATH=$PATH:$(get_node_dir)/bin
+    $(get_node_dir)/bin/npm stop test
     $(get_node_dir)/bin/npm install $(get_server_dir) --prefix $(get_server_dir)
     $(get_node_dir)/bin/npm start --prefix $(get_server_dir)
   fi

@@ -6,4 +6,4 @@ install:
 env:
   - TEST_DIR=server
   - TEST_DIR=client
-script: cd $TEST_DIR && mocha ./test/*.js
+script: cd $TEST_DIR && mocha ./server/*.js
