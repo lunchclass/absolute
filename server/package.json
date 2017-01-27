@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "forever restart -c nodemon ./server.js",
+    "start": "forever stopall && forever start -c nodemon ./server.js"
   },
   "dependencies": {
     "debug": "~2.2.0",
