@@ -3,4 +3,4 @@
 
 :; # Bootstrap code for Windows
 @ECHO OFF
-cd %~dp0 && scripts\win-bash\bash scripts\run %*
+cd %~dp0 && third_party\win-bash\bash scripts\run %*
