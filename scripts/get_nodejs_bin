@@ -10,8 +10,8 @@ NODEJS_LINUX_x86="linux-x86"
 NODEJS_MAC_x64="darwin-x64"
 # TODO : This is temporal fixed version. Need to get latest or specific version from dist repository
 NODEJS_VERSION="v6.9.5"
-NODEJS_7x_LATEST_URL="https://nodejs.org/dist/$NODEJS_VERSION/"
 NODEJS_VERSION_NAME="node-$NODEJS_VERSION"
+NODEJS_DOWNLOAD_URL="https://nodejs.org/dist/$NODEJS_VERSION/"
 
 # Get the nodeJS binary for running platform
 # $1 : platform name
@@ -34,7 +34,7 @@ function get_nodejs_binary() {
     target_node_archive_file="$target_node_platform_name.tar.gz"
   fi
 
-  target_url="$NODEJS_7x_LATEST_URL/$target_node_archive_file"
+  target_url="$NODEJS_DOWNLOAD_URL/$target_node_archive_file"
 
   target_node_dir=$(get_node_dir)
 
