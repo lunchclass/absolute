@@ -50,7 +50,7 @@ function download_file_to_path() {
 
   if [ ! -d "$path" ]; then
     echo "targetPath does not exist. create $path"
-    mkdir $path
+    mkdir -p $path
   fi
 
   download_file $url $path
