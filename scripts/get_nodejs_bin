@@ -3,37 +3,38 @@
 source ./scripts/path_info
 source ./scripts/util
 
-NODEJS_7x_LATEST_URL="https://nodejs.org/dist/latest-v7.x"
 NODEJS_WIN_x64="win-x64"
 NODEJS_WIN_x86="win-x86"
 NODEJS_LINUX_x64="linux-x64"
 NODEJS_LINUX_x86="linux-x86"
 NODEJS_MAC_x64="darwin-x64"
 # TODO : This is temporal fixed version. Need to get latest or specific version from dist repository
-NODEJS_LATEST7X_VERSION="node-v7.4.0"
+NODEJS_VERSION="v6.9.5"
+NODEJS_VERSION_NAME="node-$NODEJS_VERSION"
+NODEJS_DOWNLOAD_URL="https://nodejs.org/dist/$NODEJS_VERSION/"
 
 # Get the nodeJS binary for running platform
 # $1 : platform name
 function get_nodejs_binary() {
   platform_name=$1
   if [ "$platform_name" = "linux_x86_64" ]; then
-    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x64"
+    target_node_platform_name="$NODEJS_VERSION_NAME-$NODEJS_LINUX_x64"
     target_node_archive_file="$target_node_platform_name.tar.gz"
   elif [ "$platform_name" = "linux_x86" ]; then
-    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_LINUX_x86"
+    target_node_platform_name="$NODEJS_VERSION_NAME-$NODEJS_LINUX_x86"
     target_node_archive_file="$target_node_platform_name.tar.gz"
   elif [ "$platform_name" = "windows_x86_64" ]; then
-    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x64"
+    target_node_platform_name="$NODEJS_VERSION_NAME-$NODEJS_WIN_x64"
     target_node_archive_file="$target_node_platform_name.zip"
   elif [ "$platform_name" = "windows_x86" ]; then
-    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_WIN_x86"
+    target_node_platform_name="$NODEJS_VERSION_NAME-$NODEJS_WIN_x86"
     target_node_archive_file="$target_node_platform_name.zip"
   elif [ "$platform_name" = "darwin_x86_64" ]; then
-    target_node_platform_name="$NODEJS_LATEST7X_VERSION-$NODEJS_MAC_x64"
+    target_node_platform_name="$NODEJS_VERSION_NAME-$NODEJS_MAC_x64"
     target_node_archive_file="$target_node_platform_name.tar.gz"
   fi
 
-  target_url="$NODEJS_7x_LATEST_URL/$target_node_archive_file"
+  target_url="$NODEJS_DOWNLOAD_URL/$target_node_archive_file"
 
   target_node_dir=$(get_node_dir)
 
@@ -97,8 +98,6 @@ function extract_archive() {
       *.tar.gz) tar xvzf $1 -C $dest ;;
       *.gz) gunzip $1 > $dest ;;
       *.tar) tar xvf $1 -C $dest ;;
-      # FIXME(Jaechul): Current our win-bash doens't support unzip!
-      # So this woudn't run on windows
       *.zip) unzip $1 -d $dest ;;
       *.7z) 7z x $1 -o $dest ;;
       *) echo "extract: '$1' - unknown archive method" ;;
