@@ -19,3 +19,11 @@ function get_node_dir() {
 function get_server_dir() {
   echo $(get_absolute_dir)/server
 }
+
+function get_win_bash_dir() {
+  echo $(get_absolute_dir)/third_party/win-bash
+}
+
+function get_win_unzip_dir() {
+  echo $(get_absolute_dir)/third_party/win-unzip/bin
+}

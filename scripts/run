@@ -10,8 +10,8 @@ function run_server() {
   # FIXME(zino): Once we finish to implement NodeJS Downloader via script,
   # the following platform name should be |windows_x86_64| or |windows_x86|.
   # Please see: https://github.com/romandev/absolute/issues/19
-  if [ "$platform_name" = "node-v7.3.0-win-x64" \
-      -o "$platform_name" = "node-v7.3.0-win-x86" ]; then
+  if [ "$platform_name" = "windows_x86_64" \
+      -o "$platform_name" = "windows_x86" ]; then
     $(get_node_dir)/npm.cmd install $(get_server_dir) --prefix $(get_server_dir)
     $(get_node_dir)/npm.cmd start --prefix $(get_server_dir)
   else
@@ -21,7 +21,16 @@ function run_server() {
   fi
 }
 
+function set_configuration() {
+  platform_name=$(get_platform_name)
+  if [ "$platform_name" = "windows_x86_64" \
+      -o "$platform_name" = "windows_x86" ]; then
+    PATH=$PATH:$(get_win_bash_dir):$(get_win_unzip_dir)
+  fi
+}
+
 if [ ! -d $(get_node_dir) ]; then
+  set_configuration
   get_nodejs_binary $(get_platform_name)
 fi
 
