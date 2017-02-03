@@ -1,0 +1,49 @@
+#!/bin/bash
+
+source ./scripts/path_info
+source ./scripts/util
+
+MONGODB_LINUX="linux"
+MONGODB_WIN="win32"
+MONGODB_MAC="osx"
+# TODO : This is temporal fixed version. Need to get latest or specific version from dist repository
+MONGODB_VERSION="3.4.2"
+MONGODB_DOWNLOAD_URL="http://downloads.mongodb.org"
+
+# Get the mongodb binary for running platform
+# $1 : platform name
+function get_mongodb_binary() {
+  platform_name=$1
+  if [ "$platform_name" = "linux_x86_64" \
+      -o "$platform_name" = "linux_x86" ]; then
+    target_platform_name="$MONGODB_LINUX"
+    target_mongodb_platform_name="mongodb-$target_platform_name-x86_64-amazon-$MONGODB_VERSION"
+    target_mongodb_archive_file="$target_mongodb_platform_name.tgz"
+  elif [ "$platform_name" = "windows_x86_64" \
+      -o "$platform_name" = "windows_x86" ]; then
+    target_platform_name="$MONGODB_WIN"
+    target_mongodb_platform_name="mongodb-$target_platform_name-x86_64-2008plus-ssl-$MONGODB_VERSION"
+    target_mongodb_archive_file="$target_mongodb_platform_name.zip"
+  elif [ "$platform_name" = "darwin_x86_64" ]; then
+    target_platform_name="$MONGODB_MAC"
+    target_mongodb_platform_name="mongodb-$target_platform_name-x86_64-$MONGODB_VERSION"
+    target_mongodb_archive_file="$target_mongodb_platform_name.tgz"
+  fi
+
+  target_url="$MONGODB_DOWNLOAD_URL/$target_platform_name/$target_mongodb_archive_file"
+
+  target_mongodb_dir=$(get_mongodb_dir)
+
+  download_file_to_path "$target_url" "$target_mongodb_dir"
+  if [ ! "$?" = "0" ]; then
+    return
+  fi
+
+  extract_archive "$target_mongodb_dir/$target_mongodb_archive_file" \
+  "$target_mongodb_dir"; rm -f $target_mongodb_dir/$target_mongodb_archive_file
+
+  # FIXME(Jaecule) : This workaround is for removing dir
+  # of archive file need more graceful way
+  mv $target_mongodb_dir/$target_mongodb_platform_name/* "$target_mongodb_dir/"
+  rmdir "$target_mongodb_dir/$target_mongodb_platform_name"
+}

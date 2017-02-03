@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source ./scripts/get_nodejs_bin
+source ./scripts/get_mongodb_bin
 source ./scripts/path_info
 source ./scripts/platform_info
 
@@ -29,9 +30,14 @@ function set_configuration() {
   fi
 }
 
+set_configuration
+
 if [ ! -d $(get_node_dir) ]; then
-  set_configuration
   get_nodejs_binary $(get_platform_name)
+fi
+
+if [ ! -d $(get_mongodb_dir) ]; then
+  get_mongodb_binary $(get_platform_name)
 fi
 
 run_server
