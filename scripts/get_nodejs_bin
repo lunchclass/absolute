@@ -100,7 +100,7 @@ function extract_archive() {
       *.tar) tar xvf $1 -C $dest ;;
       # FIXME(Jaechul): Current our win-bash doens't support unzip!
       # So this woudn't run on windows
-      *.zip) third_party/win-unzip/bin/unzip $1 -d $dest ;;
+      *.zip) unzip $1 -d $dest ;;
       *.7z) 7z x $1 -o $dest ;;
       *) echo "extract: '$1' - unknown archive method" ;;
     esac

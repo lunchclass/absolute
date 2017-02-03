@@ -18,18 +18,12 @@ get_platform_name() {
   #   https://blogs.msdn.microsoft.com/david.wang/2006/03/27/howto-detect-process-bitness/
   if [ "$(to_lower $PROCESSOR_ARCHITEW6432)" = "amd64" \
       -o "$(to_lower $PROCESSOR_ARCHITECTURE)" = "amd64" ]; then
-    # FIXME(zino): Once we finish to implement NodeJS Downloader via script,
-    # the following platform name should be |windows_x86_64|.
-    # Please see: https://github.com/romandev/absolute/issues/19
     echo "windows_x86_64"
     return
   fi
 
   os_name=$(to_lower $(uname -s))
   if [ "$os_name" = "windows_nt" ]; then
-    # FIXME(zino): Once we finish to implement NodeJS Downloader via script,
-    # the following platform name should be |windows_x86_64|.
-    # Please see: https://github.com/romandev/absolute/issues/19
     echo "windows_x86"
     return
   fi

@@ -21,7 +21,16 @@ function run_server() {
   fi
 }
 
+function set_configuration() {
+  platform_name=$(get_platform_name)
+  if [ "$platform_name" = "windows_x86_64" \
+      -o "$platform_name" = "windows_x86" ]; then
+    PATH=$PATH:$(get_win_bash_dir):$(get_win_unzip_dir)
+  fi
+}
+
 if [ ! -d $(get_node_dir) ]; then
+  set_configuration $(get_platform_name)
   get_nodejs_binary $(get_platform_name)
 fi
 
