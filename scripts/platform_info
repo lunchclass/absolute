@@ -21,7 +21,7 @@ get_platform_name() {
     # FIXME(zino): Once we finish to implement NodeJS Downloader via script,
     # the following platform name should be |windows_x86_64|.
     # Please see: https://github.com/romandev/absolute/issues/19
-    echo "node-v7.3.0-win-x64"
+    echo "windows_x86_64"
     return
   fi
 
@@ -30,7 +30,7 @@ get_platform_name() {
     # FIXME(zino): Once we finish to implement NodeJS Downloader via script,
     # the following platform name should be |windows_x86_64|.
     # Please see: https://github.com/romandev/absolute/issues/19
-    echo "node-v7.3.0-win-x86"
+    echo "windows_x86"
     return
   fi
 
