@@ -30,7 +30,7 @@ function set_configuration() {
 }
 
 if [ ! -d $(get_node_dir) ]; then
-  set_configuration $(get_platform_name)
+  set_configuration
   get_nodejs_binary $(get_platform_name)
 fi
 
