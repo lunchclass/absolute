@@ -98,8 +98,6 @@ function extract_archive() {
       *.tar.gz) tar xvzf $1 -C $dest ;;
       *.gz) gunzip $1 > $dest ;;
       *.tar) tar xvf $1 -C $dest ;;
-      # FIXME(Jaechul): Current our win-bash doens't support unzip!
-      # So this woudn't run on windows
       *.zip) unzip $1 -d $dest ;;
       *.7z) 7z x $1 -o $dest ;;
       *) echo "extract: '$1' - unknown archive method" ;;
