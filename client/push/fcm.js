@@ -4,8 +4,8 @@
 })(typeof window !== 'undefined' ? window : this, function(w, d) {
   var fcm = function() {
     var self = this;
-	var authorizationKey = '';
-	var clientToken = '';
+    var authorizationKey = '';
+    var clientToken = '';
 
     var config = {
       apiKey: '',
@@ -22,8 +22,8 @@
       messaging.getToken()
       .then(function(token) {
         if (token) {
-		  clientToken = token;
-		  sendFCMTokenToServer();
+          clientToken = token;
+          sendFCMTokenToServer();
         } else {
           console.log('No token available.');
         }
