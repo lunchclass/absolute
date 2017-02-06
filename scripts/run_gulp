@@ -4,12 +4,9 @@ source ./scripts/util
 
 function run_gulp() {
   platform_name=$(get_platform_name)
-  
   if $(is_windows); then
-    #TODO(gitdongguri): run gulp in windows
-    echo "ttt"
+    echo "TODO(gitdongguri): run gulp in windows"
   else
-  echo "eeee"
     PATH=$PATH:$(get_node_dir)/bin
     node_module_bin_dir=$(npm bin --prefix $(get_server_dir))
     #FIXME(gitdongguri): have to use command in package.json
