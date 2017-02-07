@@ -3,4 +3,4 @@ platform
 *.swp
 *.tar.gz
 *.zip
-npm-debug
+npm-debug.log
