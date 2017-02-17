@@ -13,11 +13,11 @@ function get_absolute_dir() {
 }
 
 function get_node_dir() {
-  echo $(get_absolute_dir)/platform/nodejs
+  echo $(get_absolute_dir)/platform/nodejs-$NODEJS_VERSION
 }
 
 function get_mongodb_dir() {
-  echo $(get_absolute_dir)/platform/mongodb
+  echo $(get_absolute_dir)/platform/mongodb-$MONGODB_VERSION
 }
 
 function get_server_dir() {
