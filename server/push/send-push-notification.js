@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 var serverKey = 'Your server key here, Never expose to client code';
 
-exports.sendFCMNotification = function (clientToken) {
+exports.sendFCMNotification = function(clientToken) {
   console.log("Send push notification");
   const request = require('request');
   const jsonHeader = {
@@ -27,6 +27,6 @@ exports.sendFCMNotification = function (clientToken) {
     json : true,
     headers : jsonHeader,
     body : jsonBody
-  }, function (error, response, body){
+  }, function(error, response, body){
   });
 };
