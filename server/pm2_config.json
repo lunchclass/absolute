@@ -1,16 +1,21 @@
 {
   "apps" : [{
-    "name"        : "absolute",
-    "script"      : "./server.js",
-    "watch"       : true,
-    "ignore_watch" : ["node_modules", "package.json"],
+    "name": "absolute",
+    "script": "./server.js",
+    "cwd": "./",
+    "error_file": "err.log",
+    "out_file": "out.log",
+    "merge_logs": true,
+    "log_date_format": "YYYY-MM-DD HH:mm Z",
+    "watch": true,
+    "ignore_watch": ["pm2_config.json", "node_modules", "package.json"],
     "watch_options": {
-      "cwd": "./"
+      "usePolling": true
     },
     "env": {
       "NODE_ENV": "development"
     },
-    "env_production" : {
+    "env_production": {
        "NODE_ENV": "production"
     }
   }]
