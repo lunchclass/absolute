@@ -3,15 +3,12 @@
     "name": "absolute",
     "script": "./server.js",
     "cwd": "./",
-    "error_file": "err.log",
-    "out_file": "out.log",
+    "error_file": "../log/error.log",
+    "out_file": "../log/output.log",
     "merge_logs": true,
     "log_date_format": "YYYY-MM-DD HH:mm Z",
-    "watch": true,
+    "watch": false,
     "ignore_watch": ["pm2_config.json", "node_modules", "package.json"],
-    "watch_options": {
-      "usePolling": true
-    },
     "env": {
       "NODE_ENV": "development"
     },
