@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "forever stopall && forever start -c nodemon ./server.js"
+    "start": "pm2 delete all && pm2 restart pm2_config.json"
   },
   "dependencies": {
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "morgan": "~1.7.0",
-    "forever": "~0.15.3",
-    "nodemon": "latest"
+    "pm2": "latest"
   }
 }
