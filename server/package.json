@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "pm2 restart pm2_config.json"
+    "start": "pm2 delete all && pm2 restart pm2_config.json"
   },
   "dependencies": {
     "debug": "~2.2.0",
