@@ -2,9 +2,6 @@
   "name": "absolute",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "forever stopall && forever start -c nodemon ./server.js"
-  },
   "dependencies": {
     "debug": "~2.2.0",
     "express": "~4.14.0",
