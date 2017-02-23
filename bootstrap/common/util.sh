@@ -24,13 +24,15 @@ function download() {
   local path=${2:-./}
 
   if [ -z "$url" ]; then
-    return -1
+    return 1
   fi
 
+  echo "Downloading... $url"
   if is_windows_platform || can_use_command wget; then
-    mkdir -p $path && wget $url -P $path
+    mkdir -p $path && wget $url -P $path > /dev/null 2>&1
   else
-    mkdir -p $path && cd $path && { curl -LO $url; cd -; }
+    mkdir -p $path && cd $path && \
+        { curl -LO $url > /dev/null 2>&1; cd - > /dev/null; }
   fi
 
   return $?
@@ -42,7 +44,7 @@ function has_container_directory() {
   if [ "$(dirname $(tar -tf $src_path | head -n 1))" = "." ]; then
     return 0
   fi
-  return -1
+  return 1
 }
 
 function extract_archive() {
@@ -50,11 +52,11 @@ function extract_archive() {
   local dest_path=${2:-./}
 
   if [ -z "$src_path" ]; then
-    return -1
+    return 1
   fi
 
   if [ ! -f "$src_path" ]; then
-    return -2
+    return 2
   fi
 
   if is_windows_platform; then
@@ -62,9 +64,10 @@ function extract_archive() {
   fi
 
   mkdir -p $dest_path
+  echo "Extracting files..."
   case $src_path in
-    *.tar.gz|*.tgz) tar -xvzf $src_path -C $dest_path ;;
-    *.zip) unzip $src_path -d $dest_path ;;
+    *.tar.gz|*.tgz) tar -xvzf $src_path -C $dest_path > /dev/null 2>&1 ;;
+    *.zip) unzip $src_path -d $dest_path > /dev/null 2>&1 ;;
   esac
 
   return $?
