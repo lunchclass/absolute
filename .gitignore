@@ -1,6 +1,4 @@
-node_modules
-platform
 *.swp
-*.tar.gz
-*.zip
-npm-debug.log
+node_modules
+third_party/mongodb
+third_party/node
