@@ -8,9 +8,11 @@ const path = require('path');
 const config = require('./config');
 const httpsServer = require('./https_server/https_server');
 const redirectServer = require('./https_server/redirect_server');
+const databaseRunner = require('./database/mongodb_runner');
 
 var app = express();
 app.use(express.static(path.join(__dirname, '../client')));
 
 httpsServer.run(app, config.serverInfo);
 redirectServer.runForHttps(config.serverInfo);
+databaseRunner.run();

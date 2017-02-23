@@ -23,7 +23,7 @@ function run_server() {
 function set_path_configuration() {
   platform_name=$(get_platform_name)
   if $(is_windows); then
-    PATH=$PATH:$(get_win_bash_dir):$(get_win_unzip_dir)
+    export PATH=$PATH:$(get_win_bash_dir):$(get_win_unzip_dir):$(get_mongodb_dir)/bin
   else
     PATH=$PATH:$(get_node_dir)/bin
   fi
