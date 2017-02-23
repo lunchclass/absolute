@@ -43,7 +43,7 @@ function sync_third_party() {
   local filename=$(basename $url)
 
   if ! needs_sync $url $target_path; then
-    return -1
+    return 1
   fi
 
   if is_windows_platform; then
@@ -59,13 +59,13 @@ function sync_third_party() {
 
   # Download the file of url into temporary path.
   if ! download $url $temp_path; then
-    return -2
+    return 2
   fi
 
   # Extract the archive file into $temp_path/extract_$file_name.
   local extracted_path=$temp_path/extract_$filename
   if ! extract_archive $temp_path/$filename $extracted_path; then
-    return -3
+    return 3
   fi
 
   # Remove container direcotry if needed.
