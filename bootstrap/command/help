@@ -4,7 +4,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-. bootstrap/common/path_info.sh
+. $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 
 echo "Available commands:"
 for command in $(ls $(bootstrap_command_path)); do

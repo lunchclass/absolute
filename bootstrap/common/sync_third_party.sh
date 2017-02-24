@@ -4,8 +4,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-. bootstrap/common/platform_info.sh
-. bootstrap/common/util.sh
+. $ABSOLUTE_PATH/bootstrap/common/platform_info.sh
+. $ABSOLUTE_PATH/bootstrap/common/util.sh
 
 function sync_node() {
   local target_path="./third_party/node"
