@@ -12,7 +12,6 @@ sync_node
 sync_mongodb
 
 # Set path
-set_path_env $(third_party_path)/node/bin
 set_path_env $(third_party_path)/mongodb/bin
 set_path_env $(bootstrap_command_path)
 set_path_env $(server_path)/node_modules/.bin
