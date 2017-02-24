@@ -5,7 +5,7 @@
 # found in the LICENSE file.
 
 function absolute_path() {
-  echo $(cd $(dirname $BASH_SOURCE)/../..; pwd)
+  pwd
 }
 
 function third_party_path() {
