@@ -20,7 +20,7 @@ for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
     shift
     $(bootstrap_command_path)/$command $@
-    return
+    exit
   fi
 done
 

@@ -4,5 +4,5 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-absolute_path=$(cd $(dirname $BASH_SOURCE); pwd)
-cd $absolute_path && source ./bootstrap/absolute.sh $@;
+export ABSOLUTE_PATH=$(cd $(dirname $BASH_SOURCE); pwd)
+cd $ABSOLUTE_PATH && source ./bootstrap/absolute.sh $@;

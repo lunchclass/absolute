@@ -4,7 +4,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-. bootstrap/common/string_util.sh
+. $ABSOLUTE_PATH/bootstrap/common/string_util.sh
 
 # Get the platform name on current system.
 # Out: The name of the platform that invokes this function.
