@@ -5,7 +5,7 @@
 # found in the LICENSE file.
 
 function absolute_path() {
-  pwd
+  echo $ABSOLUTE_PATH
 }
 
 function third_party_path() {
