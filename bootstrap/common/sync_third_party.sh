@@ -47,7 +47,7 @@ function sync_third_party() {
   fi
 
   if is_windows_platform; then
-    local temp_path=$TMP/tmp_$RANDOM
+    local temp_path=C:/tmp_$RANDOM
     mkdir -p $temp_path
   else
     local temp_path=$(mktemp -d)
