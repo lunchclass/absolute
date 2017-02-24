@@ -6,17 +6,17 @@ const express = require('express');
 const http = require('http');
 
 function runForHttps(serverInfo) {
-  var redirectApp = express();
-  var redirectServer = http.createServer(redirectApp);
+  const redirectApp = express();
+  const redirectServer = http.createServer(redirectApp);
 
   redirectApp.use((request, response, next) => {
     if (!request.secure) {
-      var httpsHost = 'https://' + request.headers.host;
-      var redirectUrl = httpsHost.replace(/:\d+$/, '') + ':'
-          + serverInfo.httpsPort + request.url;
+      const httpsHost = `https://${request.headers.host}`;
+      const redirectUrl = `${httpsHost.replace(/:\d+$/, '')}:${
+           serverInfo.httpsPort}${request.url}`;
       return response.redirect(redirectUrl);
     }
-    next();
+    return next();
   });
   redirectServer.listen(serverInfo.httpPort);
 }
