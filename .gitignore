@@ -2,3 +2,10 @@
 node_modules
 third_party/mongodb
 third_party/node
+
+# Ignore lint
+**/package.json
+**/*.html
+
+# FIXME(daehyunjimmy): This file has many lint errors.
+**/push/fcm.js

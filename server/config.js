@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-var config = module.exports;
+const config = module.exports;
 
 config.serverInfo = {
   httpPort: 9080,
@@ -10,6 +10,6 @@ config.serverInfo = {
   ip: '127.0.0.1',
   certification: {
     key: '../certification/key.pem',
-    cert: '../certification/cert.pem'
-  }
+    cert: '../certification/cert.pem',
+  },
 };
