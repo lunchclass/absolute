@@ -4,8 +4,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-. bootstrap/common/path_info.sh
-. bootstrap/common/sync_third_party.sh
+. $ABSOLUTE_PATH/bootstrap/common/path_info.sh
+. $ABSOLUTE_PATH/bootstrap/common/sync_third_party.sh
 
 # Sync third_parties.
 sync_node

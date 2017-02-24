@@ -3,5 +3,5 @@
 :: found in the LICENSE file.
 
 @ECHO OFF
-set %ABSOLUTE_PATH%=%~dp0
-cd %~dp0 && third_party\win-bash\bash bootstrap\absolute.sh %*
+set ABSOLUTE_PATH=%~dp0
+cd %ABSOLUTE_PATH% && third_party\win-bash\bash bootstrap\absolute.sh %*
