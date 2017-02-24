@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 The Absolute Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+. $ABSOLUTE_PATH/bootstrap/common/path_info.sh
+. $ABSOLUTE_PATH/bootstrap/common/util.sh
+
+if ! can_use_command eslint; then
+  trap "cd - > /dev/null" EXIT
+  cd $(server_path) && npm install . && cd - > /dev/null
+fi
+eslint $@ --ignore-path=.gitignore --quiet server/* client/*

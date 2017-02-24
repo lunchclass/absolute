@@ -6,12 +6,12 @@ const fs = require('fs');
 const https = require('https');
 
 function run(app, serverInfo) {
-  var certificationInfo = {
+  const certificationInfo = {
     key: fs.readFileSync(serverInfo.certification.key),
-    cert: fs.readFileSync(serverInfo.certification.cert)
+    cert: fs.readFileSync(serverInfo.certification.cert),
   };
 
-  var httpsServer = https.createServer(certificationInfo, app);
+  const httpsServer = https.createServer(certificationInfo, app);
   httpsServer.listen(serverInfo.httpsPort);
 }
 
