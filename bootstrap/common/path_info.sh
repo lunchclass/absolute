@@ -24,6 +24,10 @@ function server_path() {
   echo $(absolute_path)/server
 }
 
+function githooks_path() {
+  echo $(absolute_path)/githooks
+}
+
 function set_path_env() {
   export PATH="$1":"$PATH"
 }
