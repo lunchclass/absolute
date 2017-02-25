@@ -7,6 +7,9 @@
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 . $ABSOLUTE_PATH/bootstrap/common/sync_third_party.sh
 
+# Copy githooks to .git/hooks.
+cp $(githooks_path)/* $(absolute_path)/.git/hooks
+
 # Sync third_parties.
 sync_node
 sync_mongodb
