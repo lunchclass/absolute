@@ -17,7 +17,7 @@ sync_mongodb
 # Set path
 set_path_env $(third_party_path)/mongodb/bin
 set_path_env $(bootstrap_command_path)
-set_path_env $(server_path)/node_modules/.bin
+set_path_env $(absolute_path)/node_modules/.bin
 
 for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
