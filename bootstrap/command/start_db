@@ -6,5 +6,7 @@
 
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 
-start_db
-start_server
+trap "cd - > /dev/null" EXIT
+cd $(server_path) && npm install .
+stop_db
+forever start ./database.js
