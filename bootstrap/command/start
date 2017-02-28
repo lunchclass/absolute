@@ -6,5 +6,5 @@
 
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 
-trap "cd - > /dev/null" EXIT
-npm install . && stop && forever start $(server_path)/server.js
+trap "cd - > /dev/null 2>&1" EXIT
+npm install . && stop && cd $(server_path) && forever start ./server.js
