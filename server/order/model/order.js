@@ -4,8 +4,7 @@
 
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-const orderSchema = new Schema({
+const orderSchema = new mongoose.Schema({
   items: [{
     name: { type: String, lowercase: true, trim: true },
     count: Number,
