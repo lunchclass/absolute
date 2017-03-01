@@ -4,7 +4,7 @@
 
 const mongoose = require('mongoose');
 
-const orderSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   userId: String,
   items: [{
     name: { type: String, lowercase: true, trim: true },
@@ -17,4 +17,4 @@ const orderSchema = new mongoose.Schema({
   options: String,
 });
 
-module.exports = mongoose.model('order', orderSchema);
+module.exports = mongoose.model('order', schema);
