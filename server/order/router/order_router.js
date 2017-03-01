@@ -3,7 +3,7 @@ const Order = require('../model/order');
 
 const router = express.Router();
 
-router.post('/', function (req) {
+router.post('/', (req) => {
   const order = new Order(JSON.parse(JSON.stringify(req.body)));
   order.save();
 });
