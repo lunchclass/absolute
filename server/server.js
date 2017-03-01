@@ -8,6 +8,7 @@ const path = require('path');
 const config = require('./config');
 const httpsServer = require('./https_server/https_server');
 const redirectServer = require('./https_server/redirect_server');
+const dbConnect = require('./db/db_connect');
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -18,7 +19,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // router must be after body-parser
-const pushRouter = require('./push/router.js')(app);
+const pushRouter = require('./push/router.js')(app);  /* eslint-disable */
 
+dbConnect.connectServer();
 httpsServer.run(app, config.serverInfo);
 redirectServer.runForHttps(config.serverInfo);
