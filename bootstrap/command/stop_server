@@ -4,4 +4,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-forever stop ./server.js
+. $ABSOLUTE_PATH/bootstrap/common/path_info.sh
+
+trap "cd - > /dev/null 2>&1" EXIT
+cd $(server_path) && forever stop ./server.js
