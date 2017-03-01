@@ -4,8 +4,12 @@
   <title>Absolute</title>
   <link rel="manifest" href="/manifest.json">
   <script src="push/sw_manager.js"></script>
+  <script src="deeplink/deeplink.js"></script>
 </head>
 <body>
+  <script>
+    deeplink.createBrowser('com.android.chrome');
+  </script>
 Absolute Client!
 </body>
 </html>
