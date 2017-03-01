@@ -1,18 +1,35 @@
 (function (global, factory) {
-  global.swManager = new factory(global, global.document)();
+  var Factory = factory;
+  global.swManager = new Factory(global, global.document)();
 }(typeof window !== 'undefined' ? window : this, function (w, d) {
   var swManager = function () {
     var self = this;
     var pushSubscription = '';
     var swRegistration = '';
 
+    function sendPushTokenToServer() {
+      var http = new XMLHttpRequest();
+      var url = 'https://nadonguri.com/api/push/client';
+      http.open('POST', url, true);
+      http.setRequestHeader('Content-Type', 'application/json');
+      http.onreadystatechange = function () {
+        if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+          console.log(http.responseText);
+        }
+      };
+      http.send(JSON.stringify({
+        token: pushSubscription,
+      }));
+    }
+
     function registerServiceWorker() {
+      navigator.serviceWorker.register('sw.js');
       if ('serviceWorker' in navigator && 'PushManager' in window) {
         navigator.serviceWorker.register('sw.js')
         .then(function (registration) {
           swRegistration = registration;
-          navigator.serviceWorker.ready.then(function (registration) {
-            serviceWorkerRegistration.pushManager.subscribe({
+          navigator.serviceWorker.ready.then(function () {
+            swRegistration.pushManager.subscribe({
               userVisibleOnly: true,
             })
             .then(function (subscription) {
@@ -38,20 +55,6 @@
     function getSubscription() {
     }
 
-    function sendPushTokenToServer() {
-      var http = new XMLHttpRequest();
-      var url = 'https://nadonguri.com/api/push/client';
-      http.open('POST', url, true);
-      http.setRequestHeader('Content-Type', 'application/json');
-      http.onreadystatechange = function () {
-        if (http.readyState == XMLHttpRequest.DONE && http.status == 200) {
-          console.log(http.responseText);
-        }
-      };
-      http.send(JSON.stringify({
-        token: pushSubscription,
-      }));
-    }
 
     function requestPushPermission() {
     }

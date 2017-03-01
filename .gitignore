@@ -7,7 +7,7 @@ npm-debug.log.*
 database
 
 # Ignore lint
-**/package.json
+**/*.json
 **/*.html
 
 # FIXME(daehyunjimmy): This file has many lint errors.

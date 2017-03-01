@@ -24,6 +24,8 @@
     ],
 		"no-unused-vars": "off",
 		"prefer-arrow-callback": "off",
-		"no-var": "off"
+		"no-var": "off",
+		"func-names": "off",
+		"no-param-reassign": "off",
   }
 }
