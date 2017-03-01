@@ -7,7 +7,7 @@
     var pushSubscription = '';
     var swRegistration = '';
 
-    function sendPushTokenToServer() {
+    function addPushTokenToServer() {
       var http = new XMLHttpRequest();
       var url = 'https://nadonguri.com/api/push/client';
       http.open('POST', url, true);
@@ -18,7 +18,22 @@
         }
       };
       http.send(JSON.stringify({
-        token: pushSubscription,
+        token: pushSubscription.endpoint,
+      }));
+    }
+
+    function removePushTokenFromServer() {
+      var http = new XMLHttpRequest();
+      var url = 'https://nadonguri.com/api/push/client';
+      http.open('DELETE', url, true);
+      http.setRequestHeader('Content-Type', 'application/json');
+      http.onreadystatechange = function () {
+        if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+          console.log(http.responseText);
+        }
+      };
+      http.send(JSON.stringify({
+        token: pushSubscription.endpoint,
       }));
     }
 
@@ -34,7 +49,7 @@
             })
             .then(function (subscription) {
               pushSubscription = subscription;
-              sendPushTokenToServer();
+              addPushTokenToServer();
             })
             .catch(function (err) {
               console.log('subscribe error ', err);
@@ -50,11 +65,16 @@
     }
 
     function unregisterServiceWorker() {
+      navigator.serviceWorker.ready.then(function (registration) {
+        registration.pushManager.getSubscription().then(function (subscription) {
+          subscription.unsubscribe().then(function (successful) {
+            console.log('unsubscribe success');
+          }).catch(function (e) {
+            console.log('unsubscribe error');
+          });
+        });
+      });
     }
-
-    function getSubscription() {
-    }
-
 
     function requestPushPermission() {
     }
@@ -73,6 +93,8 @@
      * Unregister firebase push
      */
     self.unregister = function () {
+      removePushTokenFromServer();
+      unregisterServiceWorker();
     };
 
     /**
