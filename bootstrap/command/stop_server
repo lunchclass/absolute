@@ -7,4 +7,4 @@
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 
 trap "cd - > /dev/null 2>&1" EXIT
-cd $(server_path) && forever stop ./server.js
+cd $(server_path) && forever stop \"server\"
