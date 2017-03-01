@@ -2,11 +2,12 @@
   /**
    * Set correct image orientation.
    */
-  /* jshint ignore:start */
+  /*eslint-disable */
   global.order = new factory(global, global.document)();
-  /* jshint ignore:end */
+  /*eslint-enable */
 }(typeof window !== 'undefined' ? window : this, function (w, d) {
   var order = function () {
+    var self = this;
     /**
      * Not implementation
      */
