@@ -41,7 +41,7 @@
 
     function sendPushTokenToServer() {
       var http = new XMLHttpRequest();
-      var url = "https://localhost:9443/api/push/client";
+      var url = "https://nadonguri.com/api/push/client";
       http.open("POST", url, true);
       http.setRequestHeader("Content-Type", "application/json");
       http.onreadystatechange = function() {
