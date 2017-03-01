@@ -1,8 +1,7 @@
-(function(global, factory) {
-  'use strict';
+(function (global, factory) {
   global.swManager = new factory(global, global.document)();
-})(typeof window !== 'undefined' ? window : this, function(w, d) {
-  var swManager = function() {
+}(typeof window !== 'undefined' ? window : this, function (w, d) {
+  var swManager = function () {
     var self = this;
     var pushSubscription = '';
     var swRegistration = '';
@@ -10,22 +9,22 @@
     function registerServiceWorker() {
       if ('serviceWorker' in navigator && 'PushManager' in window) {
         navigator.serviceWorker.register('sw.js')
-        .then(function(registration) {
+        .then(function (registration) {
           swRegistration = registration;
-          navigator.serviceWorker.ready.then(function(registration) {
+          navigator.serviceWorker.ready.then(function (registration) {
             serviceWorkerRegistration.pushManager.subscribe({
-              userVisibleOnly: true
+              userVisibleOnly: true,
             })
-            .then(function(subscription) {
+            .then(function (subscription) {
               pushSubscription = subscription;
               sendPushTokenToServer();
             })
-            .catch(function(err) {
+            .catch(function (err) {
               console.log('subscribe error ', err);
             });
           });
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.error('service worker register error ', error);
         });
       } else {
@@ -41,16 +40,16 @@
 
     function sendPushTokenToServer() {
       var http = new XMLHttpRequest();
-      var url = "https://nadonguri.com/api/push/client";
-      http.open("POST", url, true);
-      http.setRequestHeader("Content-Type", "application/json");
-      http.onreadystatechange = function() {
+      var url = 'https://nadonguri.com/api/push/client';
+      http.open('POST', url, true);
+      http.setRequestHeader('Content-Type', 'application/json');
+      http.onreadystatechange = function () {
         if (http.readyState == XMLHttpRequest.DONE && http.status == 200) {
           console.log(http.responseText);
         }
-      }
+      };
       http.send(JSON.stringify({
-        token: pushSubscription
+        token: pushSubscription,
       }));
     }
 
@@ -63,22 +62,22 @@
     /**
      * Register firebase push
      */
-    self.register = function() {
+    self.register = function () {
       registerServiceWorker();
     };
 
     /**
      * Unregister firebase push
      */
-    self.unregister = function() {
+    self.unregister = function () {
     };
 
     /**
      * RequestPermission
      */
-    self.requestPermission = function() {
+    self.requestPermission = function () {
     };
   };
   return swManager;
-});
+}));
 

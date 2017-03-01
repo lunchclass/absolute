@@ -15,9 +15,9 @@
    * API for control user mobile camera device.
    */
   var camera = {
-    setImage : function (inputId, callback) {
-    }
+    setImage(inputId, callback) {
+    },
   };
 
   window.camera = camera;
-})(window);
+}(window));
