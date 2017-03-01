@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const push = require('./send-push-notification.js');
+const push = require('./push_notification.js');
 
 exports.addClient = function (clientToken) {
   // save client token
@@ -22,6 +22,6 @@ exports.updateToken = function (oldClientToken, newClientToken) {
 
 exports.sendPushNotification = function (clientToken) {
   // push.sendFCMNotification(clientToken);
-  setTimeout(push.sendFCMNotification, 2000, clientToken);
+  // setTimeout(push.sendFCMNotification, 2000, clientToken);
   console.log('send push!');
 };
