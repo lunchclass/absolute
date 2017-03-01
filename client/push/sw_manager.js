@@ -28,7 +28,7 @@
       http.open('DELETE', url, true);
       http.setRequestHeader('Content-Type', 'application/json');
       http.onreadystatechange = function () {
-        if (http.readyState == XMLHttpRequest.DONE && http.status == 200) {
+        if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
           console.log(http.responseText);
         }
       };
