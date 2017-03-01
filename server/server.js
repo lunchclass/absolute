@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.use('/api/order', require('./order/router/order_router'));
-const pushRouter = require('./push/router.js')(app);
+app.use('/api/push/', require('./push/router.js'));
 
 dbConnect.connectServer();
 httpsServer.run(app, config.serverInfo);

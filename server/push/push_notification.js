@@ -4,6 +4,9 @@
 
 const serverKey = 'Your server key here, Never expose to client code';
 
+/*
+ TODO : Fixed content of json body will be changed from db
+*/
 exports.sendFCMNotification = function (clientToken) {
   console.log('Send push notification');
   const request = require('request');
