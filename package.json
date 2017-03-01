@@ -6,8 +6,7 @@
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "morgan": "~1.7.0",
-    "forever": "~0.15.3",
-    "nodemon": "latest"
+    "forever": "~0.15.3"
   },
   "devDependencies": {
     "eslint": "^3.13.0",
