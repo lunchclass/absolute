@@ -13,13 +13,13 @@ const dbConnect = require('./db/db_connect');
 const app = express();
 const bodyParser = require('body-parser');
 
-app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.urlencoded({
   extended: true }));
 app.use(bodyParser.json());
 
 // router must be after body-parser
-const pushRouter = require('./push/router.js')(app);  /* eslint-disable */
+app.use(express.static(path.join(__dirname, '../client')));
+app.use('/api/push/', require('./push/router.js'));
 
 dbConnect.connectServer();
 httpsServer.run(app, config.serverInfo);
