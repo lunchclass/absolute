@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+#align {
+    text-align:center;
+}
+
+#wrapper {
+    width:500px;
+    margin : 0 auto ;
+    border:5px solid #000;
+}
+
+img{
+	max-width: 100%; 
+	height: auto;"
+}
