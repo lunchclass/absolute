@@ -8,9 +8,7 @@
 . $ABSOLUTE_PATH/bootstrap/common/util.sh
 
 if ! can_use_command eslint; then
-  trap "cd - > /dev/null" EXIT
-#  cd $(server_path) && npm install . && cd - > /dev/null
-  npm install . && cd - > /dev/null
+  npm install .
 fi
 eslint $@ --ignore-path=.gitignore --config .eslintrc.server server/*
 eslint $@ --ignore-path=.gitignore --config .eslintrc.client client/*
