@@ -8,4 +8,4 @@
 
 trap "cd - > /dev/null 2>&1" EXIT
 npm install . && stop_server
-cd $(server_path) && forever start ./server.js
+cd $(server_path) && forever start --id \"absolute_server\" ./server.js
