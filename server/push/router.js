@@ -1,4 +1,4 @@
-const pushManager = require('./push-manager.js');
+const pushManager = require('./push_manager.js');
 
 module.exports = function (app) {
   app.post('/api/push/client', (req, res) => {
