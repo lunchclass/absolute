@@ -5,6 +5,7 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
+  userId: String,
   items: [{
     name: { type: String, lowercase: true, trim: true },
     count: Number,
