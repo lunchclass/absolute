@@ -12,3 +12,6 @@ database
 
 # FIXME(daehyunjimmy): This file has many lint errors.
 **/push/fcm.js
+
+# FIXME(nadongguri): it contains so many lint errors and not related to absolute project
+client/wedding
