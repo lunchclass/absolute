@@ -11,7 +11,15 @@ const redirectServer = require('./https_server/redirect_server');
 const dbConnect = require('./db/db_connect');
 
 const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+  extended: true }));
+app.use(bodyParser.json());
+
+// router must be after body-parser
 app.use(express.static(path.join(__dirname, '../client')));
+app.use('/api/push/', require('./push/router.js'));
 
 dbConnect.connectServer();
 httpsServer.run(app, config.serverInfo);
