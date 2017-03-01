@@ -6,6 +6,10 @@
 
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+export LC_ALL="en_US.UTF-8"
+
 trap "cd - > /dev/null 2>&1" EXIT
 npm install . && stop_db
 cd $(server_path) && forever start ./database.js
