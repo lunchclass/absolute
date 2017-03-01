@@ -6,5 +6,10 @@
 
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+export LC_ALL="en_US.UTF-8"
+
 trap "cd - > /dev/null 2>&1" EXIT
 cd $(server_path) && forever stop \"absolute_database\"
+mongod --shutdown --dbpath $(absolute_path)/database
