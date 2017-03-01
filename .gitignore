@@ -2,6 +2,9 @@
 node_modules
 third_party/mongodb
 third_party/node
+log
+npm-debug.log.*
+database
 
 # Ignore lint
 **/package.json
