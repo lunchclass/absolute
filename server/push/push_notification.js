@@ -3,13 +3,13 @@
 // found in the LICENSE file.
 
 const serverKey = 'Your server key here, Never expose to client code';
+const request = require('request');
 
 /*
  TODO : Fixed content of json body will be changed from db
 */
 exports.sendFCMNotification = function (clientToken) {
   console.log('Send push notification');
-  const request = require('request');
   const jsonHeader = {
     Authorization: `key=${serverKey}`,
     'Content-Type': 'application/json',
@@ -31,6 +31,6 @@ exports.sendFCMNotification = function (clientToken) {
     json: true,
     headers: jsonHeader,
     body: jsonBody,
-  }, (error, response, body) => {
+  }, (error, response) => { /* eslint-disable */
   });
 };
