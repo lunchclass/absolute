@@ -9,7 +9,8 @@
 
 if ! can_use_command eslint; then
   trap "cd - > /dev/null" EXIT
-  cd $(server_path) && npm install . && cd - > /dev/null
+#  cd $(server_path) && npm install . && cd - > /dev/null
+  npm install . && cd - > /dev/null
 fi
 eslint $@ --ignore-path=.gitignore --config .eslintrc.server server/*
 eslint $@ --ignore-path=.gitignore --config .eslintrc.client client/*
