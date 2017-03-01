@@ -4,14 +4,14 @@
 
 const mongoose = require('mongoose');
 
-const con = mongoose.connection;
+const connect = mongoose.connection;
 
 function connectServer() {
-  con.on('error', console.error);
-  con.once('open', () => {
+  connect.on('error', console.error);
+  connect.once('open', () => {
     console.log('Connected to mongod server');
   });
-  con.on('close', () => {
+  connect.on('close', () => {
     console.log('Mongoose disconnected');
   });
 
