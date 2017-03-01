@@ -3,19 +3,19 @@
 // found in the LICENSE file.
 
 const express = require('express');
-const orderController = require('../controller/order_controller');
+const productController = require('../controller/product_controller');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  orderController.saveOrder(JSON.stringify(req.body));
+router.post('/add', (req, res) => {
+  productController.addProduct(JSON.stringify(req.body));
   res.send('OK');
 });
 
 router.post('/list', (req, res) => {
-  orderController.getOrderList(req.body.userId)
-    .then((orderList) => {
-      res.send(orderList);
+  productController.getProductList()
+    .then((productList) => {
+      res.send(productList);
     });
 });
 

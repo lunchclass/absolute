@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.use('/api/order', require('./order/router/order_router'));
+app.use('/api/product', require('./product/router/product_router'));
 app.use('/api/push/', require('./push/router.js'));
 
 dbConnect.connectServer();
