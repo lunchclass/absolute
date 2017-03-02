@@ -57,6 +57,11 @@ function sync_third_party() {
   # The trap will work well when unknown breaking happens like ctrl+c.
   trap "rm -rf $temp_path" EXIT
 
+  # for type command in can_use_command function.
+  if is_windows_platform; then
+    set_path_env $(third_party_path)/win-bash
+  fi
+
   # Download the file of url into temporary path.
   if ! download $url $temp_path; then
     return 2

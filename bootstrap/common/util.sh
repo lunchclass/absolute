@@ -28,7 +28,7 @@ function download() {
   fi
 
   echo "Downloading... $url"
-  if is_windows_platform || can_use_command wget; then
+  if is_windows_platform && can_use_command wget; then
     mkdir -p $path && wget $url -P $path > /dev/null 2>&1
   else
     mkdir -p $path && cd $path && \
