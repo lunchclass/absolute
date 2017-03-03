@@ -38,7 +38,6 @@
     }
 
     function registerServiceWorker() {
-      navigator.serviceWorker.register('sw.js');
       if ('serviceWorker' in navigator && 'PushManager' in window) {
         navigator.serviceWorker.register('sw.js')
         .then(function (registration) {
