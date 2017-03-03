@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<script type="text/javascript" src="order/order.js"></script>
+<script type="text/javascript" src="push/fcm.js"></script>
+<script type="text/javascript">
+	
+	window.onload = function() {
+	    var upload = document.getElementById('photo_upload');
+	    var file_send = document.getElementById('files_send');
+		
+		upload.onchange = function () {
+		    console.log("debug:: onchange");
+			dataUrl = upload.files[0];
+			order(dataUrl);
+		}
+		
+		file_send.onclick = function () {
+		    console.log("debug:: onclick");
+		    order();
+
+	    }		
+	}
+</script>
+<body>
+  <form id="ajaxform" action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" multiple id='photo_upload'>
+    <output id="list">
+	  <img id="img" src="http://localhost:9080/test_res/dragonball.jpg" />
+	</output>
+    <input type="button" value="SEND" id='files_send'>
+  </form>
+   test world
+</body>
+</html>
