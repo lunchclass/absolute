@@ -7,19 +7,19 @@ const orderController = require('../controller/order_controller');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  if (req.body.userId) {
-    orderController.saveOrder(JSON.stringify(req.body));
-    res.sendStatus(200);
+router.post('/', (request, response) => {
+  if (request.body.userId) {
+    orderController.saveOrder(JSON.stringify(request.body));
+    response.sendStatus(200);
   } else {
-    res.sendStatus(400);
+    response.sendStatus(400);
   }
 });
 
-router.post('/list', (req, res) => {
-  orderController.getOrderList(req.body.userId)
+router.get('/list', (request, response) => {
+  orderController.getOrderList(request.query.userId)
     .then((orderList) => {
-      res.send(orderList);
+      response.send(orderList);
     });
 });
 

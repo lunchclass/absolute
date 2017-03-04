@@ -7,47 +7,47 @@ const pushController = require('../controller/push_controller');
 
 const router = express.Router();
 
-router.post('/client', (req, res) => {
-  if (req.body.userId && req.body.token) {
-    pushController.saveToken(req.body)
+router.post('/client', (request, response) => {
+  if (request.body.userId && request.body.token) {
+    pushController.saveToken(request.body)
       .then((token) => {
-        res.send(token);
+        response.send(token);
       });
   } else {
-    res.sendStatus(400);
+    response.sendStatus(400);
   }
 });
 
-router.delete('/client', (req, res) => {
-  if (req.body.userId) {
-    pushController.removeToken(req.body.userId)
+router.delete('/client', (request, response) => {
+  if (request.body.userId) {
+    pushController.removeToken(request.body.userId)
       .then((token) => {
-        res.send(token);
+        response.send(token);
       });
   } else {
-    res.sendStatus(400);
+    response.sendStatus(400);
   }
 });
 
-router.get('/client', (req, res) => {
-  if (req.query.userId) {
-    pushController.getToken(req.query.userId)
+router.get('/client', (request, response) => {
+  if (request.query.userId) {
+    pushController.getToken(request.query.userId)
       .then((token) => {
-        res.send(token);
+        response.send(token);
       });
   } else {
-    res.sendStatus(400);
+    response.sendStatus(400);
   }
 });
 
-router.put('/client', (req, res) => {
-  if (req.body.userId && req.body.token) {
-    pushController.updateToken(req.body)
+router.put('/client', (request, response) => {
+  if (request.body.userId && request.body.token) {
+    pushController.updateToken(request.body)
       .then((token) => {
-        res.send(token);
+        response.send(token);
       });
   } else {
-    res.sendStatus(400);
+    response.sendStatus(400);
   }
 });
 
