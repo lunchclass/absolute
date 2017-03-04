@@ -5,10 +5,18 @@
 const push = require('./push_notification.js');
 const PushToken = require('../model/push_token');
 
-exports.saveToken = function (jsonData) {
-  console.log(`save client token : ${jsonData}`);
-  const pushToken = new PushToken(JSON.parse(jsonData));
-  pushToken.save();
+exports.saveToken = function (body) {
+  console.log(`save client token : ${body.token}`);
+  return new Promise((resolve, reject) => {
+    PushToken.findOneAndUpdate({ userId: body.userId }, { token: body.token }
+      , { upsert: true }, (err, doc) => {
+        if (err) {
+          resolve(err);
+        } else {
+          resolve(doc);
+        }
+      });
+  });
 };
 
 exports.getToken = function (userId) {
@@ -16,39 +24,39 @@ exports.getToken = function (userId) {
   return new Promise((resolve, reject) => {
     PushToken.findOne({ userId }, (err, token) => {
       console.log(`token : ${token}`);
-      if (token) {
-        resolve(JSON.stringify(token));
-      } else {
-        reject(-1);
-      }
-    });
-  });
-};
-
-exports.removeToken = function (token) {
-  console.log(`remove client token : ${token}`);
-  return new Promise((resolve, reject) => {
-    PushToken.findOneAndRemove({ token }, (err, offer) => {
       if (err) {
-        resolve(offer);
+        resolve(err);
       } else {
-        reject(1);
+        resolve(JSON.stringify(token));
       }
     });
   });
 };
 
-exports.updateToken = function (oldToken, newToken) {
-  console.log(`update token old : ${oldToken} new : ${newToken}`);
+exports.removeToken = function (userId) {
+  console.log(`remove client userId : ${userId}`);
   return new Promise((resolve, reject) => {
-    PushToken.findOneAndUpdate({ token: oldToken }, { token: newToken }
-        , (err, doc) => {
-          if (doc) {
-            resolve(doc);
-          } else {
-            reject(1);
-          }
-        });
+    PushToken.findOneAndRemove({ userId }, (err, offer) => {
+      if (err) {
+        resolve(err);
+      } else {
+        resolve(offer);
+      }
+    });
+  });
+};
+
+exports.updateToken = function (body) {
+  console.log(`update token : ${body.token}`);
+  return new Promise((resolve, reject) => {
+    PushToken.findOneAndUpdate({ userId: body.userId }, { token: body.token }
+      , (err, doc) => {
+        if (err) {
+          resolve(err);
+        } else {
+          resolve(doc);
+        }
+      });
   });
 };
 
