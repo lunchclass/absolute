@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/add', (req, res) => {
   productController.addProduct(JSON.stringify(req.body));
-  res.send('OK');
+  res.sendStatus(200);
 });
 
 router.post('/list', (req, res) => {

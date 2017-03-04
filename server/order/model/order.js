@@ -5,7 +5,7 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  userId: String,
+  userId: { type: String, lowercase: true, trim: true },
   items: [{
     name: { type: String, lowercase: true, trim: true },
     count: Number,

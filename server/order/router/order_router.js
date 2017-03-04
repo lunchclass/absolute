@@ -8,8 +8,12 @@ const orderController = require('../controller/order_controller');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  orderController.saveOrder(JSON.stringify(req.body));
-  res.send('OK');
+  if (req.body.userId) {
+    orderController.saveOrder(JSON.stringify(req.body));
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(400);
+  }
 });
 
 router.post('/list', (req, res) => {
