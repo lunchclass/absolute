@@ -29,7 +29,7 @@ function download() {
 
   echo "Downloading... $url"
   if is_windows_platform || can_use_command wget; then
-    mkdir -p $path && wget $url -P $path > /dev/null 2>&1
+    mkdir -p $path && wget --no-check-certificate $url -P $path > /dev/null 2>&1
   else
     mkdir -p $path && cd $path && \
         { curl -LO $url > /dev/null 2>&1; cd - > /dev/null; }
