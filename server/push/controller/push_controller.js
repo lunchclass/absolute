@@ -3,43 +3,57 @@
 // found in the LICENSE file.
 
 const push = require('./push_notification.js');
-const Endpoint = require('../model/endpoint');
+const PushToken = require('../model/push_token');
 
-exports.addClient = function (clientToken) {
-  // save client token
-  console.log(`add client token :' + ${clientToken}`);
+exports.saveToken = function (jsonData) {
+  console.log(`save client token : ${jsonData}`);
+  const pushToken = new PushToken(JSON.parse(jsonData));
+  pushToken.save();
 };
 
-exports.removeClient = function (clientToken) {
-  // remove client token
-  console.log(`remove client token : ${clientToken}`);
+exports.getToken = function (userId) {
+  console.log(`get client token : ${userId}`);
+  return new Promise((resolve, reject) => {
+    PushToken.findOne({ userId }, (err, token) => {
+      console.log(`token : ${token}`);
+      if (token) {
+        resolve(JSON.stringify(token));
+      } else {
+        reject(-1);
+      }
+    });
+  });
 };
 
-exports.updateToken = function (oldClientToken, newClientToken) {
-  // removeClient(oldClientToken);
-  // addclient(newClientToken);
-  console.log(`update token old : ${oldClientToken} new : ${newClientToken}`);
+exports.removeToken = function (token) {
+  console.log(`remove client token : ${token}`);
+  return new Promise((resolve, reject) => {
+    PushToken.findOneAndRemove({ token }, (err, offer) => {
+      if (err) {
+        resolve(offer);
+      } else {
+        reject(1);
+      }
+    });
+  });
+};
+
+exports.updateToken = function (oldToken, newToken) {
+  console.log(`update token old : ${oldToken} new : ${newToken}`);
+  return new Promise((resolve, reject) => {
+    PushToken.findOneAndUpdate({ token: oldToken }, { token: newToken }
+        , (err, doc) => {
+          if (doc) {
+            resolve(doc);
+          } else {
+            reject(1);
+          }
+        });
+  });
 };
 
 exports.sendPushNotification = function (clientToken) {
   // push.sendFCMNotification(clientToken);
   // setTimeout(push.sendFCMNotification, 2000, clientToken);
   console.log('send push!');
-};
-
-exports.saveEndpoint = function (jsonData) {
-  const endpoint = new Endpoint(JSON.parse(jsonData));
-  endpoint.save();
-};
-
-exports.getEndpoint = function (userId) {
-  return new Promise((resolve, reject) => {
-    Endpoint.findOne({ userId }).select('endpoint').exec((err, endPoint) => {
-      if (endPoint) {
-        resolve(JSON.stringify(endPoint));
-      } else {
-        reject(-1);
-      }
-    });
-  });
 };

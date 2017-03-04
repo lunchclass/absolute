@@ -8,38 +8,48 @@ const pushController = require('../controller/push_controller');
 const router = express.Router();
 
 router.post('/client', (req, res) => {
-  // Add new client
-  console.log(`client token : ${req.body.token}`);
-  const clientToken = req.body.token;
-
-  if (clientToken) {
-    console.log('Store client token :', clientToken);
-    pushController.addClient(clientToken);
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(400); // bad request
-  }
-});
-
-router.delete('/client', (req, res) => {
-  // Remove client
-  const clientToken = req.body.token;
   console.log(`client token : ${req.body.token}`);
 
-  if (clientToken) {
-    console.log(`Remove client token :  ${clientToken}`);
-    // Remove token from DB
-    pushController.removeClient(clientToken);
+  if (req.body.userId && req.body.token) {
+    pushController.saveToken(JSON.stringify(req.body));
     res.sendStatus(200);
   } else {
     res.sendStatus(400);
   }
 });
 
-router.post('/add', (req, res) => {
-  if (req.body.userId && req.body.endpoint) {
-    pushController.saveEndpoint(JSON.stringify(req.body));
-    res.sendStatus(200);
+router.delete('/client', (req, res) => {
+  console.log(`client token : ${req.body.token}`);
+
+  if (req.body.token) {
+    pushController.removeToken(req.body.token)
+      .then((token) => {
+        res.send(token);
+      });
+  } else {
+    res.sendStatus(400);
+  }
+});
+
+router.get('/client', (req, res) => {
+  console.log(`client token : ${req.query.userId}`);
+  if (req.query.userId) {
+    pushController.getToken(req.query.userId)
+      .then((token) => {
+        res.send(token);
+      });
+  } else {
+    res.sendStatus(400);
+  }
+});
+
+router.post('/client/update', (req, res) => {
+  console.log(`client token : ${req.body.newToken}`);
+  if (req.body.token && req.body.newToken) {
+    pushController.updateToken(req.body.token, req.body.newToken)
+      .then((token) => {
+        res.send(token);
+      });
   } else {
     res.sendStatus(400);
   }

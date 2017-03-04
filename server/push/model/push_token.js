@@ -5,8 +5,8 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  userId: { type: String, lowercase: true, trim: true, required: true },
-  endpoint: { type: String, lowercase: true, trim: true, required: true },
+  userId: { type: String, lowercase: true, trim: true },
+  token: { type: String, lowercase: true, trim: true },
 });
 
-module.exports = mongoose.model('endpoint', schema);
+module.exports = mongoose.model('push_token', schema);
