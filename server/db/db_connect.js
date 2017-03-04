@@ -13,7 +13,7 @@ function connectServer() {
     console.log('Mongoose disconnected');
   });
 
-  mongoose.connect('localhost:27017', (err) => {
+  mongoose.connect('localhost:27017/absolute', (err) => {
     console.log('mongodb connected');
     if (err) {
       console.error('mongodb connection error', err);
