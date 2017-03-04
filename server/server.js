@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use('/api/order', require('./order/router/order_router'));
 app.use('/api/product', require('./order/router/product_router'));
 app.use('/api/push/', require('./push/router.js'));
-app.use('/api/user/', require('./user/router/uuid_router'));
+app.use('/api/authorization/', require('./authorization/router/uuid_router'));
 
 dbConnect.connectServer();
 httpsServer.run(app, config.serverInfo);
