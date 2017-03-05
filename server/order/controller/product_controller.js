@@ -5,8 +5,17 @@
 const Product = require('../model/product');
 
 exports.addProduct = function (productData) {
-  const product = new Product(JSON.parse(productData));
-  product.save();
+  return new Promise((resolve, reject) => {
+    Product.findOneAndUpdate({ name: productData.name }
+      , { amount: productData.amount, options: productData.options }
+      , { upsert: true }, (error, product) => {
+        if (error) {
+          resolve(error);
+        } else {
+          resolve(product);
+        }
+      });
+  });
 };
 
 exports.getProductList = function () {

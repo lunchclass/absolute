@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/', (request, response) => {
   if (request.body.userId) {
-    orderController.saveOrder(JSON.stringify(request.body));
+    orderController.saveOrder(JSON.parse(JSON.stringify(request.body)));
     response.sendStatus(200);
   } else {
     response.sendStatus(400);

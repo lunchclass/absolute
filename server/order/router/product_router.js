@@ -8,8 +8,14 @@ const productController = require('../controller/product_controller');
 const router = express.Router();
 
 router.post('/', (request, response) => {
-  productController.addProduct(JSON.stringify(request.body));
-  response.sendStatus(200);
+  if (request.body.name && request.body.amount) {
+    productController.addProduct(JSON.parse(JSON.stringify(request.body)))
+      .then((product) => {
+        response.send(product);
+      });
+  } else {
+    response.sendStatus(400);
+  }
 });
 
 router.get('/', (request, response) => {
