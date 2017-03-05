@@ -31,3 +31,7 @@ function githooks_path() {
 function set_path_env() {
   export PATH="$1":"$PATH"
 }
+
+function set_path_env_last() {
+  export PATH="$PATH":"$1"
+}
