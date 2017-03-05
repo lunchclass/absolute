@@ -4,14 +4,14 @@
 
 const Order = require('../model/order');
 
-exports.saveOrder = function (jsonData) {
-  const order = new Order(JSON.parse(jsonData));
+exports.saveOrder = function (orderData) {
+  const order = new Order(JSON.parse(orderData));
   order.save();
 };
 
 exports.getOrderList = function (userId) {
   return new Promise((resolve, reject) => {
-    Order.find({ userId }, (err, orderList) => {
+    Order.find({ userId }, (error, orderList) => {
       if (orderList) {
         resolve(JSON.stringify(orderList));
       } else {
