@@ -6,15 +6,7 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   userId: { type: String, lowercase: true, trim: true },
-  items: [{
-    name: { type: String, lowercase: true, trim: true },
-    count: Number,
-    amount: Number,
-  }],
-  totalAmount: Number,
-  image: { data: Buffer, contentType: String },
-  orderDate: { type: Date, default: Date.now },
-  options: String,
+  token: { type: String, lowercase: true, trim: true },
 });
 
-module.exports = mongoose.model('order', schema);
+module.exports = mongoose.model('push_token', schema);
