@@ -7,8 +7,8 @@ const uuidGenerator = require('../controller/uuid_generator');
 
 const router = express.Router();
 
-router.post('/uuid', (req, res) => {
-  res.send(uuidGenerator.generateUuid());
+router.post('/uuid', (request, response) => {
+  response.send(uuidGenerator.generateUuid());
 });
 
 module.exports = router;

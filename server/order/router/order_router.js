@@ -16,7 +16,7 @@ router.post('/', (request, response) => {
   }
 });
 
-router.get('/list', (request, response) => {
+router.get('/', (request, response) => {
   orderController.getOrderList(request.query.userId)
     .then((orderList) => {
       response.send(orderList);

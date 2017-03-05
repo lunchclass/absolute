@@ -4,14 +4,14 @@
 
 const Product = require('../model/product');
 
-exports.addProduct = function (jsonData) {
-  const product = new Product(JSON.parse(jsonData));
+exports.addProduct = function (productData) {
+  const product = new Product(JSON.parse(productData));
   product.save();
 };
 
 exports.getProductList = function () {
   return new Promise((resolve, reject) => {
-    Product.find({}, (err, productList) => {
+    Product.find({}, (error, productList) => {
       if (productList) {
         resolve(JSON.stringify(productList));
       } else {
