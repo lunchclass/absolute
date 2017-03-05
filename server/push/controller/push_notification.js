@@ -2,14 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const serverKey = 'Your server key here, Never expose to client code';
+const serverKey = 'AAAA9Ox3NIQ:APA91bHy8IWmLJ-KTWdHO2KvsozbWDhPygNw5av9ukQWj8SomTAbOEOLD73BetiQlFQpF6nbhgBn9fNVex-_9rYZ5vhrLxiJtt8BgivtI9S0mEeW-BpmVVvGJ_PU6-tfvT-Ka9rvzf3Xmjxpk9CIauyljMYs2sebOg';
 const request = require('request');
 
-/*
- TODO : Fixed content of json body will be changed from db
-*/
-exports.sendFCMNotification = function (clientToken) {
+exports.sendPushNotification = function (clientToken, content) {
   console.log('Send push notification');
+  const token = clientToken.substring(clientToken.lastIndexOf('/') + 1);
+
   const jsonHeader = {
     Authorization: `key=${serverKey}`,
     'Content-Type': 'application/json',
@@ -17,12 +16,12 @@ exports.sendFCMNotification = function (clientToken) {
 
   const jsonBody = {
     notification: {
-      title: 'Absolute FCM Push Notification',
-      body: 'Sent from absolute!',
-      icon: 'firebase-icon.png',
-      click_action: 'https://localhost:9443/',
+      title: content.title,
+      body: content.body,
+      icon: content.icon,
+      click_action: content.click_action,
     },
-    to: clientToken,
+    to: token,
   };
 
   request({
@@ -32,5 +31,6 @@ exports.sendFCMNotification = function (clientToken) {
     headers: jsonHeader,
     body: jsonBody,
   }, (error, response) => { /* eslint-disable */
+    console.log(`failed to send notification ${error}`);
   });
 };
