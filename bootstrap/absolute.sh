@@ -13,6 +13,7 @@ cp $(githooks_path)/* $(absolute_path)/.git/hooks
 # Set path
 if is_windows_platform; then
   set_path_env_last $(third_party_path)/win-bash
+  set_path_env $(third_party_path)/win-wget
   set_path_env $(third_party_path)/win-unzip/bin
 fi
 set_path_env $(third_party_path)/mongodb/bin
