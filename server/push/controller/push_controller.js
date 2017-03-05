@@ -9,11 +9,11 @@ exports.saveToken = function (body) {
   console.log(`save client token : ${body.token}`);
   return new Promise((resolve, reject) => {
     PushToken.findOneAndUpdate({ userId: body.userId }, { token: body.token }
-      , { upsert: true }, (error, doc) => {
+      , { upsert: true }, (error, token) => {
         if (error) {
           resolve(error);
         } else {
-          resolve(doc);
+          resolve(token);
         }
       });
   });
@@ -36,11 +36,11 @@ exports.getToken = function (userId) {
 exports.removeToken = function (userId) {
   console.log(`remove client userId : ${userId}`);
   return new Promise((resolve, reject) => {
-    PushToken.findOneAndRemove({ userId }, (error, offer) => {
+    PushToken.findOneAndRemove({ userId }, (error, token) => {
       if (error) {
         resolve(error);
       } else {
-        resolve(offer);
+        resolve(token);
       }
     });
   });
@@ -50,11 +50,11 @@ exports.updateToken = function (body) {
   console.log(`update token : ${body.token}`);
   return new Promise((resolve, reject) => {
     PushToken.findOneAndUpdate({ userId: body.userId }, { token: body.token }
-      , (error, doc) => {
+      , (error, token) => {
         if (error) {
           resolve(error);
         } else {
-          resolve(doc);
+          resolve(token);
         }
       });
   });
