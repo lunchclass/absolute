@@ -28,7 +28,7 @@ function download() {
   fi
 
   echo "Downloading... $url"
-  if is_windows_platform || can_use_command wget; then
+  if can_use_command wget; then
     mkdir -p $path && wget --no-check-certificate $url -P $path > /dev/null 2>&1
   else
     mkdir -p $path && cd $path && \
@@ -57,10 +57,6 @@ function extract_archive() {
 
   if [ ! -f "$src_path" ]; then
     return 2
-  fi
-
-  if is_windows_platform; then
-    set_path_env $(third_party_path)/win-unzip/bin
   fi
 
   mkdir -p $dest_path

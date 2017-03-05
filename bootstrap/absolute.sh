@@ -10,14 +10,19 @@
 # Copy githooks to .git/hooks.
 cp $(githooks_path)/* $(absolute_path)/.git/hooks
 
-# Sync third_parties.
-sync_node
-sync_mongodb
-
 # Set path
+if is_windows_platform; then
+  set_path_env_last $(third_party_path)/win-bash
+  set_path_env $(third_party_path)/win-wget
+  set_path_env $(third_party_path)/win-unzip/bin
+fi
 set_path_env $(third_party_path)/mongodb/bin
 set_path_env $(bootstrap_command_path)
 set_path_env $(absolute_path)/node_modules/.bin
+
+# Sync third_parties.
+sync_node
+sync_mongodb
 
 for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
