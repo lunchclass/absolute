@@ -5,4 +5,4 @@
 # found in the LICENSE file.
 
 export ABSOLUTE_PATH=$(cd $(dirname $BASH_SOURCE); pwd)
-cd $ABSOLUTE_PATH && source ./bootstrap/absolute.sh $@;
+cd $ABSOLUTE_PATH && source ./bootstrap/absolute.sh "from-sh" $@;

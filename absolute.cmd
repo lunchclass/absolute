@@ -4,4 +4,4 @@
 
 @ECHO OFF
 set ABSOLUTE_PATH=%~dp0
-cd %ABSOLUTE_PATH% && third_party\win-bash\bash bootstrap\absolute.sh %*
+cd %ABSOLUTE_PATH% && third_party\win-bash\bash bootstrap\absolute.sh "from-cmd" %*
