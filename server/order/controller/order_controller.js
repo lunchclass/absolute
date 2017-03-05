@@ -5,7 +5,7 @@
 const Order = require('../model/order');
 
 exports.saveOrder = function (orderData) {
-  const order = new Order(JSON.parse(orderData));
+  const order = new Order(orderData);
   order.save();
 };
 
