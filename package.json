@@ -1,0 +1,20 @@
+{
+  "name": "absolute",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "morgan": "~1.7.0",
+    "forever": "~0.15.3",
+    "body-parser": "~1.16.1",
+    "mongoose": "4.8.5",
+    "request": "~2.16.2",
+    "uuid": "3.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}

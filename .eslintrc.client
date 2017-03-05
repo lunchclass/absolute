@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true,
+  },
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+		"no-unused-vars": "off",
+		"prefer-arrow-callback": "off",
+		"no-var": "off",
+		"func-names": "off",
+		"no-param-reassign": "off",
+  }
+}

@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 The Absolute Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+. $ABSOLUTE_PATH/bootstrap/common/path_info.sh
+
+trap "cd - > /dev/null 2>&1" EXIT
+cd $(server_path) && forever stop \"absolute_server\"

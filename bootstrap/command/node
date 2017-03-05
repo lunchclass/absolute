@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 The Absolute Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+. $ABSOLUTE_PATH/bootstrap/common/path_info.sh
+. $ABSOLUTE_PATH/bootstrap/common/platform_info.sh
+
+if is_windows_platform; then
+  $(third_party_path)/node/node $@
+else
+  $(third_party_path)/node/bin/node $@
+fi
