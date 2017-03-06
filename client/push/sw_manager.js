@@ -38,7 +38,6 @@
     }
 
     function registerServiceWorker() {
-      navigator.serviceWorker.register('sw.js');
       if ('serviceWorker' in navigator && 'PushManager' in window) {
         navigator.serviceWorker.register('sw.js')
         .then(function (registration) {
@@ -65,12 +64,30 @@
     }
 
     function unregisterServiceWorker() {
-      navigator.serviceWorker.ready.then(function (registration) {
-        registration.pushManager.getSubscription().then(function (subscription) {
-          subscription.unsubscribe().then(function (successful) {
-            console.log('unsubscribe success');
-          }).catch(function (e) {
-            console.log('unsubscribe error');
+      if ('serviceWorker' in navigator && 'PushManager' in window) {
+	    navigator.serviceWorker.ready.then(function (registration) {
+          registration.pushManager.getSubscription().then(function (subscription) {
+            subscription.unsubscribe().then(function (successful) {
+              console.log('unsubscribe success');
+            }).catch(function (e) {
+              console.log('unsubscribe error');
+            });
+          });
+        });
+      } else {
+        console.warn('push is not supported');
+      }
+    }
+
+    function updatePushSubscription() {
+      return new Promise(function (resolve, reject) {
+        navigator.serviceWorker.ready.then(function(registration) {
+          registration.pushManager.getSubscription().then(function (subscription) {
+          pushSubscription = subscription;
+            resolve(pushSubscription.endpoint);
+          })
+          .catch(function(error) {
+            reject(error);
           });
         });
       });
@@ -95,6 +112,17 @@
     self.unregister = function () {
       removePushTokenFromServer();
       unregisterServiceWorker();
+    };
+
+    /**
+     * get current push token
+     */
+    self.getPushToken = function () {
+      return new Promise(function (resolve, reject) {
+        updatePushSubscription().then(function (result) { 
+          resolve(result); 
+        });
+      });
     };
 
     /**
