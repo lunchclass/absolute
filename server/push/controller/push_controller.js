@@ -60,8 +60,17 @@ exports.updateToken = function (body) {
   });
 };
 
-exports.sendPushNotification = function (clientToken) {
-  // push.sendFCMNotification(clientToken);
-  // setTimeout(push.sendFCMNotification, 2000, clientToken);
-  console.log('send push!');
+exports.sendPushNotification = function (body) {
+  console.log(`send push notification to ${body.userId}`);
+  return new Promise((resolve, reject) => {
+    PushToken.findOne({ userId: body.userId }, (error, data) => {
+      console.log(`stored data : ${data}`);
+      if (error) {
+        resolve(error);
+      } else {
+        push.sendPushNotification(data.token, body);
+        resolve(data.token);
+      }
+    });
+  });
 };

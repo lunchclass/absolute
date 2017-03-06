@@ -51,4 +51,15 @@ router.put('/client', (request, response) => {
   }
 });
 
+router.post('/notification', (request, response) => {
+  if (request.body.userId || request.body.token) {
+    pushController.sendPushNotification(request.body)
+      .then((token) => {
+        response.sendStatus(200);
+      });
+  } else {
+    response.sendStatus(400);
+  }
+});
+
 module.exports = router;
