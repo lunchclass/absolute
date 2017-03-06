@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 
 self.addEventListener('push', function (event) {
   var data = {};
@@ -8,7 +8,7 @@ self.addEventListener('push', function (event) {
 
   event.waitUntil(
     self.registration.showNotification(
-      data.notification.title, data.notification),
+      data.notification.title, data.notification)
   );
 });
 
