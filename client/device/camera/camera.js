@@ -95,6 +95,24 @@
      * This function should be called from user action.
      */
     getImageFromCamera(callback) {
+      var cameraInput = document.createElement('input');
+
+      cameraInput.setAttribute('type', 'file');
+      cameraInput.setAttribute('capture', 'camera');
+      cameraInput.setAttribute('accept', 'image/*');
+      cameraInput.onchange = function (onchangeEvent) {
+        var files = onchangeEvent.target.files;
+        if (files && files.length > 0) {
+          getOrientation(files[0], function (orientation) {
+            var fileReader = new FileReader();
+            fileReader.onload = function (onloadEvent) {
+              resetOrientation(onloadEvent.target.result, orientation, callback);
+            };
+            fileReader.readAsDataURL(files[0]);
+          });
+        }
+      };
+      cameraInput.click();
     },
   };
 
