@@ -8,7 +8,8 @@
 </head>
 <body>
   <script>
-    deeplink.createBrowser('com.android.chrome');
+    if(navigator.userAgent.indexOf("Android")>-1)
+      deeplink.createBrowser('com.android.chrome');
   </script>
 Absolute Client!
 </body>
