@@ -4,7 +4,6 @@
       const intentURI = [
         'intent://www.nadongguri.com/wedding#Intent',
         'scheme=https',
-        `package=${appPackage}`,
         'S.browser_fallback_url=http://www.nadongguri.com/wedding',
         'end',
       ].join(';');
