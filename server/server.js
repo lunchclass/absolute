@@ -13,8 +13,9 @@ const dbConnect = require('./db/db_connect');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({
+  limit: '10mb',
   extended: true,
 }));
 app.use(express.static(path.join(__dirname, '../client')));
