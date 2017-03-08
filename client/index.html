@@ -8,7 +8,12 @@
 </head>
 <body>
   <script>
-    deeplink.createBrowser('com.android.chrome');
+    if(/Android/.test(navigator.userAgent)) {
+      if(!/SamsungBrowser/.test(navigator.userAgent))
+        deeplink.createBrowser();
+    }
+    else
+      window.location.href = 'https://nadongguri.com/wedding'
   </script>
 Absolute Client!
 </body>
