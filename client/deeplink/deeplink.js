@@ -1,10 +1,10 @@
 (function (window) {
   const deeplink = {
-    createBrowser(appPackage) {
+    createBrowser() {
       const intentURI = [
-        'intent://www.nadongguri.com/wedding#Intent',
+        'intent://nadongguri.com/wedding#Intent',
         'scheme=https',
-        'S.browser_fallback_url=http://www.nadongguri.com/wedding',
+        'S.browser_fallback_url=http://nadongguri.com/wedding',
         'end',
       ].join(';');
 
