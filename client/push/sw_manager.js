@@ -6,10 +6,14 @@
     var self = this;
     var pushSubscription = '';
     var swRegistration = '';
+    var uuid = '';
 
     function addPushTokenToServer() {
       var http = new XMLHttpRequest();
       var url = 'https://nadonguri.com/api/push/client';
+      /* eslint-disable */
+      uuid = getUuid();
+      /* eslint-enable */
       http.open('POST', url, true);
       http.setRequestHeader('Content-Type', 'application/json');
       http.onreadystatechange = function () {
@@ -19,6 +23,7 @@
       };
       http.send(JSON.stringify({
         token: pushSubscription.endpoint,
+        userId: uuid,
       }));
     }
 
