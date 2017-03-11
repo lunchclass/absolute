@@ -23,7 +23,7 @@
           token: pushSubscription.endpoint,
           userId: uuid.uuid,
         }));
-	  });
+      });
       /* eslint-enable */
     }
 
