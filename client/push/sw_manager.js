@@ -6,25 +6,25 @@
     var self = this;
     var pushSubscription = '';
     var swRegistration = '';
-    var uuid = '';
 
     function addPushTokenToServer() {
       var http = new XMLHttpRequest();
       var url = 'https://nadonguri.com/api/push/client';
       /* eslint-disable */
-      uuid = getUuid();
+      getUuid().then(function (uuid) {
+        http.open('POST', url, true);
+        http.setRequestHeader('Content-Type', 'application/json');
+        http.onreadystatechange = function () {
+          if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+            console.log(http.responseText);
+          }
+        };
+        http.send(JSON.stringify({
+          token: pushSubscription.endpoint,
+          userId: uuid.uuid,
+        }));
+	  });
       /* eslint-enable */
-      http.open('POST', url, true);
-      http.setRequestHeader('Content-Type', 'application/json');
-      http.onreadystatechange = function () {
-        if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
-          console.log(http.responseText);
-        }
-      };
-      http.send(JSON.stringify({
-        token: pushSubscription.endpoint,
-        userId: uuid,
-      }));
     }
 
     function removePushTokenFromServer() {
@@ -138,4 +138,5 @@
   };
   return swManager;
 }));
+
 
