@@ -8,10 +8,10 @@
     var swRegistration = '';
 
     function addPushTokenToServer() {
-      var http = new XMLHttpRequest();
-      var url = 'https://nadonguri.com/api/push/client';
       /* eslint-disable */
       getUuid().then(function (uuid) {
+        var http = new XMLHttpRequest();
+        var url = 'https://nadonguri.com/api/push/client';
         http.open('POST', url, true);
         http.setRequestHeader('Content-Type', 'application/json');
         http.onreadystatechange = function () {
