@@ -11,7 +11,7 @@
       /* eslint-disable */
       getUuid().then(function (uuid) {
         var http = new XMLHttpRequest();
-        var url = 'https://nadonguri.com/api/push/client';
+        var url = 'https://nadongguri.com/api/push/client';
         http.open('POST', url, true);
         http.setRequestHeader('Content-Type', 'application/json');
         http.onreadystatechange = function () {
@@ -29,7 +29,7 @@
 
     function removePushTokenFromServer() {
       var http = new XMLHttpRequest();
-      var url = 'https://nadonguri.com/api/push/client';
+      var url = 'https://nadongguri.com/api/push/client';
       http.open('DELETE', url, true);
       http.setRequestHeader('Content-Type', 'application/json');
       http.onreadystatechange = function () {
@@ -44,7 +44,7 @@
 
     function registerServiceWorker() {
       if ('serviceWorker' in navigator && 'PushManager' in window) {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('../sw.js')
         .then(function (registration) {
           swRegistration = registration;
           navigator.serviceWorker.ready.then(function () {
