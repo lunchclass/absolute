@@ -14,7 +14,7 @@ self.addEventListener('push', function (event) {
   } else {
     console.log('use static push notification data');
 
-    title = "나동진♡김소영 결혼을 축하해주세요!"
+    title = "나동진♡김소영 결혼합니다!"
     const notificationOptions = {
       body: '2017년 4월 8일 토요일 오후 5시',
       icon: './images/main.jpg',
@@ -36,6 +36,6 @@ self.addEventListener('push', function (event) {
 self.addEventListener('notificationclick', function (event) {
   event.notification.close();
 
-  let clickResponsePromise = Promise.resolve();
+  const clickResponsePromise = Promise.resolve();
   clickResponsePromise = clients.openWindow("https://nadongguri.com/wedding/");
 });
