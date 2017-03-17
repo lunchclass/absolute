@@ -1,14 +1,12 @@
 /* eslint-disable */
 
 self.addEventListener('push', function (event) {
-
-  var title = "";
-  var body = "";
+  var title;
+  var body;
 
   if (event.data) {
-    var data = {};
     console.log('get push notification data');
-    data = event.data.json();
+    var data = event.data.json();
     title = data.notification.title;
     body = data.notification.body;
   } else {
@@ -22,7 +20,6 @@ self.addEventListener('push', function (event) {
       tag: 'wedding',
       url: 'https://nadongguri.com/wedding/'
     };
-
     body = notificationOptions;
   }
 
@@ -35,7 +32,5 @@ self.addEventListener('push', function (event) {
 
 self.addEventListener('notificationclick', function (event) {
   event.notification.close();
-
-  const clickResponsePromise = Promise.resolve();
   clickResponsePromise = clients.openWindow("https://nadongguri.com/wedding/");
 });
