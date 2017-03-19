@@ -21,7 +21,7 @@ self.addEventListener('push', function (event) {
     body = notificationOptions;
   }
 
-  self.registration.showNotification(title, body);
+  event.waitUntil(self.registration.showNotification(title, body));
 });
 
 self.addEventListener('notificationclick', function (event) {
