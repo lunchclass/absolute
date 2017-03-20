@@ -6,10 +6,11 @@
   var auth = function () {
     const self = this;
 
-    const HOST = self.location.hostname;
-    const PORT = self.location.port;
+    // const HOST = self.location.hostname;
+    // const PORT = self.location.port;
     const API_URL = '/api/authorization/uuid';
-    const TARGET_URL = `//${HOST}:${PORT}${API_URL}`;
+    // const TARGET_URL = `//${HOST}:${PORT}${API_URL}`;
+    const TARGET_URL = `http://localhost:9080${API_URL}`;
     const AUTH_ERROR = {
       NONE: 0,
       GENERAL: 1,
@@ -121,4 +122,3 @@
   };
   return auth;
 }));
-
