@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   userId: { type: String, lowercase: true, trim: true, unique: true },
-  token: { type: String, lowercase: true, trim: true, unique: true },
+  token: { type: String, lowercase: true, trim: true },
   title: { type: String, trim: true },
   body: { type: String, trim: true },
   icon: { type: String, trim: true },
