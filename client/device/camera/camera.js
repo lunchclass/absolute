@@ -30,7 +30,7 @@
       }
 
       ctx.drawImage(img, 0, 0);
-      callback(canvas.toDataURL());
+      callback(canvas);
     };
     img.src = imgSrc;
   };
