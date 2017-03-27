@@ -1,8 +1,8 @@
 (function (window) {
-  var orderFrame = document.createElement("iframe");
-  var iImg = document.createElement("img");
-  var iSend = document.createElement("button");
-  var iText = document.createElement("input");
+  var orderFrame = document.createElement('iframe');
+  var iImg = document.createElement('img');
+  var iSend = document.createElement('button');
+  var iText = document.createElement('input');
 
   /**
    * API for control order ui
@@ -13,46 +13,59 @@
      * @param String Text to be displayed on order page.
      */
     pageLoad(welcomeText) {
-      orderFrame.onload = function() {
+      orderFrame.onload = function () {
         var doc = orderFrame.contentDocument || orderFrame.contentWindow.document;
-        var iCenter = document.createElement("center");
-        var iCancle = document.createElement("button");
-        var iP = document.createElement("p");
-        var br1 = document.createElement("br");
-        var br2 = document.createElement("br");
-        var br3 = document.createElement("br");
+        var iCenter = document.createElement('center');
+        var iCancle = document.createElement('button');
+        var iP = document.createElement('p');
+        var br1 = document.createElement('br');
+        var br2 = document.createElement('br');
 
-        orderFrame.style.position="absolute";
-        orderFrame.style.width="0px";
-        orderFrame.style.height="0px";
-        orderFrame.style.top="0px";
-        orderFrame.style.left="0px";
-        orderFrame.style.zIndex=-1;
+        orderFrame.style.position = 'absolute';
+        orderFrame.style.width = '0px';
+        orderFrame.style.height = '0px';
+        orderFrame.style.top = '0px';
+        orderFrame.style.left = '0px';
+        orderFrame.style.zIndex = -1;
 
-        iP.innerHTML=welcomeText;
-        iImg.style.width="100%"
-        iText.style.width="100%";
-        iText.setAttribute("type", "text");
-        iSend.innerHTML="Send";
-        iCancle.innerHTML="Cancle";
-        iCancle.onclick = function() {
-          orderFrame.style.zIndex=-1;
-          orderFrame.style.width="0px";
-          orderFrame.style.height="0px";
+        iImg.style.width = '400px';
+
+        iText.style.width = '400px';
+        iText.setAttribute('type', 'text');
+        iText.style.margin = '10px 0px 10px 0px';
+        iText.value = welcomeText;
+        iText.onfocus = function () {
+          iText.value = null;
         }
+
+        iSend.innerHTML = 'Send';
+        iSend.style.borderRadius = '4px';
+        iSend.style.color = 'white';
+        iSend.style.backgroundColor = '#F06D00';
+        iSend.style.margin = '0px 10px 0px 0px';
+        iSend.style.border = '0px';
+
+        iCancle.innerHTML = 'Cancle';
+        iCancle.style.borderRadius = '4px';
+        iCancle.style.color = 'white';
+        iCancle.style.backgroundColor = '#F06D00';
+        iCancle.style.border = '0px';
+        iCancle.onclick = function () {
+          orderFrame.style.zIndex = -1;
+          orderFrame.style.width = '0px';
+          orderFrame.style.height = '0px';
+        };
 
         iCenter.appendChild(iImg);
         iCenter.appendChild(br1);
-        iCenter.appendChild(iP);
-        iCenter.appendChild(br2);
         iCenter.appendChild(iText);
-        iCenter.appendChild(br3);
+        iCenter.appendChild(br2);
         iCenter.appendChild(iSend);
         iCenter.appendChild(iCancle);
         doc.body.appendChild(iCenter);
       };
 
-      document.getElementsByTagName("body")[0].appendChild(orderFrame);
+      document.getElementsByTagName('body')[0].appendChild(orderFrame);
     },
     /**
      * Hide the order page.
@@ -63,17 +76,17 @@
     show(canvas, callback) {
       iSend.onclick = callback;
       iImg.src = canvas.toDataURL();
-      orderFrame.style.zIndex=10;
-      orderFrame.style.width="100%";
-      orderFrame.style.height="100%";
+      orderFrame.style.zIndex = 10;
+      orderFrame.style.width = '100%';
+      orderFrame.style.height = '100%';
     },
     /**
      * Hide the order page.
      */
     hide() {
-      orderFrame.style.zIndex=-1;
-      orderFrame.style.width="0px";
-      orderFrame.style.height="0px";
+      orderFrame.style.zIndex = -1;
+      orderFrame.style.width = '0px';
+      orderFrame.style.height = '0px';
     },
     /**
      * Get user message.
