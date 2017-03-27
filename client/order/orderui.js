@@ -36,7 +36,7 @@
         iText.value = welcomeText;
         iText.onfocus = function () {
           iText.value = null;
-        }
+        };
 
         iSend.innerHTML = 'Send';
         iSend.style.borderRadius = '4px';
