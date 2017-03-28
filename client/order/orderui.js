@@ -5,11 +5,11 @@
   var iText = document.createElement('input');
 
   /**
-   * API for control order ui
+   * API to control order UI.
    */
   var orderPage = {
     /**
-     * Initialization of rrder page.
+     * Initialization of order page.
      * @param String Text to be displayed on order page.
      */
     pageLoad(welcomeText) {
@@ -68,7 +68,7 @@
       document.getElementsByTagName('body')[0].appendChild(orderFrame);
     },
     /**
-     * Hide the order page.
+     * Api to display the order page.
      * @param canvas Image to be displayed on the page.
      * @param callback Function The function to be called
      *        when the Send button is pressed.
@@ -81,7 +81,7 @@
       orderFrame.style.height = '100%';
     },
     /**
-     * Hide the order page.
+     * Api to hide the order page.
      */
     hide() {
       orderFrame.style.zIndex = -1;
