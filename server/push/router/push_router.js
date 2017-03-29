@@ -51,6 +51,7 @@ router.put('/client', (request, response) => {
   }
 });
 
+// send notification to :id
 router.post('/notification', (request, response) => {
   if (request.body.userId || request.body.token) {
     pushController.sendPushNotification(request.body)
@@ -61,5 +62,52 @@ router.post('/notification', (request, response) => {
     response.sendStatus(400);
   }
 });
+
+// Create default notification message for all
+router.post('/notification/message', (request, response) => {
+  console.log(`${request.route}`);
+  if (request.body) {
+    pushController.setPushNotificationMessage(null, request.body)
+      .then((message) => {
+        response.sendStatus(200);
+      });
+  } else {
+    response.sendStatus(400);
+  }
+});
+
+// Create notification message for specific id
+router.post('/notification/message/:id', (request, response) => {
+  console.log(`${request.route}`);
+  if (request.body) {
+    pushController.setPushNotificationMessage(request.params.id, request.body)
+      .then((message) => {
+        response.sendStatus(200);
+      });
+  } else {
+    response.sendStatus(400);
+  }
+});
+
+// get default notification
+router.get('/notification/message', (request, response) => {
+  pushController.getDefaultPushNotificationMessage()
+    .then((message) => {
+      response.send(message);
+    });
+});
+
+// get notification message for specific id
+router.get('/notification/message/:id', (request, response) => {
+  if (request.params.id) {
+    pushController.getPushNotificationMessage(request.params.id)
+      .then((message) => {
+        response.send(message);
+      });
+  } else {
+    response.sendStatus(400);
+  }
+});
+
 
 module.exports = router;
