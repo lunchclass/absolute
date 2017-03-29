@@ -17,20 +17,19 @@
         var doc = orderFrame.contentDocument || orderFrame.contentWindow.document;
         var iCenter = document.createElement('center');
         var iCancle = document.createElement('button');
-        var iP = document.createElement('p');
-        var br1 = document.createElement('br');
-        var br2 = document.createElement('br');
+        var iBrImg = document.createElement('br');
+        var iBrText = document.createElement('br');
 
-        orderFrame.style.position = 'absolute';
+        orderFrame.style.position = 'fixed';
         orderFrame.style.width = '0px';
         orderFrame.style.height = '0px';
         orderFrame.style.top = '0px';
         orderFrame.style.left = '0px';
         orderFrame.style.zIndex = -1;
 
-        iImg.style.width = '400px';
+        iImg.style.width = '250px';
 
-        iText.style.width = '400px';
+        iText.style.width = '250px';
         iText.setAttribute('type', 'text');
         iText.style.margin = '10px 0px 10px 0px';
         iText.value = welcomeText;
@@ -57,9 +56,9 @@
         };
 
         iCenter.appendChild(iImg);
-        iCenter.appendChild(br1);
+        iCenter.appendChild(iBrImg);
         iCenter.appendChild(iText);
-        iCenter.appendChild(br2);
+        iCenter.appendChild(iBrText);
         iCenter.appendChild(iSend);
         iCenter.appendChild(iCancle);
         doc.body.appendChild(iCenter);
@@ -76,7 +75,7 @@
     show(canvas, callback) {
       iSend.onclick = callback;
       iImg.src = canvas.toDataURL();
-      orderFrame.style.zIndex = 10;
+      orderFrame.style.zIndex = 1000;
       orderFrame.style.width = '100%';
       orderFrame.style.height = '100%';
     },
