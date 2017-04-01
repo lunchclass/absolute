@@ -1,5 +1,10 @@
 (function (window) {
   /**
+   * input tag to call camera app.
+   */
+   var cameraInput = document.createElement('input');
+
+  /**
    * Set correct image orientation.
    */
   var resetOrientation = function (imgSrc, orientation, callback) {
@@ -95,11 +100,6 @@
      * This function should be called from user action.
      */
     getImageFromCamera(callback) {
-      var cameraInput = document.createElement('input');
-
-      cameraInput.setAttribute('type', 'file');
-      cameraInput.setAttribute('capture', 'camera');
-      cameraInput.setAttribute('accept', 'image/*');
       cameraInput.onchange = function (onchangeEvent) {
         var files = onchangeEvent.target.files;
         if (files && files.length > 0) {
@@ -115,6 +115,10 @@
       cameraInput.click();
     },
   };
+
+  cameraInput.setAttribute('type', 'file');
+  cameraInput.setAttribute('capture', 'camera');
+  cameraInput.setAttribute('accept', 'image/*');
 
   window.camera = camera;
 }(window));
