@@ -2,7 +2,7 @@
   /**
    * input tag to call camera app.
    */
-   var cameraInput = document.createElement('input');
+  var cameraInput = document.createElement('input');
 
   /**
    * Set correct image orientation.
