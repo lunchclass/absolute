@@ -4,7 +4,7 @@
 /* eslint-enable */
 }(typeof window !== 'undefined' ? window : this, function (w, d) {
   var fetchRequest = function (targetUrl, method, data) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
       fetch(targetUrl, { method, body: data }).then(function (response) {
         if (response.status !== 200) {
           console.log(`Failed to fetch from ${targetUrl} Status Code:
