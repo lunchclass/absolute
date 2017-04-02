@@ -20,6 +20,7 @@
         var iBrImg = document.createElement('br');
         var iBrText = document.createElement('br');
 
+        orderFrame.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
         orderFrame.style.position = 'fixed';
         orderFrame.style.width = '0px';
         orderFrame.style.height = '0px';
@@ -30,12 +31,9 @@
         iImg.style.width = '250px';
 
         iText.style.width = '250px';
-        iText.setAttribute('type', 'text');
         iText.style.margin = '10px 0px 10px 0px';
-        iText.value = welcomeText;
-        iText.onfocus = function () {
-          iText.value = null;
-        };
+        iText.setAttribute('type', 'text');
+        iText.setAttribute('placeholder', welcomeText);
 
         iSend.innerHTML = 'Send';
         iSend.style.borderRadius = '4px';
