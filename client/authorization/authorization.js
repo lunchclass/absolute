@@ -25,7 +25,6 @@
 
   var auth = function () {
     const self = this;
-
     const HOST = self.location.hostname;
     const PORT = self.location.port;
     const API_URL = '/api/authorization/uuid';
@@ -48,8 +47,7 @@
       return new Promise(function (resolve, reject) {
         console.log(`TARGET URL : ${TARGET_URL}`);
         fetchRequest(TARGET_URL, 'POST', null).then(function (result) {
-          const resp = JSON.parse(result);
-          const authinfo = new AuthInfo(resp.uuid, AUTH_ERROR.NONE);
+          const authinfo = new AuthInfo(result.uuid, AUTH_ERROR.NONE);
           resolve(authinfo);
         }).catch(function (error) {
           const authinfo = new AuthInfo('', AUTH_ERROR.NONE);
@@ -64,8 +62,7 @@
         var authInfo = null;
         console.log(`Query URL : ${queryUrl}`);
         fetchRequest(queryUrl, 'GET', null).then(function (result) {
-          const resp = JSON.parse(result);
-          authInfo = new AuthInfo(resp.uuid, AUTH_ERROR.NONE);
+          authInfo = new AuthInfo(result.uuid, AUTH_ERROR.NONE);
           resolve(authInfo);
         }).catch(function (error) {
           authInfo = new AuthInfo('', AUTH_ERROR.GENERAL);
