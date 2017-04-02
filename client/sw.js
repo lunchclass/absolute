@@ -1,31 +1,55 @@
+/* eslint-disable */
+importScripts('authorization/authorization.js');
+
+var serverUrl = 'https://nadongguri.com';
+var fetchRequest = function (targetUrl, method, data) {
+  return new Promise((resolve, reject) => {
+    fetch(targetUrl, { method, body: data }).then(function (response) {
+      if (response.status !== 200) {
+        console.log(`Failed to fetch from ${targetUrl} Status Code:
+          ${response.status}`);
+        return reject(response.status);
+      }
+      response.json().then(function (respData) {
+        console.log(respData);
+        return resolve(respData);
+      });
+    })
+    .catch(function (err) {
+      console.log(`Fetch Error : ${err}`);
+      reject(err);
+    });
+  });
+};
+
 self.addEventListener('push', function (event) {
   var title;
   var body;
-
   if (event.data) {
-    console.log('get push notification data');
+    console.log('use push payload data');
     const data = event.data.json();
-    title = data.notification.title;
-    body = data.notification.body;
+    event.waitUntil(self.registration.showNotification(
+      data.notification.title, data.notification.body));
   } else {
-    console.log('use static push notification data');
-
-    title = '나동진♡김소영 결혼합니다!';
-    const notificationOptions = {
-      body: '2017년 4월 8일 토요일 오후 5시',
-      icon: './images/main.jpg',
-      badge: './images/badge-72x72.png',
-      tag: 'wedding',
-      url: 'https://nadongguri.com/wedding/',
-    };
-    body = notificationOptions;
+    console.log('use server push notification data');
+    getUuid().then(function (auth) {
+      fetchRequest(`${serverUrl}/api/push/notification/message/${auth.uuid}`,
+        'GET').then(function (notification) {
+          title = notification.title;
+          body = {
+            body: notification.body,
+            icon: notification.icon,
+            url: notification.url,
+          };
+          event.waitUntil(self.registration.showNotification(title, body));
+        }).catch(function(error) {
+          console.log(`failed to get server push notification data ${error}`);
+      });
+    });
   }
-
-  event.waitUntil(self.registration.showNotification(title, body));
 });
 
 self.addEventListener('notificationclick', function (event) {
   event.notification.close();
-  /* eslint-disable */
-  clients.openWindow('https://nadongguri.com/wedding/');
+  clients.openWindow(`${serverUrl}/wedding/`);
 });

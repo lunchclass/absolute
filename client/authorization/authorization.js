@@ -3,6 +3,26 @@
   global.auth = new factory(global, global.document)();
 /* eslint-enable */
 }(typeof window !== 'undefined' ? window : this, function (w, d) {
+  var fetchRequest = function (targetUrl, method, data) {
+    return new Promise((resolve, reject) => {
+      fetch(targetUrl, { method, body: data }).then(function (response) {
+        if (response.status !== 200) {
+          console.log(`Failed to fetch from ${targetUrl} Status Code:
+            ${response.status}`);
+          reject(response.status);
+        }
+        response.json().then(function (respData) {
+          console.log(respData);
+          resolve(respData);
+        });
+      })
+      .catch(function (err) {
+        console.log('Fetch Error :-S', err);
+        reject(err);
+      });
+    });
+  };
+
   var auth = function () {
     const self = this;
 
@@ -26,52 +46,31 @@
 
     var requestSetUuid = function () {
       return new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', TARGET_URL, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send();
-        xhr.onreadystatechange = function () {
-          var resp = null;
-          var authinfo = null;
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              resp = JSON.parse(xhr.responseText);
-              authinfo = new AuthInfo(resp.uuid, AUTH_ERROR.NONE);
-              resolve(authinfo);
-            } else {
-              authinfo = new AuthInfo('', AUTH_ERROR.NONE);
-              reject(authinfo);
-            }
-          }
-        };
+        console.log(`TARGET URL : ${TARGET_URL}`);
+        fetchRequest(TARGET_URL, 'POST', null).then(function (result) {
+          const resp = JSON.parse(result);
+          const authinfo = new AuthInfo(resp.uuid, AUTH_ERROR.NONE);
+          resolve(authinfo);
+        }).catch(function (error) {
+          const authinfo = new AuthInfo('', AUTH_ERROR.NONE);
+          reject(authinfo);
+        });
       });
     };
 
     var requestGetUuid = function (localUuid) {
       return new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest();
-        var queryUrl = `${TARGET_URL}?uuid=${localUuid}`;
+        const queryUrl = `${TARGET_URL}?uuid=${localUuid}`;
         var authInfo = null;
-        xhr.open('GET', queryUrl, true);
-        try {
-          xhr.send();
-        } catch (error) {
+        console.log(`Query URL : ${queryUrl}`);
+        fetchRequest(queryUrl, 'GET', null).then(function (result) {
+          const resp = JSON.parse(result);
+          authInfo = new AuthInfo(resp.uuid, AUTH_ERROR.NONE);
+          resolve(authInfo);
+        }).catch(function (error) {
           authInfo = new AuthInfo('', AUTH_ERROR.GENERAL);
-          reject();
-        }
-        xhr.onreadystatechange = function () {
-          var resp = null;
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              resp = JSON.parse(xhr.responseText);
-              authInfo = new AuthInfo(resp.uuid, AUTH_ERROR.NONE);
-              resolve(authInfo);
-            } else {
-              authInfo = new AuthInfo('', AUTH_ERROR.GENERAL);
-              reject(authInfo);
-            }
-          }
-        };
+          reject(authInfo);
+        });
       });
     };
 
