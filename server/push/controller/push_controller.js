@@ -151,3 +151,17 @@ exports.getPushNotificationMessage = function (id) {
     });
   });
 };
+
+exports.getClientCount = function () {
+  return new Promise((resolve, reject) => {
+    PushToken.count({}, (error, count) => {
+      if (error) {
+        console.log(`errro while getting userIds ${error}`);
+        reject(error);
+      } else {
+        console.log(`userIds : ${count}`);
+        resolve(JSON.stringify({ clientCount: count }));
+      }
+    });
+  });
+};

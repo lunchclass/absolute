@@ -51,6 +51,18 @@ router.put('/client', (request, response) => {
   }
 });
 
+
+// get clients count registered to push
+router.get('/client/count', (request, response) => {
+  pushController.getClientCount()
+    .then((message) => {
+      response.send(message);
+    })
+    .catch((error) => {
+      response.send(error);
+    });
+});
+
 // send notification to :id
 router.post('/notification', (request, response) => {
   if (request.body.userId || request.body.token) {
@@ -65,7 +77,6 @@ router.post('/notification', (request, response) => {
 
 // Create default notification message for all
 router.post('/notification/message', (request, response) => {
-  console.log(`${request.route}`);
   if (request.body) {
     pushController.setPushNotificationMessage(null, request.body)
       .then((message) => {
@@ -78,7 +89,6 @@ router.post('/notification/message', (request, response) => {
 
 // Create notification message for specific id
 router.post('/notification/message/:id', (request, response) => {
-  console.log(`${request.route}`);
   if (request.body) {
     pushController.setPushNotificationMessage(request.params.id, request.body)
       .then((message) => {
