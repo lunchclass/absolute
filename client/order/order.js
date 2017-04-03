@@ -32,7 +32,56 @@
         };
       });
     };
+    var sendImage = function (orderInfo) {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        var formData = new FormData();
+        const queryUrl = `${TARGET_URL}/img?userId=${orderInfo.userId}`;
+        formData.append('file', orderInfo.blob);
+        xhr.open('POST', queryUrl, true);
+        xhr.send(formData);
+        xhr.onreadystatechange = function () {
+          var result;
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 400) {
+              console.log('400 Error');
+              reject(ORDER_ERROR.GENERAL);
+            } else {
+              result = JSON.parse(xhr.responseText);
+              resolve(`/order/gallery/${orderInfo.userId}/${result.path}/${result.file}`);
+            }
+          }
+        };
+      });
+    };
 
+    var getMyOrder = function (userId) {
+      return new Promise(function (resolve, reject) {
+        var uuid = (userId === undefined ? '' : userId);
+        var xhr = new XMLHttpRequest();
+        var img = [];
+        var result;
+        var i;
+        const QUERY_URL = `${TARGET_URL}?userId=${uuid}`;
+        xhr.open('GET', QUERY_URL, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 400) {
+              reject(ORDER_ERROR.GENERAL);
+            } else {
+              result = JSON.parse(xhr.responseText);
+              console.log(result.length);
+              for (i = (result.length - 1); i >= 0; i -= 1) {
+                console.log(`//${HOST}:${PORT}${result[i].items[0].name}`);
+                img.push(`//${HOST}:${PORT}${result[i].items[0].name}`);
+              }
+              resolve(img);
+            }
+          }
+        };
+      });
+    };
     function Content(data, contentType) {
       this.data = data;
       this.contentType = contentType;
@@ -120,11 +169,26 @@
         orderData.init(OrderInfo.userId, OrderInfo.items, OrderInfo.option);
 
         if (OrderInfo.blob instanceof Blob) {
-          loadBlob(orderData, OrderInfo.blob).then(function (data) { return sendOrder(data); })
-                                   .then(function (e) { resolve(e); });
+          // loadBlob(orderData, OrderInfo.blob).then(function (data) { return sendOrder(data); })
+          //                         .then(function (e) { resolve(e); });
+          sendImage(OrderInfo).then(function (path) {
+            console.log(path);
+            orderData.items[0].name = path;
+            return sendOrder(OrderInfo);
+          });
         } else {
           sendOrder(orderData).then(function (e) { resolve(e); }, function (e) { reject(e); });
         }
+      });
+    };
+
+    self.orderList = function (userId) {
+      return new Promise(function (resolve, reject) {
+        getMyOrder(userId).then(function (img) {
+          resolve(img);
+        }, function (e) {
+          reject(e);
+        });
       });
     };
   };
