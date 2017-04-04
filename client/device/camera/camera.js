@@ -7,13 +7,22 @@
   /**
    * Set correct image orientation.
    */
-  var resetOrientation = function (imgSrc, orientation, callback) {
+  var resetOrientation = function (imgSrc, file, orientation, callback) {
     var img = new Image();
     img.onload = function () {
-      var width = img.width;
-      var height = img.height;
+      var width = 600;
+      var height = 0;
       var canvas = document.createElement('canvas');
       var ctx = canvas.getContext('2d');
+      var rate = 0;
+
+      if (img.width > img.height) {
+        rate = img.width/img.height;
+        height = width/rate;
+      } else {
+        rate = img.height/img.width;
+        height = width*rate;
+      }
 
       if (orientation >= 5 && orientation <= 8) {
         canvas.width = height;
@@ -34,8 +43,8 @@
       default: ctx.transform(1, 0, 0, 1, 0, 0);
       }
 
-      ctx.drawImage(img, 0, 0);
-      callback(canvas);
+      ctx.drawImage(img, 0, 0, width, height);
+      callback(canvas, file);
     };
     img.src = imgSrc;
   };
@@ -106,7 +115,7 @@
           getOrientation(files[0], function (orientation) {
             var fileReader = new FileReader();
             fileReader.onload = function (onloadEvent) {
-              resetOrientation(onloadEvent.target.result, orientation, callback);
+              resetOrientation(onloadEvent.target.result, files[0], orientation, callback);
             };
             fileReader.readAsDataURL(files[0]);
           });
