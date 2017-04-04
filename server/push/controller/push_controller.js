@@ -23,12 +23,12 @@ exports.saveToken = function (body) {
 exports.getToken = function (userId) {
   console.log(`get client token : ${userId}`);
   return new Promise((resolve, reject) => {
-    PushToken.findOne({ userId }, (error, token) => {
-      console.log(`token : ${token}`);
+    PushToken.findOne({ userId }, (error, data) => {
+      console.log(`data : ${data}`);
       if (error) {
         reject(error);
       } else {
-        resolve(JSON.stringify(token));
+        resolve(JSON.stringify(data.token));
       }
     });
   });
@@ -61,16 +61,30 @@ exports.updateToken = function (body) {
   });
 };
 
-exports.sendPushNotification = function (body) {
-  console.log(`send push notification to ${body.userId}`);
+exports.sendPushNotification = function (uId, body) {
+  console.log(`send push notification to ${uId}`);
   return new Promise((resolve, reject) => {
-    PushToken.findOne({ userId: body.userId }, (error, data) => {
+    PushToken.findOne({ userId: uId }, (error, data) => {
       console.log(`stored data : ${data}`);
       if (error) {
         reject(error);
       } else {
-        push.sendPushNotification(data.token, body);
-        resolve(data.token);
+        let pushData = Object();
+        if (body) {
+          pushData = body;
+        } else {
+          pushData.title = data.title;
+          pushData.body = data.body;
+          pushData.icon = data.icon;
+          pushData.url = data.url;
+          JSON.stringify(pushData);
+        }
+        push.sendPushNotification(data.token, pushData).then((resp) => {
+          resolve(resp);
+        }).catch((e) => {
+          console.log(`faliled to send push ${error}`);
+          reject(e);
+        });
       }
     });
   });

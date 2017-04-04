@@ -8,7 +8,7 @@ const config = require('../../config.js');
 const serverKey = config.serverInfo.pushServerKey;
 
 exports.sendPushNotification = function (clientToken, content) {
-  console.log(`Send push notification ${serverKey}`);
+  console.log(`Send push notification ${serverKey} content : ${JSON.stringify(content)}`);
   return new Promise((resolve, reject) => {
     const token = clientToken.substring(clientToken.lastIndexOf('/') + 1);
 
@@ -22,7 +22,7 @@ exports.sendPushNotification = function (clientToken, content) {
         title: content.title,
         body: content.body,
         icon: content.icon,
-        click_action: content.click_action,
+        click_action: content.url,
       },
       to: token,
     };
@@ -35,9 +35,11 @@ exports.sendPushNotification = function (clientToken, content) {
       body: jsonBody,
     }, (error, response) => { /* eslint-disable */
       if(error) {
+        console.log(error);
         reject(error);
       } else {
-        resolve(response);
+        console.log(response.body);
+        resolve(response.body);
       }
     });
   });

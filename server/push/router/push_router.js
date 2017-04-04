@@ -66,7 +66,7 @@ router.get('/client/count', (request, response) => {
 // send notification to :id
 router.post('/notification', (request, response) => {
   if (request.body.userId || request.body.token) {
-    pushController.sendPushNotification(request.body)
+    pushController.sendPushNotification(request.body.userId, request.body)
       .then((token) => {
         response.sendStatus(200);
       });
