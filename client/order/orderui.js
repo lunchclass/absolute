@@ -16,9 +16,8 @@
       orderFrame.onload = function () {
         var doc = orderFrame.contentDocument || orderFrame.contentWindow.document;
         var iCenter = document.createElement('center');
-        var iCancle = document.createElement('button');
-        var iBrImg = document.createElement('br');
-        var iBrText = document.createElement('br');
+        var iCancel = document.createElement('button');
+        var br = document.createElement('br');
 
         orderFrame.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
         orderFrame.style.position = 'fixed';
@@ -35,30 +34,37 @@
         iText.setAttribute('type', 'text');
         iText.setAttribute('placeholder', welcomeText);
 
-        iSend.innerHTML = 'Send';
+        iSend.innerHTML = 'SEND';
         iSend.style.borderRadius = '4px';
         iSend.style.color = 'white';
-        iSend.style.backgroundColor = '#F06D00';
+        iSend.style.fontSize = '16px';
+        iSend.style.backgroundColor = '#FF8400';
         iSend.style.margin = '0px 10px 0px 0px';
+        iSend.style.width = '120px';
+        iSend.style.height = '40px';
         iSend.style.border = '0px';
 
-        iCancle.innerHTML = 'Cancle';
-        iCancle.style.borderRadius = '4px';
-        iCancle.style.color = 'white';
-        iCancle.style.backgroundColor = '#F06D00';
-        iCancle.style.border = '0px';
-        iCancle.onclick = function () {
+        iCancel.innerHTML = 'CANCEL';
+        iCancel.style.borderRadius = '4px';
+        iCancel.style.color = 'white';
+        iCancel.style.fontSize = '16px';
+        iCancel.style.backgroundColor = '#FF8400';
+        iCancel.style.width = '120px';
+        iCancel.style.height = '40px';
+        iCancel.style.border = '0px';
+        iCancel.onclick = function () {
           orderFrame.style.zIndex = -1;
           orderFrame.style.width = '0px';
           orderFrame.style.height = '0px';
         };
 
+        iCenter.appendChild(br.cloneNode());
         iCenter.appendChild(iImg);
-        iCenter.appendChild(iBrImg);
+        iCenter.appendChild(br.cloneNode());
         iCenter.appendChild(iText);
-        iCenter.appendChild(iBrText);
+        iCenter.appendChild(br.cloneNode());
         iCenter.appendChild(iSend);
-        iCenter.appendChild(iCancle);
+        iCenter.appendChild(iCancel);
         doc.body.appendChild(iCenter);
       };
 
