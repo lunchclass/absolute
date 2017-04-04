@@ -17,11 +17,11 @@
       var rate = 0;
 
       if (img.width > img.height) {
-        rate = img.width/img.height;
-        height = width/rate;
+        rate = img.width / img.height;
+        height = width / rate;
       } else {
-        rate = img.height/img.width;
-        height = width*rate;
+        rate = img.height / img.width;
+        height = width * rate;
       }
 
       if (orientation >= 5 && orientation <= 8) {
