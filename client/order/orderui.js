@@ -59,7 +59,6 @@
         };
 
         iCenter.appendChild(br.cloneNode());
-        iCenter.appendChild(br.cloneNode());
         iCenter.appendChild(iImg);
         iCenter.appendChild(br.cloneNode());
         iCenter.appendChild(iText);
