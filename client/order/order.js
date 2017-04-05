@@ -93,7 +93,7 @@
       this.items;
       /*eslint-enable */
       this.blob = '';
-      this.option = '';
+      this.options = '';
     }
 
     function Item() {
