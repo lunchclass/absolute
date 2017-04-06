@@ -23,16 +23,21 @@ router.post('/img', (request, response) => {
   const UUID = request.query.userId;
   const DATE = Date.now();
   const TARGET_DIR = path.join(__dirname, `${IMG_PATH}/${UUID}/${DATE}/`);
-  var multer_settings = multer({ dest: TARGET_DIR });
-  var mul = multer_settings.single('file');
-  
+  const multer_settings = multer({ dest: TARGET_DIR });
+  const mul = multer_settings.single('file');
+
   mul(request, response, (err) => {
     if (err) {
       console.log(err);
       response.sendStatus(400);
     } else {
       response.send({ file: request.file.filename,
-                      path: DATE});
+        path: DATE });
+      // FIXME : for wedding event only, if UUID is not allowed push noti,
+      // he(she) will not get reward and not get response about reward
+      // FIXME : coupon must be coupled with UUID before calling orderFinish()
+      // this api will send push notification to client
+      orderController.sendCouponMessage(UUID);
     }
   });
 });

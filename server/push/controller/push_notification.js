@@ -66,7 +66,7 @@ exports.broadCastPushNotification = function (tokenArray, content) {
         title: content.title,
         body: content.body,
         icon: content.icon,
-        click_action: content.click_action,
+        click_action: content.url,
       },
       registration_ids: tokens,
     };
