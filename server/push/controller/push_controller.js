@@ -76,6 +76,20 @@ exports.sendPushNotification = function (body) {
   });
 };
 
+exports.broadCastPushNotification = function (body) {
+  return new Promise((resolve, reject) => {
+    PushToken.find({}, { _id: false, token: true }, (error, data) => {
+      let tokenArray = [];
+      tokenArray = data.map(element => element.token);
+      if (error) {
+        reject(error);
+      } else {
+        push.broadCastPushNotification(tokenArray, body);
+        resolve(tokenArray);
+      }
+    });
+  });
+};
 
 exports.setPushNotificationMessage = function (id, message) {
   console.log(`set push notification message : ${JSON.stringify(message)}`);
