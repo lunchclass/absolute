@@ -93,7 +93,7 @@
       this.items;
       /*eslint-enable */
       this.blob = '';
-      this.options = '';
+      this.option = '';
     }
 
     function Item() {
@@ -134,6 +134,7 @@
       }
 
       if (option !== 'undefined' || option !== null) {
+        console.log(option);
         this.options = option;
       }
     };
@@ -174,7 +175,7 @@
           sendImage(OrderInfo).then(function (path) {
             console.log(path);
             orderData.items[0].name = path;
-            return sendOrder(OrderInfo);
+            return sendOrder(orderData);
           });
         } else {
           sendOrder(orderData).then(function (e) { resolve(e); }, function (e) { reject(e); });

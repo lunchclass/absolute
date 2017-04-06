@@ -27,8 +27,10 @@ exports.getToken = function (userId) {
       console.log(`data : ${data}`);
       if (error) {
         reject(error);
-      } else {
+      } else if (data) {
         resolve(JSON.stringify(data.token));
+      } else {
+        reject('token not found');
       }
     });
   });
