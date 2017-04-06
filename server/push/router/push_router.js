@@ -65,11 +65,16 @@ router.get('/client/count', (request, response) => {
 
 // send notification to :id
 router.post('/notification', (request, response) => {
-  if (request.body.userId || request.body.token) {
-    pushController.sendPushNotification(request.body.userId, request.body)
-      .then((token) => {
+  if (request.body.userId) {
+    if (request.body.userId === 'all') {
+      pushController.broadCastPushNotification(request.body).then((res) => {
         response.sendStatus(200);
       });
+    } else {
+      pushController.sendPushNotification(request.body).then((token) => {
+        response.sendStatus(200);
+      });
+    }
   } else {
     response.sendStatus(400);
   }

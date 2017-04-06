@@ -13,17 +13,17 @@ exports.saveOrder = function (orderData) {
 exports.getOrderList = function (userId) {
   return new Promise((resolve, reject) => {
     if (userId) {
-      Order.find({ userId }, (error, orderList) => {
+      Order.find({ userId }, 'items -_id options', (error, orderList) => {
         if (orderList) {
-          resolve(JSON.stringify(orderList));
+          resolve(orderList);
         } else {
           reject(-1);
         }
       });
     } else {
-      Order.find({}, (error, orderList) => {
+      Order.find({}, 'items -_id options', (error, orderList) => {
         if (!error) {
-          resolve(JSON.stringify(orderList));
+          resolve(orderList);
         } else {
           reject(-1);
         }
