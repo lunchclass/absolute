@@ -71,7 +71,8 @@ router.post('/notification', (request, response) => {
         response.sendStatus(200);
       });
     } else {
-      pushController.sendPushNotification(request.body).then((token) => {
+      pushController.sendPushNotification(request.body.userId, request.body)
+      .then((token) => {
         response.sendStatus(200);
       });
     }
