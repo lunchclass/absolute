@@ -31,13 +31,18 @@ router.post('/img', (request, response) => {
       console.log(err);
       response.sendStatus(400);
     } else {
-      response.send({ file: request.file.filename,
-        path: DATE });
-      // FIXME : for wedding event only, if UUID is not allowed push noti,
-      // he(she) will not get reward and not get response about reward
-      // FIXME : coupon must be coupled with UUID before calling orderFinish()
-      // this api will send push notification to client
-      orderController.sendCouponMessage(UUID);
+      if (request.file) {
+        response.send({ file: request.file.filename,
+          path: DATE });
+        // FIXME : for wedding event only, if UUID is not allowed push noti,
+        // he(she) will not get reward and not get response about reward
+        // FIXME : coupon must be coupled with UUID before calling orderFinish()
+        // this api will send push notification to client
+        orderController.sendCouponMessage(UUID);
+      } else {
+        console.log('fail to save file');
+        response.sendStatus(400);        
+      }
     }
   });
 });
