@@ -1,7 +1,8 @@
 /* eslint-disable */
 importScripts('authorization/authorization.js');
 
-var serverUrl = 'https://nadongguri.com';
+//var serverUrl = 'https://nadongguri.com';
+var serverUrl = 'http://localhost:9080';
 
 var fetchRequest = function (targetUrl, method, data) {
   return new Promise(function (resolve, reject) {
