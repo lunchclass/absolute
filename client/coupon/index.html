@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../authorization/authorization.js"></script>
+<script src="../order/order.js"></script>
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+</head>
+<body>
+<img src="" style="width:100%">
+<script>
+
+getUuid().then(function(authInfo) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/api/order/coupon?userId=" + authInfo.uuid);
+    xhr.onload = function() {
+        document.querySelector("img").src = xhr.responseText;
+    }
+    xhr.send();
+});
+
+</script>
+</body>
+</html>
