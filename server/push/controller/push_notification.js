@@ -23,8 +23,10 @@ function requestPush(jsonBody) {
       body: jsonBody,
     }, (error, response) => {
       if (error) {
+        console.log(error);
         reject(error);
       } else {
+        console.log(response.body);
         resolve(response.body);
       }
     });

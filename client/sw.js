@@ -53,9 +53,9 @@ self.addEventListener('push', function (event) {
 });
 
 self.addEventListener('notificationclick', function (event) {
-  var dday = new Date(2017,4,8);
-  var now = new Date();
-  if( now.getDate() >= dday.getDate() ){
+  const dday = new Date(2017, 3, 8, 16, 30, 0); // month starts from 0
+  const now = new Date();
+  if( now.getTime() >= dday.getTime() ){
     event.waitUntil(clients.openWindow(`${serverUrl}/coupon`));
   } else {
     event.waitUntil(clients.openWindow(`${serverUrl}/wedding/`));
