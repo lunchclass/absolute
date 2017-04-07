@@ -7,15 +7,33 @@ const config = require('../../config.js');
 
 const serverKey = config.serverInfo.pushServerKey;
 
-exports.sendPushNotification = function (clientToken, content) {
+const jsonHeader = {
+  Authorization: `key=${serverKey}`,
+  'Content-Type': 'application/json',
+};
+
+function requestPush(jsonBody) {
   console.log(`Send push notification ${serverKey}`);
   return new Promise((resolve, reject) => {
-    const token = clientToken.substring(clientToken.lastIndexOf('/') + 1);
+    request({
+      url: 'https://fcm.googleapis.com/fcm/send',
+      method: 'POST',
+      json: true,
+      headers: jsonHeader,
+      body: jsonBody,
+    }, (error, response) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(response.body);
+      }
+    });
+  });
+}
 
-    const jsonHeader = {
-      Authorization: `key=${serverKey}`,
-      'Content-Type': 'application/json',
-    };
+exports.sendPushNotification = function (clientToken, content) {
+  return new Promise((resolve, reject) => {
+    const token = clientToken.substring(clientToken.lastIndexOf('/') + 1);
 
     const jsonBody = {
       notification: {
@@ -26,19 +44,37 @@ exports.sendPushNotification = function (clientToken, content) {
       },
       to: token,
     };
+    requestPush(jsonBody).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  });
+};
 
-    request({
-      url: 'https://fcm.googleapis.com/fcm/send',
-      method: 'POST',
-      json: true,
-      headers: jsonHeader,
-      body: jsonBody,
-    }, (error, response) => { /* eslint-disable */
-      if(error) {
-        reject(error);
-      } else {
-        resolve(response);
-      }
+exports.broadCastPushNotification = function (tokenArray, content) {
+  return new Promise((resolve, reject) => {
+    const tokens = [];
+    tokenArray.forEach((id, index) => {
+      tokens.push(id.substring(id.lastIndexOf('/') + 1));
+    });
+
+    console.log(`tokens : ${tokens}`);
+
+    const jsonBody = {
+      notification: {
+        title: content.title,
+        body: content.body,
+        icon: content.icon,
+        click_action: content.url,
+      },
+      registration_ids: tokens,
+    };
+
+    requestPush(jsonBody).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
     });
   });
 };

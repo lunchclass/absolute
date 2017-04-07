@@ -2,8 +2,9 @@
 importScripts('authorization/authorization.js');
 
 var serverUrl = 'https://nadongguri.com';
+
 var fetchRequest = function (targetUrl, method, data) {
-  return new Promise((resolve, reject) => {
+  return new Promise(function (resolve, reject) {
     fetch(targetUrl, { method, body: data }).then(function (response) {
       if (response.status !== 200) {
         console.log(`Failed to fetch from ${targetUrl} Status Code:
@@ -32,24 +33,32 @@ self.addEventListener('push', function (event) {
       data.notification.title, data.notification.body));
   } else {
     console.log('use server push notification data');
-    getUuid().then(function (auth) {
+    event.waitUntil(getUuid().then(function (auth) {
       fetchRequest(`${serverUrl}/api/push/notification/message/${auth.uuid}`,
         'GET').then(function (notification) {
           title = notification.title;
           body = {
             body: notification.body,
             icon: notification.icon,
-            url: notification.url,
+            data: {
+              url: notification.url,
+            },
           };
           event.waitUntil(self.registration.showNotification(title, body));
         }).catch(function(error) {
           console.log(`failed to get server push notification data ${error}`);
       });
-    });
+    }));
   }
 });
 
 self.addEventListener('notificationclick', function (event) {
+  var dday = new Date(2017,4,8);
+  var now = new Date();
+  if( now.getDate() >= dday.getDate() ){
+    event.waitUntil(clients.openWindow(`${serverUrl}/coupon`));
+  } else {
+    event.waitUntil(clients.openWindow(`${serverUrl}/wedding/`));
+  }
   event.notification.close();
-  clients.openWindow(`${serverUrl}/wedding/`);
 });
