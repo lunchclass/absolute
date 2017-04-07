@@ -176,7 +176,7 @@
             console.log(path);
             orderData.items[0].name = path;
             return sendOrder(orderData);
-          });
+          }).then(function (e) { resolve(e); });
         } else {
           sendOrder(orderData).then(function (e) { resolve(e); }, function (e) { reject(e); });
         }
