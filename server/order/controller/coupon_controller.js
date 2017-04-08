@@ -5,7 +5,7 @@
 const Product = require('../model/product');
 const pushController = require('../../push/controller/push_controller');
 
-const dday = new Date(2017, 3, 7, 16, 30, 0); // month starts from 0
+const dday = new Date(2017, 3, 8, 16, 30, 0); // month starts from 0
 const couponUriPrefix = '/order/coupon';
 const coupons = ['wedding_coupon_1.jpg',
   'wedding_coupon_2.jpg',
@@ -43,6 +43,7 @@ exports.sendCouponMessage = function (userId) {
     if (userId) {
       pushController.getToken(userId).then((token) => {
         const now = new Date();
+        console.log(`${now.toString()}`);
 
         let pushMessage =
           { title: '축하해 주셔서 감사합니다!',
