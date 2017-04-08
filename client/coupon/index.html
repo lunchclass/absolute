@@ -20,7 +20,11 @@ getUuid().then(function(authInfo) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/api/order/coupon?userId=" + authInfo.uuid);
     xhr.onload = function() {
-        document.querySelector("img").src = xhr.responseText;
+        if (xhr.responseText.indexOf("wedding") > 0) {
+            document.querySelector("img").src = xhr.responseText;
+        } else {
+            document.querySelector("img").src = "./default.png";
+        }
     }
     xhr.send();
 });
