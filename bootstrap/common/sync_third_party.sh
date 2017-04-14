@@ -55,7 +55,8 @@ function sync_third_party() {
 
   # Install a trap to remove temporary path if this script is finished.
   # The trap will work well when unknown breaking happens like ctrl+c.
-  trap "rm -rf $temp_path" EXIT
+  export TRAP_COMMAND="rm -rf $temp_path;$TRAP_COMMAND"
+  trap "$TRAP_COMMAND" EXIT
 
   # Download the file of url into temporary path.
   if ! download $url $temp_path; then
