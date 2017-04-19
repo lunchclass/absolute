@@ -1,9 +1,12 @@
 (function (window) {
+  const HOST = window.location.hostname;
+  const PORT = window.location.port;
+  const TARGET_URL = `//${HOST}:${PORT}`;
   function sendDeepLink() {
     const intentURI = [
-      'intent://nadongguri.com/wedding#Intent',
+      `intent:${TARGET_URL}/wedding#Intent`,
       'scheme=https',
-      'S.browser_fallback_url=http://nadongguri.com/wedding',
+      `S.browser_fallback_url=${TARGET_URL}/wedding`,
       'end',
     ].join(';');
 
@@ -22,7 +25,7 @@
     return /Chrome/.test(navigator.userAgent);
   }
   function goToWeddingSite() {
-    window.location.href = 'http://nadongguri.com/wedding';
+    window.location.href = `${TARGET_URL}/wedding`;
   }
 
   const deeplink = {
