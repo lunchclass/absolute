@@ -4,6 +4,9 @@
 }(typeof window !== 'undefined' ? window : this, function (w, d) {
   var swManager = function () {
     var self = this;
+    const HOST = self.location.hostname;
+    const PORT = self.location.port;
+    const TARGET_URL = `//${HOST}:${PORT}`;
     var pushSubscription = '';
     var swRegistration = '';
 
@@ -11,7 +14,7 @@
       /* eslint-disable */
       getUuid().then(function (uuid) {
         var http = new XMLHttpRequest();
-        var url = 'https://nadongguri.com/api/push/client';
+        var url = `${TARGET_URL}/api/push/client`;
         http.open('POST', url, true);
         http.setRequestHeader('Content-Type', 'application/json');
         http.onreadystatechange = function () {
@@ -29,7 +32,7 @@
 
     function removePushTokenFromServer() {
       var http = new XMLHttpRequest();
-      var url = 'https://nadongguri.com/api/push/client';
+      var url = `${TARGET_URL}/api/push/client`;
       http.open('DELETE', url, true);
       http.setRequestHeader('Content-Type', 'application/json');
       http.onreadystatechange = function () {
