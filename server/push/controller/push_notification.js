@@ -64,7 +64,7 @@ exports.broadCastPushNotification = function (tokenArray, content) {
     console.log(`tokens : ${tokens}`);
 
     const jsonBody = {
-      notification: {
+      data: {
         title: content.title,
         body: content.body,
         icon: content.icon,
