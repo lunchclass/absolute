@@ -38,7 +38,7 @@ exports.sendPushNotification = function (clientToken, content) {
     const token = clientToken.substring(clientToken.lastIndexOf('/') + 1);
 
     const jsonBody = {
-      notification: {
+      data: {
         title: content.title,
         body: content.body,
         icon: content.icon,
