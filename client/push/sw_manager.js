@@ -15,6 +15,7 @@
       getUuid().then(function (uuid) {
         var http = new XMLHttpRequest();
         var url = `${TARGET_URL}/api/push/client`;
+
         http.open('POST', url, true);
         http.setRequestHeader('Content-Type', 'application/json');
         http.onreadystatechange = function () {
@@ -33,6 +34,7 @@
     function removePushTokenFromServer() {
       var http = new XMLHttpRequest();
       var url = `${TARGET_URL}/api/push/client`;
+
       http.open('DELETE', url, true);
       http.setRequestHeader('Content-Type', 'application/json');
       http.onreadystatechange = function () {

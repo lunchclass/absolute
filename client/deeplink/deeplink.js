@@ -6,7 +6,7 @@
     const intentURI = [
       `intent:${TARGET_URL}/wedding#Intent`,
       'scheme=https',
-      `S.browser_fallback_url=${TARGET_URL}/wedding`,
+      'S.browser_fallback_url=http://localhost:9080',
       'end',
     ].join(';');
 
@@ -25,21 +25,6 @@
     return /Chrome/.test(navigator.userAgent);
   }
   function goToWeddingSite() {
-    window.location.href = `${TARGET_URL}/wedding`;
+    window.location.href = 'http://localhost:9080';
   }
-
-  const deeplink = {
-    createBrowser() {
-      if (isAndroidDevice()) {
-        if (isLatestWebView() || (!isSamsungBrowser() && !isChrome())) {
-          sendDeepLink();
-        } else {
-          goToWeddingSite();
-        }
-      } else {
-        goToWeddingSite();
-      }
-    },
-  };
-  window.deeplink = deeplink;
 }(window));
