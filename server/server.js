@@ -26,5 +26,8 @@ app.use('/api/push/', require('./push/router/push_router'));
 app.use('/api/authorization/', require('./authorization/router/auth_router'));
 
 dbConnect.connectServer();
-httpsServer.run(app, config.serverInfo);
-redirectServer.runForHttps(config.serverInfo);
+// httpsServer.run(app, config.serverInfo);
+// redirectServer.runForHttps(config.serverInfo);
+app.listen(9080, () => {
+  console.log('9080 port http server start');
+});

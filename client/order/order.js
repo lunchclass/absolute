@@ -9,7 +9,8 @@
     const HOST = self.location.hostname;
     const PORT = self.location.port;
     const API_URL = '/api/order';
-    const TARGET_URL = `//${HOST}:${PORT}${API_URL}`;
+    // const TARGET_URL = `//${HOST}:${PORT}${API_URL}`;
+    const TARGET_URL = `http://localhost:9080${API_URL}`;
     const ORDER_ERROR = {
       NONE: 0,
       GENERAL: 1,

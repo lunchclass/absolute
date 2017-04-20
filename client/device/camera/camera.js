@@ -5,7 +5,6 @@
   var cameraInput = document.createElement('input');
 
 
-
   /**
    * API for control user mobile camera device.
    */
@@ -13,7 +12,7 @@
     /**
      * Set correct image orientation.
      */
-    resetOrientation (imgSrc, file, orientation, callback) {
+    resetOrientation(imgSrc, file, orientation, callback) {
       var img = new Image();
       img.onload = function () {
         var width = 600;
@@ -58,7 +57,7 @@
     /**
      * Get orientation value from captured image.
      */
-    getOrientation (file, callback) {
+    getOrientation(file, callback) {
       var reader = new FileReader();
       reader.onload = function (e) {
         var view = new DataView(e.target.result);

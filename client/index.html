@@ -1,16 +1,305 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Wuseok and Hyelim's wedding!</title>
-  <link rel="manifest" href="/manifest.json">
-  <script src="push/sw_manager.js"></script>
-  <script src="deeplink/deeplink.js"></script>
-</head>
-<body>
-  <script>
-    deeplink.createBrowser();
-  </script>
-  <img src="/wedding/images/etc/main.jpg">
-  Absolute Client!
-</body>
+  <head>
+    <title>Dongjin Na and Soyoung Kim's wedding!</title>
+    <link rel="manifest" href="../manifest.json">
+    <script src="../authorization/authorization.js"></script>
+    <script src="../order/order.js"></script>
+    <script src="../order/orderui.js"></script>
+    <script src="../device/camera/camera.js"></script>
+    <script src="../push/sw_manager.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height,
+      initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/wedding/ui/semantic.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="/wedding/ui/semantic.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=p6I0cSqRjuBeMPOpkqR6"></script>
+  </head>
+  <style type="text/css">
+    #callCamera {
+      background-color:transparent;
+      border:0px;
+      outline:0px;
+      width:80px;
+      height:80px;
+      position:fixed;
+      right:0;
+      bottom:0;
+      z-index:5;
+    }
+
+    #cameraImage {
+      width:60px;
+    }
+  </style>
+  <body>
+    <button id="callCamera"><img id = "cameraImage" src="/wedding/images/etc/camera_button.png"></button>
+   <!----------------------------------------------- NAVI -------------------------------------->
+    <div class="ui segment" id="top">
+      <div class="ui sticky">
+        <div class="ui orange fluid three item inverted menu">
+          <a class="item" href="#top">TOP</a>
+          <a class="item" href="#map">MAP</a>
+          <a class="item" href="#gallery">GALLERY</a>
+        </div>
+      </div>
+      <br>
+    <!----------------------------------------------- MAIN -------------------------------------->
+      <div class="ui fluid image">
+        <div class="ui pink ribbon label">
+          LOVE
+        </div>
+        <img src="/wedding/images/etc/main.jpg">
+      </div>
+      <br>
+      <br>
+      <img class="ui centered fluid image" src="/wedding/images/etc/invitation.jpg">
+      <br>
+    <!----------------------------------------------- MAP -------------------------------------->
+      <div id="map">
+        <br>
+        <br>
+      </div>
+      <div class="ui horizontal divider">
+        <h3 class="ui orange center aligned header">MAP</h1>
+      </div>
+      <img class="ui centered fluid image" src="/wedding/images/etc/map.jpg">
+      <div id="naver_map" style="width:100%;height:300px;"></div>
+      <script>
+        var mapOptions = {
+          center: new naver.maps.LatLng(37.496978, 127.0267254),
+          zoom: 10
+        };
+        var map = new naver.maps.Map('naver_map', mapOptions);
+        var marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(37.496978, 127.0267254),
+          map: map
+        });
+      </script>
+    <!----------------------------------------------- GALLERY -------------------------------------->
+      <div id="gallery">
+        <br>
+        <br>
+      </div>
+      <div class="ui horizontal divider">
+        <h3 class="ui orange center aligned header">Wedding Gallery</h1>
+      </div>
+      <br>
+      <div class="ui two doubling  cards" id="here">
+        <div class="card">
+          <div class="image">
+            <img id="gallery1">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img id="gallery2">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img id="gallery3">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img id="gallery4">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image" >
+            <img id="gallery5">
+          </div>
+        </div>
+       <div class="card">
+          <div class="image">
+            <img src="/wedding/images/studio/studio_1.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="/wedding/images/studio/studio_2.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="/wedding/images/studio/studio_3.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="/wedding/images/studio/studio_4.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image" >
+            <img src="/wedding/images/studio/studio_5.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image ">
+            <img src="/wedding/images/studio/studio_6.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image">
+            <img src="/wedding/images/studio/studio_7.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image ">
+            <img src="/wedding/images/studio/studio_8.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image ">
+            <img src="/wedding/images/studio/studio_9.jpg">
+          </div>
+        </div>
+        <div class="card">
+          <div class="image ">
+            <img src="/wedding/images/studio/studio_10.jpg">
+          </div>
+        </div>
+  </div>
+    <script>
+      $('.ui.sticky')
+        .sticky();
+      register();
+
+
+      var refreshPhoto = function(r) {
+        orderList().then(function (list) {
+          var img1 = document.getElementById("gallery1");
+          var img2 = document.getElementById("gallery2");
+          var img3 = document.getElementById("gallery3");
+          var img4 = document.getElementById("gallery4");
+          var img5 = document.getElementById("gallery5");
+
+          var xhr1 = new XMLHttpRequest();
+          xhr1.open("GET", list[0]);
+          xhr1.responseType = "blob";//force the HTTP response, response-type header to be blob
+          xhr1.onload = function()
+          {
+              camera.getOrientation(xhr1.response, function(orientation) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (onloadEvent) {
+                  camera.resetOrientation(onloadEvent.target.result, null, orientation,
+                    function (canvas, file) {
+                      img1.src = canvas.toDataURL('image/jpeg', 1.0);
+                  });
+                };
+                fileReader.readAsDataURL(xhr1.response);
+              });
+          }
+          xhr1.send();
+
+          var xhr2 = new XMLHttpRequest();
+          xhr2.open("GET", list[1]);
+          xhr2.responseType = "blob";//force the HTTP response, response-type header to be blob
+          xhr2.onload = function()
+          {
+              camera.getOrientation(xhr2.response, function(orientation) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (onloadEvent) {
+                  camera.resetOrientation(onloadEvent.target.result, null, orientation,
+                    function (canvas, file) {
+                      img2.src = canvas.toDataURL('image/jpeg', 1.0);
+                  });
+                };
+                fileReader.readAsDataURL(xhr2.response);
+              });
+          }
+          xhr2.send();
+
+          var xhr3 = new XMLHttpRequest();
+          xhr3.open("GET", list[2]);
+          xhr3.responseType = "blob";//force the HTTP response, response-type header to be blob
+          xhr3.onload = function()
+          {
+              camera.getOrientation(xhr3.response, function(orientation) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (onloadEvent) {
+                  camera.resetOrientation(onloadEvent.target.result, null, orientation,
+                    function (canvas, file) {
+                      img3.src = canvas.toDataURL('image/jpeg', 1.0);
+                  });
+                };
+                fileReader.readAsDataURL(xhr3.response);
+              });
+          }
+          xhr3.send();
+
+          var xhr4 = new XMLHttpRequest();
+          xhr4.open("GET", list[3]);
+          xhr4.responseType = "blob";//force the HTTP response, response-type header to be blob
+          xhr4.onload = function()
+          {
+              camera.getOrientation(xhr4.response, function(orientation) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (onloadEvent) {
+                  camera.resetOrientation(onloadEvent.target.result, null, orientation,
+                    function (canvas, file) {
+                      img4.src = canvas.toDataURL('image/jpeg', 1.0);
+                  });
+                };
+                fileReader.readAsDataURL(xhr4.response);
+              });
+          }
+          xhr4.send();
+
+          var xhr5 = new XMLHttpRequest();
+          xhr5.open("GET", list[4]);
+          xhr5.responseType = "blob";//force the HTTP response, response-type header to be blob
+          xhr5.onload = function()
+          {
+              camera.getOrientation(xhr5.response, function(orientation) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (onloadEvent) {
+                  camera.resetOrientation(onloadEvent.target.result, null, orientation,
+                    function (canvas, file) {
+                      img5.src = canvas.toDataURL('image/jpeg', 1.0);
+                  });
+                };
+                fileReader.readAsDataURL(xhr5.response);
+              });
+          }
+          xhr5.send();
+
+          img1.onload = function() {
+            return Promise.resolve(r);
+          }
+        });
+      }
+
+      var showPhoto = function(r) {
+        location.href = "#";
+        location.href = "#gallery";
+      }
+
+      orderPage.pageLoad("축하의 한마디 남겨주세요.");
+      var callCameraButton = document.querySelector("#callCamera");
+      callCameraButton.addEventListener("click", function (event) {
+        camera.getImageFromCamera(function (canvas, file) {
+          orderPage.show(canvas, function () {
+            getUuid().then(function (authInfo) {
+              var od = new OrderInfo ();
+              od.items = new OrderItem ();
+              od.userId = authInfo.uuid;
+              od.blob = file;
+              od.option = orderPage.getMessage();
+              order(od).then(refreshPhoto).then(showPhoto);
+              orderPage.hide();
+            });
+          });
+        });
+      });
+      window.onload = refreshPhoto;
+    </script>
+  </body>
+>>>>>>> Stashed changes
 </html>

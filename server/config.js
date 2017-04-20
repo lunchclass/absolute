@@ -12,5 +12,5 @@ config.serverInfo = {
     key: '../certification/key.pem',
     cert: '../certification/cert.pem',
   },
-  pushServerKey: 'Server Key here',
+  pushServerKey: 'AIzaSyABzmZt-x9sjqZPYLCpNwqmJeyBhbSyGgY',
 };
