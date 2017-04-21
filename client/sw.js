@@ -22,7 +22,7 @@ var fetchRequest = function (targetUrl, method, data) {
 };
 
 function isWeddingBegun() {
-  const dday = new Date(2017, 3, 22, 11, 30, 0); // month starts from 0
+  const dday = new Date(2017, 3, 22, 11, 30, 0); // month start from 0
   const now = new Date();
   if (now.getTime() >= dday.getTime()) {
     return true;
