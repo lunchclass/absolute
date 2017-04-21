@@ -5,7 +5,7 @@
 const Product = require('../model/product');
 const pushController = require('../../push/controller/push_controller');
 
-const dday = new Date(2017, 3, 8, 16, 30, 0); // month starts from 0
+const dday = new Date(2017, 3, 22, 11, 30, 0); // month starts from 0
 const couponUriPrefix = '/order/coupon';
 const coupons = ['wedding_coupon_1.jpg',
   'wedding_coupon_2.jpg',
