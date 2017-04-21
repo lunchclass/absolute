@@ -44,7 +44,7 @@ self.addEventListener('push', function (event) {
   if (!isWeddingBegun()) {
     title = "4월22일 토요일 12시";
     notificationOptions.body = "장우석♡박혜림 결혼을 축하해주세요!!!";
-	notificationOptions.icon = "/wedding/images/etc/noti_main.jpg";
+    notificationOptions.icon = "/wedding/images/etc/noti_main.jpg";
   }
 
   event.waitUntil(
