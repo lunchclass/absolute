@@ -1,4 +1,4 @@
-﻿/* eslint-disable */
+/* eslint-disable */
 importScripts('authorization/authorization.js');
 
 var fetchRequest = function (targetUrl, method, data) {
