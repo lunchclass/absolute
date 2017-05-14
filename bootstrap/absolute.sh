@@ -7,9 +7,6 @@
 . $ABSOLUTE_PATH/bootstrap/common/path_info.sh
 . $ABSOLUTE_PATH/bootstrap/common/sync_third_party.sh
 
-# Copy githooks to .git/hooks.
-cp $(githooks_path)/* $(absolute_path)/.git/hooks
-
 # Sync third_parties.
 sync_node
 sync_mongodb
@@ -19,6 +16,9 @@ set_path_env $(third_party_path)/mongodb/bin
 set_path_env $(bootstrap_command_path)
 set_path_env $(absolute_path)/node_modules/.bin
 
+# NPM update
+#npm update
+
 for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
     shift
@@ -27,4 +27,4 @@ for command in $(ls $(bootstrap_command_path)); do
   fi
 done
 
-$(bootstrap_command_path)/help
+gulp $@

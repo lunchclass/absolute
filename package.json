@@ -1,17 +1,45 @@
 {
-  "name": "absolute",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {
-    "debug": "~2.2.0",
-    "express": "~4.14.0",
-    "morgan": "~1.7.0",
-    "forever": "~0.15.3",
-    "nodemon": "latest"
+  "babel": {
+    "presets": ["es2015", "es2017"]
   },
+
   "devDependencies": {
-    "eslint": "^3.13.0",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0"
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-es2017": "^6.0.15",
+    "eslint-config-google": "^0.7.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-nodemon": "latest",
+    "gulp-sourcemaps": "^1.6.0",
+    "run-sequence": "^1.0.1"
+  },
+
+  "dependencies": {
+    "express": "~4.15.2"
+  },
+
+  "engines": {
+    "node": ">=0.12"
+  },
+
+  "private": true,
+
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "extends": ["eslint:recommended", "google"],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": 0
+    }
   }
 }
