@@ -30,7 +30,22 @@ process.on('disconnect', () => {
 gulp.task('default', ['help']);
 
 gulp.task('help', () => {
-  // TODO(zino): We should implement this command.
+	var commands = [
+	'help',
+	'build',
+	'lint',
+	'node',
+	'npm',
+	'start',
+	'start_db',
+	'start_server',
+	'stop' 
+	];
+	
+	console.log('Available commands:');
+	commands.forEach( function (command) {
+		console.log('\tabsolute ' + command);
+	});
 });
 
 gulp.task('build', () => {
