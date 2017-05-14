@@ -5,6 +5,10 @@
 const express = require('express');
 const http = require('http');
 
+/**
+ * Redirect http to https
+ * @param {object} serverInfo
+ */
 function runForHttps(serverInfo) {
   const redirectApp = express();
   const redirectServer = http.createServer(redirectApp);
