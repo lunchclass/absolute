@@ -17,7 +17,7 @@ set_path_env $(bootstrap_command_path)
 set_path_env $(absolute_path)/node_modules/.bin
 
 # NPM update
-#npm update
+npm update
 
 for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
