@@ -5,6 +5,11 @@
 const fs = require('fs');
 const https = require('https');
 
+/**
+ * Run https server
+ * @param {object} app
+ * @param {object} serverInfo
+ */
 function run(app, serverInfo) {
   const certificationInfo = {
     key: fs.readFileSync(serverInfo.certification.key),
