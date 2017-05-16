@@ -12,7 +12,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
     "gulp-load-plugins": "^1.2.4",
-    "gulp-nodemon": "latest",
+    "gulp-nodemon": "^2.2.1",
     "gulp-sourcemaps": "^1.6.0",
     "run-sequence": "^1.0.1"
   },
