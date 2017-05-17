@@ -18,7 +18,8 @@
   },
 
   "dependencies": {
-    "express": "~4.15.2"
+    "express": "~4.15.2",
+    "body-parser": "~1.16.1"
   },
 
   "engines": {
