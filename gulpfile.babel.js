@@ -77,3 +77,12 @@ gulp.task('stop', finish => {
     }, 1000);
   });
 });
+
+
+gulp.task('platform-test', function (cb) {
+  child_process.exec('sh ./bootstrap/test/platform_test.sh', function (err, stdout, stderr) {
+    console.log(stdout); 
+    console.log(stderr);
+    cb(err);
+  });
+})
