@@ -13,7 +13,7 @@ const redirectServer = require('./https_server/redirect_server');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../client')));
-app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({
   limit: '10mb',
   extended: true,
