@@ -3,5 +3,4 @@ os:
   - osx
 language: node_js
 script:
-  - ./absolute platform_test
   - ./absolute lint
