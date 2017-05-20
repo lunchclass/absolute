@@ -68,7 +68,7 @@ gulp.task('start_db', finish => {
     finish();
   });
 });
-
+// test
 // FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)
 gulp.task('stop', finish => {
   child_process.exec('mongo admin --eval "db.shutdownServer();"', error => {
