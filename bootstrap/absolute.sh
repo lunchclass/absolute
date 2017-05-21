@@ -18,7 +18,7 @@ set_path_env $(absolute_path)/node_modules/.bin
 
 # NPM update
 if [ ! .pkg_timestamp -nt package.json ]; then
-  npm update && touch .pkg_timestamp
+  npm update && > .pkg_timestamp
 fi
 
 for command in $(ls $(bootstrap_command_path)); do
