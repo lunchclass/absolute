@@ -9,6 +9,7 @@ import gulp from 'gulp';
 import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
+const platform_test = require('./bootstrap/test/platform_test');
 
 process.on('exit', () => {
   runSequence('stop');
@@ -78,11 +79,6 @@ gulp.task('stop', finish => {
   });
 });
 
-
-gulp.task('platform-test', function (cb) {
-  child_process.exec('sh ./bootstrap/test/platform_test.sh', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-})
+gulp.task('platform_test', finish => {
+	platform_test.test_sync_node();
+});
