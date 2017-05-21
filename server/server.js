@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import bodyParser from 'body-parser';
 
-const config = require('./config');
-const httpsServer = require('./https_server/https_server');
-const redirectServer = require('./https_server/redirect_server');
+import config from './config';
+import httpsServer from './https_server/https_server';
+import redirectServer from './https_server/redirect_server';
 
 const app = express();
 
