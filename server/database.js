@@ -12,7 +12,7 @@ function printLog(data) {
   console.log(lines.join(''));
 }
 
-const spawn = require('child_process').spawn;
+import {spawn} from 'child_process';
 
 const prc = spawn('mongod', ['--config', '../database/mongod.cfg']);
 
