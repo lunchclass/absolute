@@ -6,6 +6,7 @@ import babel from 'gulp-babel';
 import child_process from 'child_process';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
+import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
@@ -68,7 +69,7 @@ gulp.task('start_db', finish => {
     finish();
   });
 });
-// test
+
 // FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)
 gulp.task('stop', finish => {
   child_process.exec('mongo admin --eval "db.shutdownServer();"', error => {
@@ -76,4 +77,15 @@ gulp.task('stop', finish => {
       finish();
     }, 1000);
   });
+});
+
+gulp.task('platform_test', () => {
+  gulp.src(['test/test-*.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+	process.exit(1);
+    })
+    .once('end', () => {
+	process.exit();	
+    })
 });
