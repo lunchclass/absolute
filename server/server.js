@@ -19,5 +19,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+app.use('/api/push/', require('./push/apis/router'));
+
 httpsServer.run(app, config.serverInfo);
 redirectServer.runForHttps(config.serverInfo);
