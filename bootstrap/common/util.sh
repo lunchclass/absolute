@@ -8,7 +8,6 @@
 . $ABSOLUTE_PATH/bootstrap/common/platform_info.sh
 
 # Check whether the specified command can use in this platform or not.
-# NOTE: This function will not be working on Windows.
 # Return: 0 if the command can use in this platform.
 function can_use_command() {
   type "$1" > /dev/null 2>&1
@@ -28,7 +27,7 @@ function download() {
   fi
 
   echo "Downloading... $url"
-  if is_windows_platform || can_use_command wget; then
+  if can_use_command wget; then
     mkdir -p $path && wget $url -P $path > /dev/null 2>&1
   else
     mkdir -p $path && cd $path && \
