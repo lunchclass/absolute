@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const router = require('express').Router();
+import {app} from 'express';
+const router = app.Router();
 
 router.use('/token', require('./token'));
-router.use('/notification', require('./notification'));
 
 module.exports = router;
