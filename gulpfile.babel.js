@@ -79,8 +79,8 @@ gulp.task('stop', finish => {
   });
 });
 
-gulp.task('platform_test', () => {
-  gulp.src(['test/test-*.js'], {read: false})
+gulp.task('bootstrap_test', () => {
+  gulp.src(['bootstrap/test/test-*.js'], {read: false})
     .pipe(mocha())
     .once('error', () => {
 	process.exit(1);
