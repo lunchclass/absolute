@@ -11,6 +11,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.2.4",
     "gulp-nodemon": "^2.2.1",
     "gulp-sourcemaps": "^1.6.0",

@@ -3,9 +3,10 @@
 // found in the LICENSE file.
 
 import babel from 'gulp-babel';
-import child_process from 'child_process';
+import childProcess from 'child_process';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
+import gulpIf from 'gulp-if';
 import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
@@ -26,7 +27,7 @@ process.on('disconnect', () => {
   runSequence('stop');
 });
 
-// TODO(zino): If users type unknown comands, we should invoke this default task.
+// TODO(zino): If users type unknown comands, should invoke this default task.
 gulp.task('default', ['help']);
 
 gulp.task('help', () => {
@@ -38,14 +39,23 @@ gulp.task('build', () => {
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('out'))
+    .pipe(gulp.dest('out'));
 });
 
-gulp.task('lint', finish => {
-  return gulp.src(['./server/**/*.js'])
+gulp.task('lint', (finish) => {
+  return gulp.src(['./server/**/*.js', './gulpfile.babel.js'])
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('lint:fix', (finish) => {
+  return gulp.src(['./server/**/*.js', './gulpfile.babel.js'])
+    .pipe(eslint({fix: true}))
+    .pipe(eslint.format())
+    .pipe(gulpIf((file) => {
+        return file.eslint != null && file.eslint.fixed;
+      }, gulp.dest('./')));
 });
 
 gulp.task('start', () => {
@@ -59,8 +69,9 @@ gulp.task('start_server', () => {
   });
 });
 
-gulp.task('start_db', finish => {
-  child_process.exec('mongod --fork --dbpath database --logpath database/log', error => {
+gulp.task('start_db', (finish) => {
+  childProcess.exec('mongod --fork --dbpath database --logpath database/log',
+      (error) => {
     if (error)
       console.log('Already running mongo DB daemon..');
     else
@@ -70,8 +81,8 @@ gulp.task('start_db', finish => {
 });
 
 // FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)
-gulp.task('stop', finish => {
-  child_process.exec('mongo admin --eval "db.shutdownServer();"', error => {
+gulp.task('stop', (finish) => {
+  childProcess.exec('mongo admin --eval "db.shutdownServer();"', (error) => {
     setTimeout(() => {
       finish();
     }, 1000);
