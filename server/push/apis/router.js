@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import express from 'express';
-const router = express.Router();
+import {Router as router} from 'express';
+import token from './token';
 
-router.use('/token', require('./token'));
+router().use('/token', token);
 
 module.exports = router;
