@@ -4,3 +4,4 @@ os:
 language: node_js
 script:
   - ./absolute lint
+  - ./absolute bootstrap_test
