@@ -3,13 +3,12 @@
 // found in the LICENSE file.
 
 import {Router as router} from 'express';
-import token from './token';
 
-router.post('/', (req, res) => {
+router().post('/', (req, res) => {
 
 });
 
-router.get('/count', (req, res) => {
+router().get('/count', (req, res) => {
 
 });
 
