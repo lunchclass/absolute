@@ -26,6 +26,8 @@ if [ ! -f .pkg_timestamp ] || [ package.json -nt .pkg_timestamp ]; then
   npm update && > .pkg_timestamp
 fi
 
+export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
+
 for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
     shift
