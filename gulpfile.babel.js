@@ -7,6 +7,7 @@ import childProcess from 'child_process';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import gulpIf from 'gulp-if';
+import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
@@ -87,4 +88,15 @@ gulp.task('stop', (finish) => {
       finish();
     }, 1000);
   });
+});
+
+gulp.task('bootstrap_test', () => {
+  gulp.src(['bootstrap/test/test-*.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+	process.exit(1);
+    })
+    .once('end', () => {
+	process.exit();	
+    })
 });
