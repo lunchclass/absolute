@@ -7,7 +7,7 @@ const execSync = require('child_process').execSync;
 
 describe('Clean Test', () => {
   it('Is out directory cleaned?', () => {
-	//assert(fs.existsSync('./out/') == false);
-	assert(true);
+    //assert(fs.existsSync('./out/') == false);
+    assert(true);
   });
 });
