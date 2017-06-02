@@ -12,6 +12,22 @@ import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
 
+process.on('exit', () => {
+  runSequence('stop');
+});
+
+process.on('SIGINT', () => {
+  runSequence('stop');
+});
+
+process.on('uncaughtException', () => {
+  runSequence('stop');
+});
+
+process.on('disconnect', () => {
+  runSequence('stop');
+});
+
 // TODO(zino): If users type unknown comands, we should invoke this default task.
 gulp.task('default', ['help']);
 
