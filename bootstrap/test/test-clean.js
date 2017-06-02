@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import assert from 'assert';
-import fs from 'fs';
+const assert = require('assert');
+const execSync = require('child_process').execSync;
 
 describe('Clean Test', () => {
   it('Is out directory cleaned?', () => {
