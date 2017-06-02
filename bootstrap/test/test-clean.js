@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 const assert = require('assert');
-const execSync = require('child_process').execSync;
+const fs = require('fs');
+const execSync= require('child_process').execSync;
 
 describe('Clean Test', () => {
   it('Is out directory cleaned?', () => {
-    //assert(fs.existsSync('./out/') == false);
-    assert(true);
+    execSync('absolute start');
+	execSync('absolute stop');
+	execSync('absolute clean');
+    assert(fs.existsSync('./out/') == false);
   });
 });
