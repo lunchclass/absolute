@@ -4,6 +4,7 @@
 
 import babel from 'gulp-babel';
 import child_process from 'child_process';
+import clean from 'gulp-clean';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import mocha from 'gulp-mocha';
@@ -88,4 +89,9 @@ gulp.task('bootstrap_test', () => {
     .once('end', () => {
 	process.exit();	
     })
+});
+
+gulp.task('clean', () => {
+  gulp.src(['out/'], {read: false})
+    .pipe(clean({ force: true }));
 });
