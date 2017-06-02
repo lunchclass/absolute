@@ -4,14 +4,12 @@
 
 import babel from 'gulp-babel';
 import child_process from 'child_process';
-import clean from 'gulp-clean';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
-import usage from 'gulp-help-doc'
 
 process.on('exit', () => {
   runSequence('stop');
@@ -33,13 +31,9 @@ process.on('disconnect', () => {
 gulp.task('default', ['help']);
 
 gulp.task('help', () => {
-  return usage(gulp);
+  // TODO(zino): We should implement this command.
 });
 
-/**
- * build absolute
- * @task {build}
- */
 gulp.task('build', () => {
   return gulp.src(['./server/**/*.js'])
     .pipe(sourcemaps.init())
@@ -48,10 +42,6 @@ gulp.task('build', () => {
     .pipe(gulp.dest('out'))
 });
 
-/**
- * run lint
- * @task {lint}
- */
 gulp.task('lint', finish => {
   return gulp.src(['./server/**/*.js'])
     .pipe(eslint())
@@ -59,18 +49,10 @@ gulp.task('lint', finish => {
     .pipe(eslint.failAfterError())
 });
 
-/**
- * start absolute
- * @task {start}
- */
 gulp.task('start', () => {
   runSequence('start_db', 'lint', 'build', 'start_server');
 });
 
-/**
- * start server
- * @task {start_server}
- */
 gulp.task('start_server', () => {
   nodemon({
     script: 'server.js',
@@ -78,10 +60,6 @@ gulp.task('start_server', () => {
   });
 });
 
-/**
- * start db
- * @task {start_db}
- */
 gulp.task('start_db', finish => {
   child_process.exec('mongod --fork --dbpath database --logpath database/log', error => {
     if (error)
@@ -92,10 +70,6 @@ gulp.task('start_db', finish => {
   });
 });
 
-/**
- * stop server
- * @task {stop}
- */
 // FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)
 gulp.task('stop', finish => {
   child_process.exec('mongo admin --eval "db.shutdownServer();"', error => {
