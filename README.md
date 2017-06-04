@@ -3,11 +3,8 @@ Absolute
 
 ### A web-based order platform like siren-order for Starbucks.
 
-|                   |              Absolute                                                    |
-| ----------------- |:------------------------------------------------------------------------:|
-| macOS             |![Build Status](https://travis-ci.org/romandev/absolute.svg?branch=master)|
-| Ubuntu 12.04      |![Build Status](https://travis-ci.org/romandev/absolute.svg?branch=master)|
-| Windows           |                                                                          |
+![Build Status](https://travis-ci.org/romandev/absolute.svg?branch=master)|
+[![Coverage Status](https://coveralls.io/repos/github/romandev/absolute/badge.svg?branch=master)](https://coveralls.io/github/romandev/absolute?branch=master)
 
 ### Welcome to Absolute!
 
