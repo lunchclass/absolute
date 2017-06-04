@@ -2,9 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const fs = require('fs');
-const https = require('https');
+import fs from 'fs';
+import https from 'https';
 
+/**
+ * Run https server
+ * @param {object} app
+ * @param {object} serverInfo
+ */
 function run(app, serverInfo) {
   const certificationInfo = {
     key: fs.readFileSync(serverInfo.certification.key),
