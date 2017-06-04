@@ -5,20 +5,20 @@
 // FIXME(Wuseok): babel is not build for test module.
 // Current babel was built in server part so It'll fix later.
 // please check github issue number #242
-
 const assert = require('assert');
-const execSync = require('child_process').execSync;
+const path = require('path');
+const spawnSync = require('child_process').spawnSync;
 
 describe('Module check', () => {
   it('Is mongo db installed?', () => {
-	execSync('./third_party/mongodb/bin/mongod -version');
+    spawnSync(path.resolve('./third_party/mongodb/bin/mongod'), ['--version']);
   });
 
   it('Is node installed?', () => {
-	execSync('./third_party/node/bin/node -v');
+    spawnSync(path.resolve('./absolute'), ['node', '-v']);
   });
 
   it('Is npm installed?', () => {
-	execSync('./third_party/node/bin/npm -v');
+    spawnSync(path.resolve('./absolute'), ['npm', '-v']);
   });
 });
