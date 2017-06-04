@@ -3,9 +3,9 @@
 // found in the LICENSE file.
 
 const assert = require('assert');
+const fs = require('fs');
 const path = require('path');
 const spawnSync = require('child_process').spawnSync;
-const fs = require('fs');
 
 describe('Clean Test', () => {
   it('Is out directory cleaned?', () => {
