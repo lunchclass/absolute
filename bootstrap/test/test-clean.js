@@ -8,9 +8,9 @@ const fs = require('fs');
 
 describe('Clean Test', () => {
   it('Is out directory cleaned?', () => {
-    execSync('absolute start');
-    execSync('absolute stop');
-    execSync('absolute clean');
+    execSync('./absolute start');
+    execSync('./absolute stop');
+    execSync('./absolute clean');
     assert(fs.existsSync('./out/') == false);
   });
 });
