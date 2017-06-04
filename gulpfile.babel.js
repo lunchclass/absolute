@@ -91,6 +91,7 @@ gulp.task('bootstrap_test', () => {
     })
 });
 
+// FIXME(jimmy): This command can not remove node_modules directory (need to fix it)
 gulp.task('clean', () => {
   gulp.src(['out/', '.pkg_timestamp'], {read: false})
     .pipe(clean({ force: true }));
