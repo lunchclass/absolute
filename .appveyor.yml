@@ -1,8 +1,9 @@
-environment:
-  nodejs_version: "6"
+build: off
+
+branches:
+  only:
+    - master
 
 test_script:
   - ./absolute lint
   - ./absolute bootstrap_test
-
-build: off
