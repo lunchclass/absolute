@@ -26,9 +26,6 @@ if [ ! -f .pkg_timestamp ] || [ package.json -nt .pkg_timestamp ]; then
   npm update && > .pkg_timestamp
 fi
 
-# TODO(nadongguri): this env vir should be set not here but before gulp command
-export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
-
 for command in $(ls $(bootstrap_command_path)); do
   if [ "$1" = "$command" ]; then
     shift
@@ -36,5 +33,8 @@ for command in $(ls $(bootstrap_command_path)); do
     exit
   fi
 done
+
+# TODO(nadongguri): this env vir should be set not here but before gulp command
+export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
 
 gulp $@
