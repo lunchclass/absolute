@@ -1,8 +1,8 @@
 Absolute
 =============
 
-![Travis Build Status](https://travis-ci.org/romandev/absolute.svg?branch=master)
-![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/p1hgqj3ta6t0ooom?svg=true)
+[![Linux/Max Build Status](https://travis-ci.org/romandev/absolute.svg?branch=master)](https://travis-ci.org/romandev/absolute)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/pmac6fwbclavu8n0/branch/master?svg=true)](https://ci.appveyor.com/project/romandev/absolute/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/romandev/absolute/badge.svg?branch=master)](https://coveralls.io/github/romandev/absolute?branch=master)
 
 ### Welcome to Absolute!
