@@ -4,4 +4,5 @@
 
 @ECHO OFF
 set ABSOLUTE_PATH=%~dp0
+Get-Process
 cd %ABSOLUTE_PATH% && third_party\win-bash\bash bootstrap\absolute.sh %*

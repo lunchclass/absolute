@@ -2,7 +2,6 @@ environment:
   nodejs_version: "6"
 
 test_script:
-  - ./absolute lint
-  - ./absolute bootstrap_test
+  - ps: ./absolute lint
 
 build: off
