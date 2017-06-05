@@ -4,6 +4,7 @@
 
 import babel from 'gulp-babel';
 import child_process from 'child_process';
+import clean from 'gulp-clean';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import mocha from 'gulp-mocha';
@@ -89,3 +90,10 @@ gulp.task('bootstrap_test', () => {
 	process.exit();	
     })
 });
+
+// FIXME(jimmy): This command can not remove node_modules directory (need to fix it)
+gulp.task('clean', () => {
+  gulp.src(['out/', '.pkg_timestamp'], {read: false})
+    .pipe(clean({ force: true }));
+});
+
