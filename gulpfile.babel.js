@@ -10,6 +10,8 @@ import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
+import path from 'path';
+import webpack from 'webpack';
 
 process.on('exit', () => {
   runSequence('stop');
@@ -50,7 +52,7 @@ gulp.task('lint', finish => {
 });
 
 gulp.task('start', () => {
-  runSequence('start_db', 'lint', 'build', 'start_server');
+  runSequence('start_db', 'lint', 'build', 'webpack', 'start_server');
 });
 
 gulp.task('start_server', () => {
@@ -83,9 +85,43 @@ gulp.task('bootstrap_test', () => {
   gulp.src(['bootstrap/test/test-*.js'], {read: false})
     .pipe(mocha())
     .once('error', () => {
-	process.exit(1);
+      process.exit(1);
     })
     .once('end', () => {
-	process.exit();	
+      process.exit();
     })
+});
+
+gulp.task('webpack', () => {
+    webpack({
+      watch: true,
+      context: path.resolve(__dirname, 'client'),
+      entry: './app.js',
+      output: {
+        path: path.resolve(__dirname, 'client', 'dist'),
+        filename: 'bundle.js'
+      },
+      module: {
+        rules: [{
+          test: /\.js$/,
+          use: [{
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['es2015', {modules: false}]
+              ]
+            }
+          }]
+        }]
+      },
+      plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            include: /\.min\.js$/,
+            minimize: true
+        })
+      ]
+    }, (err, stats) => {
+      // FIXME(cs-lee) save error in log file
+      console.log('webpack error');
+  });
 });
