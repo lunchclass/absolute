@@ -36,12 +36,12 @@ gulp.task('help', () => {
   // TODO(zino): We should implement this command.
 });
 
-gulp.task('build', () => {
+gulp.task('build_server', () => {
   return gulp.src(['./server/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('out'))
+    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')))
 });
 
 gulp.task('lint', finish => {
@@ -52,13 +52,13 @@ gulp.task('lint', finish => {
 });
 
 gulp.task('start', () => {
-  runSequence('start_db', 'lint', 'build', 'webpack', 'start_server');
+  runSequence('start_db', 'lint', 'build_server', 'build_client', 'start_server');
 });
 
 gulp.task('start_server', () => {
   nodemon({
     script: 'server.js',
-    cwd: 'out',
+    cwd: 'out/server',
   });
 });
 
@@ -92,36 +92,35 @@ gulp.task('bootstrap_test', () => {
     })
 });
 
-gulp.task('webpack', () => {
-    webpack({
-      watch: true,
-      context: path.resolve(__dirname, 'client'),
-      entry: './app.js',
-      output: {
-        path: path.resolve(__dirname, 'client', 'dist'),
-        filename: 'bundle.js'
-      },
-      module: {
-        rules: [{
-          test: /\.js$/,
-          use: [{
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['es2015', {modules: false}]
-              ]
-            }
-          }]
+gulp.task('build_client', () => {
+  webpack({
+    watch: true,
+    context: path.resolve(__dirname, 'client'),
+    entry: './app.js',
+    output: {
+      path: path.resolve(__dirname, 'out', 'client', 'javascript'),
+      filename: 'bundle.js'
+    },
+    module: {
+      rules: [{
+        test: /\.js$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['es2015', {modules: false}]
+            ]
+          }
         }]
-      },
-      plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            include: /\.min\.js$/,
-            minimize: true
-        })
-      ]
-    }, (err, stats) => {
-      // FIXME(cs-lee) save error in log file
-      console.log('webpack error');
+      }]
+    },
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+          include: /\.min\.js$/,
+          minimize: true
+      })
+    ]
+  }, (err, stats) => {
+      // FIXME(cs-lee) save log in file
   });
 });
