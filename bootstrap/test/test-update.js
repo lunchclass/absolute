@@ -7,12 +7,14 @@
 // please check github issue number #242
 
 const assert = require('assert');
-const execSync = require('child_process').execSync;
+const path = require('path');
+const fs = require('fs');
 
 describe('Update Test', () => {
-  it('Is update was fine?', () => {
-	// FIXME(Wuseok): It will be updated new test module here.
-	// test-update.js will be check about npm update is successfully or not.
-	assert(true);
+  it('Is npm update working?', () => {
+	var pkg_stats = fs.statSync("package.json");
+	var timestamp_stats = fs.statSync(".pkg_timestamp");
+
+	assert(pkg_stats["mtime"] <= timestamp_stats["mtime"]);
   });
 });
