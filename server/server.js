@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import config from './config';
 import httpsServer from './https_server/https_server';
 import redirectServer from './https_server/redirect_server';
+import dbConnect from './db/db_connect';
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+dbConnect.connectServer();
 httpsServer.run(app, config.serverInfo);
 redirectServer.runForHttps(config.serverInfo);
