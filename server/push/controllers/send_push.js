@@ -5,8 +5,6 @@
 import config from '../../config';
 import webpush from 'web-push';
 
-const serverSubject = 'https://github.com/romandev/absolute';
-
 /**
  * Send push with payload to endpoint with it's authentication key.
  * @param {string} endpoint endpoint from subscription
@@ -15,10 +13,11 @@ const serverSubject = 'https://github.com/romandev/absolute';
  * @return {promise} result includes statusCode, headers, body
  */
 export function sendPush(endpoint, keys, payload) {
+  const SERVER_SUBJECT = 'https://github.com/romandev/absolute';
   return new Promise((resolve, reject) => {
     webpush.setGCMAPIKey(config.serverInfo.pushServerKey);
     webpush.setVapidDetails(
-      serverSubject,
+      SERVER_SUBJECT,
       config.serverInfo.pushVapidKeys.publicKey,
       config.serverInfo.pushVapidKeys.privateKey,
     );
