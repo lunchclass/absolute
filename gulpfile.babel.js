@@ -8,9 +8,9 @@ import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
+import path from 'path';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
-import path from 'path';
 import webpack from 'webpack';
 
 process.on('exit', () => {
