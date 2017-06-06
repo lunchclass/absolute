@@ -5,6 +5,8 @@
 import config from '../../config';
 import webpush from 'web-push';
 
+const serverSubject = 'https://github.com/romandev/absolute';
+
 /**
  * Send push with payload to endpoint with it's authentication key.
  * @param {string} endpoint endpoint from subscription
@@ -12,13 +14,13 @@ import webpush from 'web-push';
  * @param {string} payload payload data send to endpoint
  * @return {promise} result includes statusCode, headers, body
  */
-function sendPush(endpoint, keys, payload) {
+export function sendPush(endpoint, keys, payload) {
   return new Promise((resolve, reject) => {
     webpush.setGCMAPIKey(config.serverInfo.pushServerKey);
     webpush.setVapidDetails(
-      'https://github.com/romandev/absolute',
+      serverSubject,
       config.serverInfo.pushVapidKeys.publicKey,
-      config.serverInfo.pushVapidKeys.privateKey
+      config.serverInfo.pushVapidKeys.privateKey,
     );
 
     // This is the same output of calling JSON.stringify on a PushSubscription
@@ -36,7 +38,5 @@ function sendPush(endpoint, keys, payload) {
     }).catch((webPushError) => {
       return reject(webPushError);
     });
-});
+  });
 }
-
-module.exports = sendPush;
