@@ -11,6 +11,11 @@ const path = require('path');
 const fs = require('fs');
 
 describe('Update Test', () => {
+
+  it('Is npm update check file exist?', () => {
+	assert(fs.existsSync(".pkg_timestamp"));
+  });
+
   it('Is npm update working?', () => {
 	var pkg_stats = fs.statSync("package.json");
 	var timestamp_stats = fs.statSync(".pkg_timestamp");
