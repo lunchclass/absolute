@@ -9,8 +9,8 @@ config.serverInfo = {
   httpsPort: 9443,
   ip: '127.0.0.1',
   certification: {
-    key: '../certification/key.pem',
-    cert: '../certification/cert.pem',
+    key: '../../certification/key.pem',
+    cert: '../../certification/cert.pem',
   },
   pushServerKey: '',
   pushVapidKeys: {
