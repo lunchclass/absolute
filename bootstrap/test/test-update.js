@@ -9,17 +9,38 @@
 const assert = require('assert');
 const path = require('path');
 const fs = require('fs');
+const spawnSync = require('child_process').spawnSync;
 
+
+/**
+*  < test-update scenario >
+*  1. assert .pkg_timestamp exists (If .pkg_timestamp is not exists, run absolute command)
+*  2. assert .pkg_timestamp's modified time is newer than package.json.
+*  3. Keep .pkg_timestamp's modified time to use it in step 5.
+*  4. run absolute command
+*  5. assert .pkg_timestamp's modified time == kept modified time 
+*   (It means that the .pkg_timestamp's modified time is not updated)
+*
+*/
 describe('Update Test', () => {
+
+  if(!fs.existsSync(".pkg_timestamp")){
+	spawnSync(path.resolve('./absolute'));
+  }
 
   it('Is npm update check file exist?', () => {
 	assert(fs.existsSync(".pkg_timestamp"));
   });
 
-  it('Is npm update working?', () => {
-	var pkg_stats = fs.statSync("package.json");
-	var timestamp_stats = fs.statSync(".pkg_timestamp");
+  var timestamp_before = fs.statSync(".pkg_timestamp");
+  spawnSync(path.resolve('./absolute'));
+  var timestamp_after = fs.statSync(".pkg_timestamp");
 
-	assert(pkg_stats["mtime"] <= timestamp_stats["mtime"]);
+  it('Is npm update working fine?', () => {
+	assert(datesEqual(timestamp_after["mtime"], timestamp_before["mtime"]));
   });
 });
+
+function datesEqual(a, b) {
+    return a.getTime() == b.getTime();
+}
