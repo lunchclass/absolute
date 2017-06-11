@@ -46,7 +46,10 @@
       "sourceType": "module"
     },
     "rules": {
-      "no-console": 0
+      "no-console": 0,
+      "sort-imports": ["error", {
+        "memberSyntaxSortOrder": ["single", "multiple", "all", "none"]
+      }]
     }
   }
 }
