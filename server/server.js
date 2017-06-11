@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import config from './config';
 import httpsServer from './https_server/https_server';
 import redirectServer from './https_server/redirect_server';
+import pushRouter from './push/apis/router';
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(bodyParser.urlencoded({
   limit: '10mb',
   extended: true,
 }));
+
+app.use('/api/push/', pushRouter);
 
 httpsServer.run(app, config.serverInfo);
 redirectServer.runForHttps(config.serverInfo);
