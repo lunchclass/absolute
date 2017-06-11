@@ -12,7 +12,7 @@ cluster.schedulingPolicy = cluster.SCHED_RR;
 
 if (cluster.isMaster) {
   // master worker
-  os.cpu.forEach((cpu) => {
+  os.cpus().forEach((cpu) => {
     cluster.fork();
   });
   // recieve message from worker
