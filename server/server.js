@@ -20,6 +20,6 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-mongoose.connect('${config.ip}:${config.dbPort}/absolute');
+mongoose.connect(`${config.ip}:${config.dbPort}/absolute`);
 httpsServer.run(app, config.serverInfo);
 redirectServer.runForHttps(config.serverInfo);
