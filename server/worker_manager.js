@@ -4,6 +4,10 @@
 
 import cluster from 'cluster';
 import os from 'os';
+import sourceMapSupport from 'source-map-support';
+
+// It provides source map support for stack traces in node
+sourceMapSupport.install({environment: 'node'});
 
 // Policy of dispatching task to another worker available
 // cluster.SCHED_NONE to leave it to the operating system
