@@ -12,6 +12,7 @@ import path from 'path';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
 import webpack from 'webpack';
+import gulp_help from 'gulp-task-help';
 
 process.on('exit', () => {
   runSequence('stop');
@@ -31,10 +32,6 @@ process.on('disconnect', () => {
 
 // TODO(zino): If users type unknown comands, we should invoke this default task.
 gulp.task('default', ['help']);
-
-gulp.task('help', () => {
-  // TODO(zino): We should implement this command.
-});
 
 gulp.task('build_server', () => {
   return gulp.src(['./server/**/*.js'])
@@ -124,3 +121,21 @@ gulp.task('build_client', () => {
       // FIXME(cs-lee) save log in file
   });
 });
+
+const help = new gulp_help(
+	'Absolute: command list',
+	'Usage: ./absolute <task>'
+);
+
+help.registerTask(
+	'help',
+	'Shows information on the usage of absolute.'
+);
+
+help.registerTask(
+	'start',
+	'Start absolute server'
+);
+// TODO(wuseok): we have to add more absolute execute command here.
+
+gulp.task('help', help.helpTask);
