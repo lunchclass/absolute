@@ -7,6 +7,7 @@ const config = module.exports;
 config.serverInfo = {
   httpPort: 9080,
   httpsPort: 9443,
+  dbPort: 27017,
   ip: '127.0.0.1',
   certification: {
     key: '../../certification/key.pem',
