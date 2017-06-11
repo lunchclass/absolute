@@ -17,9 +17,9 @@ if (cluster.isMaster) {
   });
   // recieve message from worker
   cluster.on('exit', (worker, code, siganl) => {
-      if (code == 200) {
-          // cluster.fork();
-      }
+    if (code == 200) {
+      // cluster.fork();
+    }
   });
 } else if (cluster.isWoker) {
   // child worker
