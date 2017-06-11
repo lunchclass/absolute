@@ -1,13 +1,9 @@
-os:
-  - linux
-  - osx
-
-language: node_js
+build: off
 
 branches:
   only:
     - master
 
-script:
+test_script:
   - ./absolute lint
   - ./absolute bootstrap_test
