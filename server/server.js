@@ -2,14 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
-
 import config from './config';
+import express from 'express';
 import httpsServer from './https_server/https_server';
-import redirectServer from './https_server/redirect_server';
 import mongoose from 'mongoose';
+import path from 'path';
+import redirectServer from './https_server/redirect_server';
 
 const app = express();
 
