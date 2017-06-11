@@ -47,6 +47,7 @@
     },
     "rules": {
       "no-console": 0,
+      "indent": ["error", 2],
       "sort-imports": ["error", {
         "memberSyntaxSortOrder": ["single", "multiple", "all", "none"]
       }]
