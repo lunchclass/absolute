@@ -5,10 +5,11 @@
 import bodyParser from 'body-parser';
 import config from './config';
 import express from 'express';
-import httpsServer from './https_server/https_server';
 import mongoose from 'mongoose';
 import path from 'path';
-import redirectServer from './https_server/redirect_server';
+
+import * as httpsServer from './https_server/https_server';
+import * as redirectServer from './https_server/redirect_server';
 
 const app = express();
 
@@ -20,5 +21,5 @@ app.use(bodyParser.urlencoded({
 }));
 
 mongoose.connect(`${config.ip}:${config.dbPort}/absolute`);
-httpsServer.run(app, config.serverInfo);
-redirectServer.runForHttps(config.serverInfo);
+httpsServer.run(app, config);
+redirectServer.runForHttps(config);
