@@ -10,7 +10,7 @@ import https from 'https';
  * @param {object} app
  * @param {object} serverInfo
  */
-export function run(app, serverInfo) {
+function run(app, serverInfo) {
   const certificationInfo = {
     key: fs.readFileSync(serverInfo.certification.key),
     cert: fs.readFileSync(serverInfo.certification.cert),
@@ -19,3 +19,5 @@ export function run(app, serverInfo) {
   const httpsServer = https.createServer(certificationInfo, app);
   httpsServer.listen(serverInfo.httpsPort);
 }
+
+exports.run = run;
