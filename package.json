@@ -12,6 +12,7 @@
     "babel-preset-es2017": "^6.0.15",
     "css-loader": "^0.28.4",
     "eslint-config-google": "^0.7.1",
+    "eslint-plugin-import": "^2.3.0",
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -31,6 +32,7 @@
   "dependencies": {
     "express": "~4.15.2",
     "body-parser": "~1.16.1",
+    "mongoose": "^4.10.5",
     "web-push": "~3.2.2"
   },
   "engines": {
@@ -45,14 +47,21 @@
     },
     "extends": [
       "eslint:recommended",
-      "google"
+      "google",
+      "plugin:import/errors",
+      "plugin:import/warnings"
     ],
     "parserOptions": {
       "ecmaVersion": 2017,
       "sourceType": "module"
     },
     "rules": {
-      "no-console": 0
+      "no-console": 0,
+      "import/no-commonjs": [2, "allow-primitive-modules"],
+      "indent": ["error", 2],
+      "sort-imports": ["error", {
+        "memberSyntaxSortOrder": ["single", "multiple", "all", "none"]
+      }]
     }
   }
 }

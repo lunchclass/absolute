@@ -9,7 +9,7 @@ import http from 'http';
  * Redirect http to https
  * @param {object} serverInfo
  */
-function runForHttps(serverInfo) {
+export function runForHttps(serverInfo) {
   const redirectApp = express();
   const redirectServer = http.createServer(redirectApp);
 
@@ -24,5 +24,3 @@ function runForHttps(serverInfo) {
   });
   redirectServer.listen(serverInfo.httpPort);
 }
-
-exports.runForHttps = runForHttps;
