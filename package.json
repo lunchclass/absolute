@@ -11,6 +11,7 @@
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-es2017": "^6.0.15",
     "eslint-config-google": "^0.7.1",
+    "eslint-plugin-import": "^2.3.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
@@ -40,7 +41,9 @@
     },
     "extends": [
       "eslint:recommended",
-      "google"
+      "google",
+      "plugin:import/errors",
+      "plugin:import/warnings"
     ],
     "parserOptions": {
       "ecmaVersion": 2017,
@@ -48,6 +51,7 @@
     },
     "rules": {
       "no-console": 0,
+      "import/no-commonjs": [2, "allow-primitive-modules"],
       "indent": ["error", 2],
       "sort-imports": ["error", {
         "memberSyntaxSortOrder": ["single", "multiple", "all", "none"]
