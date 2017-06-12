@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "~4.15.2",
     "body-parser": "~1.16.1",
+    "mongoose": "^4.10.5",
     "web-push": "~3.2.2"
   },
   "engines": {
