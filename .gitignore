@@ -5,3 +5,6 @@ out
 third_party/mongodb
 third_party/node
 database
+
+# Except this file
+!database/.gitkeep
