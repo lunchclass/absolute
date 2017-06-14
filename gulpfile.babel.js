@@ -63,7 +63,7 @@ gulp.task('start_server', () => {
 });
 
 gulp.task('start_db', finish => {
-  child_process.exec('mkdir -p database && mongod --fork --dbpath database --logpath database/log', error => {
+  child_process.exec('mongod --fork --dbpath database --logpath database/log', error => {
     if (error)
       console.log('Already running mongo DB daemon..');
     else
