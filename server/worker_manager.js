@@ -12,14 +12,14 @@ cluster.schedulingPolicy = cluster.SCHED_RR;
 
 if (cluster.isMaster) {
   // master worker
-  os.cpu.forEach((cpu) => {
+  os.cpus().forEach((cpu) => {
     cluster.fork();
   });
   // recieve message from worker
   cluster.on('exit', (worker, code, siganl) => {
-      if (code == 200) {
-          // cluster.fork();
-      }
+    if (code == 200) {
+      // cluster.fork();
+    }
   });
 } else if (cluster.isWoker) {
   // child worker

@@ -8,6 +8,10 @@ branches:
   only:
     - master
 
+install:
+  # Override this section for disabling default |npm install|.
+  - ./absolute
+
 script:
   - ./absolute lint
   - ./absolute bootstrap_test

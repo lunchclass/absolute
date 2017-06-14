@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
-
 import config from './config';
-import httpsServer from './https_server/https_server';
-import redirectServer from './https_server/redirect_server';
-import dbConnect from './db/db_connect';
+import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
+
+import * as httpsServer from './https_server/https_server';
+import * as redirectServer from './https_server/redirect_server';
 
 const app = express();
 
@@ -20,6 +20,6 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-dbConnect.connectServer();
-httpsServer.run(app, config.serverInfo);
-redirectServer.runForHttps(config.serverInfo);
+mongoose.connect(`${config.ip}:${config.dbPort}/absolute`);
+httpsServer.run(app, config);
+redirectServer.runForHttps(config);
