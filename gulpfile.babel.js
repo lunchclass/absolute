@@ -40,6 +40,7 @@ gulp.task('build_server', () => {
   return gulp.src(['./server/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
+    .on('error', error => {console.log(error);})
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')))
 });
