@@ -37,7 +37,7 @@ gulp.task('help', () => {
 });
 
 gulp.task('build_server', () => {
-  return gulp.src(['./server/**/*.js'])
+  return gulp.src(['./server/**/*.js', './server/**/*.json'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write())
