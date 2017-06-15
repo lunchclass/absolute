@@ -1,0 +1,9 @@
+build: off
+
+branches:
+  only:
+    - master
+
+test_script:
+  - ./absolute lint
+  - ./absolute bootstrap_test

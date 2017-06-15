@@ -1,4 +1,0 @@
-#!/bin/sh
-
-ABSOLUTE_PATH=$(git rev-parse --show-toplevel)
-$ABSOLUTE_PATH/absolute lint
