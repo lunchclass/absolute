@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import express from 'express';
-import auth from '../controller/auth_controller';
+import * as auth from '../controller/auth_controller';
 
 const router = express.router();
 

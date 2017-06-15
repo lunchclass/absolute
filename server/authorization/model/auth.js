@@ -9,4 +9,4 @@ const schema = new mongoose.Schema({
   timeStamp: {type: Date, default: Date.now},
 });
 
-module.exports = mongoose.model('auth', schema);
+export const Auth = mongoose.model('auth', schema);
