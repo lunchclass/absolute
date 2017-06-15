@@ -92,6 +92,17 @@ gulp.task('bootstrap_test', () => {
     })
 });
 
+gulp.task('server_test', ['start'], () => {
+  gulp.src(['./test/*.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+        process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
+    });
+});
+
 gulp.task('build_client', () => {
   gulp.src(path.resolve(__dirname, 'client', 'index.html'))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
