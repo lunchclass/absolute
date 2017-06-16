@@ -10,15 +10,17 @@ let pushKeys;
  *  Load push key if key exist else generate and load
  */
 export function loadPushKey() {
-  const data = fs.readFileSync('./push/push_key.json', 'utf8');
+  const data = fs.readFileSync('../../server/push/push_key.json', 'utf8');
   pushKeys = JSON.parse(data);
 
   if(pushKeys.pushVapidKeys.privateKey === undefined
     || pushKeys.pushVapidKeys.privateKey === '') {
+    console.log('generate push key');
     const vapidKeys = webpush.generateVAPIDKeys();
     pushKeys.pushVapidKeys.privateKey = vapidKeys.privateKey;
     pushKeys.pushVapidKeys.publicKey = vapidKeys.publicKey;
-    fs.writeFile('./creds/push_keys.json', JSON.stringify(pushKeys, null, 2));
+    fs.writeFileSync('../../server/push/push_key.json',
+        JSON.stringify(pushKeys, null, 2), 'utf8');
   }
 }
 
