@@ -139,4 +139,8 @@ gulp.task('build_client', () => {
   }, (err, stats) => {
       // FIXME(cs-lee) save log in file
   });
+
+  process.on('SIGINT', () => {
+    process.exit(1);
+  });
 });
