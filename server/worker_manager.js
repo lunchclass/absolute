@@ -13,8 +13,10 @@
 // limitations under the License.
 
 import cluster from 'cluster';
+import event from 'events';
 import os from 'os';
 import sourceMapSupport from 'source-map-support';
+import util from 'util';
 
 // It provides source map support for stack traces in node
 sourceMapSupport.install({environment: 'node'});
@@ -23,21 +25,52 @@ sourceMapSupport.install({environment: 'node'});
 // cluster.SCHED_NONE to leave it to the operating system
 // cluster.SCHED_RR for round-robin
 cluster.schedulingPolicy = cluster.SCHED_RR;
+let makeWorker = function(cluster) {
+  let worker = cluster.fork();
+  return new Promise((resolve, reject) => {
+    worker.on('online', () => {
+      resolve(worker.id);
+    });
+  });
+};
+let workers = [];
 
-if (cluster.isMaster) {
-  // master worker
-  os.cpus().forEach((cpu) => {
-    cluster.fork();
-  });
-  // recieve message from worker
-  cluster.on('exit', (worker, code, siganl) => {
-    if (code == 200) {
-      // cluster.fork();
-    }
-  });
-} else if (cluster.isWorker) {
-  // child worker
-  // i.e) server.js
-  // import server from server;
-  console.log(`worker id: ${cluster.worker.id}`);
+/**
+ * WorkerEvent() in worker_manager.js
+ * it inherits EventEmitter
+ */
+function WorkerEvent() {
+  event.EventEmitter.call(this);
 }
+
+/**
+ * run() in worker_manager.js
+ * it makes child-process for using multi-core
+ * @return {WorkerEvent}
+ */
+export function run() {
+  let workerEvent = new WorkerEvent();
+  if (cluster.isMaster) {
+    // master worker
+    os.cpus().forEach((cpu) => {
+      workers.push(makeWorker(cluster));
+    });
+    Promise.all(workers).then((id) => {
+      console.log(`All workers are online ${id}`);
+      workerEvent.emit('All workers online', 'workers');
+    });
+    // recieve message from worker
+    cluster.on('exit', (worker, code, siganl) => {
+      if (code == 200) {
+        // cluster.fork();
+      }
+    });
+  } else if (cluster.isWorker) {
+    // child worker
+    console.log(`worker id: ${cluster.worker.id}`);
+  }
+  return workerEvent;
+}
+util.inherits(WorkerEvent, event.EventEmitter);
+
+
