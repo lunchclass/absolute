@@ -4,6 +4,10 @@ branches:
   only:
     - master
 
+platform:
+  - x86
+  - x64
+
 test_script:
   - ./absolute lint
   - ./absolute bootstrap_test
