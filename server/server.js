@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 
 import * as httpsServer from './https_server/https_server';
+import * as pushKeys from './push/gen_push_key';
 import * as redirectServer from './https_server/redirect_server';
 
 const app = express();
@@ -19,6 +20,8 @@ app.use(bodyParser.urlencoded({
   limit: '10mb',
   extended: true,
 }));
+
+pushKeys.loadPushKey();
 
 mongoose.connect(`${config.ip}:${config.dbPort}/absolute`);
 httpsServer.run(app, config);
