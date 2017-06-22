@@ -11,7 +11,7 @@ const path = require('path');
 const fs = require('fs');
 const spawnSync = require('child_process').spawnSync;
 
-
+// TODO(zino): Should refactor this test codes.
 /**
 *  < test-update scenario >
 *  1. assert .pkg_timestamp exists (If .pkg_timestamp is not exists, run absolute command)
