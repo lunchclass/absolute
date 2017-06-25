@@ -106,6 +106,8 @@ gulp.task('bootstrap_test', () => {
 gulp.task('build_client', () => {
   gulp.src(path.resolve(__dirname, 'client', 'index.html'))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
+  gulp.src(path.resolve(__dirname, 'client', 'service-worker.js'))
+    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
     watch: true,
     context: path.resolve(__dirname, 'client'),
