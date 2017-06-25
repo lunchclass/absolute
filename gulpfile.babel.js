@@ -12,6 +12,7 @@ import path from 'path';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
 import webpack from 'webpack';
+import workboxPlugin from 'workbox-webpack-plugin';
 
 process.on('exit', () => {
   runSequence('stop');
@@ -131,6 +132,12 @@ gulp.task('build_client', () => {
       }]
     },
     plugins: [
+      new workboxPlugin({
+          globDirectory: path.resolve(__dirname, 'out'),
+          globPatterns: ['**/*.{html,js,css}'],
+          swDest: path.join(path.resolve(__dirname, 'out', 'client'),
+              'service-worker.js'),
+      }),
       new webpack.optimize.UglifyJsPlugin({
           include: /\.min\.js$/,
           minimize: true
