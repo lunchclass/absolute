@@ -41,7 +41,7 @@ gulp.task('build_server', () => {
     .pipe(sourcemaps.init())
     .pipe(babel())
     .on('error', error => {console.log(error);})
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.', {sourceRoot: path.resolve(__dirname, 'server')}))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')))
 });
 

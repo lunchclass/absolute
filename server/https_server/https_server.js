@@ -4,6 +4,10 @@
 
 import fs from 'fs';
 import https from 'https';
+import sourceMapSupport from 'source-map-support';
+
+// It provides source map support for stack traces in node
+sourceMapSupport.install({environment: 'node'});
 
 /**
  * Run https server

@@ -3,9 +3,12 @@
 // found in the LICENSE file.
 
 import config from '../../config';
+import sourceMapSupport from 'source-map-support';
 import webpush from 'web-push';
 import * as pushKeys from '../gen_push_key';
 
+// It provides source map support for stack traces in node
+sourceMapSupport.install({environment: 'node'});
 
 /**
  * Send push with payload to endpoint with it's authentication key.

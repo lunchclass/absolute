@@ -4,6 +4,10 @@
 
 import express from 'express';
 import http from 'http';
+import sourceMapSupport from 'source-map-support';
+
+// It provides source map support for stack traces in node
+sourceMapSupport.install({environment: 'node'});
 
 /**
  * Redirect http to https
