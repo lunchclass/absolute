@@ -1,3 +1,4 @@
+import './service-worker-manager';
 import './style/style.scss';
 import codeURL from './image/test.png';
 
