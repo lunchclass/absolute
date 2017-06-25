@@ -4,6 +4,8 @@
 
 import config from '../../config';
 import webpush from 'web-push';
+import * as pushKeys from '../gen_push_key';
+
 
 /**
  * Send push with payload to endpoint with it's authentication key.
@@ -18,8 +20,8 @@ export function sendPush(endpoint, keys, payload) {
     webpush.setGCMAPIKey(config.serverInfo.pushServerKey);
     webpush.setVapidDetails(
       SERVER_SUBJECT,
-      config.serverInfo.pushVapidKeys.publicKey,
-      config.serverInfo.pushVapidKeys.privateKey,
+      pushKeys.getPushKey().pushVapidKeys.publicKey,
+      pushKeys.getPushKey().pushVapidKeys.privateKey,
     );
 
     // This is the same output of calling JSON.stringify on a PushSubscription

@@ -21,7 +21,7 @@ if (cluster.isMaster) {
       // cluster.fork();
     }
   });
-} else if (cluster.isWoker) {
+} else if (cluster.isWorker) {
   // child worker
   // i.e) server.js
   // import server from server;

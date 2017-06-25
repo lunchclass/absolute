@@ -34,4 +34,7 @@ for command in $(ls $(bootstrap_command_path)); do
   fi
 done
 
+# TODO(nadongguri): this env vir should be set not here but before gulp command
+export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
+
 gulp $@
