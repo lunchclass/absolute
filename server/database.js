@@ -2,6 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import sourceMapSupport from 'source-map-support';
+
+// It provides source map support for stack traces in node
+sourceMapSupport.install({environment: 'node'});
+
 /**
  * Print log.
  * @param {number} data to be printed out

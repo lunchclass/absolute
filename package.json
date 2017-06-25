@@ -26,8 +26,9 @@
     "run-sequence": "^1.0.1",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
-    "url-loader": "^0.5.8",
-    "webpack": "^2.6.1"
+    "source-map-support": "^0.4.15",
+    "webpack": "^2.6.1",
+    "url-loader": "^0.5.8"
   },
   "dependencies": {
     "express": "~4.15.2",
