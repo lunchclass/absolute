@@ -4,3 +4,4 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('push', function(event) {
 });
+
