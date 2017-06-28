@@ -17,11 +17,13 @@ import config from './config';
 import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
+import {pushRouter} from './push/router/push_router';
 import sourceMapSupport from 'source-map-support';
 
 import * as httpsServer from './https_server/https_server';
 import * as pushKeys from './push/gen_push_key';
 import * as redirectServer from './https_server/redirect_server';
+
 
 // It provides source map support for stack traces in node
 sourceMapSupport.install({environment: 'node'});
@@ -35,6 +37,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+app.use('/api/push/', pushRouter);
 pushKeys.loadPushKey();
 
 mongoose.connect(`${config.ip}:${config.dbPort}/absolute`);
