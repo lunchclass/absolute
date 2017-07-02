@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import config from '../../config';
+
 import sourceMapSupport from 'source-map-support';
 import webpush from 'web-push';
 import * as pushKeys from '../gen_push_key';
@@ -30,7 +30,7 @@ sourceMapSupport.install({environment: 'node'});
 export function sendPush(endpoint, keys, payload) {
   const SERVER_SUBJECT = 'https://github.com/romandev/absolute';
   return new Promise((resolve, reject) => {
-    webpush.setGCMAPIKey(config.serverInfo.pushServerKey);
+    webpush.setGCMAPIKey(pushKeys.getPushKey().pushServerKey);
     webpush.setVapidDetails(
       SERVER_SUBJECT,
       pushKeys.getPushKey().pushVapidKeys.publicKey,
@@ -50,6 +50,7 @@ export function sendPush(endpoint, keys, payload) {
     .then((webPushResult) => {
       return resolve(webPushResult);
     }).catch((webPushError) => {
+      console.log(`push failed to ${endpoint}\n ${webPushError}`);
       return reject(webPushError);
     });
   });
