@@ -19,9 +19,9 @@ process.on('exit', () => {
 
 process.on('SIGINT', () => {
   runSequence('stop');
-	process.nextTick( () => {
-	  process.exit(1);
-	});
+  process.nextTick( () => {
+    process.exit(1);
+  });
 });
 
 process.on('uncaughtException', () => {
