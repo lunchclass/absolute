@@ -56,10 +56,30 @@ gulp.task('build_server', () => {
 });
 
 gulp.task('lint', finish => {
-  return gulp.src(['./server/**/*.js'])
+  runSequence('lint_server', 'lint_router', finish);
+});
+
+gulp.task('lint_server', finish => {
+  return gulp.src(['./server/**/*.js', '!./server/**/*.router.js'])
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('lint_router', finish => {
+  return gulp.src(['./server/**/*.router.js'])
+    .pipe(eslint({
+        'rules': {
+          'require-jsdoc': ['error', {
+              'require': {
+                'MethodDefinition': false,
+                'ClassDeclaration': false
+              }
+            }]
+        }
+      }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('start', () => {
