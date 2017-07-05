@@ -13,9 +13,9 @@
 // limitations under the License.
 
 import config from '../../config';
+import pushKeys from '../push_key';
 import sourceMapSupport from 'source-map-support';
 import webpush from 'web-push';
-import * as pushKeys from '../gen_push_key';
 
 // It provides source map support for stack traces in node
 sourceMapSupport.install({environment: 'node'});
@@ -31,10 +31,11 @@ export function sendPush(endpoint, keys, payload) {
   const SERVER_SUBJECT = 'https://github.com/romandev/absolute';
   return new Promise((resolve, reject) => {
     webpush.setGCMAPIKey(config.serverInfo.pushServerKey);
+    webpush.setGCMAPIKey(pushKeys.pushServerKey);
     webpush.setVapidDetails(
       SERVER_SUBJECT,
-      pushKeys.getPushKey().pushVapidKeys.publicKey,
-      pushKeys.getPushKey().pushVapidKeys.privateKey,
+      pushKeys.pushVapidKeys.publicKey,
+      pushKeys.pushVapidKeys.privateKey,
     );
 
     // This is the same output of calling JSON.stringify on a PushSubscription
