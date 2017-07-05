@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import sourceMapSupport from 'source-map-support';
 import webpush from 'web-push';
 import * as pushKeys from '../gen_push_key';
