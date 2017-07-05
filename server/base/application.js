@@ -12,24 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import access from './access_modifier.js';
 import express from 'express';
 import requireAll from 'require-all';
+
+let _instance;
 
 /**
  * Application class
  */
 export default class Application {
+  @access.private _app;
+  @access.private _port = 9080;
+
   /**
    * @constructor
    */
   constructor() {
-    if (this._instance !== undefined) {
+    if (_instance !== undefined) {
       throw new Error('Singleton');
     }
 
     this._app = express();
-    this._instance = this;
-    this._port = 9080;
   }
 
   /**
@@ -71,10 +75,10 @@ export default class Application {
    * @return {Application} Instance of Application.
    */
   static get instance() {
-    if (this._instance === undefined) {
-      this._instance = new Application();
+    if (_instance === undefined) {
+      _instance = new Application();
     }
-    return this._instance;
+    return _instance;
   }
 
   /**
