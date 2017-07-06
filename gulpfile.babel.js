@@ -123,6 +123,17 @@ gulp.task('bootstrap_test', () => {
     })
 });
 
+gulp.task('test_worker_manager', () => {
+  gulp.src(['test/server/test_worker_manager.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+      process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
+    })
+});
+
 gulp.task('build_client', () => {
   gulp.src([path.resolve(__dirname, 'client', 'index.html'),
             path.resolve(__dirname, 'client', 'service-worker.js')])
