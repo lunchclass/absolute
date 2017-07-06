@@ -19,6 +19,7 @@ import gulp from 'gulp';
 import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import path from 'path';
+import generatePushKey from './server/push/gen_push_key'
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
 import webpack from 'webpack';
@@ -60,7 +61,8 @@ gulp.task('lint', finish => {
 });
 
 gulp.task('lint_server', finish => {
-  return gulp.src(['./server/**/*.js', '!./server/**/*.router.js'])
+  return gulp.src(['./server/**/*.js', '!./server/**/*.router.js',
+    '!./server/push/push_key.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -82,8 +84,12 @@ gulp.task('lint_router', finish => {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('push_key', () => {
+  generatePushKey();
+});
+
 gulp.task('start', () => {
-  runSequence('start_db', 'lint', 'build_server', 'build_client', 'start_server');
+  runSequence('start_db', 'lint', 'push_key', 'build_server', 'build_client', 'start_server');
 });
 
 gulp.task('start_server', () => {

@@ -13,39 +13,48 @@
 // limitations under the License.
 
 import fs from 'fs';
+import pushKeys from './push_key';
 import webpush from 'web-push';
 
-let pushKeys;
 /**
  *  Load push key if key exist else generate and load
  */
-export function loadPushKey() {
-  const data = fs.readFileSync('../../server/push/push_key.json', 'utf8');
-  pushKeys = JSON.parse(data);
-
+export default function generatePushKey() {
   if(pushKeys.pushVapidKeys.privateKey === undefined
     || pushKeys.pushVapidKeys.privateKey === '') {
     console.log('generate push key');
     const vapidKeys = webpush.generateVAPIDKeys();
     pushKeys.pushVapidKeys.privateKey = vapidKeys.privateKey;
     pushKeys.pushVapidKeys.publicKey = vapidKeys.publicKey;
-    fs.writeFileSync('../../server/push/push_key.json',
-        JSON.stringify(pushKeys, null, 2), 'utf8');
+
+    writeClientPushPubkey(vapidKeys.publicKey);
+    writeServerPusKey(pushKeys);
   }
 }
 
 /**
- * Get push key
- * @return {json} Contain push server key, generated vapid key
+ * Write push vapid public key for client, client only must know public key
+ * @param {string} pubKey vapid public key for client side
  */
-export function getPushKey() {
-  return pushKeys;
+function writeClientPushPubkey(pubKey) {
+  const path = 'client/push/push_key.js';
+  fs.writeFileSync(path,
+    `export default {\n` +
+    `  \'pushVapidKeys\': {\n` +
+      `    \'publicKey\': \'${pushKeys.pushVapidKeys.publicKey}\'\n  }\n}`);
 }
 
 /**
- * Get push vapid public key.
- * @return {string} Push vapid public key
+ * Write push keys for server.
+ * @param {json} pushKeys pushServerKey and pushVapidKeys for server
  */
-export function getPushVapidPublicKey() {
-  return pushKeys.pushVapidKeys.publicKey;
+function writeServerPusKey(pushKeys) {
+  const path = 'server/push/push_key.js';
+  fs.writeFileSync(path,
+    `export default {\n` +
+    `  \'pushServerKey\': \'${pushKeys.pushServerKey}\',\n` +
+    `  \'pushVapidKeys\': {\n` +
+      `    \'publicKey\': \'${pushKeys.pushVapidKeys.publicKey}\',\n` +
+      `    \'privateKey\': \'${pushKeys.pushVapidKeys.privateKey}\',\n` +
+    `  },\n};`);
 }
