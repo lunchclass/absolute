@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import './service-worker-manager';
 import './style/style.scss';
 import codeURL from './image/test.png';
 import {Product, MandatoryOption, AdditionalOption} from './product/product.js';
