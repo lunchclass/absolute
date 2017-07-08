@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import Application from '../../base/application.js';
+import * as product from '../controller/product_controller';
 
 @Application.route('/product')
 export default class ProductRouter {
