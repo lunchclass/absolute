@@ -1,11 +1,24 @@
-// Copyright (c) 2017 The Absolute Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// Copyright (c) 2017 The Absolute Authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 import config from '../../config';
+import pushKeys from '../push_key';
+import sourceMapSupport from 'source-map-support';
 import webpush from 'web-push';
-import * as pushKeys from '../gen_push_key';
 
+// It provides source map support for stack traces in node
+sourceMapSupport.install({environment: 'node'});
 
 /**
  * Send push with payload to endpoint with it's authentication key.
@@ -18,10 +31,11 @@ export function sendPush(endpoint, keys, payload) {
   const SERVER_SUBJECT = 'https://github.com/romandev/absolute';
   return new Promise((resolve, reject) => {
     webpush.setGCMAPIKey(config.serverInfo.pushServerKey);
+    webpush.setGCMAPIKey(pushKeys.pushServerKey);
     webpush.setVapidDetails(
       SERVER_SUBJECT,
-      pushKeys.getPushKey().pushVapidKeys.publicKey,
-      pushKeys.getPushKey().pushVapidKeys.privateKey,
+      pushKeys.pushVapidKeys.publicKey,
+      pushKeys.pushVapidKeys.privateKey,
     );
 
     // This is the same output of calling JSON.stringify on a PushSubscription
