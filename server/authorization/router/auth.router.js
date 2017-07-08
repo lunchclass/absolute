@@ -12,29 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import express from 'express';
+import Application from '../../base/application.js';
 import * as auth from '../controller/auth_controller';
 
-const router = express.router();
+@Application.route('/uuid')
+export default class UuidRouter {
+  get(request, response) {
+    if (request.query.uuid) {
+      auth.getUuid(request.query.uuid).then((authInfo) => {
+        response.json(authInfo);
+      }, (error) => {
+        response.sendStatus(400);
+      });
+    } else {
+      response.sendStatus(400);
+    }
+  }
 
-router.post('/uuid', (request, response) => {
-  auth.generateUuid().then((authInfo) => {
-    response.send(authInfo);
-  }, (error) => {
-    response.sendStatus(400);
-  });
-});
-
-router.get('/uuid', (request, response) => {
-  if (request.query.uuid) {
-    auth.getUuid(request.query.uuid).then((authInfo) => {
-      response.json(authInfo);
+  post(request, response) {
+    auth.generateUuid().then((authInfo) => {
+      response.send(authInfo);
     }, (error) => {
       response.sendStatus(400);
     });
-  } else {
-    response.sendStatus(400);
   }
-});
-
-module.exports = router;
+}

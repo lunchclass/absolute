@@ -12,25 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import express from 'express';
+import Application from '../../base/application.js';
 import * as order from '../controller/order_controller';
 
-const router = express.router();
-
-router.post('/', (request, response) => {
-  if (request.body.userId) {
-    order.saveOrder(JSON.parse(JSON.stringify(request.body)));
-    response.sendStatus(200);
-  } else {
-    response.sendStatus(400);
+@Application.route('/order')
+export default class OrderRouter {
+  get(request, response) {
+    order.getOrderList(request.query.userId)
+      .then((orderList) => {
+        response.send(orderList);
+      });
   }
-});
 
-router.get('/', (request, response) => {
-  order.getOrderList(request.query.userId)
-    .then((orderList) => {
-      response.send(orderList);
-    });
-});
-
-module.exports = router;
+  post(request, response) {
+    if (request.body.userId) {
+      order.saveOrder(JSON.parse(JSON.stringify(request.body)));
+      response.sendStatus(200);
+    } else {
+      response.sendStatus(400);
+    }
+  }
+}
