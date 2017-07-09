@@ -148,7 +148,7 @@ gulp.task('build_client', () => {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['es2015', {modules: false}]
+              ['es2015-without-strict']
             ]
           }
         }]
