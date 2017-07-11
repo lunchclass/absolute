@@ -5,8 +5,8 @@
 import Application from '../../base/application.js';
 import {sendPush} from '../controller/send_push';
 
-
 @Application.route('/api/push/')
+
 /**
  * Push router class
  */
@@ -17,7 +17,7 @@ export default class PushRouter {
                    - request.body.endpoint endpoint endpoint from subscription
                    - request.body.keys keys authentication key
                      and p256dh key from subscription
-                   -request.body.payload payload payload data send to endpoint
+                   - request.body.payload payload payload data send to endpoint
    * @param {json} response response object
    */
   post(request, response) {
