@@ -13,8 +13,13 @@
 // limitations under the License.
 
 import access from './access_modifier.js';
+import bodyParser from 'body-parser';
+import config from '../config';
 import express from 'express';
+import importPath from 'path';
 import requireAll from 'require-all';
+
+import * as httpsServer from '../https_server/https_server';
 
 let _instance;
 
@@ -46,7 +51,13 @@ export default class Application {
       recursive: true,
     });
 
-    this._app.listen(this._port);
+    this._app.use(express.static(importPath.join(__dirname, '../../client')));
+    this._app.use(bodyParser.json({limit: '10mb'}));
+    this._app.use(bodyParser.urlencoded({
+      limit: '10mb',
+      extended: true,
+    }));
+    httpsServer.run(this._app, config);
   }
 
   /**
