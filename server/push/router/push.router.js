@@ -15,7 +15,7 @@
 import Application from '../../base/application.js';
 import {sendPush} from '../controller/send_push';
 
-@Application.route('/api/push/')
+@Application.route('/api/push')
 export default class PushRouter {
   /**
    * Send push with payload to endpoint with it's auth / ecdh key
