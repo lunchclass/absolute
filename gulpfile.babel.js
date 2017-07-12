@@ -26,7 +26,6 @@ import webpack from 'webpack';
 
 process.on('exit', () => {
   runSequence('stop');
-  
 });
 
 process.on('SIGINT', () => {
