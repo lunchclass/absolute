@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Push from './push/push_manager.js';
 import './service-worker-manager';
 import './style/style.scss';
 import codeURL from './image/test.png';
+import Push from './push/push_manager.js';
 import {Product, MandatoryOption, AdditionalOption} from './product/product.js';
 
 const root = document.querySelector('#root');
@@ -25,7 +25,6 @@ root.innerHTML = '<p>Absolute Client!</p>';
 img.src = codeURL;
 root.appendChild(img);
 
-var p = new Push();
 // Test code of product and option class
 var coffee = new Product('coffee', 3000);
 var coffeeTallSize = new MandatoryOption(coffee, 'tall size', 0);
