@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Application from './base/application.js';
+import Application from '../../base/application.js';
 
-Application.instance.start();
+@Application.route('/example')
+export default class ExampleRouter {
+  get(request, response) {
+    response.send('Example!');
+  }
+}

@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Application from './base/application.js';
+import mongoose from 'mongoose';
 
-Application.instance.start();
+const schema = new mongoose.Schema({
+  uuid: {type: String, lowercase: true, trim: true},
+  timeStamp: {type: Date, default: Date.now},
+});
+
+export const Auth = mongoose.model('auth', schema);

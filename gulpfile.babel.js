@@ -1,6 +1,16 @@
-// Copyright (c) 2017 The Absolute Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// Copyright (c) 2017 The Absolute Authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 import babel from 'gulp-babel';
 import child_process from 'child_process';
@@ -9,6 +19,7 @@ import gulp from 'gulp';
 import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import path from 'path';
+import generatePushKey from './server/push/gen_push_key'
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
 import webpack from 'webpack';
@@ -40,19 +51,45 @@ gulp.task('build_server', () => {
   return gulp.src(['./server/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
-    .pipe(sourcemaps.write())
+    .on('error', error => {console.log(error);})
+    .pipe(sourcemaps.write('.', {sourceRoot: path.resolve(__dirname, 'server')}))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')))
 });
 
 gulp.task('lint', finish => {
-  return gulp.src(['./server/**/*.js'])
+  runSequence('lint_server', 'lint_router', finish);
+});
+
+gulp.task('lint_server', finish => {
+  return gulp.src(['./server/**/*.js', '!./server/**/*.router.js',
+    '!./server/push/push_key.js'])
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('lint_router', finish => {
+  return gulp.src(['./server/**/*.router.js'])
+    .pipe(eslint({
+        'rules': {
+          'require-jsdoc': ['error', {
+              'require': {
+                'MethodDefinition': false,
+                'ClassDeclaration': false
+              }
+            }]
+        }
+      }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('push_key', () => {
+  generatePushKey();
 });
 
 gulp.task('start', () => {
-  runSequence('start_db', 'lint', 'build_server', 'build_client', 'start_server');
+  runSequence('start_db', 'lint', 'push_key', 'build_server', 'build_client', 'start_server');
 });
 
 gulp.task('start_server', () => {
@@ -104,7 +141,8 @@ gulp.task('server_test', ['start'], () => {
 });
 
 gulp.task('build_client', () => {
-  gulp.src(path.resolve(__dirname, 'client', 'index.html'))
+  gulp.src([path.resolve(__dirname, 'client', 'index.html'),
+            path.resolve(__dirname, 'client', 'service-worker.js')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
     watch: true,
@@ -121,7 +159,7 @@ gulp.task('build_client', () => {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['es2015', {modules: false}]
+              ['es2015-without-strict']
             ]
           }
         }]
