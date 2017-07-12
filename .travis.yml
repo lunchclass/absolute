@@ -4,10 +4,6 @@ os:
 
 language: node_js
 
-branches:
-  only:
-    - master
-
 install:
   # Override this section for disabling default |npm install|.
   - ./absolute
