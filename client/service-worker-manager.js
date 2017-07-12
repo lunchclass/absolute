@@ -6,9 +6,19 @@ if ('serviceWorker' in navigator) {
         // Push Manager
         if ('PushManager' in window) {
           navigator.serviceWorker.ready.then(function () {
-            serviceWorkerRegistration.pushManager.subscribe().then(
+            serviceWorkerRegistration.pushManager.subscribe({
+              userVisibleOnly: true,
+            }).then(
               function(pushSubscription) {
-                console.log(pushSubscription.endpoint);
+                var data = {
+                  endpoint: pushSubscription.endpoint,
+                  p256dh: btoa(String.fromCharCode.apply
+                    (null, new Uint8Array(pushSubscription.getKey('p256dh'))))
+                    .replace(/\+/g, '-').replace(/\//g, '_'),
+                  auth: btoa(String.fromCharCode.apply
+                    (null, new Uint8Array(pushSubscription.getKey('auth'))))
+                    .replace(/\+/g, '-').replace(/\//g, '_')
+                }
               }, function(error) {
                 console.log(error);
               }
