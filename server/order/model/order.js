@@ -12,6 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Application from './base/application.js';
+import mongoose from 'mongoose';
 
-Application.instance.start();
+// FIXME(coconutperm): It's temporary order schema. It will be changed.
+const schema = new mongoose.Schema({
+  userId: {type: String, lowercase: true, trim: true},
+  items: [{
+    name: {type: String, lowercase: true, trim: true},
+    count: Number,
+    amount: Number,
+  }],
+  totalAmount: Number,
+  image: {data: Buffer, contentType: String},
+  orderDate: {type: Date, default: Date.now},
+  options: String,
+});
+
+export const Order = mongoose.model('order', schema);

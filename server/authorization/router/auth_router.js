@@ -12,6 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Application from './base/application.js';
+import express from 'express';
+import * as auth from '../controller/auth_controller';
 
-Application.instance.start();
+const router = express.router();
+
+router.post('/uuid', (request, response) => {
+  auth.generateUuid().then((authInfo) => {
+    response.send(authInfo);
+  }, (error) => {
+    response.sendStatus(400);
+  });
+});
+
+router.get('/uuid', (request, response) => {
+  if (request.query.uuid) {
+    auth.getUuid(request.query.uuid).then((authInfo) => {
+      response.json(authInfo);
+    }, (error) => {
+      response.sendStatus(400);
+    });
+  } else {
+    response.sendStatus(400);
+  }
+});
+
+module.exports = router;
