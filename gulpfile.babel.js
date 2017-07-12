@@ -1,3 +1,5 @@
+
+
 // Copyright (c) 2017 The Absolute Authors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -127,6 +129,17 @@ gulp.task('bootstrap_test', () => {
     .once('end', () => {
       process.exit();
     })
+});
+
+gulp.task('server_test', ['start'], () => {
+  gulp.src(['./test/*.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+        process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
+    });
 });
 
 gulp.task('build_client', () => {
