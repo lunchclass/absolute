@@ -37,17 +37,5 @@ export default class Push {
    */
   getPushFromServer() {
   }
-
-  /**
-   * create notification
-   */
-  createNotification(title, options) {
-  }
-
-  /**
-   * close notification
-   */
-  closeNotification() {
-  }
 }
 
