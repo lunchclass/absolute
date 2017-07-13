@@ -12,12 +12,7 @@ if ('serviceWorker' in navigator) {
               function(pushSubscription) {
                 var data = {
                   endpoint: pushSubscription.endpoint,
-                  p256dh: btoa(String.fromCharCode.apply
-                    (null, new Uint8Array(pushSubscription.getKey('p256dh'))))
-                    .replace(/\+/g, '-').replace(/\//g, '_'),
-                  auth: btoa(String.fromCharCode.apply
-                    (null, new Uint8Array(pushSubscription.getKey('auth'))))
-                    .replace(/\+/g, '-').replace(/\//g, '_')
+                  key: pushSubscription.getKey
                 }
               }, function(error) {
                 console.log(error);
