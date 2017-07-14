@@ -22,20 +22,20 @@ export default class Push {
    */
   constructor() {
     /* Token to use for push notification */
-    this._token = 0;
+    this._subscription = 0;
   }
 
   /**
    * send push information to server
    */
-  addPushToServer(token) {
-    this._token = token;
+  registerSubscription(subscription) {
+    this._subscription = subscription;
   }
 
   /**
-   * get push information from server
+   * get push subscription with uuid from server
    */
-  getPushFromServer() {
+  getSubscription() {
   }
 }
 
