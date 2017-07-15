@@ -15,6 +15,10 @@
 import Application from '../../base/application.js';
 import * as product from '../controller/product_controller';
 
+/**
+ * This is product router class.
+ * This class has not yet materialized.
+ */
 @Application.route('/product')
 export default class ProductRouter {
   get(request, response) {
@@ -26,7 +30,7 @@ export default class ProductRouter {
 
   post(request, response) {
     if (request.body.name && request.body.amount) {
-      product.addProduct(JSON.parse(JSON.stringify(request.body)))
+      product.addProduct(JSON.parse(request.body))
         .then((product) => {
           response.send(product);
         });

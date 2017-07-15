@@ -10,16 +10,14 @@ import {Product} from '../model/product';
  * @return {promise} result product data what admin sent.
  */
 export function addProduct(productData) {
-  return new Promise((resolve, reject) => {
-    Product.findOneAndUpdate({name: productData.name}
-      , {amount: productData.amount, options: productData.options}
-      , {upsert: true}, (error, product) => {
-        if (error) {
-          resolve(error);
-        } else {
-          resolve(product);
-        }
-      });
+  return Product.findOneAndUpdate({name: productData.name}
+    , {amount: productData.amount, options: productData.options}
+    , {upsert: true}, (error, product) => {
+      if (error) {
+        resolve(error);
+      } else {
+        resolve(product);
+      }
   });
 }
 
@@ -28,13 +26,11 @@ export function addProduct(productData) {
  * @return {promise} result data list of product
  */
 export function getProductList() {
-  return new Promise((resolve, reject) => {
-    Product.find({}, (error, productList) => {
-      if (productList) {
-        resolve(JSON.stringify(productList));
-      } else {
-        reject(-1);
-      }
-    });
+  return Product.find({}, (error, productList) => {
+    if (productList) {
+      resolve(JSON.stringify(productList));
+    } else {
+      reject(error);
+    }
   });
 }
