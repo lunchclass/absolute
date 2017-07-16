@@ -14,4 +14,4 @@
 
 import Application from './base/application.js';
 
-Application.instance.start();
+Application.instance.setup().start();
