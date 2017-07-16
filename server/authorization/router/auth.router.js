@@ -15,25 +15,32 @@
 import Application from '../../base/application.js';
 import * as auth from '../controller/auth_controller';
 
-@Application.route('/uuid')
-export default class UuidRouter {
+/**
+ * It is class of rest api for generate user id.
+ * And it's temporary api. We will refactor this api
+ */
+@Application.route('/userid')
+export default class UserIdRouter {
   get(request, response) {
-    if (request.query.uuid) {
-      auth.getUuid(request.query.uuid).then((authInfo) => {
+    if (request.query.userid) {
+      auth.getUserId(request.query.userid).then((authInfo) => {
         response.json(authInfo);
       }, (error) => {
-        response.sendStatus(400);
+        //FIXME Please define error code to common area.
+        response.sendStatus(error);
       });
     } else {
-      response.sendStatus(400);
+      //FIXME Please define error code to common area.
+      response.sendStatus(error);
     }
   }
 
   post(request, response) {
-    auth.generateUuid().then((authInfo) => {
+    auth.generateUserId().then((authInfo) => {
       response.send(authInfo);
     }, (error) => {
-      response.sendStatus(400);
+      //FIXME Please define error code to common area.
+      response.sendStatus(error);
     });
   }
 }
