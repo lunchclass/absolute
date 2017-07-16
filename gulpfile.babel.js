@@ -86,6 +86,12 @@ gulp.task('lint_router', finish => {
 
 gulp.task('push_key', () => {
   generatePushKey();
+  child_process.exec('git update-index --assume-unchanged'
+  + ' ./server/push/push_key.js', error => {
+    if(error) {
+      console.log(`Failed to run update-index for push_key ${error}` );
+      }
+  });
 });
 
 gulp.task('start', () => {
