@@ -13,8 +13,15 @@
 // limitations under the License.
 
 import access from './access_modifier.js';
+import bodyParser from 'body-parser';
+import config from '../config';
 import express from 'express';
+import mongoose from 'mongoose';
+import path from 'path';
 import requireAll from 'require-all';
+import sourceMapSupport from 'source-map-support';
+
+sourceMapSupport.install({environment: 'node'});
 
 let _instance;
 
@@ -47,6 +54,20 @@ export default class Application {
     });
 
     this._app.listen(this._port);
+  }
+
+  /**
+   * @return {Application} Instance of Application.
+   */
+  setup() {
+    this._app.use(express.static(path.join(__dirname, '../../client')));
+    this._app.use(bodyParser.json({limit: '10mb'}));
+    this._app.use(bodyParser.urlencoded({
+      limit: '10mb',
+      extended: true,
+    }));
+    mongoose.connect(`${config.ip}:${config.dbPort}/absolute`);
+    return _instance;
   }
 
   /**
