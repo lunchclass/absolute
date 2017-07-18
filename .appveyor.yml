@@ -1,8 +1,5 @@
 build: off
 
-branches:
-  only:
-    - master
 
 test_script:
   - ./absolute lint
