@@ -1,4 +1,4 @@
-Absolute
+sssAbsolute
 =============
 
 [![Linux/Max Build Status](https://travis-ci.org/lunchclass/absolute.svg?branch=master)](https://travis-ci.org/lunchclass/absolute/branches)
