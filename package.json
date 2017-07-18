@@ -35,6 +35,7 @@
     "sass-loader": "^6.0.5",
     "source-map-support": "^0.4.15",
     "style-loader": "^0.18.2",
+    "typescript": "^2.4.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.1"
   },
