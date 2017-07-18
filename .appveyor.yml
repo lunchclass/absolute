@@ -1,5 +1,6 @@
 build: off
 
+
 test_script:
   - ./absolute lint
   - ./absolute bootstrap_test
