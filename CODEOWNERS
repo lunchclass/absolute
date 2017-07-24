@@ -1,4 +1,18 @@
 # Absolute Project Owners
 * @romandev
 
-# Absolute Sub-module Owners
+# There will be a lot of pull requests in each modules but we don't have enough
+# owners for review process. So, we make the following people become temporary
+# owners to digest each module reviews. They are not official owners who are
+# nominated by official process but are much contributing to each modules.
+# So, we believe that they can take responsibility for each modules.
+# Push
+server/push/* @JayChl
+client/push/* @JayChl
+client/service-worker*.js @JayChl
+
+# Order
+server/order/* @coconutperm
+
+# Build
+gulpfile.babel.js @nadongguri
