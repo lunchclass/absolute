@@ -22,8 +22,8 @@ import path from 'path';
 import generatePushKey from './server/push/gen_push_key'
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
-import webpack from 'webpack';
 import undefTaskToDefault from 'gulp-undef-task-to-default';
+import webpack from 'webpack';
 
 process.on('exit', () => {
   runSequence('stop');
