@@ -6,9 +6,14 @@ if ('serviceWorker' in navigator) {
         // Push Manager
         if ('PushManager' in window) {
           navigator.serviceWorker.ready.then(function () {
-            serviceWorkerRegistration.pushManager.subscribe().then(
+            serviceWorkerRegistration.pushManager.subscribe({
+              userVisibleOnly: true,
+            }).then(
               function(pushSubscription) {
-                console.log(pushSubscription.endpoint);
+                var data = {
+                  endpoint: pushSubscription.endpoint,
+                  key: pushSubscription.getKey
+                }
               }, function(error) {
                 console.log(error);
               }
