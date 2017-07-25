@@ -28,6 +28,7 @@
     "gulp-mocha": "^4.3.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-undef-task-to-default": "1.0.0",
     "mocha": "^3.4.1",
     "node-sass": "^4.5.3",
     "private-decorator": "^0.1.7",
