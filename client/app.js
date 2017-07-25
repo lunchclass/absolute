@@ -15,6 +15,7 @@
 import './service-worker-manager';
 import './style/style.scss';
 import codeURL from './image/test.png';
+import Push from './push/push_manager.js';
 import {Product, MandatoryOption, AdditionalOption} from './product/product.js';
 
 const root = document.querySelector('#root');
