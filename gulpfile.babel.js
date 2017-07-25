@@ -22,6 +22,7 @@ import path from 'path';
 import generatePushKey from './server/push/gen_push_key'
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
+import undefTaskToDefault from 'gulp-undef-task-to-default';
 import webpack from 'webpack';
 
 process.on('exit', () => {
@@ -40,7 +41,6 @@ process.on('disconnect', () => {
   runSequence('stop');
 });
 
-// TODO(zino): If users type unknown comands, we should invoke this default task.
 gulp.task('default', ['help']);
 
 gulp.task('help', () => {
@@ -177,3 +177,5 @@ gulp.task('build_client', () => {
       // FIXME(cs-lee) save log in file
   });
 });
+
+undefTaskToDefault(gulp);
