@@ -1,4 +1,4 @@
-importScripts('javascript/push.js');
+importScripts('javascript/sw.js');
 
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting());

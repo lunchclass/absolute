@@ -138,7 +138,7 @@ gulp.task('build_client', () => {
     context: path.resolve(__dirname, 'client'),
     entry: {
       bundle : './app.js',
-      push : './push/push_manager.js'
+      sw : './push/push_manager.js'
     },
     output: {
       path: path.resolve(__dirname, 'out', 'client', 'javascript'),
