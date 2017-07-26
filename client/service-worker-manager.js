@@ -1,3 +1,5 @@
+import Push from './push/push_manager.js';
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('service-worker.js').then(
@@ -10,10 +12,7 @@ if ('serviceWorker' in navigator) {
               userVisibleOnly: true,
             }).then(
               function(pushSubscription) {
-                var data = {
-                  endpoint: pushSubscription.endpoint,
-                  key: pushSubscription.getKey
-                }
+                Push.registerSubscription(pushSubscription);     				
               }, function(error) {
                 console.log(error);
               }

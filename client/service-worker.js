@@ -9,6 +9,5 @@ self.addEventListener('push', function(event) {
     return;
   }
 
-  var push = new Push();
 });
 
