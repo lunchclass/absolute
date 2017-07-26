@@ -136,10 +136,13 @@ gulp.task('build_client', () => {
   webpack({
     watch: true,
     context: path.resolve(__dirname, 'client'),
-    entry: './app.js',
+    entry: {
+      bundle : './app.js',
+      push : './push/push_manager.js'
+    },
     output: {
       path: path.resolve(__dirname, 'out', 'client', 'javascript'),
-      filename: 'bundle.js'
+      filename: '[name].js'
     },
     module: {
       rules: [{
