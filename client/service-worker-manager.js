@@ -2,7 +2,7 @@ import Push from './push/push_manager.js';
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('service-worker.js').then(
+    navigator.serviceWorker.register('javascript/sw.js').then(
       function(serviceWorkerRegistration) {
         console.log('Service Worker Registration Success.');
         // Push Manager
