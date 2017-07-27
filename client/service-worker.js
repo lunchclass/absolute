@@ -8,6 +8,4 @@ self.addEventListener('push', function(event) {
   if (!(self.Notification && self.Notification.permission === 'granted')) {
     return;
   }
-
 });
-
