@@ -64,7 +64,10 @@ gulp.task('lint', (finish) => {
 });
 
 gulp.task('lint_server', (finish) => {
-  return gulp.src(['./server/**/*.js', '!./server/**/*.router.js',
+  return gulp.src([
+    './gulpfile.babel.js',
+    './server/**/*.js',
+    '!./server/**/*.router.js',
     '!./server/push/push_key.js'])
     .pipe(eslint())
     .pipe(eslint.format())
