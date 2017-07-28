@@ -1,3 +1,5 @@
+# Order is important; the last matching pattern takes the most precedence.
+
 # Absolute Project Owners
 * @romandev
 
@@ -7,12 +9,12 @@
 # nominated by official process but are much contributing to each modules.
 # So, we believe that they can take responsibility for each modules.
 # Push
-server/push/* @JayChl
-client/push/* @JayChl
-client/service-worker*.js @JayChl
+server/push/* @romandev @JayChl
+client/push/* @romandev @JayChl
+client/service-worker*.js @romandev @JayChl
 
 # Order
-server/order/* @coconutperm
+server/order/* @romandev @coconutperm
 
 # Build
-gulpfile.babel.js @nadongguri
+gulpfile.babel.js @romandev @nadongguri
