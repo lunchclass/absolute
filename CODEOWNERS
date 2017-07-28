@@ -1,5 +1,4 @@
-# Absolute Project Owners
-* @romandev
+# Order is important; the last matching pattern takes the most precedence.
 
 # There will be a lot of pull requests in each modules but we don't have enough
 # owners for review process. So, we make the following people become temporary
@@ -16,3 +15,6 @@ server/order/* @coconutperm
 
 # Build
 gulpfile.babel.js @nadongguri
+
+# Absolute Project Owners
+* @romandev
