@@ -136,13 +136,11 @@ gulp.task('build_client', () => {
     watch: true,
     context: path.resolve(__dirname, 'client'),
     entry: {
-      bundle : './app.js',
-      sw : './service-worker.js'
-    },
+      bundle: './app.js',
+      sw: './service-worker.js'},
     output: {
       path: path.resolve(__dirname, 'out', 'client'),
-      filename: '[name].js'
-    },
+      filename: '[name].js'},
     module: {
       rules: [{
         test: /\.js$/,
@@ -150,11 +148,8 @@ gulp.task('build_client', () => {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['es2015-without-strict']
-            ]
-          }
-        }]
-      },{
+              ['es2015-without-strict']]}}]},
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
