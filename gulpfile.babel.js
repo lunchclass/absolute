@@ -140,7 +140,7 @@ gulp.task('build_client', () => {
       sw : './service-worker.js'
     },
     output: {
-      path: path.resolve(__dirname, 'out', 'client', 'javascript'),
+      path: path.resolve(__dirname, 'out', 'client'),
       filename: '[name].js'
     },
     module: {
