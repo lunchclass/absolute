@@ -13,9 +13,9 @@
 // limitations under the License.
 
 import babel from 'gulp-babel';
-import child_process from 'child_process';
+import childProcess from 'child_process';
 import eslint from 'gulp-eslint';
-import generatePushKey from './server/push/gen_push_key'
+import generatePushKey from './server/push/gen_push_key';
 import gulp from 'gulp';
 import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
@@ -51,35 +51,37 @@ gulp.task('build_server', () => {
   return gulp.src(['./server/**/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
-    .on('error', error => {console.log(error);})
-    .pipe(sourcemaps.write('.', {sourceRoot: path.resolve(__dirname, 'server')}))
-    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')))
+    .on('error', (error) => {
+      console.log(error);
+    })
+    .pipe(sourcemaps.write('.',
+      {sourceRoot: path.resolve(__dirname, 'server')}))
+    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')));
 });
 
-gulp.task('lint', finish => {
+gulp.task('lint', (finish) => {
   runSequence('lint_server', 'lint_router', finish);
 });
 
-gulp.task('lint_server', finish => {
-  return gulp.src(['./server/**/*.js', '!./server/**/*.router.js',
+gulp.task('lint_server', (finish) => {
+  return gulp.src([
+    './gulpfile.babel.js',
+    './server/**/*.js',
+    '!./server/**/*.router.js',
     '!./server/push/push_key.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('lint_router', finish => {
+gulp.task('lint_router', (finish) => {
   return gulp.src(['./server/**/*.router.js'])
     .pipe(eslint({
-        'rules': {
-          'require-jsdoc': ['error', {
-              'require': {
-                'MethodDefinition': false,
-                'ClassDeclaration': false
-              }
-            }]
-        }
-      }))
+      'rules': {
+        'require-jsdoc': ['error', {
+          'require': {
+            'MethodDefinition': false,
+            'ClassDeclaration': false}}]}}))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
@@ -89,7 +91,13 @@ gulp.task('push_key', () => {
 });
 
 gulp.task('start', () => {
-  runSequence('start_db', 'lint', 'push_key', 'build_server', 'build_client', 'start_server');
+  runSequence(
+    'start_db',
+    'lint',
+    'push_key',
+    'build_server',
+    'build_client',
+    'start_server');
 });
 
 gulp.task('start_server', () => {
@@ -99,19 +107,20 @@ gulp.task('start_server', () => {
   });
 });
 
-gulp.task('start_db', finish => {
-  child_process.exec('mongod --fork --dbpath database --logpath database/log', error => {
-    if (error)
-      console.log('Already running mongo DB daemon..');
-    else
-      console.log('Running mongo DB daemon..');
-    finish();
-  });
+gulp.task('start_db', (finish) => {
+  childProcess.exec(
+    'mongod --fork --dbpath database --logpath database/log', (error) => {
+      if (error)
+        console.log('Already running mongo DB daemon..');
+      else
+        console.log('Running mongo DB daemon..');
+      finish();
+    });
 });
 
 // FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)
-gulp.task('stop', finish => {
-  child_process.exec('mongo admin --eval "db.shutdownServer();"', error => {
+gulp.task('stop', (finish) => {
+  childProcess.exec('mongo admin --eval "db.shutdownServer();"', (error) => {
     setTimeout(() => {
       finish();
     }, 1000);
@@ -126,7 +135,7 @@ gulp.task('bootstrap_test', () => {
     })
     .once('end', () => {
       process.exit();
-    })
+    });
 });
 
 gulp.task('build_client', () => {
@@ -150,32 +159,22 @@ gulp.task('build_client', () => {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['es2015-without-strict']
-            ]
-          }
-        }]
-      },{
+              ['es2015-without-strict']]}}]},
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader'
-        ]
-      },{
+          'sass-loader']},
+      {
         test: /\.(png|jpg)$/,
         use: [{
           loader: 'url-loader',
-          options: { limit: 10000 }
-        }]
-      }]
-    },
+          options: {limit: 10000}}]}]},
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
-          include: /\.min\.js$/,
-          minimize: true
-      })
-    ]
-  }, (err, stats) => {
+        include: /\.min\.js$/,
+        minimize: true})]}, (err, stats) => {
       // FIXME(cs-lee) save log in file
   });
 });
