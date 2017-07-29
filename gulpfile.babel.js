@@ -139,16 +139,17 @@ gulp.task('bootstrap_test', () => {
 });
 
 gulp.task('build_client', () => {
-  gulp.src([path.resolve(__dirname, 'client', 'index.html'),
-    path.resolve(__dirname, 'client', 'service-worker.js')])
+  gulp.src(path.resolve(__dirname, 'client', 'index.html'))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
     watch: true,
     context: path.resolve(__dirname, 'client'),
-    entry: './app.js',
+    entry: {
+      bundle: './app.js',
+      sw: './service-worker.js'},
     output: {
-      path: path.resolve(__dirname, 'out', 'client', 'javascript'),
-      filename: 'bundle.js'},
+      path: path.resolve(__dirname, 'out', 'client'),
+      filename: '[name].js'},
     module: {
       rules: [{
         test: /\.js$/,
