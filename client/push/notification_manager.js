@@ -28,13 +28,37 @@ export default class Notification {
   /**
    * create notification
    */
-  createNotification(title, option) {
+  createNotification(event) {
+    let notiPromise;
+    if (event.data) {
+      notiPromise = Promise.resolve(event.data.json());
+    } else {
+      // get data information from server
+    }
+
+    notiPromise = notiPromise.then(data => {
+      return self.registration.showNotification(data.title, {
+        body: data.body,
+        icon: data.icon,
+        tag: data.tag
+      });
+    });
+    event.waitUntil(notiPromise);
   }
 
   /**
    * close notification
    */
-  closeNotification() {
+  closeNotification(event) {
+    event.notification.close();
+  }
+
+  /**
+   * process notification click event
+   */
+  processNotificationClickEvent(event) {
+    let url = '';
+	event.waitUntil(clients.openWindow(url));
   }
 }
 
