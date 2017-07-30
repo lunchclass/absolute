@@ -57,8 +57,12 @@ export default class Notification {
    * process notification click event
    */
   processNotificationClickEvent(event) {
-    let url = '';
-	event.waitUntil(clients.openWindow(url));
+    if (event.notification.data) {
+      let url = event.notification.data.url;
+      event.waitUntil(clients.openWindow(url));
+    } else {
+      // get notification action from server
+    }
   }
 }
 
