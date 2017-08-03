@@ -1,4 +1,4 @@
-// Copyright (c) 2017 The Absolute Authors.
+  // Copyright (c) 2017 The Absolute Authors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
 import undefTaskToDefault from 'gulp-undef-task-to-default';
 import webpack from 'webpack';
+
+import {inputRL, rl} from './bootstrap/command/cc';
 
 process.on('exit', () => {
   runSequence('stop');
@@ -139,17 +141,16 @@ gulp.task('bootstrap_test', () => {
 });
 
 gulp.task('build_client', () => {
-  gulp.src(path.resolve(__dirname, 'client', 'index.html'))
+  gulp.src([path.resolve(__dirname, 'client', 'index.html'),
+    path.resolve(__dirname, 'client', 'service-worker.js')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
     watch: true,
     context: path.resolve(__dirname, 'client'),
-    entry: {
-      bundle: './app.js',
-      sw: './service-worker.js'},
+    entry: './app.js',
     output: {
-      path: path.resolve(__dirname, 'out', 'client'),
-      filename: '[name].js'},
+      path: path.resolve(__dirname, 'out', 'client', 'javascript'),
+      filename: 'bundle.js'},
     module: {
       rules: [{
         test: /\.js$/,
@@ -174,6 +175,26 @@ gulp.task('build_client', () => {
         include: /\.min\.js$/,
         minimize: true})]}, (err, stats) => {
       // FIXME(cs-lee) save log in file
+  });
+});
+
+gulp.task('cc', () =>{
+  console.log('Enter keyword "pr" or "cp"');
+  rl.on('line', (line) =>{
+    if(line === 'pr') {
+      inputRL(line);
+    } else if (line === 'cp') {
+      gulp.start('cp');
+    }
+  });
+});
+
+gulp.task('cp', () =>{
+  rl.question('num: ', function(answer) {
+    childProcess.execSync(
+      'git pull https://github.com/lunchclass/absolute pull/'
+    +answer+ '/head:pr-'+answer);
+    rl.close();
   });
 });
 
