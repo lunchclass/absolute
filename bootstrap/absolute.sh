@@ -48,7 +48,7 @@ done
 export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
 
 # ccl requires several steps. it need to turn off the gulp message
-if [ "$@" = "cc" ]; then
+if [[ $@ = "cc" ]]; then
   gulp $@ --silent
 else
   gulp $@
