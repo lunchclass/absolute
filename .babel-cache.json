@@ -1,0 +1,1093 @@
+{
+  "{\"filename\":\"/home/garlicb/study/absolute/gulpfile.babel.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"strict\":false}],[[],{\"async\":false,\"asyncGenerators\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/home/garlicb/study/absolute\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.25.0": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "gulp-babel",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "babel"
+              }
+            ]
+          },
+          {
+            "source": "child_process",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "childProcess"
+              }
+            ]
+          },
+          {
+            "source": "gulp-eslint",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "eslint"
+              }
+            ]
+          },
+          {
+            "source": "./server/push/gen_push_key",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "generatePushKey"
+              }
+            ]
+          },
+          {
+            "source": "gulp",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "gulp"
+              }
+            ]
+          },
+          {
+            "source": "gulp-mocha",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "mocha"
+              }
+            ]
+          },
+          {
+            "source": "gulp-nodemon",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "nodemon"
+              }
+            ]
+          },
+          {
+            "source": "path",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "path"
+              }
+            ]
+          },
+          {
+            "source": "run-sequence",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "runSequence"
+              }
+            ]
+          },
+          {
+            "source": "gulp-sourcemaps",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "sourcemaps"
+              }
+            ]
+          },
+          {
+            "source": "gulp-undef-task-to-default",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "undefTaskToDefault"
+              }
+            ]
+          },
+          {
+            "source": "webpack",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "webpack"
+              }
+            ]
+          },
+          {
+            "source": "./bootstrap/command/cc",
+            "imported": [
+              "inputRL",
+              "rl"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "inputRL",
+                "local": "inputRL"
+              },
+              {
+                "kind": "named",
+                "imported": "rl",
+                "local": "rl"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "/home/garlicb/study/absolute/gulpfile.babel.js",
+      "filenameRelative": "/home/garlicb/study/absolute/gulpfile.babel.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "strict": false
+          }
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "gulpfile.babel.js",
+      "sourceFileName": "gulpfile.babel.js",
+      "sourceRoot": "/home/garlicb/study/absolute",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleRoot": "/home/garlicb/study/absolute",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "parserOpts": false,
+      "generatorOpts": false,
+      "basename": "gulpfile.babel"
+    },
+    "ignored": false,
+    "code": "var _gulpBabel = require('gulp-babel');\n\nvar _gulpBabel2 = _interopRequireDefault(_gulpBabel);\n\nvar _child_process = require('child_process');\n\nvar _child_process2 = _interopRequireDefault(_child_process);\n\nvar _gulpEslint = require('gulp-eslint');\n\nvar _gulpEslint2 = _interopRequireDefault(_gulpEslint);\n\nvar _gen_push_key = require('./server/push/gen_push_key');\n\nvar _gen_push_key2 = _interopRequireDefault(_gen_push_key);\n\nvar _gulp = require('gulp');\n\nvar _gulp2 = _interopRequireDefault(_gulp);\n\nvar _gulpMocha = require('gulp-mocha');\n\nvar _gulpMocha2 = _interopRequireDefault(_gulpMocha);\n\nvar _gulpNodemon = require('gulp-nodemon');\n\nvar _gulpNodemon2 = _interopRequireDefault(_gulpNodemon);\n\nvar _path = require('path');\n\nvar _path2 = _interopRequireDefault(_path);\n\nvar _runSequence = require('run-sequence');\n\nvar _runSequence2 = _interopRequireDefault(_runSequence);\n\nvar _gulpSourcemaps = require('gulp-sourcemaps');\n\nvar _gulpSourcemaps2 = _interopRequireDefault(_gulpSourcemaps);\n\nvar _gulpUndefTaskToDefault = require('gulp-undef-task-to-default');\n\nvar _gulpUndefTaskToDefault2 = _interopRequireDefault(_gulpUndefTaskToDefault);\n\nvar _webpack = require('webpack');\n\nvar _webpack2 = _interopRequireDefault(_webpack);\n\nvar _cc = require('./bootstrap/command/cc');\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nprocess.on('exit', function () {\n  (0, _runSequence2.default)('stop');\n}); // Copyright (c) 2017 The Absolute Authors.\n//\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//     http://www.apache.org/licenses/LICENSE-2.0\n//\n// Unless required by applicable law or agreed to in writing, software\n// distributed under the License is distributed on an \"AS IS\" BASIS,\n// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for the specific language governing permissions and\n// limitations under the License.\n\nprocess.on('SIGINT', function () {\n  (0, _runSequence2.default)('stop');\n});\n\nprocess.on('uncaughtException', function () {\n  (0, _runSequence2.default)('stop');\n});\n\nprocess.on('disconnect', function () {\n  (0, _runSequence2.default)('stop');\n});\n\n_gulp2.default.task('default', ['help']);\n\n_gulp2.default.task('help', function () {\n  // TODO(zino): We should implement this command.\n});\n\n_gulp2.default.task('build_server', function () {\n  return _gulp2.default.src(['./server/**/*.js']).pipe(_gulpSourcemaps2.default.init()).pipe((0, _gulpBabel2.default)()).on('error', function (error) {\n    console.log(error);\n  }).pipe(_gulpSourcemaps2.default.write('.', { sourceRoot: _path2.default.resolve(__dirname, 'server') })).pipe(_gulp2.default.dest(_path2.default.resolve(__dirname, 'out', 'server')));\n});\n\n_gulp2.default.task('lint', function (finish) {\n  (0, _runSequence2.default)('lint_server', 'lint_router', finish);\n});\n\n_gulp2.default.task('lint_server', function (finish) {\n  return _gulp2.default.src(['./gulpfile.babel.js', './server/**/*.js', '!./server/**/*.router.js', '!./server/push/push_key.js']).pipe((0, _gulpEslint2.default)()).pipe(_gulpEslint2.default.format()).pipe(_gulpEslint2.default.failAfterError());\n});\n\n_gulp2.default.task('lint_router', function (finish) {\n  return _gulp2.default.src(['./server/**/*.router.js']).pipe((0, _gulpEslint2.default)({\n    'rules': {\n      'require-jsdoc': ['error', {\n        'require': {\n          'MethodDefinition': false,\n          'ClassDeclaration': false } }] } })).pipe(_gulpEslint2.default.format()).pipe(_gulpEslint2.default.failAfterError());\n});\n\n_gulp2.default.task('push_key', function () {\n  (0, _gen_push_key2.default)();\n});\n\n_gulp2.default.task('start', function () {\n  (0, _runSequence2.default)('start_db', 'lint', 'push_key', 'build_server', 'build_client', 'start_server');\n});\n\n_gulp2.default.task('start_server', function () {\n  (0, _gulpNodemon2.default)({\n    script: 'server.js',\n    cwd: 'out/server'\n  });\n});\n\n_gulp2.default.task('start_db', function (finish) {\n  _child_process2.default.exec('mongod --fork --dbpath database --logpath database/log', function (error) {\n    if (error) console.log('Already running mongo DB daemon..');else console.log('Running mongo DB daemon..');\n    finish();\n  });\n});\n\n// FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)\n_gulp2.default.task('stop', function (finish) {\n  _child_process2.default.exec('mongo admin --eval \"db.shutdownServer();\"', function (error) {\n    setTimeout(function () {\n      finish();\n    }, 1000);\n  });\n});\n\n_gulp2.default.task('bootstrap_test', function () {\n  _gulp2.default.src(['bootstrap/test/test-*.js'], { read: false }).pipe((0, _gulpMocha2.default)()).once('error', function () {\n    process.exit(1);\n  }).once('end', function () {\n    process.exit();\n  });\n});\n\n_gulp2.default.task('build_client', function () {\n  _gulp2.default.src(_path2.default.resolve(__dirname, 'client', 'index.html')).pipe(_gulp2.default.dest(_path2.default.resolve(__dirname, 'out', 'client')));\n  (0, _webpack2.default)({\n    watch: true,\n    context: _path2.default.resolve(__dirname, 'client'),\n    entry: {\n      bundle: './app.js',\n      sw: './service-worker.js' },\n    output: {\n      path: _path2.default.resolve(__dirname, 'out', 'client'),\n      filename: '[name].js' },\n    module: {\n      rules: [{\n        test: /\\.js$/,\n        use: [{\n          loader: 'babel-loader',\n          options: {\n            presets: [['es2015-without-strict']] } }] }, {\n        test: /\\.scss$/,\n        use: ['style-loader', 'css-loader', 'sass-loader'] }, {\n        test: /\\.(png|jpg)$/,\n        use: [{\n          loader: 'url-loader',\n          options: { limit: 10000 } }] }] },\n    plugins: [new _webpack2.default.optimize.UglifyJsPlugin({\n      include: /\\.min\\.js$/,\n      minimize: true })] }, function (err, stats) {\n    // FIXME(cs-lee) save log in file\n  });\n});\n\n_gulp2.default.task('cc', function () {\n  console.log('Enter keyword \"pr\" or \"cp\"');\n  _cc.rl.on('line', function (line) {\n    if (line === 'pr') {\n      (0, _cc.inputRL)(line);\n    } else if (line === 'cp') {\n      _gulp2.default.start('cp');\n    }\n  });\n});\n\n_gulp2.default.task('cp', function () {\n  _cc.rl.question('num: ', function (answer) {\n    _child_process2.default.execSync('git pull https://github.com/lunchclass/absolute pull/' + answer + '/head:pr-' + answer);\n    _cc.rl.close();\n  });\n});\n\n(0, _gulpUndefTaskToDefault2.default)(_gulp2.default);\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImd1bHBmaWxlLmJhYmVsLmpzIl0sIm5hbWVzIjpbInByb2Nlc3MiLCJvbiIsInRhc2siLCJzcmMiLCJwaXBlIiwiaW5pdCIsImVycm9yIiwiY29uc29sZSIsImxvZyIsIndyaXRlIiwic291cmNlUm9vdCIsInJlc29sdmUiLCJfX2Rpcm5hbWUiLCJkZXN0IiwiZmluaXNoIiwiZm9ybWF0IiwiZmFpbEFmdGVyRXJyb3IiLCJzY3JpcHQiLCJjd2QiLCJleGVjIiwic2V0VGltZW91dCIsInJlYWQiLCJvbmNlIiwiZXhpdCIsIndhdGNoIiwiY29udGV4dCIsImVudHJ5IiwiYnVuZGxlIiwic3ciLCJvdXRwdXQiLCJwYXRoIiwiZmlsZW5hbWUiLCJtb2R1bGUiLCJydWxlcyIsInRlc3QiLCJ1c2UiLCJsb2FkZXIiLCJvcHRpb25zIiwicHJlc2V0cyIsImxpbWl0IiwicGx1Z2lucyIsIm9wdGltaXplIiwiVWdsaWZ5SnNQbHVnaW4iLCJpbmNsdWRlIiwibWluaW1pemUiLCJlcnIiLCJzdGF0cyIsImxpbmUiLCJzdGFydCIsInF1ZXN0aW9uIiwiYW5zd2VyIiwiZXhlY1N5bmMiLCJjbG9zZSJdLCJtYXBwaW5ncyI6IkFBY0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBQ0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBQ0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBQ0E7Ozs7QUFDQTs7OztBQUNBOzs7O0FBRUE7Ozs7QUFFQUEsUUFBUUMsRUFBUixDQUFXLE1BQVgsRUFBbUIsWUFBTTtBQUN2Qiw2QkFBWSxNQUFaO0FBQ0QsQ0FGRCxFLENBN0JBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQXFCQUQsUUFBUUMsRUFBUixDQUFXLFFBQVgsRUFBcUIsWUFBTTtBQUN6Qiw2QkFBWSxNQUFaO0FBQ0QsQ0FGRDs7QUFJQUQsUUFBUUMsRUFBUixDQUFXLG1CQUFYLEVBQWdDLFlBQU07QUFDcEMsNkJBQVksTUFBWjtBQUNELENBRkQ7O0FBSUFELFFBQVFDLEVBQVIsQ0FBVyxZQUFYLEVBQXlCLFlBQU07QUFDN0IsNkJBQVksTUFBWjtBQUNELENBRkQ7O0FBSUEsZUFBS0MsSUFBTCxDQUFVLFNBQVYsRUFBcUIsQ0FBQyxNQUFELENBQXJCOztBQUVBLGVBQUtBLElBQUwsQ0FBVSxNQUFWLEVBQWtCLFlBQU07QUFDdEI7QUFDRCxDQUZEOztBQUlBLGVBQUtBLElBQUwsQ0FBVSxjQUFWLEVBQTBCLFlBQU07QUFDOUIsU0FBTyxlQUFLQyxHQUFMLENBQVMsQ0FBQyxrQkFBRCxDQUFULEVBQ0pDLElBREksQ0FDQyx5QkFBV0MsSUFBWCxFQURELEVBRUpELElBRkksQ0FFQywwQkFGRCxFQUdKSCxFQUhJLENBR0QsT0FIQyxFQUdRLFVBQUNLLEtBQUQsRUFBVztBQUN0QkMsWUFBUUMsR0FBUixDQUFZRixLQUFaO0FBQ0QsR0FMSSxFQU1KRixJQU5JLENBTUMseUJBQVdLLEtBQVgsQ0FBaUIsR0FBakIsRUFDSixFQUFDQyxZQUFZLGVBQUtDLE9BQUwsQ0FBYUMsU0FBYixFQUF3QixRQUF4QixDQUFiLEVBREksQ0FORCxFQVFKUixJQVJJLENBUUMsZUFBS1MsSUFBTCxDQUFVLGVBQUtGLE9BQUwsQ0FBYUMsU0FBYixFQUF3QixLQUF4QixFQUErQixRQUEvQixDQUFWLENBUkQsQ0FBUDtBQVNELENBVkQ7O0FBWUEsZUFBS1YsSUFBTCxDQUFVLE1BQVYsRUFBa0IsVUFBQ1ksTUFBRCxFQUFZO0FBQzVCLDZCQUFZLGFBQVosRUFBMkIsYUFBM0IsRUFBMENBLE1BQTFDO0FBQ0QsQ0FGRDs7QUFJQSxlQUFLWixJQUFMLENBQVUsYUFBVixFQUF5QixVQUFDWSxNQUFELEVBQVk7QUFDbkMsU0FBTyxlQUFLWCxHQUFMLENBQVMsQ0FDZCxxQkFEYyxFQUVkLGtCQUZjLEVBR2QsMEJBSGMsRUFJZCw0QkFKYyxDQUFULEVBS0pDLElBTEksQ0FLQywyQkFMRCxFQU1KQSxJQU5JLENBTUMscUJBQU9XLE1BQVAsRUFORCxFQU9KWCxJQVBJLENBT0MscUJBQU9ZLGNBQVAsRUFQRCxDQUFQO0FBUUQsQ0FURDs7QUFXQSxlQUFLZCxJQUFMLENBQVUsYUFBVixFQUF5QixVQUFDWSxNQUFELEVBQVk7QUFDbkMsU0FBTyxlQUFLWCxHQUFMLENBQVMsQ0FBQyx5QkFBRCxDQUFULEVBQ0pDLElBREksQ0FDQywwQkFBTztBQUNYLGFBQVM7QUFDUCx1QkFBaUIsQ0FBQyxPQUFELEVBQVU7QUFDekIsbUJBQVc7QUFDVCw4QkFBb0IsS0FEWDtBQUVULDhCQUFvQixLQUZYLEVBRGMsRUFBVixDQURWLEVBREUsRUFBUCxDQURELEVBT0pBLElBUEksQ0FPQyxxQkFBT1csTUFBUCxFQVBELEVBUUpYLElBUkksQ0FRQyxxQkFBT1ksY0FBUCxFQVJELENBQVA7QUFTRCxDQVZEOztBQVlBLGVBQUtkLElBQUwsQ0FBVSxVQUFWLEVBQXNCLFlBQU07QUFDMUI7QUFDRCxDQUZEOztBQUlBLGVBQUtBLElBQUwsQ0FBVSxPQUFWLEVBQW1CLFlBQU07QUFDdkIsNkJBQ0UsVUFERixFQUVFLE1BRkYsRUFHRSxVQUhGLEVBSUUsY0FKRixFQUtFLGNBTEYsRUFNRSxjQU5GO0FBT0QsQ0FSRDs7QUFVQSxlQUFLQSxJQUFMLENBQVUsY0FBVixFQUEwQixZQUFNO0FBQzlCLDZCQUFRO0FBQ05lLFlBQVEsV0FERjtBQUVOQyxTQUFLO0FBRkMsR0FBUjtBQUlELENBTEQ7O0FBT0EsZUFBS2hCLElBQUwsQ0FBVSxVQUFWLEVBQXNCLFVBQUNZLE1BQUQsRUFBWTtBQUNoQywwQkFBYUssSUFBYixDQUNFLHdEQURGLEVBQzRELFVBQUNiLEtBQUQsRUFBVztBQUNuRSxRQUFJQSxLQUFKLEVBQ0VDLFFBQVFDLEdBQVIsQ0FBWSxtQ0FBWixFQURGLEtBR0VELFFBQVFDLEdBQVIsQ0FBWSwyQkFBWjtBQUNGTTtBQUNELEdBUEg7QUFRRCxDQVREOztBQVdBO0FBQ0EsZUFBS1osSUFBTCxDQUFVLE1BQVYsRUFBa0IsVUFBQ1ksTUFBRCxFQUFZO0FBQzVCLDBCQUFhSyxJQUFiLENBQWtCLDJDQUFsQixFQUErRCxVQUFDYixLQUFELEVBQVc7QUFDeEVjLGVBQVcsWUFBTTtBQUNmTjtBQUNELEtBRkQsRUFFRyxJQUZIO0FBR0QsR0FKRDtBQUtELENBTkQ7O0FBUUEsZUFBS1osSUFBTCxDQUFVLGdCQUFWLEVBQTRCLFlBQU07QUFDaEMsaUJBQUtDLEdBQUwsQ0FBUyxDQUFDLDBCQUFELENBQVQsRUFBdUMsRUFBQ2tCLE1BQU0sS0FBUCxFQUF2QyxFQUNHakIsSUFESCxDQUNRLDBCQURSLEVBRUdrQixJQUZILENBRVEsT0FGUixFQUVpQixZQUFNO0FBQ25CdEIsWUFBUXVCLElBQVIsQ0FBYSxDQUFiO0FBQ0QsR0FKSCxFQUtHRCxJQUxILENBS1EsS0FMUixFQUtlLFlBQU07QUFDakJ0QixZQUFRdUIsSUFBUjtBQUNELEdBUEg7QUFRRCxDQVREOztBQVdBLGVBQUtyQixJQUFMLENBQVUsY0FBVixFQUEwQixZQUFNO0FBQzlCLGlCQUFLQyxHQUFMLENBQVMsZUFBS1EsT0FBTCxDQUFhQyxTQUFiLEVBQXdCLFFBQXhCLEVBQWtDLFlBQWxDLENBQVQsRUFDR1IsSUFESCxDQUNRLGVBQUtTLElBQUwsQ0FBVSxlQUFLRixPQUFMLENBQWFDLFNBQWIsRUFBd0IsS0FBeEIsRUFBK0IsUUFBL0IsQ0FBVixDQURSO0FBRUEseUJBQVE7QUFDTlksV0FBTyxJQUREO0FBRU5DLGFBQVMsZUFBS2QsT0FBTCxDQUFhQyxTQUFiLEVBQXdCLFFBQXhCLENBRkg7QUFHTmMsV0FBTztBQUNMQyxjQUFRLFVBREg7QUFFTEMsVUFBSSxxQkFGQyxFQUhEO0FBTU5DLFlBQVE7QUFDTkMsWUFBTSxlQUFLbkIsT0FBTCxDQUFhQyxTQUFiLEVBQXdCLEtBQXhCLEVBQStCLFFBQS9CLENBREE7QUFFTm1CLGdCQUFVLFdBRkosRUFORjtBQVNOQyxZQUFRO0FBQ05DLGFBQU8sQ0FBQztBQUNOQyxjQUFNLE9BREE7QUFFTkMsYUFBSyxDQUFDO0FBQ0pDLGtCQUFRLGNBREo7QUFFSkMsbUJBQVM7QUFDUEMscUJBQVMsQ0FDUCxDQUFDLHVCQUFELENBRE8sQ0FERixFQUZMLEVBQUQsQ0FGQyxFQUFELEVBT1A7QUFDRUosY0FBTSxTQURSO0FBRUVDLGFBQUssQ0FDSCxjQURHLEVBRUgsWUFGRyxFQUdILGFBSEcsQ0FGUCxFQVBPLEVBYVA7QUFDRUQsY0FBTSxjQURSO0FBRUVDLGFBQUssQ0FBQztBQUNKQyxrQkFBUSxZQURKO0FBRUpDLG1CQUFTLEVBQUNFLE9BQU8sS0FBUixFQUZMLEVBQUQsQ0FGUCxFQWJPLENBREQsRUFURjtBQTRCTkMsYUFBUyxDQUNQLElBQUksa0JBQVFDLFFBQVIsQ0FBaUJDLGNBQXJCLENBQW9DO0FBQ2xDQyxlQUFTLFlBRHlCO0FBRWxDQyxnQkFBVSxJQUZ3QixFQUFwQyxDQURPLENBNUJILEVBQVIsRUErQjBCLFVBQUNDLEdBQUQsRUFBTUMsS0FBTixFQUFnQjtBQUN0QztBQUNILEdBakNEO0FBa0NELENBckNEOztBQXVDQSxlQUFLNUMsSUFBTCxDQUFVLElBQVYsRUFBZ0IsWUFBSztBQUNuQkssVUFBUUMsR0FBUixDQUFZLDRCQUFaO0FBQ0EsU0FBR1AsRUFBSCxDQUFNLE1BQU4sRUFBYyxVQUFDOEMsSUFBRCxFQUFTO0FBQ3JCLFFBQUdBLFNBQVMsSUFBWixFQUFrQjtBQUNoQix1QkFBUUEsSUFBUjtBQUNELEtBRkQsTUFFTyxJQUFJQSxTQUFTLElBQWIsRUFBbUI7QUFDeEIscUJBQUtDLEtBQUwsQ0FBVyxJQUFYO0FBQ0Q7QUFDRixHQU5EO0FBT0QsQ0FURDs7QUFXQSxlQUFLOUMsSUFBTCxDQUFVLElBQVYsRUFBZ0IsWUFBSztBQUNuQixTQUFHK0MsUUFBSCxDQUFZLE9BQVosRUFBcUIsVUFBU0MsTUFBVCxFQUFpQjtBQUNwQyw0QkFBYUMsUUFBYixDQUNFLDBEQUNERCxNQURDLEdBQ08sV0FEUCxHQUNtQkEsTUFGckI7QUFHQSxXQUFHRSxLQUFIO0FBQ0QsR0FMRDtBQU1ELENBUEQ7O0FBU0EiLCJmaWxlIjoiZ3VscGZpbGUuYmFiZWwuanMiLCJzb3VyY2VSb290IjoiL2hvbWUvZ2FybGljYi9zdHVkeS9hYnNvbHV0ZSIsInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAoYykgMjAxNyBUaGUgQWJzb2x1dGUgQXV0aG9ycy5cbi8vXG4vLyBMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wICh0aGUgXCJMaWNlbnNlXCIpO1xuLy8geW91IG1heSBub3QgdXNlIHRoaXMgZmlsZSBleGNlcHQgaW4gY29tcGxpYW5jZSB3aXRoIHRoZSBMaWNlbnNlLlxuLy8gWW91IG1heSBvYnRhaW4gYSBjb3B5IG9mIHRoZSBMaWNlbnNlIGF0XG4vL1xuLy8gICAgIGh0dHA6Ly93d3cuYXBhY2hlLm9yZy9saWNlbnNlcy9MSUNFTlNFLTIuMFxuLy9cbi8vIFVubGVzcyByZXF1aXJlZCBieSBhcHBsaWNhYmxlIGxhdyBvciBhZ3JlZWQgdG8gaW4gd3JpdGluZywgc29mdHdhcmVcbi8vIGRpc3RyaWJ1dGVkIHVuZGVyIHRoZSBMaWNlbnNlIGlzIGRpc3RyaWJ1dGVkIG9uIGFuIFwiQVMgSVNcIiBCQVNJUyxcbi8vIFdJVEhPVVQgV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXIgZXhwcmVzcyBvciBpbXBsaWVkLlxuLy8gU2VlIHRoZSBMaWNlbnNlIGZvciB0aGUgc3BlY2lmaWMgbGFuZ3VhZ2UgZ292ZXJuaW5nIHBlcm1pc3Npb25zIGFuZFxuLy8gbGltaXRhdGlvbnMgdW5kZXIgdGhlIExpY2Vuc2UuXG5cbmltcG9ydCBiYWJlbCBmcm9tICdndWxwLWJhYmVsJztcbmltcG9ydCBjaGlsZFByb2Nlc3MgZnJvbSAnY2hpbGRfcHJvY2Vzcyc7XG5pbXBvcnQgZXNsaW50IGZyb20gJ2d1bHAtZXNsaW50JztcbmltcG9ydCBnZW5lcmF0ZVB1c2hLZXkgZnJvbSAnLi9zZXJ2ZXIvcHVzaC9nZW5fcHVzaF9rZXknO1xuaW1wb3J0IGd1bHAgZnJvbSAnZ3VscCc7XG5pbXBvcnQgbW9jaGEgZnJvbSAnZ3VscC1tb2NoYSc7XG5pbXBvcnQgbm9kZW1vbiBmcm9tICdndWxwLW5vZGVtb24nO1xuaW1wb3J0IHBhdGggZnJvbSAncGF0aCc7XG5pbXBvcnQgcnVuU2VxdWVuY2UgZnJvbSAncnVuLXNlcXVlbmNlJztcbmltcG9ydCBzb3VyY2VtYXBzIGZyb20gJ2d1bHAtc291cmNlbWFwcyc7XG5pbXBvcnQgdW5kZWZUYXNrVG9EZWZhdWx0IGZyb20gJ2d1bHAtdW5kZWYtdGFzay10by1kZWZhdWx0JztcbmltcG9ydCB3ZWJwYWNrIGZyb20gJ3dlYnBhY2snO1xuXG5pbXBvcnQge2lucHV0UkwsIHJsfSBmcm9tICcuL2Jvb3RzdHJhcC9jb21tYW5kL2NjJztcblxucHJvY2Vzcy5vbignZXhpdCcsICgpID0+IHtcbiAgcnVuU2VxdWVuY2UoJ3N0b3AnKTtcbn0pO1xuXG5wcm9jZXNzLm9uKCdTSUdJTlQnLCAoKSA9PiB7XG4gIHJ1blNlcXVlbmNlKCdzdG9wJyk7XG59KTtcblxucHJvY2Vzcy5vbigndW5jYXVnaHRFeGNlcHRpb24nLCAoKSA9PiB7XG4gIHJ1blNlcXVlbmNlKCdzdG9wJyk7XG59KTtcblxucHJvY2Vzcy5vbignZGlzY29ubmVjdCcsICgpID0+IHtcbiAgcnVuU2VxdWVuY2UoJ3N0b3AnKTtcbn0pO1xuXG5ndWxwLnRhc2soJ2RlZmF1bHQnLCBbJ2hlbHAnXSk7XG5cbmd1bHAudGFzaygnaGVscCcsICgpID0+IHtcbiAgLy8gVE9ETyh6aW5vKTogV2Ugc2hvdWxkIGltcGxlbWVudCB0aGlzIGNvbW1hbmQuXG59KTtcblxuZ3VscC50YXNrKCdidWlsZF9zZXJ2ZXInLCAoKSA9PiB7XG4gIHJldHVybiBndWxwLnNyYyhbJy4vc2VydmVyLyoqLyouanMnXSlcbiAgICAucGlwZShzb3VyY2VtYXBzLmluaXQoKSlcbiAgICAucGlwZShiYWJlbCgpKVxuICAgIC5vbignZXJyb3InLCAoZXJyb3IpID0+IHtcbiAgICAgIGNvbnNvbGUubG9nKGVycm9yKTtcbiAgICB9KVxuICAgIC5waXBlKHNvdXJjZW1hcHMud3JpdGUoJy4nLFxuICAgICAge3NvdXJjZVJvb3Q6IHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICdzZXJ2ZXInKX0pKVxuICAgIC5waXBlKGd1bHAuZGVzdChwYXRoLnJlc29sdmUoX19kaXJuYW1lLCAnb3V0JywgJ3NlcnZlcicpKSk7XG59KTtcblxuZ3VscC50YXNrKCdsaW50JywgKGZpbmlzaCkgPT4ge1xuICBydW5TZXF1ZW5jZSgnbGludF9zZXJ2ZXInLCAnbGludF9yb3V0ZXInLCBmaW5pc2gpO1xufSk7XG5cbmd1bHAudGFzaygnbGludF9zZXJ2ZXInLCAoZmluaXNoKSA9PiB7XG4gIHJldHVybiBndWxwLnNyYyhbXG4gICAgJy4vZ3VscGZpbGUuYmFiZWwuanMnLFxuICAgICcuL3NlcnZlci8qKi8qLmpzJyxcbiAgICAnIS4vc2VydmVyLyoqLyoucm91dGVyLmpzJyxcbiAgICAnIS4vc2VydmVyL3B1c2gvcHVzaF9rZXkuanMnXSlcbiAgICAucGlwZShlc2xpbnQoKSlcbiAgICAucGlwZShlc2xpbnQuZm9ybWF0KCkpXG4gICAgLnBpcGUoZXNsaW50LmZhaWxBZnRlckVycm9yKCkpO1xufSk7XG5cbmd1bHAudGFzaygnbGludF9yb3V0ZXInLCAoZmluaXNoKSA9PiB7XG4gIHJldHVybiBndWxwLnNyYyhbJy4vc2VydmVyLyoqLyoucm91dGVyLmpzJ10pXG4gICAgLnBpcGUoZXNsaW50KHtcbiAgICAgICdydWxlcyc6IHtcbiAgICAgICAgJ3JlcXVpcmUtanNkb2MnOiBbJ2Vycm9yJywge1xuICAgICAgICAgICdyZXF1aXJlJzoge1xuICAgICAgICAgICAgJ01ldGhvZERlZmluaXRpb24nOiBmYWxzZSxcbiAgICAgICAgICAgICdDbGFzc0RlY2xhcmF0aW9uJzogZmFsc2V9fV19fSkpXG4gICAgLnBpcGUoZXNsaW50LmZvcm1hdCgpKVxuICAgIC5waXBlKGVzbGludC5mYWlsQWZ0ZXJFcnJvcigpKTtcbn0pO1xuXG5ndWxwLnRhc2soJ3B1c2hfa2V5JywgKCkgPT4ge1xuICBnZW5lcmF0ZVB1c2hLZXkoKTtcbn0pO1xuXG5ndWxwLnRhc2soJ3N0YXJ0JywgKCkgPT4ge1xuICBydW5TZXF1ZW5jZShcbiAgICAnc3RhcnRfZGInLFxuICAgICdsaW50JyxcbiAgICAncHVzaF9rZXknLFxuICAgICdidWlsZF9zZXJ2ZXInLFxuICAgICdidWlsZF9jbGllbnQnLFxuICAgICdzdGFydF9zZXJ2ZXInKTtcbn0pO1xuXG5ndWxwLnRhc2soJ3N0YXJ0X3NlcnZlcicsICgpID0+IHtcbiAgbm9kZW1vbih7XG4gICAgc2NyaXB0OiAnc2VydmVyLmpzJyxcbiAgICBjd2Q6ICdvdXQvc2VydmVyJyxcbiAgfSk7XG59KTtcblxuZ3VscC50YXNrKCdzdGFydF9kYicsIChmaW5pc2gpID0+IHtcbiAgY2hpbGRQcm9jZXNzLmV4ZWMoXG4gICAgJ21vbmdvZCAtLWZvcmsgLS1kYnBhdGggZGF0YWJhc2UgLS1sb2dwYXRoIGRhdGFiYXNlL2xvZycsIChlcnJvcikgPT4ge1xuICAgICAgaWYgKGVycm9yKVxuICAgICAgICBjb25zb2xlLmxvZygnQWxyZWFkeSBydW5uaW5nIG1vbmdvIERCIGRhZW1vbi4uJyk7XG4gICAgICBlbHNlXG4gICAgICAgIGNvbnNvbGUubG9nKCdSdW5uaW5nIG1vbmdvIERCIGRhZW1vbi4uJyk7XG4gICAgICBmaW5pc2goKTtcbiAgICB9KTtcbn0pO1xuXG4vLyBGSVhNRSh6aW5vKTogVGhpcyBjb21tYW5kIGlzIG5vdCB3b3JraW5nIHdlbGwgaW4gc29tZSBjYXNlcy4gKGUuZy4gQ1RSTCArIEMpXG5ndWxwLnRhc2soJ3N0b3AnLCAoZmluaXNoKSA9PiB7XG4gIGNoaWxkUHJvY2Vzcy5leGVjKCdtb25nbyBhZG1pbiAtLWV2YWwgXCJkYi5zaHV0ZG93blNlcnZlcigpO1wiJywgKGVycm9yKSA9PiB7XG4gICAgc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICBmaW5pc2goKTtcbiAgICB9LCAxMDAwKTtcbiAgfSk7XG59KTtcblxuZ3VscC50YXNrKCdib290c3RyYXBfdGVzdCcsICgpID0+IHtcbiAgZ3VscC5zcmMoWydib290c3RyYXAvdGVzdC90ZXN0LSouanMnXSwge3JlYWQ6IGZhbHNlfSlcbiAgICAucGlwZShtb2NoYSgpKVxuICAgIC5vbmNlKCdlcnJvcicsICgpID0+IHtcbiAgICAgIHByb2Nlc3MuZXhpdCgxKTtcbiAgICB9KVxuICAgIC5vbmNlKCdlbmQnLCAoKSA9PiB7XG4gICAgICBwcm9jZXNzLmV4aXQoKTtcbiAgICB9KTtcbn0pO1xuXG5ndWxwLnRhc2soJ2J1aWxkX2NsaWVudCcsICgpID0+IHtcbiAgZ3VscC5zcmMocGF0aC5yZXNvbHZlKF9fZGlybmFtZSwgJ2NsaWVudCcsICdpbmRleC5odG1sJykpXG4gICAgLnBpcGUoZ3VscC5kZXN0KHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICdvdXQnLCAnY2xpZW50JykpKTtcbiAgd2VicGFjayh7XG4gICAgd2F0Y2g6IHRydWUsXG4gICAgY29udGV4dDogcGF0aC5yZXNvbHZlKF9fZGlybmFtZSwgJ2NsaWVudCcpLFxuICAgIGVudHJ5OiB7XG4gICAgICBidW5kbGU6ICcuL2FwcC5qcycsXG4gICAgICBzdzogJy4vc2VydmljZS13b3JrZXIuanMnfSxcbiAgICBvdXRwdXQ6IHtcbiAgICAgIHBhdGg6IHBhdGgucmVzb2x2ZShfX2Rpcm5hbWUsICdvdXQnLCAnY2xpZW50JyksXG4gICAgICBmaWxlbmFtZTogJ1tuYW1lXS5qcyd9LFxuICAgIG1vZHVsZToge1xuICAgICAgcnVsZXM6IFt7XG4gICAgICAgIHRlc3Q6IC9cXC5qcyQvLFxuICAgICAgICB1c2U6IFt7XG4gICAgICAgICAgbG9hZGVyOiAnYmFiZWwtbG9hZGVyJyxcbiAgICAgICAgICBvcHRpb25zOiB7XG4gICAgICAgICAgICBwcmVzZXRzOiBbXG4gICAgICAgICAgICAgIFsnZXMyMDE1LXdpdGhvdXQtc3RyaWN0J11dfX1dfSxcbiAgICAgIHtcbiAgICAgICAgdGVzdDogL1xcLnNjc3MkLyxcbiAgICAgICAgdXNlOiBbXG4gICAgICAgICAgJ3N0eWxlLWxvYWRlcicsXG4gICAgICAgICAgJ2Nzcy1sb2FkZXInLFxuICAgICAgICAgICdzYXNzLWxvYWRlciddfSxcbiAgICAgIHtcbiAgICAgICAgdGVzdDogL1xcLihwbmd8anBnKSQvLFxuICAgICAgICB1c2U6IFt7XG4gICAgICAgICAgbG9hZGVyOiAndXJsLWxvYWRlcicsXG4gICAgICAgICAgb3B0aW9uczoge2xpbWl0OiAxMDAwMH19XX1dfSxcbiAgICBwbHVnaW5zOiBbXG4gICAgICBuZXcgd2VicGFjay5vcHRpbWl6ZS5VZ2xpZnlKc1BsdWdpbih7XG4gICAgICAgIGluY2x1ZGU6IC9cXC5taW5cXC5qcyQvLFxuICAgICAgICBtaW5pbWl6ZTogdHJ1ZX0pXX0sIChlcnIsIHN0YXRzKSA9PiB7XG4gICAgICAvLyBGSVhNRShjcy1sZWUpIHNhdmUgbG9nIGluIGZpbGVcbiAgfSk7XG59KTtcblxuZ3VscC50YXNrKCdjYycsICgpID0+e1xuICBjb25zb2xlLmxvZygnRW50ZXIga2V5d29yZCBcInByXCIgb3IgXCJjcFwiJyk7XG4gIHJsLm9uKCdsaW5lJywgKGxpbmUpID0+e1xuICAgIGlmKGxpbmUgPT09ICdwcicpIHtcbiAgICAgIGlucHV0UkwobGluZSk7XG4gICAgfSBlbHNlIGlmIChsaW5lID09PSAnY3AnKSB7XG4gICAgICBndWxwLnN0YXJ0KCdjcCcpO1xuICAgIH1cbiAgfSk7XG59KTtcblxuZ3VscC50YXNrKCdjcCcsICgpID0+e1xuICBybC5xdWVzdGlvbignbnVtOiAnLCBmdW5jdGlvbihhbnN3ZXIpIHtcbiAgICBjaGlsZFByb2Nlc3MuZXhlY1N5bmMoXG4gICAgICAnZ2l0IHB1bGwgaHR0cHM6Ly9naXRodWIuY29tL2x1bmNoY2xhc3MvYWJzb2x1dGUgcHVsbC8nXG4gICAgK2Fuc3dlcisgJy9oZWFkOnByLScrYW5zd2VyKTtcbiAgICBybC5jbG9zZSgpO1xuICB9KTtcbn0pO1xuXG51bmRlZlRhc2tUb0RlZmF1bHQoZ3VscCk7XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "gulpfile.babel.js"
+      ],
+      "names": [
+        "process",
+        "on",
+        "task",
+        "src",
+        "pipe",
+        "init",
+        "error",
+        "console",
+        "log",
+        "write",
+        "sourceRoot",
+        "resolve",
+        "__dirname",
+        "dest",
+        "finish",
+        "format",
+        "failAfterError",
+        "script",
+        "cwd",
+        "exec",
+        "setTimeout",
+        "read",
+        "once",
+        "exit",
+        "watch",
+        "context",
+        "entry",
+        "bundle",
+        "sw",
+        "output",
+        "path",
+        "filename",
+        "module",
+        "rules",
+        "test",
+        "use",
+        "loader",
+        "options",
+        "presets",
+        "limit",
+        "plugins",
+        "optimize",
+        "UglifyJsPlugin",
+        "include",
+        "minimize",
+        "err",
+        "stats",
+        "line",
+        "start",
+        "question",
+        "answer",
+        "execSync",
+        "close"
+      ],
+      "mappings": "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",
+      "file": "gulpfile.babel.js",
+      "sourceRoot": "/home/garlicb/study/absolute",
+      "sourcesContent": [
+        "// Copyright (c) 2017 The Absolute Authors.\n//\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//     http://www.apache.org/licenses/LICENSE-2.0\n//\n// Unless required by applicable law or agreed to in writing, software\n// distributed under the License is distributed on an \"AS IS\" BASIS,\n// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for the specific language governing permissions and\n// limitations under the License.\n\nimport babel from 'gulp-babel';\nimport childProcess from 'child_process';\nimport eslint from 'gulp-eslint';\nimport generatePushKey from './server/push/gen_push_key';\nimport gulp from 'gulp';\nimport mocha from 'gulp-mocha';\nimport nodemon from 'gulp-nodemon';\nimport path from 'path';\nimport runSequence from 'run-sequence';\nimport sourcemaps from 'gulp-sourcemaps';\nimport undefTaskToDefault from 'gulp-undef-task-to-default';\nimport webpack from 'webpack';\n\nimport {inputRL, rl} from './bootstrap/command/cc';\n\nprocess.on('exit', () => {\n  runSequence('stop');\n});\n\nprocess.on('SIGINT', () => {\n  runSequence('stop');\n});\n\nprocess.on('uncaughtException', () => {\n  runSequence('stop');\n});\n\nprocess.on('disconnect', () => {\n  runSequence('stop');\n});\n\ngulp.task('default', ['help']);\n\ngulp.task('help', () => {\n  // TODO(zino): We should implement this command.\n});\n\ngulp.task('build_server', () => {\n  return gulp.src(['./server/**/*.js'])\n    .pipe(sourcemaps.init())\n    .pipe(babel())\n    .on('error', (error) => {\n      console.log(error);\n    })\n    .pipe(sourcemaps.write('.',\n      {sourceRoot: path.resolve(__dirname, 'server')}))\n    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')));\n});\n\ngulp.task('lint', (finish) => {\n  runSequence('lint_server', 'lint_router', finish);\n});\n\ngulp.task('lint_server', (finish) => {\n  return gulp.src([\n    './gulpfile.babel.js',\n    './server/**/*.js',\n    '!./server/**/*.router.js',\n    '!./server/push/push_key.js'])\n    .pipe(eslint())\n    .pipe(eslint.format())\n    .pipe(eslint.failAfterError());\n});\n\ngulp.task('lint_router', (finish) => {\n  return gulp.src(['./server/**/*.router.js'])\n    .pipe(eslint({\n      'rules': {\n        'require-jsdoc': ['error', {\n          'require': {\n            'MethodDefinition': false,\n            'ClassDeclaration': false}}]}}))\n    .pipe(eslint.format())\n    .pipe(eslint.failAfterError());\n});\n\ngulp.task('push_key', () => {\n  generatePushKey();\n});\n\ngulp.task('start', () => {\n  runSequence(\n    'start_db',\n    'lint',\n    'push_key',\n    'build_server',\n    'build_client',\n    'start_server');\n});\n\ngulp.task('start_server', () => {\n  nodemon({\n    script: 'server.js',\n    cwd: 'out/server',\n  });\n});\n\ngulp.task('start_db', (finish) => {\n  childProcess.exec(\n    'mongod --fork --dbpath database --logpath database/log', (error) => {\n      if (error)\n        console.log('Already running mongo DB daemon..');\n      else\n        console.log('Running mongo DB daemon..');\n      finish();\n    });\n});\n\n// FIXME(zino): This command is not working well in some cases. (e.g. CTRL + C)\ngulp.task('stop', (finish) => {\n  childProcess.exec('mongo admin --eval \"db.shutdownServer();\"', (error) => {\n    setTimeout(() => {\n      finish();\n    }, 1000);\n  });\n});\n\ngulp.task('bootstrap_test', () => {\n  gulp.src(['bootstrap/test/test-*.js'], {read: false})\n    .pipe(mocha())\n    .once('error', () => {\n      process.exit(1);\n    })\n    .once('end', () => {\n      process.exit();\n    });\n});\n\ngulp.task('build_client', () => {\n  gulp.src(path.resolve(__dirname, 'client', 'index.html'))\n    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));\n  webpack({\n    watch: true,\n    context: path.resolve(__dirname, 'client'),\n    entry: {\n      bundle: './app.js',\n      sw: './service-worker.js'},\n    output: {\n      path: path.resolve(__dirname, 'out', 'client'),\n      filename: '[name].js'},\n    module: {\n      rules: [{\n        test: /\\.js$/,\n        use: [{\n          loader: 'babel-loader',\n          options: {\n            presets: [\n              ['es2015-without-strict']]}}]},\n      {\n        test: /\\.scss$/,\n        use: [\n          'style-loader',\n          'css-loader',\n          'sass-loader']},\n      {\n        test: /\\.(png|jpg)$/,\n        use: [{\n          loader: 'url-loader',\n          options: {limit: 10000}}]}]},\n    plugins: [\n      new webpack.optimize.UglifyJsPlugin({\n        include: /\\.min\\.js$/,\n        minimize: true})]}, (err, stats) => {\n      // FIXME(cs-lee) save log in file\n  });\n});\n\ngulp.task('cc', () =>{\n  console.log('Enter keyword \"pr\" or \"cp\"');\n  rl.on('line', (line) =>{\n    if(line === 'pr') {\n      inputRL(line);\n    } else if (line === 'cp') {\n      gulp.start('cp');\n    }\n  });\n});\n\ngulp.task('cp', () =>{\n  rl.question('num: ', function(answer) {\n    childProcess.execSync(\n      'git pull https://github.com/lunchclass/absolute pull/'\n    +answer+ '/head:pr-'+answer);\n    rl.close();\n  });\n});\n\nundefTaskToDefault(gulp);\n"
+      ]
+    },
+    "mtime": 1501944861521
+  },
+  "{\"filename\":\"/home/garlicb/study/absolute/server/push/gen_push_key.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"strict\":false}],[[],{\"async\":false,\"asyncGenerators\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/home/garlicb/study/absolute/server/push\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.25.0": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "fs",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "fs"
+              }
+            ]
+          },
+          {
+            "source": "./push_key",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "pushKeys"
+              }
+            ]
+          },
+          {
+            "source": "web-push",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "webpush"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [
+            "generatePushKey"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "generatePushKey",
+              "exported": "default"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "/home/garlicb/study/absolute/server/push/gen_push_key.js",
+      "filenameRelative": "/home/garlicb/study/absolute/server/push/gen_push_key.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "strict": false
+          }
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "gen_push_key.js",
+      "sourceFileName": "gen_push_key.js",
+      "sourceRoot": "/home/garlicb/study/absolute/server/push",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleRoot": "/home/garlicb/study/absolute/server/push",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "parserOpts": false,
+      "generatorOpts": false,
+      "basename": "gen_push_key"
+    },
+    "ignored": false,
+    "code": "Object.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = generatePushKey;\n\nvar _fs = require('fs');\n\nvar _fs2 = _interopRequireDefault(_fs);\n\nvar _push_key = require('./push_key');\n\nvar _push_key2 = _interopRequireDefault(_push_key);\n\nvar _webPush = require('web-push');\n\nvar _webPush2 = _interopRequireDefault(_webPush);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n *  Load push key if key exist else generate and load\n */\nfunction generatePushKey() {\n  if (_push_key2.default.pushVapidKeys.privateKey === undefined || _push_key2.default.pushVapidKeys.privateKey === '') {\n    console.log('generate push key');\n    var vapidKeys = _webPush2.default.generateVAPIDKeys();\n    _push_key2.default.pushVapidKeys.privateKey = vapidKeys.privateKey;\n    _push_key2.default.pushVapidKeys.publicKey = vapidKeys.publicKey;\n\n    writeClientPushPubkey(vapidKeys.publicKey);\n    writeServerPusKey(_push_key2.default);\n  }\n}\n\n/**\n * Write push vapid public key for client, client only must know public key\n * @param {string} pubKey vapid public key for client side\n */\n// Copyright (c) 2017 The Absolute Authors.\n//\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//     http://www.apache.org/licenses/LICENSE-2.0\n//\n// Unless required by applicable law or agreed to in writing, software\n// distributed under the License is distributed on an \"AS IS\" BASIS,\n// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for the specific language governing permissions and\n// limitations under the License.\n\nfunction writeClientPushPubkey(pubKey) {\n  var path = 'client/push/push_key.js';\n  _fs2.default.writeFileSync(path, 'export default {\\n' + '  \\'pushVapidKeys\\': {\\n' + ('    \\'publicKey\\': \\'' + _push_key2.default.pushVapidKeys.publicKey + '\\'\\n  }\\n}'));\n}\n\n/**\n * Write push keys for server.\n * @param {json} pushKeys pushServerKey and pushVapidKeys for server\n */\nfunction writeServerPusKey(pushKeys) {\n  var path = 'server/push/push_key.js';\n  _fs2.default.writeFileSync(path, 'export default {\\n' + ('  \\'pushServerKey\\': \\'' + pushKeys.pushServerKey + '\\',\\n') + '  \\'pushVapidKeys\\': {\\n' + ('    \\'publicKey\\': \\'' + pushKeys.pushVapidKeys.publicKey + '\\',\\n') + ('    \\'privateKey\\': \\'' + pushKeys.pushVapidKeys.privateKey + '\\',\\n') + '  },\\n};');\n}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImdlbl9wdXNoX2tleS5qcyJdLCJuYW1lcyI6WyJnZW5lcmF0ZVB1c2hLZXkiLCJwdXNoVmFwaWRLZXlzIiwicHJpdmF0ZUtleSIsInVuZGVmaW5lZCIsImNvbnNvbGUiLCJsb2ciLCJ2YXBpZEtleXMiLCJnZW5lcmF0ZVZBUElES2V5cyIsInB1YmxpY0tleSIsIndyaXRlQ2xpZW50UHVzaFB1YmtleSIsIndyaXRlU2VydmVyUHVzS2V5IiwicHViS2V5IiwicGF0aCIsIndyaXRlRmlsZVN5bmMiLCJwdXNoS2V5cyIsInB1c2hTZXJ2ZXJLZXkiXSwibWFwcGluZ3MiOiI7OztrQkFxQndCQSxlOztBQVB4Qjs7OztBQUNBOzs7O0FBQ0E7Ozs7OztBQUVBOzs7QUFHZSxTQUFTQSxlQUFULEdBQTJCO0FBQ3hDLE1BQUcsbUJBQVNDLGFBQVQsQ0FBdUJDLFVBQXZCLEtBQXNDQyxTQUF0QyxJQUNFLG1CQUFTRixhQUFULENBQXVCQyxVQUF2QixLQUFzQyxFQUQzQyxFQUMrQztBQUM3Q0UsWUFBUUMsR0FBUixDQUFZLG1CQUFaO0FBQ0EsUUFBTUMsWUFBWSxrQkFBUUMsaUJBQVIsRUFBbEI7QUFDQSx1QkFBU04sYUFBVCxDQUF1QkMsVUFBdkIsR0FBb0NJLFVBQVVKLFVBQTlDO0FBQ0EsdUJBQVNELGFBQVQsQ0FBdUJPLFNBQXZCLEdBQW1DRixVQUFVRSxTQUE3Qzs7QUFFQUMsMEJBQXNCSCxVQUFVRSxTQUFoQztBQUNBRTtBQUNEO0FBQ0Y7O0FBRUQ7Ozs7QUFsQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBMEJBLFNBQVNELHFCQUFULENBQStCRSxNQUEvQixFQUF1QztBQUNyQyxNQUFNQyxPQUFPLHlCQUFiO0FBQ0EsZUFBR0MsYUFBSCxDQUFpQkQsSUFBakIsRUFDRSwrRUFFMEIsbUJBQVNYLGFBQVQsQ0FBdUJPLFNBRmpELGdCQURGO0FBSUQ7O0FBRUQ7Ozs7QUFJQSxTQUFTRSxpQkFBVCxDQUEyQkksUUFBM0IsRUFBcUM7QUFDbkMsTUFBTUYsT0FBTyx5QkFBYjtBQUNBLGVBQUdDLGFBQUgsQ0FBaUJELElBQWpCLEVBQ0Usb0RBQzBCRSxTQUFTQyxhQURuQyxzRUFHMEJELFNBQVNiLGFBQVQsQ0FBdUJPLFNBSGpELDBDQUkyQk0sU0FBU2IsYUFBVCxDQUF1QkMsVUFKbEQsd0JBREY7QUFPRCIsImZpbGUiOiJnZW5fcHVzaF9rZXkuanMiLCJzb3VyY2VSb290IjoiL2hvbWUvZ2FybGljYi9zdHVkeS9hYnNvbHV0ZS9zZXJ2ZXIvcHVzaCIsInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAoYykgMjAxNyBUaGUgQWJzb2x1dGUgQXV0aG9ycy5cbi8vXG4vLyBMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wICh0aGUgXCJMaWNlbnNlXCIpO1xuLy8geW91IG1heSBub3QgdXNlIHRoaXMgZmlsZSBleGNlcHQgaW4gY29tcGxpYW5jZSB3aXRoIHRoZSBMaWNlbnNlLlxuLy8gWW91IG1heSBvYnRhaW4gYSBjb3B5IG9mIHRoZSBMaWNlbnNlIGF0XG4vL1xuLy8gICAgIGh0dHA6Ly93d3cuYXBhY2hlLm9yZy9saWNlbnNlcy9MSUNFTlNFLTIuMFxuLy9cbi8vIFVubGVzcyByZXF1aXJlZCBieSBhcHBsaWNhYmxlIGxhdyBvciBhZ3JlZWQgdG8gaW4gd3JpdGluZywgc29mdHdhcmVcbi8vIGRpc3RyaWJ1dGVkIHVuZGVyIHRoZSBMaWNlbnNlIGlzIGRpc3RyaWJ1dGVkIG9uIGFuIFwiQVMgSVNcIiBCQVNJUyxcbi8vIFdJVEhPVVQgV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXIgZXhwcmVzcyBvciBpbXBsaWVkLlxuLy8gU2VlIHRoZSBMaWNlbnNlIGZvciB0aGUgc3BlY2lmaWMgbGFuZ3VhZ2UgZ292ZXJuaW5nIHBlcm1pc3Npb25zIGFuZFxuLy8gbGltaXRhdGlvbnMgdW5kZXIgdGhlIExpY2Vuc2UuXG5cbmltcG9ydCBmcyBmcm9tICdmcyc7XG5pbXBvcnQgcHVzaEtleXMgZnJvbSAnLi9wdXNoX2tleSc7XG5pbXBvcnQgd2VicHVzaCBmcm9tICd3ZWItcHVzaCc7XG5cbi8qKlxuICogIExvYWQgcHVzaCBrZXkgaWYga2V5IGV4aXN0IGVsc2UgZ2VuZXJhdGUgYW5kIGxvYWRcbiAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gZ2VuZXJhdGVQdXNoS2V5KCkge1xuICBpZihwdXNoS2V5cy5wdXNoVmFwaWRLZXlzLnByaXZhdGVLZXkgPT09IHVuZGVmaW5lZFxuICAgIHx8IHB1c2hLZXlzLnB1c2hWYXBpZEtleXMucHJpdmF0ZUtleSA9PT0gJycpIHtcbiAgICBjb25zb2xlLmxvZygnZ2VuZXJhdGUgcHVzaCBrZXknKTtcbiAgICBjb25zdCB2YXBpZEtleXMgPSB3ZWJwdXNoLmdlbmVyYXRlVkFQSURLZXlzKCk7XG4gICAgcHVzaEtleXMucHVzaFZhcGlkS2V5cy5wcml2YXRlS2V5ID0gdmFwaWRLZXlzLnByaXZhdGVLZXk7XG4gICAgcHVzaEtleXMucHVzaFZhcGlkS2V5cy5wdWJsaWNLZXkgPSB2YXBpZEtleXMucHVibGljS2V5O1xuXG4gICAgd3JpdGVDbGllbnRQdXNoUHVia2V5KHZhcGlkS2V5cy5wdWJsaWNLZXkpO1xuICAgIHdyaXRlU2VydmVyUHVzS2V5KHB1c2hLZXlzKTtcbiAgfVxufVxuXG4vKipcbiAqIFdyaXRlIHB1c2ggdmFwaWQgcHVibGljIGtleSBmb3IgY2xpZW50LCBjbGllbnQgb25seSBtdXN0IGtub3cgcHVibGljIGtleVxuICogQHBhcmFtIHtzdHJpbmd9IHB1YktleSB2YXBpZCBwdWJsaWMga2V5IGZvciBjbGllbnQgc2lkZVxuICovXG5mdW5jdGlvbiB3cml0ZUNsaWVudFB1c2hQdWJrZXkocHViS2V5KSB7XG4gIGNvbnN0IHBhdGggPSAnY2xpZW50L3B1c2gvcHVzaF9rZXkuanMnO1xuICBmcy53cml0ZUZpbGVTeW5jKHBhdGgsXG4gICAgYGV4cG9ydCBkZWZhdWx0IHtcXG5gICtcbiAgICBgICBcXCdwdXNoVmFwaWRLZXlzXFwnOiB7XFxuYCArXG4gICAgICBgICAgIFxcJ3B1YmxpY0tleVxcJzogXFwnJHtwdXNoS2V5cy5wdXNoVmFwaWRLZXlzLnB1YmxpY0tleX1cXCdcXG4gIH1cXG59YCk7XG59XG5cbi8qKlxuICogV3JpdGUgcHVzaCBrZXlzIGZvciBzZXJ2ZXIuXG4gKiBAcGFyYW0ge2pzb259IHB1c2hLZXlzIHB1c2hTZXJ2ZXJLZXkgYW5kIHB1c2hWYXBpZEtleXMgZm9yIHNlcnZlclxuICovXG5mdW5jdGlvbiB3cml0ZVNlcnZlclB1c0tleShwdXNoS2V5cykge1xuICBjb25zdCBwYXRoID0gJ3NlcnZlci9wdXNoL3B1c2hfa2V5LmpzJztcbiAgZnMud3JpdGVGaWxlU3luYyhwYXRoLFxuICAgIGBleHBvcnQgZGVmYXVsdCB7XFxuYCArXG4gICAgYCAgXFwncHVzaFNlcnZlcktleVxcJzogXFwnJHtwdXNoS2V5cy5wdXNoU2VydmVyS2V5fVxcJyxcXG5gICtcbiAgICBgICBcXCdwdXNoVmFwaWRLZXlzXFwnOiB7XFxuYCArXG4gICAgICBgICAgIFxcJ3B1YmxpY0tleVxcJzogXFwnJHtwdXNoS2V5cy5wdXNoVmFwaWRLZXlzLnB1YmxpY0tleX1cXCcsXFxuYCArXG4gICAgICBgICAgIFxcJ3ByaXZhdGVLZXlcXCc6IFxcJyR7cHVzaEtleXMucHVzaFZhcGlkS2V5cy5wcml2YXRlS2V5fVxcJyxcXG5gICtcbiAgICBgICB9LFxcbn07YCk7XG59XG4iXX0=",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "gen_push_key.js"
+      ],
+      "names": [
+        "generatePushKey",
+        "pushVapidKeys",
+        "privateKey",
+        "undefined",
+        "console",
+        "log",
+        "vapidKeys",
+        "generateVAPIDKeys",
+        "publicKey",
+        "writeClientPushPubkey",
+        "writeServerPusKey",
+        "pubKey",
+        "path",
+        "writeFileSync",
+        "pushKeys",
+        "pushServerKey"
+      ],
+      "mappings": ";;;kBAqBwBA,e;;AAPxB;;;;AACA;;;;AACA;;;;;;AAEA;;;AAGe,SAASA,eAAT,GAA2B;AACxC,MAAG,mBAASC,aAAT,CAAuBC,UAAvB,KAAsCC,SAAtC,IACE,mBAASF,aAAT,CAAuBC,UAAvB,KAAsC,EAD3C,EAC+C;AAC7CE,YAAQC,GAAR,CAAY,mBAAZ;AACA,QAAMC,YAAY,kBAAQC,iBAAR,EAAlB;AACA,uBAASN,aAAT,CAAuBC,UAAvB,GAAoCI,UAAUJ,UAA9C;AACA,uBAASD,aAAT,CAAuBO,SAAvB,GAAmCF,UAAUE,SAA7C;;AAEAC,0BAAsBH,UAAUE,SAAhC;AACAE;AACD;AACF;;AAED;;;;AAlCA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AA0BA,SAASD,qBAAT,CAA+BE,MAA/B,EAAuC;AACrC,MAAMC,OAAO,yBAAb;AACA,eAAGC,aAAH,CAAiBD,IAAjB,EACE,+EAE0B,mBAASX,aAAT,CAAuBO,SAFjD,gBADF;AAID;;AAED;;;;AAIA,SAASE,iBAAT,CAA2BI,QAA3B,EAAqC;AACnC,MAAMF,OAAO,yBAAb;AACA,eAAGC,aAAH,CAAiBD,IAAjB,EACE,oDAC0BE,SAASC,aADnC,sEAG0BD,SAASb,aAAT,CAAuBO,SAHjD,0CAI2BM,SAASb,aAAT,CAAuBC,UAJlD,wBADF;AAOD",
+      "file": "gen_push_key.js",
+      "sourceRoot": "/home/garlicb/study/absolute/server/push",
+      "sourcesContent": [
+        "// Copyright (c) 2017 The Absolute Authors.\n//\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//     http://www.apache.org/licenses/LICENSE-2.0\n//\n// Unless required by applicable law or agreed to in writing, software\n// distributed under the License is distributed on an \"AS IS\" BASIS,\n// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for the specific language governing permissions and\n// limitations under the License.\n\nimport fs from 'fs';\nimport pushKeys from './push_key';\nimport webpush from 'web-push';\n\n/**\n *  Load push key if key exist else generate and load\n */\nexport default function generatePushKey() {\n  if(pushKeys.pushVapidKeys.privateKey === undefined\n    || pushKeys.pushVapidKeys.privateKey === '') {\n    console.log('generate push key');\n    const vapidKeys = webpush.generateVAPIDKeys();\n    pushKeys.pushVapidKeys.privateKey = vapidKeys.privateKey;\n    pushKeys.pushVapidKeys.publicKey = vapidKeys.publicKey;\n\n    writeClientPushPubkey(vapidKeys.publicKey);\n    writeServerPusKey(pushKeys);\n  }\n}\n\n/**\n * Write push vapid public key for client, client only must know public key\n * @param {string} pubKey vapid public key for client side\n */\nfunction writeClientPushPubkey(pubKey) {\n  const path = 'client/push/push_key.js';\n  fs.writeFileSync(path,\n    `export default {\\n` +\n    `  \\'pushVapidKeys\\': {\\n` +\n      `    \\'publicKey\\': \\'${pushKeys.pushVapidKeys.publicKey}\\'\\n  }\\n}`);\n}\n\n/**\n * Write push keys for server.\n * @param {json} pushKeys pushServerKey and pushVapidKeys for server\n */\nfunction writeServerPusKey(pushKeys) {\n  const path = 'server/push/push_key.js';\n  fs.writeFileSync(path,\n    `export default {\\n` +\n    `  \\'pushServerKey\\': \\'${pushKeys.pushServerKey}\\',\\n` +\n    `  \\'pushVapidKeys\\': {\\n` +\n      `    \\'publicKey\\': \\'${pushKeys.pushVapidKeys.publicKey}\\',\\n` +\n      `    \\'privateKey\\': \\'${pushKeys.pushVapidKeys.privateKey}\\',\\n` +\n    `  },\\n};`);\n}\n"
+      ]
+    },
+    "mtime": 1501777427475
+  },
+  "{\"filename\":\"/home/garlicb/study/absolute/server/push/push_key.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"strict\":false}],[[],{\"async\":false,\"asyncGenerators\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/home/garlicb/study/absolute/server/push\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.25.0": {
+    "metadata": {
+      "usedHelpers": [],
+      "marked": [],
+      "modules": {
+        "imports": [],
+        "exports": {
+          "exported": [],
+          "specifiers": []
+        }
+      }
+    },
+    "options": {
+      "filename": "/home/garlicb/study/absolute/server/push/push_key.js",
+      "filenameRelative": "/home/garlicb/study/absolute/server/push/push_key.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "strict": false
+          }
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "push_key.js",
+      "sourceFileName": "push_key.js",
+      "sourceRoot": "/home/garlicb/study/absolute/server/push",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleRoot": "/home/garlicb/study/absolute/server/push",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "parserOpts": false,
+      "generatorOpts": false,
+      "basename": "push_key"
+    },
+    "ignored": false,
+    "code": "Object.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  'pushServerKey': 'AAAAuU4aFAY:APA91bHL6gDxgTYMHD7q2hTKD_6GwYOcDhPTjiM14vYWwRwAmkl3rijIRnK-9-NdFvy8hrcXvi8IvBLhEPOUQZxZ2N00roSkH1U3tLX7sOGxzsKkTXHp9R2i-GbmYVkK9yYz0RF_wZfP',\n  'pushVapidKeys': {\n    'publicKey': 'BIIRaJLExnx2i0LLD8ROMfWazpjE7dQJo6UQo9zqbqu-rNSJFK2tyKM1FykWvrJSi9062j3xurAovn3jmli7Fws',\n    'privateKey': 'i7q575WlkOLcctkNeYhKs_OBAcWAuOgPef5d-aGjTyM'\n  }\n};\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInB1c2hfa2V5LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztrQkFBZTtBQUNiLG1CQUFpQiwwSkFESjtBQUViLG1CQUFpQjtBQUNmLGlCQUFhLHlGQURFO0FBRWYsa0JBQWM7QUFGQztBQUZKLEMiLCJmaWxlIjoicHVzaF9rZXkuanMiLCJzb3VyY2VSb290IjoiL2hvbWUvZ2FybGljYi9zdHVkeS9hYnNvbHV0ZS9zZXJ2ZXIvcHVzaCIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IHtcbiAgJ3B1c2hTZXJ2ZXJLZXknOiAnQUFBQXVVNGFGQVk6QVBBOTFiSEw2Z0R4Z1RZTUhEN3EyaFRLRF82R3dZT2NEaFBUamlNMTR2WVd3UndBbWtsM3JpaklSbkstOS1OZEZ2eThocmNYdmk4SXZCTGhFUE9VUVp4WjJOMDByb1NrSDFVM3RMWDdzT0d4enNLa1RYSHA5UjJpLUdibVlWa0s5eVl6MFJGX3daZlAnLFxuICAncHVzaFZhcGlkS2V5cyc6IHtcbiAgICAncHVibGljS2V5JzogJ0JJSVJhSkxFeG54MmkwTExEOFJPTWZXYXpwakU3ZFFKbzZVUW85enFicXUtck5TSkZLMnR5S00xRnlrV3ZySlNpOTA2MmozeHVyQW92bjNqbWxpN0Z3cycsXG4gICAgJ3ByaXZhdGVLZXknOiAnaTdxNTc1V2xrT0xjY3RrTmVZaEtzX09CQWNXQXVPZ1BlZjVkLWFHalR5TScsXG4gIH0sXG59O1xuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "push_key.js"
+      ],
+      "names": [],
+      "mappings": ";;;kBAAe;AACb,mBAAiB,0JADJ;AAEb,mBAAiB;AACf,iBAAa,yFADE;AAEf,kBAAc;AAFC;AAFJ,C",
+      "file": "push_key.js",
+      "sourceRoot": "/home/garlicb/study/absolute/server/push",
+      "sourcesContent": [
+        "export default {\n  'pushServerKey': 'AAAAuU4aFAY:APA91bHL6gDxgTYMHD7q2hTKD_6GwYOcDhPTjiM14vYWwRwAmkl3rijIRnK-9-NdFvy8hrcXvi8IvBLhEPOUQZxZ2N00roSkH1U3tLX7sOGxzsKkTXHp9R2i-GbmYVkK9yYz0RF_wZfP',\n  'pushVapidKeys': {\n    'publicKey': 'BIIRaJLExnx2i0LLD8ROMfWazpjE7dQJo6UQo9zqbqu-rNSJFK2tyKM1FykWvrJSi9062j3xurAovn3jmli7Fws',\n    'privateKey': 'i7q575WlkOLcctkNeYhKs_OBAcWAuOgPef5d-aGjTyM',\n  },\n};\n"
+      ]
+    },
+    "mtime": 1501777427475
+  },
+  "{\"filename\":\"/home/garlicb/study/absolute/bootstrap/command/cc.js\",\"env\":{},\"retainLines\":false,\"highlightCode\":true,\"suppressDeprecationMessages\":false,\"presets\":[],\"plugins\":[[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],null],[[],{\"strict\":false}],[[],{\"async\":false,\"asyncGenerators\":false}]],\"ignore\":[],\"code\":true,\"metadata\":true,\"ast\":true,\"comments\":true,\"compact\":\"auto\",\"minified\":false,\"sourceRoot\":\"/home/garlicb/study/absolute/bootstrap/command\",\"babelrc\":true,\"sourceType\":\"module\",\"moduleIds\":false,\"passPerPreset\":false,\"parserOpts\":false,\"generatorOpts\":false}:6.25.0": {
+    "metadata": {
+      "usedHelpers": [
+        "interopRequireDefault"
+      ],
+      "marked": [],
+      "modules": {
+        "imports": [
+          {
+            "source": "child_process",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "childProcess"
+              }
+            ]
+          },
+          {
+            "source": "https",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "https"
+              }
+            ]
+          },
+          {
+            "source": "readline",
+            "imported": [
+              "default"
+            ],
+            "specifiers": [
+              {
+                "kind": "named",
+                "imported": "default",
+                "local": "readline"
+              }
+            ]
+          }
+        ],
+        "exports": {
+          "exported": [
+            "cmd",
+            "value",
+            "rl",
+            "inputRL",
+            "option"
+          ],
+          "specifiers": [
+            {
+              "kind": "local",
+              "local": "cmd",
+              "exported": "cmd"
+            },
+            {
+              "kind": "local",
+              "local": "value",
+              "exported": "value"
+            },
+            {
+              "kind": "local",
+              "local": "rl",
+              "exported": "rl"
+            },
+            {
+              "kind": "local",
+              "local": "inputRL",
+              "exported": "inputRL"
+            },
+            {
+              "kind": "local",
+              "local": "option",
+              "exported": "option"
+            }
+          ]
+        }
+      }
+    },
+    "options": {
+      "filename": "/home/garlicb/study/absolute/bootstrap/command/cc.js",
+      "filenameRelative": "/home/garlicb/study/absolute/bootstrap/command/cc.js",
+      "env": {},
+      "retainLines": false,
+      "highlightCode": true,
+      "suppressDeprecationMessages": false,
+      "presets": [],
+      "plugins": [
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          null
+        ],
+        [
+          [],
+          {
+            "strict": false
+          }
+        ],
+        [
+          [],
+          {
+            "async": false,
+            "asyncGenerators": false
+          }
+        ]
+      ],
+      "ignore": [],
+      "code": true,
+      "metadata": true,
+      "ast": false,
+      "comments": true,
+      "compact": "auto",
+      "minified": false,
+      "sourceMaps": "both",
+      "sourceMapTarget": "cc.js",
+      "sourceFileName": "cc.js",
+      "sourceRoot": "/home/garlicb/study/absolute/bootstrap/command",
+      "babelrc": false,
+      "sourceType": "module",
+      "moduleRoot": "/home/garlicb/study/absolute/bootstrap/command",
+      "moduleIds": false,
+      "passPerPreset": false,
+      "parserOpts": false,
+      "generatorOpts": false,
+      "basename": "cc"
+    },
+    "ignored": false,
+    "code": "Object.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.rl = undefined;\nexports.cmd = cmd;\nexports.inputRL = inputRL;\n\nvar _child_process = require('child_process');\n\nvar _child_process2 = _interopRequireDefault(_child_process);\n\nvar _https = require('https');\n\nvar _https2 = _interopRequireDefault(_https);\n\nvar _readline = require('readline');\n\nvar _readline2 = _interopRequireDefault(_readline);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar execSync = _child_process2.default.execSync;\nexports.default = '';\n\n/**\n* @param {String} value The shell command.\n* @return {String} data The extra command.\n*/\n\nfunction cmd(value) {\n  try {\n    return execSync(value).toString().replace(/\\n/g, '');\n  } catch (err) {\n    return 0;\n  }\n}\n\nvar rl = exports.rl = _readline2.default.createInterface({\n  input: process.stdin,\n  output: process.stdout });\n\n/**\n* @param {String} option keywords 'pr' or 'cp'.\n*/\nfunction inputRL(option) {\n  var i = 0;\n  var j = 0;\n\n  var Q = {\n    'id': cmd('git config --local --get PAT.User'),\n    'pw': cmd('git config --local --get PAT.Token') };\n\n  if (Q.pw === 0) option = 'token';\n\n  switch (option) {\n    case 'token':\n      console.log('Only first attempt requires your ID/PW');\n      Q['mtd'] = 'POST', Q['path'] = '/authorizations';\n      j = 2;\n      break;\n\n    case 'pr':\n      console.log('Write about pull-request (title/body/head)');\n      console.log('For \"head\", depending on where the branch is,');\n      console.log('You can write \"lunchclass\" or your id');\n      Q['mtd'] = 'POST', Q['path'] = '/repos/lunchclass/absolute/pulls';\n      Q['title'] = '', Q['body'] = '', Q['head'] = '';\n      i = 4, j = 7;\n      break;\n\n    default:\n      console.log('default');\n  }\n\n  var recursiveRL = function recursiveRL(value) {\n    if (i < j) {\n      rl.question(value + ': ', function (answer) {\n        Q[Object.keys(Q)[i]] = answer;\n        i++;\n        recursiveRL(Object.keys(Q)[i]);\n      });\n    } else {\n      ghAPI(Q);\n      rl.close();\n    }\n  };\n  recursiveRL(Object.keys(Q)[i]);\n}\n\n/**\n* @param {Object} info The information.\n* pw will replace the personal access token.\n*/\nfunction ghAPI(info) {\n  // console.log(data.id +':' + data.pw);\n  var options = {\n    auth: info.id + ':' + info.pw,\n    hostname: 'api.github.com',\n    path: info.path,\n    method: info.mtd,\n    headers: {\n      'User-Agent': 'Node js',\n      'Content-Type': 'application/json' } };\n\n  var req = _https2.default.request(options, function (res) {\n    var body = '';\n\n    res.on('data', function (contents) {\n      body += contents;\n    });\n\n    res.on('end', function () {\n      var result = JSON.parse(body.toString());\n      var status = res.statusCode;\n\n      if (info.path === '/authorizations' && status === 201) {\n        // console.log('Get new token, please retry \"pr\"');\n        execSync('git config --local --add PAT.User ' + info.id);\n        execSync('git config --local --add PAT.Token ' + result.token);\n      }\n\n      console.log(result);\n    });\n  });\n\n  req.on('error', function (e) {\n    console.log('Error!', e.message);\n  });\n\n  var d = {};\n  if (info.path === '/authorizations') {\n    d = {\n      'note': 'Token_Absolute',\n      'scopes': 'repo' };\n  } else if (info.path === '/repos/lunchclass/absolute/pulls') {\n    d = {\n      'title': info.title,\n      'body': info.body,\n      'head': info.head + ':' + cmd('git symbolic-ref --short HEAD'),\n      'base': 'master' };\n  }\n  console.log(d);\n  req.write(JSON.stringify(d));\n  req.end();\n}\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNjLmpzIl0sIm5hbWVzIjpbImNtZCIsImlucHV0UkwiLCJleGVjU3luYyIsInZhbHVlIiwidG9TdHJpbmciLCJyZXBsYWNlIiwiZXJyIiwicmwiLCJjcmVhdGVJbnRlcmZhY2UiLCJpbnB1dCIsInByb2Nlc3MiLCJzdGRpbiIsIm91dHB1dCIsInN0ZG91dCIsIm9wdGlvbiIsImkiLCJqIiwiUSIsInB3IiwiY29uc29sZSIsImxvZyIsInJlY3Vyc2l2ZVJMIiwicXVlc3Rpb24iLCJhbnN3ZXIiLCJPYmplY3QiLCJrZXlzIiwiZ2hBUEkiLCJjbG9zZSIsImluZm8iLCJvcHRpb25zIiwiYXV0aCIsImlkIiwiaG9zdG5hbWUiLCJwYXRoIiwibWV0aG9kIiwibXRkIiwiaGVhZGVycyIsInJlcSIsInJlcXVlc3QiLCJyZXMiLCJib2R5Iiwib24iLCJjb250ZW50cyIsInJlc3VsdCIsIkpTT04iLCJwYXJzZSIsInN0YXR1cyIsInN0YXR1c0NvZGUiLCJ0b2tlbiIsImUiLCJtZXNzYWdlIiwiZCIsInRpdGxlIiwiaGVhZCIsIndyaXRlIiwic3RyaW5naWZ5IiwiZW5kIl0sIm1hcHBpbmdzIjoiOzs7O1FBV2dCQSxHLEdBQUFBLEc7UUFlQUMsTyxHQUFBQSxPOztBQTFCaEI7Ozs7QUFDQTs7OztBQUNBOzs7Ozs7QUFFQSxJQUFNQyxXQUFXLHdCQUFhQSxRQUE5QjtrQkFDZSxFOztBQUVmOzs7OztBQUlPLFNBQVNGLEdBQVQsQ0FBYUcsS0FBYixFQUFvQjtBQUN6QixNQUFJO0FBQ0YsV0FBT0QsU0FBU0MsS0FBVCxFQUFnQkMsUUFBaEIsR0FBMkJDLE9BQTNCLENBQW1DLEtBQW5DLEVBQTBDLEVBQTFDLENBQVA7QUFDRCxHQUZELENBRUUsT0FBT0MsR0FBUCxFQUFZO0FBQ1osV0FBTyxDQUFQO0FBQ0Q7QUFDRjs7QUFFTSxJQUFNQyxrQkFBSyxtQkFBU0MsZUFBVCxDQUF5QjtBQUN6Q0MsU0FBT0MsUUFBUUMsS0FEMEI7QUFFekNDLFVBQVFGLFFBQVFHLE1BRnlCLEVBQXpCLENBQVg7O0FBSVA7OztBQUdPLFNBQVNaLE9BQVQsQ0FBaUJhLE1BQWpCLEVBQXlCO0FBQzlCLE1BQUlDLElBQUksQ0FBUjtBQUNBLE1BQUlDLElBQUksQ0FBUjs7QUFFQSxNQUFJQyxJQUFJO0FBQ04sVUFBTWpCLElBQUksbUNBQUosQ0FEQTtBQUVOLFVBQU1BLElBQUksb0NBQUosQ0FGQSxFQUFSOztBQUlBLE1BQUdpQixFQUFFQyxFQUFGLEtBQVMsQ0FBWixFQUNFSixTQUFTLE9BQVQ7O0FBRUYsVUFBUUEsTUFBUjtBQUNBLFNBQUssT0FBTDtBQUNFSyxjQUFRQyxHQUFSLENBQVksd0NBQVo7QUFDQUgsUUFBRSxLQUFGLElBQVcsTUFBWCxFQUFtQkEsRUFBRSxNQUFGLElBQVksaUJBQS9CO0FBQ0FELFVBQUUsQ0FBRjtBQUNBOztBQUVGLFNBQUssSUFBTDtBQUNFRyxjQUFRQyxHQUFSLENBQVksNENBQVo7QUFDQUQsY0FBUUMsR0FBUixDQUFZLCtDQUFaO0FBQ0FELGNBQVFDLEdBQVIsQ0FBWSx1Q0FBWjtBQUNBSCxRQUFFLEtBQUYsSUFBVyxNQUFYLEVBQW1CQSxFQUFFLE1BQUYsSUFBWSxrQ0FBL0I7QUFDQUEsUUFBRSxPQUFGLElBQVcsRUFBWCxFQUFlQSxFQUFFLE1BQUYsSUFBVSxFQUF6QixFQUE2QkEsRUFBRSxNQUFGLElBQVcsRUFBeEM7QUFDQUYsVUFBRSxDQUFGLEVBQUtDLElBQUUsQ0FBUDtBQUNBOztBQUVGO0FBQ0VHLGNBQVFDLEdBQVIsQ0FBWSxTQUFaO0FBakJGOztBQW9CQSxNQUFNQyxjQUFjLFNBQWRBLFdBQWMsQ0FBU2xCLEtBQVQsRUFBZ0I7QUFDbEMsUUFBSVksSUFBSUMsQ0FBUixFQUFXO0FBQ1RULFNBQUdlLFFBQUgsQ0FBWW5CLFFBQVEsSUFBcEIsRUFBMEIsVUFBU29CLE1BQVQsRUFBaUI7QUFDekNOLFVBQUVPLE9BQU9DLElBQVAsQ0FBWVIsQ0FBWixFQUFlRixDQUFmLENBQUYsSUFBdUJRLE1BQXZCO0FBQ0FSO0FBQ0FNLG9CQUFZRyxPQUFPQyxJQUFQLENBQVlSLENBQVosRUFBZUYsQ0FBZixDQUFaO0FBQ0QsT0FKRDtBQUtELEtBTkQsTUFNTTtBQUNKVyxZQUFNVCxDQUFOO0FBQ0FWLFNBQUdvQixLQUFIO0FBQ0Q7QUFDRixHQVhEO0FBWUFOLGNBQVlHLE9BQU9DLElBQVAsQ0FBWVIsQ0FBWixFQUFlRixDQUFmLENBQVo7QUFDRDs7QUFFRDs7OztBQUlBLFNBQVNXLEtBQVQsQ0FBZUUsSUFBZixFQUFxQjtBQUNuQjtBQUNBLE1BQU1DLFVBQVM7QUFDYkMsVUFBTUYsS0FBS0csRUFBTCxHQUFVLEdBQVYsR0FBZ0JILEtBQUtWLEVBRGQ7QUFFYmMsY0FBVSxnQkFGRztBQUdiQyxVQUFNTCxLQUFLSyxJQUhFO0FBSWJDLFlBQVFOLEtBQUtPLEdBSkE7QUFLYkMsYUFBUztBQUNQLG9CQUFjLFNBRFA7QUFFUCxzQkFBZ0Isa0JBRlQsRUFMSSxFQUFmOztBQVNBLE1BQU1DLE1BQU0sZ0JBQU1DLE9BQU4sQ0FBY1QsT0FBZCxFQUF1QixVQUFDVSxHQUFELEVBQVM7QUFDMUMsUUFBSUMsT0FBTyxFQUFYOztBQUVBRCxRQUFJRSxFQUFKLENBQU8sTUFBUCxFQUFlLFVBQVNDLFFBQVQsRUFBbUI7QUFDaENGLGNBQVFFLFFBQVI7QUFDRCxLQUZEOztBQUlBSCxRQUFJRSxFQUFKLENBQU8sS0FBUCxFQUFjLFlBQVc7QUFDdkIsVUFBTUUsU0FBU0MsS0FBS0MsS0FBTCxDQUFXTCxLQUFLcEMsUUFBTCxFQUFYLENBQWY7QUFDQSxVQUFNMEMsU0FBU1AsSUFBSVEsVUFBbkI7O0FBRUEsVUFBR25CLEtBQUtLLElBQUwsS0FBYyxpQkFBZCxJQUFtQ2EsV0FBVyxHQUFqRCxFQUFzRDtBQUNwRDtBQUNBNUMsaUJBQVMsdUNBQXVDMEIsS0FBS0csRUFBckQ7QUFDQTdCLGlCQUFTLHdDQUF3Q3lDLE9BQU9LLEtBQXhEO0FBQ0Q7O0FBRUQ3QixjQUFRQyxHQUFSLENBQVl1QixNQUFaO0FBQ0QsS0FYRDtBQVlELEdBbkJXLENBQVo7O0FBcUJBTixNQUFJSSxFQUFKLENBQU8sT0FBUCxFQUFnQixVQUFTUSxDQUFULEVBQVk7QUFDMUI5QixZQUFRQyxHQUFSLENBQVksUUFBWixFQUFzQjZCLEVBQUVDLE9BQXhCO0FBQ0QsR0FGRDs7QUFJQSxNQUFJQyxJQUFJLEVBQVI7QUFDQSxNQUFJdkIsS0FBS0ssSUFBTCxLQUFjLGlCQUFsQixFQUFxQztBQUNuQ2tCLFFBQUk7QUFDRixjQUFRLGdCQUROO0FBRUYsZ0JBQVUsTUFGUixFQUFKO0FBR0QsR0FKRCxNQUlPLElBQUl2QixLQUFLSyxJQUFMLEtBQWMsa0NBQWxCLEVBQXNEO0FBQzNEa0IsUUFBSTtBQUNGLGVBQVN2QixLQUFLd0IsS0FEWjtBQUVGLGNBQVF4QixLQUFLWSxJQUZYO0FBR0YsY0FBUVosS0FBS3lCLElBQUwsR0FBVyxHQUFYLEdBQWVyRCxJQUFJLCtCQUFKLENBSHJCO0FBSUYsY0FBUSxRQUpOLEVBQUo7QUFLRDtBQUNEbUIsVUFBUUMsR0FBUixDQUFZK0IsQ0FBWjtBQUNBZCxNQUFJaUIsS0FBSixDQUFVVixLQUFLVyxTQUFMLENBQWVKLENBQWYsQ0FBVjtBQUNBZCxNQUFJbUIsR0FBSjtBQUNEIiwiZmlsZSI6ImNjLmpzIiwic291cmNlUm9vdCI6Ii9ob21lL2dhcmxpY2Ivc3R1ZHkvYWJzb2x1dGUvYm9vdHN0cmFwL2NvbW1hbmQiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgY2hpbGRQcm9jZXNzIGZyb20gJ2NoaWxkX3Byb2Nlc3MnO1xuaW1wb3J0IGh0dHBzIGZyb20gJ2h0dHBzJztcbmltcG9ydCByZWFkbGluZSBmcm9tICdyZWFkbGluZSc7XG5cbmNvbnN0IGV4ZWNTeW5jID0gY2hpbGRQcm9jZXNzLmV4ZWNTeW5jO1xuZXhwb3J0IGRlZmF1bHQgJyc7XG5cbi8qKlxuKiBAcGFyYW0ge1N0cmluZ30gdmFsdWUgVGhlIHNoZWxsIGNvbW1hbmQuXG4qIEByZXR1cm4ge1N0cmluZ30gZGF0YSBUaGUgZXh0cmEgY29tbWFuZC5cbiovXG5leHBvcnQgZnVuY3Rpb24gY21kKHZhbHVlKSB7XG4gIHRyeSB7XG4gICAgcmV0dXJuIGV4ZWNTeW5jKHZhbHVlKS50b1N0cmluZygpLnJlcGxhY2UoL1xcbi9nLCAnJyk7XG4gIH0gY2F0Y2ggKGVycikge1xuICAgIHJldHVybiAwO1xuICB9XG59XG5cbmV4cG9ydCBjb25zdCBybCA9IHJlYWRsaW5lLmNyZWF0ZUludGVyZmFjZSh7XG4gIGlucHV0OiBwcm9jZXNzLnN0ZGluLFxuICBvdXRwdXQ6IHByb2Nlc3Muc3Rkb3V0fSk7XG5cbi8qKlxuKiBAcGFyYW0ge1N0cmluZ30gb3B0aW9uIGtleXdvcmRzICdwcicgb3IgJ2NwJy5cbiovXG5leHBvcnQgZnVuY3Rpb24gaW5wdXRSTChvcHRpb24pIHtcbiAgbGV0IGkgPSAwO1xuICBsZXQgaiA9IDA7XG5cbiAgbGV0IFEgPSB7XG4gICAgJ2lkJzogY21kKCdnaXQgY29uZmlnIC0tbG9jYWwgLS1nZXQgUEFULlVzZXInKSxcbiAgICAncHcnOiBjbWQoJ2dpdCBjb25maWcgLS1sb2NhbCAtLWdldCBQQVQuVG9rZW4nKX07XG5cbiAgaWYoUS5wdyA9PT0gMClcbiAgICBvcHRpb24gPSAndG9rZW4nO1xuXG4gIHN3aXRjaCAob3B0aW9uKSB7XG4gIGNhc2UgJ3Rva2VuJzpcbiAgICBjb25zb2xlLmxvZygnT25seSBmaXJzdCBhdHRlbXB0IHJlcXVpcmVzIHlvdXIgSUQvUFcnKTtcbiAgICBRWydtdGQnXSA9ICdQT1NUJywgUVsncGF0aCddID0gJy9hdXRob3JpemF0aW9ucyc7XG4gICAgaj0yO1xuICAgIGJyZWFrO1xuXG4gIGNhc2UgJ3ByJzpcbiAgICBjb25zb2xlLmxvZygnV3JpdGUgYWJvdXQgcHVsbC1yZXF1ZXN0ICh0aXRsZS9ib2R5L2hlYWQpJyk7XG4gICAgY29uc29sZS5sb2coJ0ZvciBcImhlYWRcIiwgZGVwZW5kaW5nIG9uIHdoZXJlIHRoZSBicmFuY2ggaXMsJyk7XG4gICAgY29uc29sZS5sb2coJ1lvdSBjYW4gd3JpdGUgXCJsdW5jaGNsYXNzXCIgb3IgeW91ciBpZCcpO1xuICAgIFFbJ210ZCddID0gJ1BPU1QnLCBRWydwYXRoJ10gPSAnL3JlcG9zL2x1bmNoY2xhc3MvYWJzb2x1dGUvcHVsbHMnO1xuICAgIFFbJ3RpdGxlJ109JycsIFFbJ2JvZHknXT0nJywgUVsnaGVhZCddPSAnJztcbiAgICBpPTQsIGo9NztcbiAgICBicmVhaztcblxuICBkZWZhdWx0OlxuICAgIGNvbnNvbGUubG9nKCdkZWZhdWx0Jyk7XG4gIH1cblxuICBjb25zdCByZWN1cnNpdmVSTCA9IGZ1bmN0aW9uKHZhbHVlKSB7XG4gICAgaWYgKGkgPCBqKSB7XG4gICAgICBybC5xdWVzdGlvbih2YWx1ZSArICc6ICcsIGZ1bmN0aW9uKGFuc3dlcikge1xuICAgICAgICBRW09iamVjdC5rZXlzKFEpW2ldXSA9IGFuc3dlcjtcbiAgICAgICAgaSsrO1xuICAgICAgICByZWN1cnNpdmVSTChPYmplY3Qua2V5cyhRKVtpXSk7XG4gICAgICB9KTtcbiAgICB9ZWxzZSB7XG4gICAgICBnaEFQSShRKTtcbiAgICAgIHJsLmNsb3NlKCk7XG4gICAgfVxuICB9O1xuICByZWN1cnNpdmVSTChPYmplY3Qua2V5cyhRKVtpXSk7XG59XG5cbi8qKlxuKiBAcGFyYW0ge09iamVjdH0gaW5mbyBUaGUgaW5mb3JtYXRpb24uXG4qIHB3IHdpbGwgcmVwbGFjZSB0aGUgcGVyc29uYWwgYWNjZXNzIHRva2VuLlxuKi9cbmZ1bmN0aW9uIGdoQVBJKGluZm8pIHtcbiAgLy8gY29uc29sZS5sb2coZGF0YS5pZCArJzonICsgZGF0YS5wdyk7XG4gIGNvbnN0IG9wdGlvbnMgPXtcbiAgICBhdXRoOiBpbmZvLmlkICsgJzonICsgaW5mby5wdyxcbiAgICBob3N0bmFtZTogJ2FwaS5naXRodWIuY29tJyxcbiAgICBwYXRoOiBpbmZvLnBhdGgsXG4gICAgbWV0aG9kOiBpbmZvLm10ZCxcbiAgICBoZWFkZXJzOiB7XG4gICAgICAnVXNlci1BZ2VudCc6ICdOb2RlIGpzJyxcbiAgICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbid9fTtcblxuICBjb25zdCByZXEgPSBodHRwcy5yZXF1ZXN0KG9wdGlvbnMsIChyZXMpID0+IHtcbiAgICBsZXQgYm9keSA9ICcnO1xuXG4gICAgcmVzLm9uKCdkYXRhJywgZnVuY3Rpb24oY29udGVudHMpIHtcbiAgICAgIGJvZHkgKz0gY29udGVudHM7XG4gICAgfSk7XG5cbiAgICByZXMub24oJ2VuZCcsIGZ1bmN0aW9uKCkge1xuICAgICAgY29uc3QgcmVzdWx0ID0gSlNPTi5wYXJzZShib2R5LnRvU3RyaW5nKCkpO1xuICAgICAgY29uc3Qgc3RhdHVzID0gcmVzLnN0YXR1c0NvZGU7XG5cbiAgICAgIGlmKGluZm8ucGF0aCA9PT0gJy9hdXRob3JpemF0aW9ucycgJiYgc3RhdHVzID09PSAyMDEpIHtcbiAgICAgICAgLy8gY29uc29sZS5sb2coJ0dldCBuZXcgdG9rZW4sIHBsZWFzZSByZXRyeSBcInByXCInKTtcbiAgICAgICAgZXhlY1N5bmMoJ2dpdCBjb25maWcgLS1sb2NhbCAtLWFkZCBQQVQuVXNlciAnICsgaW5mby5pZCk7XG4gICAgICAgIGV4ZWNTeW5jKCdnaXQgY29uZmlnIC0tbG9jYWwgLS1hZGQgUEFULlRva2VuICcgKyByZXN1bHQudG9rZW4pO1xuICAgICAgfVxuXG4gICAgICBjb25zb2xlLmxvZyhyZXN1bHQpO1xuICAgIH0pO1xuICB9KTtcblxuICByZXEub24oJ2Vycm9yJywgZnVuY3Rpb24oZSkge1xuICAgIGNvbnNvbGUubG9nKCdFcnJvciEnLCBlLm1lc3NhZ2UpO1xuICB9KTtcblxuICBsZXQgZCA9IHt9O1xuICBpZiAoaW5mby5wYXRoID09PSAnL2F1dGhvcml6YXRpb25zJykge1xuICAgIGQgPSB7XG4gICAgICAnbm90ZSc6ICdUb2tlbl9BYnNvbHV0ZScsXG4gICAgICAnc2NvcGVzJzogJ3JlcG8nfTtcbiAgfSBlbHNlIGlmIChpbmZvLnBhdGggPT09ICcvcmVwb3MvbHVuY2hjbGFzcy9hYnNvbHV0ZS9wdWxscycpIHtcbiAgICBkID0ge1xuICAgICAgJ3RpdGxlJzogaW5mby50aXRsZSxcbiAgICAgICdib2R5JzogaW5mby5ib2R5LFxuICAgICAgJ2hlYWQnOiBpbmZvLmhlYWQgKyc6JytjbWQoJ2dpdCBzeW1ib2xpYy1yZWYgLS1zaG9ydCBIRUFEJyksXG4gICAgICAnYmFzZSc6ICdtYXN0ZXInfTtcbiAgfVxuICBjb25zb2xlLmxvZyhkKTtcbiAgcmVxLndyaXRlKEpTT04uc3RyaW5naWZ5KGQpKTtcbiAgcmVxLmVuZCgpO1xufVxuIl19",
+    "ast": null,
+    "map": {
+      "version": 3,
+      "sources": [
+        "cc.js"
+      ],
+      "names": [
+        "cmd",
+        "inputRL",
+        "execSync",
+        "value",
+        "toString",
+        "replace",
+        "err",
+        "rl",
+        "createInterface",
+        "input",
+        "process",
+        "stdin",
+        "output",
+        "stdout",
+        "option",
+        "i",
+        "j",
+        "Q",
+        "pw",
+        "console",
+        "log",
+        "recursiveRL",
+        "question",
+        "answer",
+        "Object",
+        "keys",
+        "ghAPI",
+        "close",
+        "info",
+        "options",
+        "auth",
+        "id",
+        "hostname",
+        "path",
+        "method",
+        "mtd",
+        "headers",
+        "req",
+        "request",
+        "res",
+        "body",
+        "on",
+        "contents",
+        "result",
+        "JSON",
+        "parse",
+        "status",
+        "statusCode",
+        "token",
+        "e",
+        "message",
+        "d",
+        "title",
+        "head",
+        "write",
+        "stringify",
+        "end"
+      ],
+      "mappings": "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",
+      "file": "cc.js",
+      "sourceRoot": "/home/garlicb/study/absolute/bootstrap/command",
+      "sourcesContent": [
+        "import childProcess from 'child_process';\nimport https from 'https';\nimport readline from 'readline';\n\nconst execSync = childProcess.execSync;\nexport default '';\n\n/**\n* @param {String} value The shell command.\n* @return {String} data The extra command.\n*/\nexport function cmd(value) {\n  try {\n    return execSync(value).toString().replace(/\\n/g, '');\n  } catch (err) {\n    return 0;\n  }\n}\n\nexport const rl = readline.createInterface({\n  input: process.stdin,\n  output: process.stdout});\n\n/**\n* @param {String} option keywords 'pr' or 'cp'.\n*/\nexport function inputRL(option) {\n  let i = 0;\n  let j = 0;\n\n  let Q = {\n    'id': cmd('git config --local --get PAT.User'),\n    'pw': cmd('git config --local --get PAT.Token')};\n\n  if(Q.pw === 0)\n    option = 'token';\n\n  switch (option) {\n  case 'token':\n    console.log('Only first attempt requires your ID/PW');\n    Q['mtd'] = 'POST', Q['path'] = '/authorizations';\n    j=2;\n    break;\n\n  case 'pr':\n    console.log('Write about pull-request (title/body/head)');\n    console.log('For \"head\", depending on where the branch is,');\n    console.log('You can write \"lunchclass\" or your id');\n    Q['mtd'] = 'POST', Q['path'] = '/repos/lunchclass/absolute/pulls';\n    Q['title']='', Q['body']='', Q['head']= '';\n    i=4, j=7;\n    break;\n\n  default:\n    console.log('default');\n  }\n\n  const recursiveRL = function(value) {\n    if (i < j) {\n      rl.question(value + ': ', function(answer) {\n        Q[Object.keys(Q)[i]] = answer;\n        i++;\n        recursiveRL(Object.keys(Q)[i]);\n      });\n    }else {\n      ghAPI(Q);\n      rl.close();\n    }\n  };\n  recursiveRL(Object.keys(Q)[i]);\n}\n\n/**\n* @param {Object} info The information.\n* pw will replace the personal access token.\n*/\nfunction ghAPI(info) {\n  // console.log(data.id +':' + data.pw);\n  const options ={\n    auth: info.id + ':' + info.pw,\n    hostname: 'api.github.com',\n    path: info.path,\n    method: info.mtd,\n    headers: {\n      'User-Agent': 'Node js',\n      'Content-Type': 'application/json'}};\n\n  const req = https.request(options, (res) => {\n    let body = '';\n\n    res.on('data', function(contents) {\n      body += contents;\n    });\n\n    res.on('end', function() {\n      const result = JSON.parse(body.toString());\n      const status = res.statusCode;\n\n      if(info.path === '/authorizations' && status === 201) {\n        // console.log('Get new token, please retry \"pr\"');\n        execSync('git config --local --add PAT.User ' + info.id);\n        execSync('git config --local --add PAT.Token ' + result.token);\n      }\n\n      console.log(result);\n    });\n  });\n\n  req.on('error', function(e) {\n    console.log('Error!', e.message);\n  });\n\n  let d = {};\n  if (info.path === '/authorizations') {\n    d = {\n      'note': 'Token_Absolute',\n      'scopes': 'repo'};\n  } else if (info.path === '/repos/lunchclass/absolute/pulls') {\n    d = {\n      'title': info.title,\n      'body': info.body,\n      'head': info.head +':'+cmd('git symbolic-ref --short HEAD'),\n      'base': 'master'};\n  }\n  console.log(d);\n  req.write(JSON.stringify(d));\n  req.end();\n}\n"
+      ]
+    },
+    "mtime": 1501944774632
+  }
+}

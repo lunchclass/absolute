@@ -25,6 +25,8 @@ import sourcemaps from 'gulp-sourcemaps';
 import undefTaskToDefault from 'gulp-undef-task-to-default';
 import webpack from 'webpack';
 
+import {inputRL, rl} from './bootstrap/command/cc';
+
 process.on('exit', () => {
   runSequence('stop');
 });
@@ -174,6 +176,26 @@ gulp.task('build_client', () => {
         include: /\.min\.js$/,
         minimize: true})]}, (err, stats) => {
       // FIXME(cs-lee) save log in file
+  });
+});
+
+gulp.task('cc', () =>{
+  console.log('Enter keyword "pr" or "cp"');
+  rl.on('line', (line) =>{
+    if(line === 'pr') {
+      inputRL(line);
+    } else if (line === 'cp') {
+      gulp.start('cp');
+    }
+  });
+});
+
+gulp.task('cp', () =>{
+  rl.question('num: ', function(answer) {
+    childProcess.execSync(
+      'git pull https://github.com/lunchclass/absolute pull/'
+    +answer+ '/head:pr-'+answer);
+    rl.close();
   });
 });
 

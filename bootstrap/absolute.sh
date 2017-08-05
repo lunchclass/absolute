@@ -47,4 +47,9 @@ done
 # TODO(nadongguri): this env vir should be set not here but before gulp command
 export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
 
-gulp $@
+# ccl requires several steps. it need to turn off the gulp message
+if [[ $@ = "cc" ]]; then
+  gulp $@ --silent
+else
+  gulp $@
+fi
