@@ -1,4 +1,4 @@
-  // Copyright (c) 2017 The Absolute Authors.
+// Copyright (c) 2017 The Absolute Authors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -141,16 +141,17 @@ gulp.task('bootstrap_test', () => {
 });
 
 gulp.task('build_client', () => {
-  gulp.src([path.resolve(__dirname, 'client', 'index.html'),
-    path.resolve(__dirname, 'client', 'service-worker.js')])
+  gulp.src(path.resolve(__dirname, 'client', 'index.html'))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
     watch: true,
     context: path.resolve(__dirname, 'client'),
-    entry: './app.js',
+    entry: {
+      bundle: './app.js',
+      sw: './service-worker.js'},
     output: {
-      path: path.resolve(__dirname, 'out', 'client', 'javascript'),
-      filename: 'bundle.js'},
+      path: path.resolve(__dirname, 'out', 'client'),
+      filename: '[name].js'},
     module: {
       rules: [{
         test: /\.js$/,
