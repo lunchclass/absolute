@@ -31,12 +31,19 @@ export default class Push {
    */
   registerSubscription(subscription) {
     this._subscription = subscription;
+    const SERVER_URL = Util.getServerURL();
+    const queryUrl = `${SERVER_URL}/api/push/client/${subscription}`;
+    Util.fetchRequest(queryUrl, 'POST', null).then(function (result) {
+    }).catch(function (error) {
+      console.log(`failed to register subscription ${error}`);
+    });
   }
 
   /**
    * get push subscription with uuid from server
    */
   getSubscription() {
+    return this._subscription;
   }
 }
 

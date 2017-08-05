@@ -13,24 +13,17 @@
 // limitations under the License.
 
 /**
- * util class
+ * common util class
  */
-
 export default class Util {
-  static isUndefined(obj) {
-    return obj === undefined;
-  }
-
-  static isString(obj) {
-    return typeof obj === 'string';
-  }
-
-  static isFunction(obj) {
-    return obj && {}.toString.call(obj) === '[object Function]';
-  }
-
-  static isObject(obj) {
-    return typeof obj === 'object'
+  /**
+   * get server URL
+   */
+  static getServerURL() {
+    const HOST = self.location.hostname;
+    const PORT = self.location.port;
+    const SERVER_URL = `//${HOST}:${PORT}`;
+    return SERVER_URL;
   }
 
   /**
@@ -56,4 +49,3 @@ export default class Util {
     });
   }
 }
-
