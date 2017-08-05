@@ -15,6 +15,7 @@
 /**
  * push class
  */
+import Util from './../common/util_manager.js';
 
 export default class Push {
   /**
