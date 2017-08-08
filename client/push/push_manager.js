@@ -30,6 +30,8 @@ export default class Push {
    */
   registerSubscription(subscription) {
     this._subscription = subscription;
+    console.log(`subscription registered :
+      ${JSON.stringify(this._subscription)}`);
   }
 
   /**
@@ -38,4 +40,3 @@ export default class Push {
   getSubscription() {
   }
 }
-
