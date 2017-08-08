@@ -30,14 +30,14 @@ export default class Util {
    * fetch request operation
    */
   static fetchRequest(targetUrl, method, data) {
-    return new Promise(function (resolve, reject) {
-      fetch(targetUrl, { method, body: data }).then(function (response) {
+    return new Promise(function(resolve, reject) {
+      fetch(targetUrl, {method, body: data}).then(function(response) {
         if (response.status !== 200) {
           console.log('Failed to fetch from ${targetUrl} Status Code: '
               + response.status);
           return reject(response.status);
         }
-        response.json().then(function (respData) {
+        response.json().then(function(respData) {
           console.log(respData);
           return resolve(respData);
         });

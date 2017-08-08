@@ -33,8 +33,8 @@ export default class Push {
     this._subscription = subscription;
     const SERVER_URL = Util.getServerURL();
     const queryUrl = `${SERVER_URL}/api/push/client/${subscription}`;
-    Util.fetchRequest(queryUrl, 'POST', null).then(function (result) {
-    }).catch(function (error) {
+    Util.fetchRequest(queryUrl, 'POST', null).then(function(result) {
+    }).catch(function(error) {
       console.log(`failed to register subscription ${error}`);
     });
   }
