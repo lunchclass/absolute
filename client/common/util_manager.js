@@ -29,9 +29,9 @@ export default class Util {
   /**
    * fetch request operation
    */
-  static fetchRequest(targetUrl, method, data) {
+  static fetchRequest(request) {
     return new Promise(function(resolve, reject) {
-      fetch(targetUrl, {method, body: data}).then(function(response) {
+      fetch(request).then(function(response) {
         if (response.status !== 200) {
           console.log('Failed to fetch from ${targetUrl} Status Code: '
               + response.status);

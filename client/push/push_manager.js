@@ -32,9 +32,27 @@ export default class Push {
   registerSubscription(subscription) {
     this._subscription = subscription;
     const SERVER_URL = Util.getServerURL();
-    const queryUrl = `${SERVER_URL}/api/push/client/${subscription}`;
-    Util.fetchRequest(queryUrl, 'POST', null).then(function(result) {
-    }).catch(function(error) {
+    const queryUrl = `${SERVER_URL}/api/push/token/`;
+    let jsonData = JSON.stringify({
+      // FIXME(daehyun): this userId should be replaced by real user id
+      userId: '1234',
+      endpoint: subscription.endpoint,
+      keys: {
+        p256dh: subscription.getKey('p256dh'),
+        auth: subscription.getKey('auth')
+      }
+    });
+    let pushRequest = new Request(queryUrl, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonData
+    });
+    Util.fetchRequest(pushRequest)
+    .then(function(result) {
+    })
+    .catch(function(error) {
       console.log(`failed to register subscription ${error}`);
     });
   }
