@@ -33,7 +33,10 @@ export default class Push {
     this._subscription = subscription;
     const SERVER_URL = Util.getServerURL();
     const queryUrl = `${SERVER_URL}/api/push/token/`;
-    let jsonData = JSON.stringify({
+    let pushHeaders = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let pushData = JSON.stringify({
       // FIXME(daehyun): this userId should be replaced by real user id
       userId: '1234',
       endpoint: subscription.endpoint,
@@ -43,11 +46,9 @@ export default class Push {
       }
     });
     let pushRequest = new Request(queryUrl, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonData
+      method: 'POST',
+      headers: pushHeaders,
+      body: pushData
     });
     Util.fetchRequest(pushRequest)
     .then(function(result) {
