@@ -56,6 +56,8 @@ export default class Push {
     .catch(function(error) {
       console.log(`failed to register subscription ${error}`);
     });
+    console.log(`subscription registered :
+      ${JSON.stringify(this._subscription)}`);
   }
 
   /**
@@ -65,4 +67,3 @@ export default class Push {
     return this._subscription;
   }
 }
-
