@@ -37,7 +37,7 @@ export default class Push {
       'Content-Type': 'application/json'
     });
     let pushData = JSON.stringify({
-      // FIXME(daehyun): this userId should be replaced by real user id
+      // FIXME(daehyun): this userId should be replaced, now we use endpoint
       userId: subscription.endpoint,
       endpoint: subscription.endpoint,
       keys: {
