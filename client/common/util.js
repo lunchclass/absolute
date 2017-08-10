@@ -33,7 +33,7 @@ export default class Util {
     return new Promise(function(resolve, reject) {
       fetch(request).then(function(response) {
         if (response.status !== 200) {
-          console.log('Failed to fetch from ${targetUrl} Status Code: '
+          console.log('Failed to fetch request. Status Code: '
               + response.status);
           return reject(response.status);
         }

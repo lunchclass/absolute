@@ -15,7 +15,7 @@
 /**
  * push class
  */
-import Util from './../common/util_manager.js';
+import Util from './../common/util.js';
 
 export default class Push {
   /**
@@ -38,11 +38,11 @@ export default class Push {
     });
     let pushData = JSON.stringify({
       // FIXME(daehyun): this userId should be replaced by real user id
-      userId: '1234',
+      userId: subscription.endpoint,
       endpoint: subscription.endpoint,
       keys: {
-        p256dh: subscription.getKey('p256dh'),
-        auth: subscription.getKey('auth')
+        p256dh: '',
+        auth: '')
       }
     });
     let pushRequest = new Request(queryUrl, {
