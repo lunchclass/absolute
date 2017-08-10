@@ -42,7 +42,7 @@ export default class Push {
       endpoint: subscription.endpoint,
       keys: {
         p256dh: '',
-        auth: '')
+        auth: ''
       }
     });
     let pushRequest = new Request(queryUrl, {
