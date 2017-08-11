@@ -1,4 +1,5 @@
 *.swp
+.babel-cache.json
 .pkg_timestamp
 node_modules
 out
