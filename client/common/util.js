@@ -37,10 +37,7 @@ export default class Util {
               + response.status);
           return reject(response.status);
         }
-        response.json().then(function(respData) {
-          console.log(respData);
-          return resolve(respData);
-        });
+		return resolve(response);
       })
       .catch(function (err) {
         console.log('Fetch Error : ' + err);
