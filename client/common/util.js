@@ -37,7 +37,7 @@ export default class Util {
               + response.status);
           return reject(response.status);
         }
-		return resolve(response);
+        return resolve(response);
       })
       .catch(function (err) {
         console.log('Fetch Error : ' + err);
