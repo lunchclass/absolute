@@ -49,7 +49,16 @@ export default class Push {
       headers: pushHeaders,
       body: pushData
     });
-    Util.fetchRequest(pushRequest);
+
+    Util.fetchRequest(pushRequest)
+    .then(function(result) {
+    })
+    .catch(function(error) {
+      console.log(`failed to register subscription ${error}`);
+    });
+
+    console.log(`subscription registered :
+      ${JSON.stringify(this._subscription)}`);
   }
 
   /**
