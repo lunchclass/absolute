@@ -31,8 +31,7 @@ export default class Push {
    */
   registerSubscription(subscription) {
     this._subscription = subscription;
-    const SERVER_URL = Util.getServerURL();
-    const queryUrl = `${SERVER_URL}/api/push/token/`;
+    const queryUrl = `/api/push/token/`;
     let pushHeaders = new Headers({
       'Content-Type': 'application/json'
     });
@@ -50,14 +49,7 @@ export default class Push {
       headers: pushHeaders,
       body: pushData
     });
-    Util.fetchRequest(pushRequest)
-    .then(function(result) {
-    })
-    .catch(function(error) {
-      console.log(`failed to register subscription ${error}`);
-    });
-    console.log(`subscription registered :
-      ${JSON.stringify(this._subscription)}`);
+    Util.fetchRequest(pushRequest);
   }
 
   /**
@@ -67,3 +59,4 @@ export default class Push {
     return this._subscription;
   }
 }
+

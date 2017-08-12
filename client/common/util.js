@@ -17,32 +17,21 @@
  */
 export default class Util {
   /**
-   * get server URL
-   */
-  static getServerURL() {
-    const HOST = self.location.hostname;
-    const PORT = self.location.port;
-    const SERVER_URL = `//${HOST}:${PORT}`;
-    return SERVER_URL;
-  }
-
-  /**
    * fetch request operation
    */
   static fetchRequest(request) {
-    return new Promise(function(resolve, reject) {
-      fetch(request).then(function(response) {
-        if (response.status !== 200) {
-          console.log('Failed to fetch request. Status Code: '
-              + response.status);
-          return reject(response.status);
-        }
-        return resolve(response);
-      })
-      .catch(function (err) {
-        console.log('Fetch Error : ' + err);
-        reject(err);
-      });
+    fetch(request).then(function(response) {
+      if (response.status !== 200) {
+        console.log('Failed to fetch request. Status Code: '
+            + response.status);
+        return reject(response.status);
+      }
+      return resolve(response);
+    })
+    .catch(function (err) {
+      console.log('Fetch Error : ' + err);
+      reject(err);
     });
   }
 }
+
