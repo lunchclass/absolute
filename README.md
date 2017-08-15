@@ -16,3 +16,5 @@ decentralized and appless.
 ## Getting Started
 
 ## License
+
+Copyright 2017 - 2018 Lunchclass. and the Absolute project authors. Licensed under Apache License v2.0.
