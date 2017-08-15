@@ -16,3 +16,8 @@ decentralized and appless.
 ## Getting Started
 
 ## License
+
+It is required to fill license item in readme.md with flollowing sentence.
+
+Copyright 2017 - 2018 Lunchclass and the Absolute project authors. Licensed under Apach License v2.0
+
