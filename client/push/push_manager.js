@@ -15,8 +15,6 @@
 /**
  * push class
  */
-import Util from './../common/util.js';
-
 export default class Push {
   /**
    * @constructor
@@ -50,13 +48,16 @@ export default class Push {
       body: pushData
     });
 
-    Util.fetchRequest(pushRequest)
-    .then(function(result) {
+    fetch(pushRequest)
+    .then(response => {
+      if (response.status !== 200) {
+        console.log('Failed to fetch request. Status Code: '
+            + response.status);
+      }
     })
-    .catch(function(error) {
-      console.log(`failed to register subscription ${error}`);
+    .catch(error => {
+      console.log('Request failed: ' + error);
     });
-
     console.log(`subscription registered :
       ${JSON.stringify(this._subscription)}`);
   }
