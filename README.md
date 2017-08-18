@@ -16,3 +16,4 @@ decentralized and appless.
 ## Getting Started
 
 ## License
+This project is released under an Apache 2.0 open source license. Please see [LICENSE.md](https://github.com/lunchclass/absolute/blob/master/LICENSE.md)
