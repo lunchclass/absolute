@@ -15,7 +15,6 @@
 /**
  * push class
  */
-
 export default class Push {
   /**
    * @constructor
@@ -30,6 +29,35 @@ export default class Push {
    */
   registerSubscription(subscription) {
     this._subscription = subscription;
+    const queryUrl = `/api/push/token/`;
+    let pushHeaders = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let pushData = JSON.stringify({
+      // FIXME(daehyun): this userId should be replaced, now we use endpoint
+      userId: subscription.endpoint,
+      endpoint: subscription.endpoint,
+      keys: {
+        p256dh: '',
+        auth: ''
+      }
+    });
+    let pushRequest = new Request(queryUrl, {
+      method: 'POST',
+      headers: pushHeaders,
+      body: pushData
+    });
+
+    fetch(pushRequest)
+    .then(response => {
+      if (response.status !== 200) {
+        console.log('Failed to fetch request. Status Code: '
+            + response.status);
+      }
+    })
+    .catch(error => {
+      console.log('Request failed: ' + error);
+    });
     console.log(`subscription registered :
       ${JSON.stringify(this._subscription)}`);
   }
@@ -38,5 +66,7 @@ export default class Push {
    * get push subscription with uuid from server
    */
   getSubscription() {
+    return this._subscription;
   }
 }
+
