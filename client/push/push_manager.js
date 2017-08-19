@@ -30,18 +30,19 @@ export default class Push {
   registerSubscription(subscription) {
     this._subscription = subscription;
     const queryUrl = `/api/push/token/`;
+    const jsonSubscription = subscription.toJSON();
+
     let pushHeaders = new Headers({
       'Content-Type': 'application/json'
     });
+
     let pushData = JSON.stringify({
       // FIXME(daehyun): this userId should be replaced, now we use endpoint
-      userId: subscription.endpoint,
-      endpoint: subscription.endpoint,
-      keys: {
-        p256dh: '',
-        auth: ''
-      }
+      userId: jsonSubscription.endpoint,
+      endpoint: jsonSubscription.endpoint,
+      keys: jsonSubscription.keys,
     });
+
     let pushRequest = new Request(queryUrl, {
       method: 'POST',
       headers: pushHeaders,
@@ -69,4 +70,3 @@ export default class Push {
     return this._subscription;
   }
 }
-
