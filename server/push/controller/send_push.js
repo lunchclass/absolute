@@ -15,6 +15,8 @@
 import pushKeys from '../push_key';
 import sourceMapSupport from 'source-map-support';
 import webpush from 'web-push';
+import * as pushController from './push_controller';
+
 
 // It provides source map support for stack traces in node
 sourceMapSupport.install({environment: 'node'});
@@ -51,6 +53,33 @@ export function sendPush(endpoint, keys, payload) {
     }).catch((webPushError) => {
       console.log(`push failed to ${endpoint}\n ${webPushError}`);
       return reject(webPushError);
+    });
+  });
+}
+
+/**
+ * Send push with payload to userId using stored push data
+ * @param {string} userId userId to send push
+ * @param {string} payload payload data send to endpoint
+ * @return {promise} result includes statusCode, headers, body
+ */
+export function sendPushByUserId(userId, payload) {
+  return new Promise((resolve, reject) => {
+    pushController.getPushTokens(userId)
+    .then((tokens) => {
+      const pushKeys = {
+        p256dh: tokens.p256dh,
+        auth: tokens.auth,
+      };
+
+      sendPush(tokens.endpoint, pushKeys, payload)
+      .then((result) => {
+        return resolve(result);
+      }).catch((error) => {
+        return reject(error);
+      });
+    }).catch((error) => {
+      return reject(error);
     });
   });
 }
