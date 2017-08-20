@@ -13,12 +13,13 @@
 // limitations under the License.
 
 import Application from '../../base/application.js';
-import {sendPush} from '../controller/send_push';
+import * as pushSender from '../controller/send_push';
 
 @Application.route('/api/push')
 export default class PushRouter {
   /**
-   * Send push with payload to endpoint with it's auth / ecdh key
+   * Send push with payload to endpoint or userId with it's auth / ecdh key
+   * If userId query, find and push using stored endpoint and auth/ecdh
    * @param {json} request request object
                    - request.body.endpoint endpoint endpoint from subscription
                    - request.body.keys keys authentication key
@@ -27,8 +28,16 @@ export default class PushRouter {
    * @param {json} response response object
    */
   post(request, response) {
-    if (request.body.endpoint && request.body.keys) {
-      sendPush(request.body.endpoint, request.body.keys,
+    if (request.query.userId) {
+      pushSender.sendPushByUserId(
+        request.query.userId, JSON.stringify(request.body.payload))
+      .then((result) => {
+        response.send(result);
+      }).catch((error) => {
+        response.send(error);
+      });
+    } else if (request.body.endpoint && request.body.keys) {
+      pushSender.sendPush(request.body.endpoint, request.body.keys,
         JSON.stringify(request.body.payload))
         .then((result) => {
           response.send(result);
