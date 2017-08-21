@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import Authorization from '../authorization/authorization_manager.js'
+
 /**
  * push class
  */
@@ -32,6 +34,8 @@ export default class Push {
     const queryUrl = `/api/push/token/`;
     const jsonSubscription = subscription.toJSON();
 
+    // Check userId
+    let userId = Authorization.getBrowserFingerprint();
     let pushHeaders = new Headers({
       'Content-Type': 'application/json'
     });
