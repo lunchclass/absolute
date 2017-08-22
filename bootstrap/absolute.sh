@@ -47,4 +47,8 @@ done
 # TODO(nadongguri): this env vir should be set not here but before gulp command
 export BABEL_CACHE_PATH=$(absolute_path)/.babel-cache.json
 
-gulp $@
+if [ "$1" = 'pr' ] || [ "$1" = 'cp' ]; then
+  node ./node_modules/github_from_cmd/main.js $1 $2
+else
+  gulp $@
+fi
