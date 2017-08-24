@@ -139,7 +139,8 @@ gulp.task('bootstrap_test', () => {
 });
 
 gulp.task('build_client', () => {
-  gulp.src(path.resolve(__dirname, 'client', 'index.html'))
+  gulp.src([path.resolve(__dirname, 'client', 'index.html'),
+    path.resolve(__dirname, 'client', 'manifest.json')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
     watch: true,
