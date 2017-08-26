@@ -19,7 +19,7 @@ export function addProduct(productData) {
       } else {
         resolve(product);
       }
-    })
+    });
   });
 }
 
@@ -35,6 +35,6 @@ export function getProductList() {
       } else {
         reject(error);
       }
-    })
+    });
   });
 }
