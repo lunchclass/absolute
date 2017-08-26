@@ -14,11 +14,11 @@ export function addProduct(productData) {
     , {amount: productData.amount, options: productData.options}
     , {upsert: true}, (error, product) => {
       if (error) {
-        resolve(error);
+        reject(error);
       } else {
         resolve(product);
       }
-  });
+    });
 }
 
 /**
