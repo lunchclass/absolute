@@ -26,12 +26,12 @@ export default class UserIdRouter {
       auth.getUserId(request.query.userid).then((authInfo) => {
         response.json(authInfo);
       }, (error) => {
-        //FIXME Please define error code to common area.
+        // FIXME Please define error code to common area.
         response.sendStatus(error);
       });
     } else {
-      //FIXME Please define error code to common area.
-      response.sendStatus(error);
+      // FIXME Please define error code to common area.
+      response.sendStatus(-1);
     }
   }
 
@@ -39,7 +39,7 @@ export default class UserIdRouter {
     auth.generateUserId().then((authInfo) => {
       response.send(authInfo);
     }, (error) => {
-      //FIXME Please define error code to common area.
+      // FIXME Please define error code to common area.
       response.sendStatus(error);
     });
   }

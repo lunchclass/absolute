@@ -22,7 +22,7 @@ import * as order from '../controller/order_controller';
 @Application.route('/order')
 export default class OrderRouter {
   get(request, response) {
-    //FIXME We need keep session.
+    // FIXME We need keep session.
     order.getOrderList(request.query.userId)
       .then((orderList) => {
         response.send(orderList);
@@ -32,10 +32,10 @@ export default class OrderRouter {
   post(request, response) {
     if (request.body.userId) {
       order.saveOrder(JSON.parse(JSON.stringify(request.body)));
-      //FIXME Please define error code to common area.
+      // FIXME Please define error code to common area.
       response.sendStatus(200);
     } else {
-      //FIXME Please define error code to common area.
+      // FIXME Please define error code to common area.
       response.sendStatus(400);
     }
   }
