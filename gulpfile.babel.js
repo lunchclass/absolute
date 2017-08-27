@@ -178,4 +178,24 @@ gulp.task('build_client', () => {
   });
 });
 
+gulp.task('test', () => {
+  runSequence(
+    'lint',
+    'build_server',
+    'build_client',
+    'server_test',
+    'stop');
+});
+
+gulp.task('server_test', () => {
+  gulp.src(['out/server/**/test/test-*.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+      process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
+    });
+});
+
 undefTaskToDefault(gulp);
