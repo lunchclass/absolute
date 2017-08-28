@@ -12,7 +12,9 @@ We are focused on creating the platform that is portable, cheaper, easier,
 decentralized and appless.
 
 **Portable:**  
+
 **cheaper:** 
+
 **easier:**  
 
 ### Flow
