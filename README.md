@@ -11,7 +11,17 @@ Absolute is a web-based order platform like siren-order for Starbucks.
 We are focused on creating the platform that is portable, cheaper, easier,
 decentralized and appless.
 
+**Portable:**  
+**cheaper:** 
+**easier:**  
 
+### Flow
+TODO Input Flow Image
+
+### Features
+* client(web): 
+* push server: 
+* payment: 
 
 ## Contributing to Absolute
 Contributions to Absolute are welcomed and encouraged! Please see the
@@ -19,13 +29,7 @@ Contributions to Absolute are welcomed and encouraged! Please see the
 
 ## Getting Started
 
-
-
 ### System Requirements
-
-
-
-
 #### Linux
 
 For Ubuntu, you'll need the following development dependencies:
@@ -35,7 +39,7 @@ For Ubuntu, you'll need the following development dependencies:
 Build instructions for Ubuntu 14.04 LTS can be found [here](docs/Ubuntu14.md)
 
 ### Building Absolute
-
+./absolut start
 
 ## Testing Absolute
 
