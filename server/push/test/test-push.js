@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// import assert from 'assert';
+import assert from 'assert';
 import {describe, it} from 'mocha';
 import * as pushSender from '../controller/send_push';
+
 
 console.log('Welcome Absolute Push Test');
 
@@ -30,25 +31,70 @@ const TEST_PUSH_TOKENS = {
 };
 
 const TEST_PAYLOAD = {
-  'payload': {
-    'title': 'Absolute Test',
-    'body': 'Push Test body',
-    'icon': 'absolute.ico',
-  },
+  title: 'Absolute Test Payload',
+  body: 'Push Test body :)',
 };
 
-describe('Push Send Test', () => {
-  it('Send push using fixed push tokens', () => {
+describe('[POSITIVE] Push Send', () => {
+  it('Send push with fixed push tokens', (done) => {
     pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, TEST_PUSH_TOKENS.keys,
       JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
-        if (result.statusCode == 201) {
-          console.log('Test succeed' + JSON.stringify(result));
-        } else {
-          console.log('Test failed! ' + JSON.stringify(result));
-        }
+        assert.equal(result.statusCode, 201);
+        done();
       }).catch((error) => {
         console.log('Failed to sendPush!' + error);
+        done();
+      });
+  });
+  // need add user id and tokens to db, send by userid after starting server
+});
+
+describe('[NEGATIVE] Push Send', () => {
+  const INVALID_P256_KEYS = {
+    'p256dh': 'bCgobso9T0YT3u449ro9GE6RXuobJet6EhAcEpj5m23ms38vrEIBFKxeY_yl3' +
+    '3ULYF_btMdUy0c9mhipqAMuXL0=',
+    'auth': 'BZa9OSqugZMNdSADtoP-9A==',
+  };
+  const INVALID_AUTH_KEYS = {
+    'p256dh': 'BCgobso9T0YT3u449ro9GE6RXuobJet6EhAcEpj5m23ms38vrEIBFKxeY_yl3' +
+    '3ULYF_btMdUy0c9mhipqAMuXL0=',
+    'auth': 'bZa9OSqugZMNdSADtoP-9A==',
+  };
+
+  it('Send push with invalid endpoint', (done) => {
+    pushSender.sendPush('https://android.googleapis.com/gcm/send/c6cb_vmi0ZQ:',
+     TEST_PUSH_TOKENS.keys, JSON.stringify(TEST_PAYLOAD))
+      .then((result) => {
+        assert.notEqual(result.statusCode, 201);
+        done();
+      }).catch((error) => {
+        console.log('Failed to sendPush! ' + error);
+        done();
+      });
+  });
+
+  it('Send push with invalid P256dh key', (done) => {
+    pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_P256_KEYS,
+      JSON.stringify(TEST_PAYLOAD))
+      .then((result) => {
+        assert.notEqual(result.statusCode, 201);
+        done();
+      }).catch((error) => {
+        console.log('Failed to sendPush! ' + error);
+        done();
+      });
+  });
+
+  it('Send push with invalid auth key', (done) => {
+    pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_AUTH_KEYS,
+      JSON.stringify(TEST_PAYLOAD))
+      .then((result) => {
+        assert.notEqual(result.statusCode, 201);
+        done();
+      }).catch((error) => {
+        console.log('Failed to sendPush! ' + error);
+        done();
       });
   });
 });

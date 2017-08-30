@@ -143,7 +143,7 @@ gulp.task('build_client', () => {
     path.resolve(__dirname, 'client', 'manifest.json')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
-    watch: true,
+    watch: false,
     context: path.resolve(__dirname, 'client'),
     entry: {
       bundle: './app.js',
@@ -183,6 +183,7 @@ gulp.task('test', () => {
     'lint',
     'build_server',
     'build_client',
+    'bootstrap_test',
     'server_test',
     'stop');
 });
