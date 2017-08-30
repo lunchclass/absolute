@@ -36,7 +36,5 @@ For Ubuntu, you'll need the following development dependencies:
 It is required to fill license item in readme.md with flollowing sentence.
 
 Copyright 2017 - 2018 Lunchclass and the Absolute project authors. Licensed under Apach License v2.0
+Please see [LICENSE.md](https://github.com/lunchclass/absolute/blob/master/LICENSE.md)
 
-=======
-This project is released under an Apache 2.0 open source license. Please see [LICENSE.md](https://github.com/lunchclass/absolute/blob/master/LICENSE.md)
->>>>>>> 21e5e1ad31af149870e2e92559d7e6dbc674d731
