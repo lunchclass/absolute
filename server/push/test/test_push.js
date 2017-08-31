@@ -16,9 +16,6 @@ import assert from 'assert';
 import {describe, it} from 'mocha';
 import * as pushSender from '../controller/send_push';
 
-
-console.log('Welcome Absolute Push Test');
-
 const TEST_PUSH_TOKENS = {
   endpoint: 'https://android.googleapis.com/gcm/send/c6cb_vmi0ZQ:APA91bHSX9n' +
   'rDTni8LMGtJr_fgaxzJd4qa_-ZCItY6lhZKnGQjAEeuhG3BjLGyUSGK_gfai80NRvzF' +

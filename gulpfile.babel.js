@@ -128,7 +128,7 @@ gulp.task('stop', (finish) => {
 });
 
 gulp.task('bootstrap_test', () => {
-  gulp.src(['bootstrap/test/test-*.js'], {read: false})
+  gulp.src(['bootstrap/test/test_*.js'], {read: false})
     .pipe(mocha())
     .once('error', () => {
       process.exit(1);
@@ -189,7 +189,7 @@ gulp.task('test', () => {
 });
 
 gulp.task('server_test', () => {
-  gulp.src(['out/server/**/test/test-*.js'], {read: false})
+  gulp.src(['out/server/**/test/test_*.js'], {read: false})
     .pipe(mocha())
     .once('error', () => {
       process.exit(1);
