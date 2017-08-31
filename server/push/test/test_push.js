@@ -33,18 +33,17 @@ const TEST_PAYLOAD = {
 };
 
 describe('[POSITIVE] Push Send', () => {
-  it('Send push with fixed push tokens', (done) => {
-    pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, TEST_PUSH_TOKENS.keys,
+  it('Send push with fixed push tokens', () => {
+    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, TEST_PUSH_TOKENS.keys,
       JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.equal(result.statusCode, 201);
-        done();
       }).catch((error) => {
-        console.log('Failed to sendPush!' + error);
-        done();
+        assert.fail('Failed to sendPush! ' + error);
       });
   });
-  // need add user id and tokens to db, send by userid after starting server
+  // TODO(jaychl): need to add user id and tokens to db then
+  // sending by userid after starting server
 });
 
 describe('[NEGATIVE] Push Send', () => {
@@ -58,40 +57,51 @@ describe('[NEGATIVE] Push Send', () => {
     '3ULYF_btMdUy0c9mhipqAMuXL0=',
     'auth': 'bZa9OSqugZMNdSADtoP-9A==',
   };
+  const INVALID_SHORT_AUTH_KEYS = {
+    'p256dh': 'BCgobso9T0YT3u449ro9GE6RXuobJet6EhAcEpj5m23ms38vrEIBFKxeY_yl3' +
+    '3ULYF_btMdUy0c9mhipqAMuXL0=',
+    'auth': 'bZa9OSqugZMNdSADtoP-==',
+  };
 
-  it('Send push with invalid endpoint', (done) => {
-    pushSender.sendPush('https://android.googleapis.com/gcm/send/c6cb_vmi0ZQ:',
+  it('Send push with invalid endpoint', () => {
+    return pushSender.sendPush('https://android.googleapis.com/gcm/send/c6cb_:',
      TEST_PUSH_TOKENS.keys, JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.notEqual(result.statusCode, 201);
-        done();
       }).catch((error) => {
-        console.log('Failed to sendPush! ' + error);
-        done();
+        assert.equal(error.statusCode, 400);
       });
   });
 
-  it('Send push with invalid P256dh key', (done) => {
-    pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_P256_KEYS,
+  it('Send push with invalid P256dh key', () => {
+    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_P256_KEYS,
       JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.notEqual(result.statusCode, 201);
-        done();
       }).catch((error) => {
-        console.log('Failed to sendPush! ' + error);
-        done();
+        assert.ok(true);
       });
   });
 
-  it('Send push with invalid auth key', (done) => {
-    pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_AUTH_KEYS,
+  it('Send push with invalid auth key', () => {
+    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_AUTH_KEYS,
       JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
-        assert.notEqual(result.statusCode, 201);
-        done();
+        // note that if we use invalid auth key with sufficient length
+        // it succesfully get 201 but push is not send to server
+        assert.equal(result.statusCode, 201);
       }).catch((error) => {
-        console.log('Failed to sendPush! ' + error);
-        done();
+        assert.fail('Invalid auth key expected not throw error');
+      });
+  });
+
+  it('Send push with invalid short auth key', () => {
+    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint,
+      INVALID_SHORT_AUTH_KEYS, JSON.stringify(TEST_PAYLOAD))
+      .then((result) => {
+        assert.notEqual(result.statusCode, 201);
+      }).catch((error) => {
+        assert.ok(true);
       });
   });
 });
