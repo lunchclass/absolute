@@ -184,8 +184,7 @@ gulp.task('test', () => {
     'build_server',
     'build_client',
     'bootstrap_test',
-    'server_test',
-    'stop');
+    'server_test');
 });
 
 gulp.task('server_test', () => {
