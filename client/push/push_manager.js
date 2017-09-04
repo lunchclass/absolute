@@ -31,7 +31,7 @@ export default class Push {
     // query push permissions
     return new Promise(function(resolve, reject) {
       navigator.permissions.query({name:'push', userVisibleOnly:true})
-      .then(function(permissionStatus) {
+      .then(permissionStatus => {
         console.log('push permission state is ', permissionStatus.state);
         resolve(permissionStatus.state);
       });
@@ -39,15 +39,16 @@ export default class Push {
   }
 
   /**
-   * get push subscription with uuid from server
+   * get push subscription from push manager
    */
   getPushSubscription() {
-    let pushSubscrip;
-    self.registration.pushManager.getSubscription().then(subscription => {
-      pushSubscrip = subscription;
-      this._subscription = subscription;
+    return new Promise(function(resolve, reject) {
+      self.registration.pushManager.getSubscription()
+      .then(subscription => {
+        this._subscription = subscription;
+        resolve(subscription);  		
+      });
     });
-    return pushSubscrip;
   }
 
   /**
@@ -58,7 +59,6 @@ export default class Push {
     const queryUrl = `/api/push/token/`;
     const jsonSubscription = subscription.toJSON();
 
-    // Check userId
     let pushHeaders = new Headers({
       'Content-Type': 'application/json'
     });

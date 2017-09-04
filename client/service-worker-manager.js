@@ -23,7 +23,7 @@ function urlBase64UrlToUint8Array(base64UrlData) {
  */
 function getServiceworkerRegistration() {
   return new Promise(function(resolve, reject) {
-    navigator.serviceWorker.getRegistrations().then(function(registration) {
+    navigator.serviceWorker.getRegistrations().then(registration => {
       resolve(registration);
     });
   });
@@ -65,10 +65,10 @@ if ('serviceWorker' in navigator) {
     .then(push.getPushPermissionStatus)
     .then(permission => {
       if (permission === 'granted') {
-        // need to show popup notification for revoke
+        // TODO(jimmy) need to show popup notification for revoke
         registerServiceWorker();
       } else {
-        // need to notify users that should enable push permission for absolute
+        // TODO(jimmy) need to notify users that should enable push permission for absolute
         console.log('permission is denied');
       }
     });
