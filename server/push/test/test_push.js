@@ -16,14 +16,26 @@ import assert from 'assert';
 import {describe, it} from 'mocha';
 import * as pushSender from '../controller/send_push';
 
-const TEST_PUSH_TOKENS = {
-  endpoint: 'https://android.googleapis.com/gcm/send/c6cb_vmi0ZQ:APA91bHSX9n' +
-  'rDTni8LMGtJr_fgaxzJd4qa_-ZCItY6lhZKnGQjAEeuhG3BjLGyUSGK_gfai80NRvzF' +
-  'wQJClgD6nl4UxRs0T7k_b2gKrPXefdVDDVxsaC3p0qQ2GQzAfO28w9NvzBDzII',
+const TEST_PUSH_TOKENS_PC_CHROME = {
+  endpoint: 'https://fcm.googleapis.com/fcm/send/fvkYiDvVn_k:APA91bH8h4uZK4F' +
+  'cPermVaBYg3JIEanMPykYlBVeLP-O8vm6F03wS__vB259JSS98LdwuMfpm6X2yAIMosv-QVKQ' +
+  '7vjikrRVcrsdQBnoCo553NE7pXagNPJyFFFGYujvXbUFbTKi7bZZ',
   keys: {
-    'p256dh': 'BCgobso9T0YT3u449ro9GE6RXuobJet6EhAcEpj5m23ms38vrEIBFKxeY_yl3' +
-    '3ULYF_btMdUy0c9mhipqAMuXL0=',
-    'auth': 'BZa9OSqugZMNdSADtoP-9A==',
+    'p256dh': 'BGCibcbrMIdfz34rG4IAIfuhmvkLBEAE7l_S4zjVRjWkN4_bxo5oXO1a_0zYP' +
+    'rubfijq60eVuDPmfyh-fpYpOqc=',
+    'auth': 'cQXITd9TDD16BxL8qYHBdQ==',
+  },
+};
+
+const TEST_PUSH_TOKENS_PC_FIREFOX = {
+  endpoint: 'https://updates.push.services.mozilla.com/wpush/v2/gAAAAABZrVyI' +
+  'bKT4XCMsAL0qc9MOiQ_VieAYSOuy6SNUsF1mLqnEiSsmtmqiBu0COHwkcVrTk3-Sh6n00YBzR' +
+  'zY_0U4DUOJMfp52KXQPt75jpJUx3tFgOIfLJLaJP3OsSKjSHvxlc55wbDTJu_wd_1rGAus29J' +
+  '6RzdsQ05xX9n_ro4ITnQ4FLSw',
+  keys: {
+    'p256dh': 'BOsO8MAUwyfjRuXdViVv2Df58W4C-nPWIBFRnCTo-HhGUV2xjcTbwLWlSpsM3' +
+    'as2Bx0lzlE5kvPd-sjXjzy0qIo',
+    'auth': '0j5jZtzgM6L3OVQJOwSOzg',
   },
 };
 
@@ -33,8 +45,9 @@ const TEST_PAYLOAD = {
 };
 
 describe('[POSITIVE] Push Send', () => {
-  it('Send push with fixed push tokens', () => {
-    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, TEST_PUSH_TOKENS.keys,
+  it('Send push with fixed push tokens - pc / chrome', () => {
+    return pushSender.sendPush(TEST_PUSH_TOKENS_PC_CHROME.endpoint,
+      TEST_PUSH_TOKENS_PC_CHROME.keys,
       JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.equal(result.statusCode, 201);
@@ -42,6 +55,18 @@ describe('[POSITIVE] Push Send', () => {
         assert.fail('Failed to sendPush! ' + error);
       });
   });
+
+  it('Send push with fixed push tokens - pc / firefox', () => {
+    return pushSender.sendPush(TEST_PUSH_TOKENS_PC_FIREFOX.endpoint,
+      TEST_PUSH_TOKENS_PC_FIREFOX.keys, JSON.stringify(TEST_PAYLOAD))
+      .then((result) => {
+        assert.equal(result.statusCode, 201);
+      }).catch((error) => {
+        assert.fail('Failed to sendPush! ' + error);
+      });
+  });
+  // TODO(jaychl): mobile chrome / other browser token
+  // should be added for testing device
   // TODO(jaychl): need to add user id and tokens to db then
   // sending by userid after starting server
 });
@@ -53,9 +78,9 @@ describe('[NEGATIVE] Push Send', () => {
     'auth': 'BZa9OSqugZMNdSADtoP-9A==',
   };
   const INVALID_AUTH_KEYS = {
-    'p256dh': 'BCgobso9T0YT3u449ro9GE6RXuobJet6EhAcEpj5m23ms38vrEIBFKxeY_yl3' +
-    '3ULYF_btMdUy0c9mhipqAMuXL0=',
-    'auth': 'bZa9OSqugZMNdSADtoP-9A==',
+    'p256dh': 'BGCibcbrMIdfz34rG4IAIfuhmvkLBEAE7l_S4zjVRjWkN4_bxo5oXO1a_0zYP' +
+    'rubfijq60eVuDPmfyh-fpYpOqc=',
+    'auth': 'CQXITd9TDD16BxL8qYHBdQ==',
   };
   const INVALID_SHORT_AUTH_KEYS = {
     'p256dh': 'BCgobso9T0YT3u449ro9GE6RXuobJet6EhAcEpj5m23ms38vrEIBFKxeY_yl3' +
@@ -65,7 +90,7 @@ describe('[NEGATIVE] Push Send', () => {
 
   it('Send push with invalid endpoint', () => {
     return pushSender.sendPush('https://android.googleapis.com/gcm/send/c6cb_:',
-     TEST_PUSH_TOKENS.keys, JSON.stringify(TEST_PAYLOAD))
+     TEST_PUSH_TOKENS_PC_CHROME.keys, JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.notEqual(result.statusCode, 201);
       }).catch((error) => {
@@ -74,8 +99,8 @@ describe('[NEGATIVE] Push Send', () => {
   });
 
   it('Send push with invalid P256dh key', () => {
-    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_P256_KEYS,
-      JSON.stringify(TEST_PAYLOAD))
+    return pushSender.sendPush(TEST_PUSH_TOKENS_PC_CHROME.endpoint,
+      INVALID_P256_KEYS, JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.notEqual(result.statusCode, 201);
       }).catch((error) => {
@@ -84,19 +109,20 @@ describe('[NEGATIVE] Push Send', () => {
   });
 
   it('Send push with invalid auth key', () => {
-    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint, INVALID_AUTH_KEYS,
-      JSON.stringify(TEST_PAYLOAD))
+    return pushSender.sendPush(TEST_PUSH_TOKENS_PC_CHROME.endpoint,
+      INVALID_AUTH_KEYS, JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
-        // note that if we use invalid auth key with sufficient length
+        // note that some browser can still send even if we use invalid
+        // auth key.
         // it succesfully get 201 but push is not send to server
         assert.equal(result.statusCode, 201);
       }).catch((error) => {
-        assert.fail('Invalid auth key expected not throw error');
+        assert.ok(true);
       });
   });
 
   it('Send push with invalid short auth key', () => {
-    return pushSender.sendPush(TEST_PUSH_TOKENS.endpoint,
+    return pushSender.sendPush(TEST_PUSH_TOKENS_PC_CHROME.endpoint,
       INVALID_SHORT_AUTH_KEYS, JSON.stringify(TEST_PAYLOAD))
       .then((result) => {
         assert.notEqual(result.statusCode, 201);
