@@ -1,6 +1,6 @@
 # Absolute
 [![Linux/Max Build Status](https://travis-ci.org/lunchclass/absolute.svg?branch=master)](https://travis-ci.org/lunchclass/absolute/branches)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/pmac6fwbclavu8n0/branch/master?svg=true)](https://ci.appveyor.com/project/romandev/absolute/branch/master)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/099u4iekeny4lpsa/branch/master?svg=true)](https://ci.appveyor.com/project/romandev/absolute/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/romandev/absolute/badge.svg?branch=master)](https://coveralls.io/github/romandev/absolute?branch=master)
 
 
@@ -17,35 +17,24 @@ decentralized and appless.
 
 **easier:**  
 
-### Flow
+### Architecture
 TODO Input Flow Image
 
 ### Features
-* client(web): 
-* push server: 
-* payment: 
+* [Service-worker](https://github.com/newklus/absolute/client/service-worker.md) 
+* [push server](https://github.com/newklus/absolute/server/server.md) 
+* [payment](https://github.com/newklus/absolute/payment_md)
 
 ## Contributing to Absolute
 Contributions to Absolute are welcomed and encouraged! Please see the
-[Contributing to Absolute guide](http://lunchclass.io).
+[Contributing to Absolute guide](https://github.com/newklus/absolute/contribution/contribution.md)
 
 ## Getting Started
-
-### System Requirements
-#### Linux
-
-For Ubuntu, you'll need the following development dependencies:
-
-    sudo apt-get install g++ git make python wget 
-
-Build instructions for Ubuntu 14.04 LTS can be found [here](docs/Ubuntu14.md)
 
 ### Building Absolute
 ./absolut start
 
 ## Testing Absolute
-
-### Building Documentation
 
 ## License
 
