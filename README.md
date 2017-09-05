@@ -23,11 +23,11 @@ TODO Input Flow Image
 ### Features
 * [Service-worker](https://github.com/newklus/absolute/blob/master/client/service-worker.md) 
 * [push server](https://github.com/newklus/absolute/blob/master/server/server.md) 
-* [payment](https://github.com/newklus/absolute/blob/master/payment_md)
+* [payment](https://github.com/newklus/absolute/blob/master/payment.md)
 
 ## Contributing to Absolute
 Contributions to Absolute are welcomed and encouraged! Please see the
-[Contributing to Absolute guide](https://github.com/newklus/absolute//blob/master/contribution/contribution.md)
+[Contributing to Absolute guide](https://github.com/newklus/absolute/blob/master/contribution/contribution.md)
 
 ## Getting Started
 
