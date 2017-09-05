@@ -21,9 +21,9 @@ decentralized and appless.
 TODO Input Flow Image
 
 ### Features
-* [Service-worker](https://github.com/newklus/absolute//blob/master/client/service-worker.md) 
-* [push server](https://github.com/newklus/absolute//blob/master/server/server.md) 
-* [payment](https://github.com/newklus/absolute//blob/master/payment_md)
+* [Service-worker](https://github.com/newklus/absolute/blob/master/client/service-worker.md) 
+* [push server](https://github.com/newklus/absolute/blob/master/server/server.md) 
+* [payment](https://github.com/newklus/absolute/blob/master/payment_md)
 
 ## Contributing to Absolute
 Contributions to Absolute are welcomed and encouraged! Please see the
