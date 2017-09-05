@@ -22,6 +22,7 @@ import nodemon from 'gulp-nodemon';
 import path from 'path';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
+import ts from 'gulp-typescript';
 import undefTaskToDefault from 'gulp-undef-task-to-default';
 import webpack from 'webpack';
 
@@ -57,6 +58,19 @@ gulp.task('build_server', () => {
     .pipe(sourcemaps.write('.',
       {sourceRoot: path.resolve(__dirname, 'server')}))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')));
+});
+
+gulp.task('build_server_ts', () => {
+  return gulp.src(['./server_ts/**/*.ts'])
+    .pipe(sourcemaps.init())
+    .pipe(ts.createProject('tsconfig.json')())
+    .pipe(babel())
+    .on('error', (error) => {
+      console.log(error);
+    })
+    .pipe(sourcemaps.write('.',
+      {sourceRoot: path.resolve(__dirname, 'server')}))
+    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server_ts')));
 });
 
 gulp.task('lint', (finish) => {
@@ -100,10 +114,27 @@ gulp.task('start', () => {
     'start_server');
 });
 
+gulp.task('start_ts', () => {
+  runSequence(
+    'start_db',
+    'lint',
+    'push_key',
+    'build_server_ts',
+    'build_client',
+    'start_server_ts');
+});
+
 gulp.task('start_server', () => {
   nodemon({
     script: 'server.js',
     cwd: 'out/server',
+  });
+});
+
+gulp.task('start_server_ts', () => {
+  nodemon({
+    script: 'server.js',
+    cwd: 'out/server_ts',
   });
 });
 
