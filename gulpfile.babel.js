@@ -147,6 +147,7 @@ gulp.task('build_client', () => {
     context: path.resolve(__dirname, 'client'),
     entry: {
       bundle: './app.js',
+      bundle_type: './app.ts',
       sw: './service-worker.js'},
     output: {
       path: path.resolve(__dirname, 'out', 'client'),
@@ -169,7 +170,12 @@ gulp.task('build_client', () => {
         test: /\.(png|jpg)$/,
         use: [{
           loader: 'url-loader',
-          options: {limit: 10000}}]}]},
+          options: {limit: 10000}}]},
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      }]},
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
         include: /\.min\.js$/,
