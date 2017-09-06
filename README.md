@@ -16,16 +16,16 @@ decentralized and appless.
 **Portable:** Absloute support multiple os platform. So, The services you have developed can be used by multiple operating systems.
 
 ### Architecture
-<img src="https://github.com/lunchclass/absolute/blob/master/contribution/image/architecture.png" alt="Absolute Flow" height="200" >
+<img src="https://github.com/newklus/absolute/blob/master/contribution/image/architecture.png" alt="Absolute Flow" height="200" >
 
 ### Major Features
 
-* [Web Client -Service-worker](https://github.com/lunchclass/absolute/blob/master/client/service-worker.md)
-* [Server - Push & oder](https://github.com/lunchclass/absolute/blob/master/server/server.md) 
-* [Server - Payment](https://github.com/lunchclass/absolute/blob/master/payment.md)
+* [Web Client -Service-worker](https://github.com/newklus/absolute/blob/master/client/service-worker.md)
+* [Server - Push & oder](https://github.com/newklus/absolute/blob/master/server/server.md) 
+* [Server - Payment](https://github.com/newklus/absolute/blob/master/payment.md)
 
 ### Control Flow
-<img src="https://github.com/lunchclass/absolute/blob/master/contribution/image/flow.png" alt="Absolute Flow" height="200" >
+<img src="https://github.com/newklus/absolute/blob/master/contribution/image/flow.png" alt="Absolute Flow" height="200" >
 
 ##### Without 'Application'
 
@@ -33,7 +33,7 @@ decentralized and appless.
 
 ## Contributing to Absolute
 Contributions to Absolute are welcomed and encouraged! Please see the
-[Contributing to Absolute guide](https://github.com/lunchclass/absolute/blob/master/contribution/contribution.md)
+[Contributing to Absolute guide](https://github.com/newklus/absolute/blob/master/contribution/contribution.md)
 
 ## Getting Started
 
