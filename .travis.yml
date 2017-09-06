@@ -13,5 +13,4 @@ install:
   - ./absolute
 
 script:
-  - ./absolute lint
-  - ./absolute bootstrap_test
+  - ./absolute test
