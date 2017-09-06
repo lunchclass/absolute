@@ -114,7 +114,7 @@ describe('[NEGATIVE] Push Send', () => {
       .then((result) => {
         // note that some browser can still send even if we use invalid
         // auth key.
-        // it succesfully get 201 but push is not send to server
+        // it successfully get 201 but push is not send to server
         assert.equal(result.statusCode, 201);
       }).catch((error) => {
         assert.ok(true);
