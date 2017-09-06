@@ -39,19 +39,6 @@ export default class Push {
   }
 
   /**
-   * get push subscription from push manager
-   */
-  getPushSubscription() {
-    return new Promise((resolve, reject) => {
-      self.registration.pushManager.getSubscription()
-      .then(subscription => {
-        this._subscription = subscription;
-        resolve(subscription);  		
-      });
-    });
-  }
-
-  /**
    * send push information to server
    */
   registerPushSubscription(subscription) {

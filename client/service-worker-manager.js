@@ -48,14 +48,34 @@ function registerServiceWorker() {
   });
 }
 
+/**
+ * check service worker registered or not
+ */
+function isServiceWorkerRegistered() {
+  return new Promise((resolve, reject) => {
+    navigator.serviceWorker.getRegistration().then(registration => {
+      if (registration === undefined) {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
+    });
+  });
+}
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     Promise.resolve()
     .then(push.getPushPermissionStatus)
     .then(permission => {
       if (permission === 'granted') {
-        // TODO(jimmy): need to show popup notification for revoke
-        registerServiceWorker();
+        Promise.resolve()
+        .then(isServiceWorkerRegistered)
+        .then(registerd => {
+          if (registerd == false) {
+            registerServiceWorker();
+          }
+        });
       } else {
         // TODO(jimmy): need to notify users that should enable push permission for absolute
         console.log('permission is denied');
