@@ -29,7 +29,7 @@ export default class Push {
    */
   getPushPermissionStatus () {
     // query push permissions
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       navigator.permissions.query({name:'push', userVisibleOnly:true})
       .then(permissionStatus => {
         console.log('push permission state is ', permissionStatus.state);
@@ -42,7 +42,7 @@ export default class Push {
    * get push subscription from push manager
    */
   getPushSubscription() {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       self.registration.pushManager.getSubscription()
       .then(subscription => {
         this._subscription = subscription;

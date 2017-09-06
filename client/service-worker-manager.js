@@ -23,27 +23,27 @@ function urlBase64UrlToUint8Array(base64UrlData) {
  */
 function registerServiceWorker() {
   navigator.serviceWorker.register('sw.js').then(
-    function(serviceWorkerRegistration) {
+    serviceWorkerRegistration => {
       console.log('Service Worker Registration Success.');
       // Push Manager
       if ('PushManager' in window) {
-        navigator.serviceWorker.ready.then(function () {
+        navigator.serviceWorker.ready.then(() => {
           const convertedVapidKey =
           urlBase64UrlToUint8Array(pushKey.pushVapidKeys.publicKey);
           serviceWorkerRegistration.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: convertedVapidKey,
           }).then(
-            function(pushSubscription) {
+            pushSubscription => {
               push.registerPushSubscription(pushSubscription);
-            }, function(error) {
+            }, error => {
               console.log(error);
             }
           );
         });
       }
     }
-  ).catch(function(error) {
+  ).catch( error => {
       console.error('Service Worker Registration Fail. ', error);
   });
 }
