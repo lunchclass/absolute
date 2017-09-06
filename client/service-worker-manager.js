@@ -68,7 +68,7 @@ if ('serviceWorker' in navigator) {
     Promise.resolve()
     .then(push.getPushPermissionStatus)
     .then(permission => {
-      if (permission === 'granted') {
+      if (permission === 'granted' || permission === 'prompt') {
         Promise.resolve()
         .then(isServiceWorkerRegistered)
         .then(registerd => {
