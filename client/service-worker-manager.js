@@ -69,13 +69,7 @@ if ('serviceWorker' in navigator) {
     .then(push.getPushPermissionStatus)
     .then(permission => {
       if (permission === 'granted' || permission === 'prompt') {
-        Promise.resolve()
-        .then(isServiceWorkerRegistered)
-        .then(registerd => {
-          if (registerd == false) {
-            registerServiceWorker();
-          }
-        });
+        registerServiceWorker();
       } else {
         // TODO(jimmy): need to notify users that should enable push permission for absolute
         console.log('permission is denied');
