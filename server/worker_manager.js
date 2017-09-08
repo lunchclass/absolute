@@ -29,7 +29,7 @@ if (cluster.isMaster) {
   os.cpus().forEach((cpu) => {
     cluster.fork();
   });
-  // recieve message from worker
+  // receive message from worker
   cluster.on('exit', (worker, code, siganl) => {
     if (code == 200) {
       // cluster.fork();
