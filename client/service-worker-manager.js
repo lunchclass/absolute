@@ -18,30 +18,63 @@ function urlBase64UrlToUint8Array(base64UrlData) {
   return buffer;
 }
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw.js').then(
-      function(serviceWorkerRegistration) {
-        console.log('Service Worker Registration Success.');
-        // Push Manager
-        if ('PushManager' in window) {
-          navigator.serviceWorker.ready.then(function () {
-            const convertedVapidKey =
-            urlBase64UrlToUint8Array(pushKey.pushVapidKeys.publicKey);
-            serviceWorkerRegistration.pushManager.subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: convertedVapidKey,
-            }).then(
-              function(pushSubscription) {
-                push.registerSubscription(pushSubscription);
-              }, function(error) {
-                console.log(error);
-              }
-            );
-          });
-        }
-      }).catch(function(error) {
-        console.error('Service Worker Registration Fail. ', error);
-      });
+/**
+ *  register service worker
+ */
+function registerServiceWorker() {
+  navigator.serviceWorker.register('sw.js').then(
+    serviceWorkerRegistration => {
+      console.log('Service Worker Registration Success.');
+      // Push Manager
+      if ('PushManager' in window) {
+        navigator.serviceWorker.ready.then(() => {
+          const convertedVapidKey =
+          urlBase64UrlToUint8Array(pushKey.pushVapidKeys.publicKey);
+          serviceWorkerRegistration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: convertedVapidKey,
+          }).then(
+            pushSubscription => {
+              push.registerPushSubscription(pushSubscription);
+            }, error => {
+              console.log(error);
+            }
+          );
+        });
+      }
+    }
+  ).catch( error => {
+      console.error('Service Worker Registration Fail. ', error);
   });
 }
+
+/**
+ * check service worker registered or not
+ */
+function isServiceWorkerRegistered() {
+  return new Promise((resolve, reject) => {
+    navigator.serviceWorker.getRegistration().then(registration => {
+      if (registration === undefined) {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
+    });
+  });
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    Promise.resolve()
+    .then(push.getPushPermissionStatus)
+    .then(permission => {
+      if (permission === 'granted' || permission === 'prompt') {
+        registerServiceWorker();
+      } else {
+        // TODO(jimmy): need to notify users that should enable push permission for absolute.
+        console.log('permission is denied');
+      }
+    });
+  });
+}
+
