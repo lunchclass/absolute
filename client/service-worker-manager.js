@@ -71,7 +71,7 @@ if ('serviceWorker' in navigator) {
       if (permission === 'granted' || permission === 'prompt') {
         registerServiceWorker();
       } else {
-        // TODO(jimmy): need to notify users that should enable push permission for absolute.
+        // TODO(jimmy): need to notify users that should enable push permission for absolute
         console.log('permission is denied');
       }
     });
