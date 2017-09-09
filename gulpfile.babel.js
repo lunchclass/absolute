@@ -128,7 +128,7 @@ gulp.task('stop', (finish) => {
 });
 
 gulp.task('bootstrap_test', () => {
-  gulp.src(['bootstrap/test/test-*.js'], {read: false})
+  gulp.src(['bootstrap/test/test_*.js'], {read: false})
     .pipe(mocha())
     .once('error', () => {
       process.exit(1);
@@ -143,10 +143,11 @@ gulp.task('build_client', () => {
     path.resolve(__dirname, 'client', 'manifest.json')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client')));
   webpack({
-    watch: true,
+    watch: false,
     context: path.resolve(__dirname, 'client'),
     entry: {
       bundle: './app.js',
+      bundle_type: './app.ts',
       sw: './service-worker.js'},
     output: {
       path: path.resolve(__dirname, 'out', 'client'),
@@ -169,13 +170,38 @@ gulp.task('build_client', () => {
         test: /\.(png|jpg)$/,
         use: [{
           loader: 'url-loader',
-          options: {limit: 10000}}]}]},
+          options: {limit: 10000}}]},
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      }]},
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
         include: /\.min\.js$/,
         minimize: true})]}, (err, stats) => {
       // FIXME(cs-lee) save log in file
   });
+});
+
+gulp.task('test', () => {
+  runSequence(
+    'lint',
+    'build_server',
+    'build_client',
+    'bootstrap_test',
+    'server_test');
+});
+
+gulp.task('server_test', () => {
+  gulp.src(['out/server/**/test/test_*.js'], {read: false})
+    .pipe(mocha())
+    .once('error', () => {
+      process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
+    });
 });
 
 undefTaskToDefault(gulp);
