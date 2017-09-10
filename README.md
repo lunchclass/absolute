@@ -21,9 +21,9 @@ decentralized and appless.
 
 ### Major Features
 
-* [Web Client -Service-worker](https://github.com/newklus/absolute/blob/master/client/service-worker.md)
-* [Server - Push & oder](https://github.com/newklus/absolute/blob/master/server/server.md) 
-* [Server - Payment](https://github.com/newklus/absolute/blob/master/payment.md)
+* [Web Client -Service-worker](./client/service-worker.md)
+* [Server - Push & oder](./server/server.md) 
+* [Server - Payment](./payment.md)
 
 ### Control Flow
 <img src="./contribution/image/flow.png" alt="Absolute Flow" height="200" >
@@ -34,7 +34,7 @@ decentralized and appless.
 
 ## Contributing to Absolute
 Contributions to Absolute are welcomed and encouraged! Please see the
-[Contributing to Absolute guide](https://github.com/newklus/absolute/blob/master/contribution/contribution.md)
+[Contributing to Absolute guide](./contribution/contribution.md)
 
 ## Getting Started
 
