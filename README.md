@@ -16,7 +16,8 @@ decentralized and appless.
 **Portable:** Absloute support multiple os platform. So, The services you have developed can be used by multiple operating systems.
 
 ### Architecture
-<img src="https://github.com/newklus/absolute/blob/master/contribution/image/architecture.png" alt="Absolute Flow" height="200" >
+<img src="./contribution/image/architecture.png" alt="Absolute Flow" height="200" >
+
 
 ### Major Features
 
@@ -25,7 +26,7 @@ decentralized and appless.
 * [Server - Payment](https://github.com/newklus/absolute/blob/master/payment.md)
 
 ### Control Flow
-<img src="https://github.com/newklus/absolute/blob/master/contribution/image/flow.png" alt="Absolute Flow" height="200" >
+<img src="./contribution/image/flow.png" alt="Absolute Flow" height="200" >
 
 ##### Without 'Application'
 
