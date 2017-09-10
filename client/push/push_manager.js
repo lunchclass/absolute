@@ -25,9 +25,23 @@ export default class Push {
   }
 
   /**
+   *  get push permission status
+   */
+  getPushPermissionStatus () {
+    // query push permissions
+    return new Promise((resolve, reject) => {
+      navigator.permissions.query({name:'push', userVisibleOnly:true})
+      .then(permissionStatus => {
+        console.log('push permission state is ', permissionStatus.state);
+        resolve(permissionStatus.state);
+      });
+    });
+  }
+
+  /**
    * send push information to server
    */
-  registerSubscription(subscription) {
+  registerPushSubscription(subscription) {
     this._subscription = subscription;
     const queryUrl = `/api/push/token/`;
     const jsonSubscription = subscription.toJSON();
@@ -62,11 +76,5 @@ export default class Push {
     console.log(`subscription registered :
       ${JSON.stringify(this._subscription)}`);
   }
-
-  /**
-   * get push subscription with uuid from server
-   */
-  getSubscription() {
-    return this._subscription;
-  }
 }
+
