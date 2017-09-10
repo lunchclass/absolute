@@ -52,7 +52,7 @@ export default class DataBase {
         var transaction = db.transaction([store], 'readwrite');
         var objectStore = transaction.objectStore(store);
         // FIXME(daehyun): need to implement to handle database for multi values.
-		var jsonData = { };
+        var jsonData = { };
         jsonData[key] = value;
         var request = objectStore.add(jsonData);
         request.onsuccess = (event) => {
