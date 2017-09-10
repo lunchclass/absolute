@@ -40,5 +40,4 @@ Contributions to Absolute are welcomed and encouraged! Please see the
 
 ## License
 
-Copyright 2017 - 2018 Lunchclass and the Absolute project authors. Licensed under Apach License v2.0
-Please see [LICENSE.md](https://github.com/lunchclass/absolute/blob/master/LICENSE.md)
+This project is released under an Apache 2.0 open source license. Please see [LICENSE.md](https://github.com/lunchclass/absolute/blob/master/LICENSE.md)
