@@ -27,7 +27,7 @@ export default class DataBase {
         console.log('This browser doesn\'t support IndexedDB');
         reject(AUTH_ERROR.OPEN_DB_FAIL);
       }
-      var requestDB = indexedDB.open(DB_NAME, 2);
+      var requestDB = indexedDB.open(DB_NAME);
       requestDB.onupgradeneeded = (event) => {
         var db = event.target.result;
         var objectStore = db.createObjectStore(store, { keyPath: key });
