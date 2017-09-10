@@ -16,7 +16,6 @@
  * DataBase class (indexed DB)
  */
 const DB_NAME = 'Absolute';
-
 export default class DataBase {
   /**
    * open Data Base
@@ -52,6 +51,7 @@ export default class DataBase {
         var db = result.targetDb;
         var transaction = db.transaction([store], 'readwrite');
         var objectStore = transaction.objectStore(store);
+        // FIXME(daehyun): need to implement to handle database for multi values.
 		var jsonData = { };
         jsonData[key] = value;
         var request = objectStore.add(jsonData);
@@ -68,7 +68,7 @@ export default class DataBase {
   }
 
   /**
-   * get value from data vase
+   * get value from data base
    */
   getValueFromDataBase (store, key, value) {
     return new Promise((resolve, reject) => {
@@ -88,7 +88,7 @@ export default class DataBase {
   }
 
   /**
-   * set value to data base
+   * update value to data base
    */
   updateValueToDataBase (store, key, value) {
     return new Promise((resolve, reject) => {
@@ -96,6 +96,7 @@ export default class DataBase {
         var db = result.targetDb;
         var transaction = db.transaction([store], 'readwrite');
         var objectStore = transaction.objectStore(store);
+        // FIXME(daehyun): need to implement to handle database for multi values.
         var jsonData = { };
         jsonData[key] = value;
         var request = objectStore.put(jsonData);
