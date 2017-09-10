@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import DataBase from '../common/db_manager.js'
+
 /**
  * push class
  */
@@ -42,6 +44,10 @@ export default class Push {
       endpoint: jsonSubscription.endpoint,
       keys: jsonSubscription.keys,
     });
+
+    var database = new DataBase();
+    Promise.resolve()
+    .then(database.addValueToDataBase('Push', 'UserId', jsonSubscription.endpoint));
 
     let pushRequest = new Request(queryUrl, {
       method: 'POST',
