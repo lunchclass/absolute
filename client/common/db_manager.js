@@ -27,7 +27,6 @@ export default class DataBase {
         console.log('This browser doesn\'t support IndexedDB');
         reject(AUTH_ERROR.OPEN_DB_FAIL);
       }
-
       var requestDB = indexedDB.open(DB_NAME, 2);
       requestDB.onupgradeneeded = (event) => {
         var db = event.target.result;
@@ -56,16 +55,13 @@ export default class DataBase {
 		var jsonData = { };
         jsonData[key] = value;
         var request = objectStore.add(jsonData);
-
         request.onsuccess = (event) => {
           resolve(event.target.result);
         };
-
-        request.onerror = function (error) {
+        request.onerror = (error) => {
           reject(error);
         };
-
-        request.oncomplete = function(event) {
+        request.oncomplete = (event) => {
         };
       });
     });
@@ -81,12 +77,10 @@ export default class DataBase {
         var transaction = db.transaction([store], 'readwrite');
         var objectStore = transaction.objectStore(store);
         var request = objectStore.get(value);
-
         request.onsuccess = (event) => {
           resolve(event.target.result);
         };
-
-        request.onerror = function (error) {
+        request.onerror = (error) => {
           reject(error);
         };
       });
@@ -105,12 +99,10 @@ export default class DataBase {
         var jsonData = { };
         jsonData[key] = value;
         var request = objectStore.put(jsonData);
-
         request.onsuccess = (event) => {
           resolve(event.target.result);
         };
-
-        request.onerror = function (error) {
+        request.onerror = (error) => {
           reject(error);
         };
       });
