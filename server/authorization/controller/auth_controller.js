@@ -19,7 +19,7 @@ import generator from 'uuid/v4';
  * Generate uuid for user authentication.
  * @return {promise} result includes uuid
  */
-export function generateUuid() {
+export function generateUserId() {
   return new Promise((resolve, reject) => {
     const authInfo = {
       uuid: generator(),
@@ -40,7 +40,7 @@ export function generateUuid() {
  * @param {string} clientUuid user's uuid to find
  * @return {promise} result includes uuid
  */
-export function getUuid(clientUuid) {
+export function getUserId(clientUuid) {
   return new Promise((resolve, reject) => {
     const select = {uuid: `${clientUuid}`};
     Auth.findOne(select, (error, authInfo) => {
