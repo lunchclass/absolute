@@ -22,6 +22,7 @@ import nodemon from 'gulp-nodemon';
 import path from 'path';
 import runSequence from 'run-sequence';
 import sourcemaps from 'gulp-sourcemaps';
+import ts from 'gulp-typescript';
 import undefTaskToDefault from 'gulp-undef-task-to-default';
 import webpack from 'webpack';
 
@@ -57,6 +58,19 @@ gulp.task('build_server', () => {
     .pipe(sourcemaps.write('.',
       {sourceRoot: path.resolve(__dirname, 'server')}))
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server')));
+});
+
+gulp.task('build_server_ts', () => {
+  return gulp.src(['./server_ts/**/*.ts'])
+    .pipe(sourcemaps.init())
+    .pipe(ts.createProject('tsconfig.json')())
+    .pipe(babel())
+    .on('error', (error) => {
+      console.log(error);
+    })
+    .pipe(sourcemaps.write('.',
+      {sourceRoot: path.resolve(__dirname, 'server_ts')}))
+    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'server_ts')));
 });
 
 gulp.task('lint', (finish) => {
@@ -100,10 +114,27 @@ gulp.task('start', () => {
     'start_server');
 });
 
+gulp.task('start_ts', () => {
+  runSequence(
+    'start_db',
+    'lint',
+    'push_key',
+    'build_server_ts',
+    'build_client_ts',
+    'start_server_ts');
+});
+
 gulp.task('start_server', () => {
   nodemon({
     script: 'server.js',
     cwd: 'out/server',
+  });
+});
+
+gulp.task('start_server_ts', () => {
+  nodemon({
+    script: 'server.js',
+    cwd: 'out/server_ts',
   });
 });
 
@@ -147,7 +178,6 @@ gulp.task('build_client', () => {
     context: path.resolve(__dirname, 'client'),
     entry: {
       bundle: './app.js',
-      bundle_type: './app.ts',
       sw: './service-worker.js'},
     output: {
       path: path.resolve(__dirname, 'out', 'client'),
@@ -158,9 +188,41 @@ gulp.task('build_client', () => {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['es2015-without-strict']]}}]},
+            presets: [['es2015-without-strict']]}}]},
       {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader']},
+      {
+        test: /\.(png|jpg)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {limit: 10000}}]},
+      ]},
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        include: /\.min\.js$/,
+        minimize: true})]}, (err, stats) => {
+  });
+});
+
+gulp.task('build_client_ts', () => {
+  gulp.src([path.resolve(__dirname, 'client_ts', 'index.html'),
+    path.resolve(__dirname, 'client_ts', 'manifest.json')])
+    .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client_ts')));
+  webpack({
+    watch: true,
+    context: path.resolve(__dirname, 'client_ts'),
+    entry: {
+      bundle: './app.ts',
+      sw: './service-worker.js'},
+    output: {
+      path: path.resolve(__dirname, 'out', 'client_ts'),
+      filename: '[name].js'},
+    module: {
+      rules: [{
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -180,7 +242,6 @@ gulp.task('build_client', () => {
       new webpack.optimize.UglifyJsPlugin({
         include: /\.min\.js$/,
         minimize: true})]}, (err, stats) => {
-      // FIXME(cs-lee) save log in file
   });
 });
 
