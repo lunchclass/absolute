@@ -1,6 +1,38 @@
-{
+{  
   "compilerOptions": {
-    "noImplicitAny": true,
-    "target": "es5"
-  }
+    "baseUrl": ".",
+    "paths": {
+      "*": ["typings/*"],
+      "@/*": ["src/*"]
+    },
+    "target": "es5",
+    "outDir": "dist",
+    // "module": "commonjs",
+    // "moduleResolution": "node",
+    "declaration": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Vue.js Recommended Configuration
+    "module": "es2015",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "es5", "es2015.promise"]
+  },
+  "include": [
+    "client_ts/src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
