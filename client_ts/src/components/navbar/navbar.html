@@ -1,0 +1,10 @@
+<header class="mdl-layout__header">
+  <md-toolbar>
+    <h2 class="md-title" style="flex: 1">Absoulute</h2>
+    <router-link
+        v-for="(link, index) in links" :key="index"
+        v-bind:to="link.path"
+        class="md-button"
+        active-class="active" exact>{{link.name}}</router-link>
+  </md-toolbar>
+</header>

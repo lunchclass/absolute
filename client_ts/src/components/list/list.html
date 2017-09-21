@@ -1,0 +1,26 @@
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th class="mdl-data-table__cell--non-numeric">name</th>
+      <th class="mdl-data-table__cell--non-numeric">username</th>
+      <th class="mdl-data-table__cell--non-numeric">email</th>
+      <th class="mdl-data-table__cell--non-numeric">address</th>
+      <th class="mdl-data-table__cell--non-numeric">phone</th>
+      <th class="mdl-data-table__cell--non-numeric">website</th>
+      <th class="mdl-data-table__cell--non-numeric">company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="item in items" :key="item.id">
+      <td>{{item.id}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.name}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.username}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.email}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.address.street}}, {{item.address.suite}}, {{item.address.city}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.phone}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.website}}</td>
+      <td class="mdl-data-table__cell--non-numeric">{{item.company.name}}</td>
+    </tr>
+  </tbody>
+</table>

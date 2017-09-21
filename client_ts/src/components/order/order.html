@@ -1,0 +1,44 @@
+<div>
+	<md-layout md-gutter md-align="center">
+		<md-card style="width: 50%;">
+		  <md-card-media>
+			<img src="../../assets/img/americano.jpg" alt="Americano">
+		  </md-card-media>
+
+		  <md-card-header>
+			<div class="md-title">Americano</div>
+		  </md-card-header>
+		</md-card>
+
+		<md-input-container style="margin-left: 20px; margin-right: 20px;">
+		  <label for="temperature">Hot / Ice</label>
+		  <md-select name="temperature" id="temperature" v-model="temperature">
+			<md-option value="hot">Hot</md-option>
+			<md-option value="ice">Ice</md-option>
+		  </md-select>
+		</md-input-container>
+
+		<md-input-container style="margin-left: 20px; margin-right: 20px;">
+		  <label for="size">Size</label>
+		  <md-select name="size" id="size" v-model="size">
+			<md-option value="short">Short</md-option>
+			<md-option value="tall">Tall</md-option>
+			<md-option value="benti">Benti</md-option>
+		  </md-select>
+		</md-input-container>
+
+		<md-input-container style="margin-left: 20px; margin-right: 20px;">
+		  <label for="ice">Ice</label>
+		  <md-select name="ice" id="ice" v-model="ice">
+			<md-option value="less">Less</md-option>
+			<md-option value="normal">Normal</md-option>
+			<md-option value="large">Large</md-option>
+		  </md-select>
+		</md-input-container>
+	</md-layout>
+
+	<md-layout md-align="center">
+		<md-button href="#orderFailed" class="md-raised md-primary">Additional Menu</md-button>
+		<md-button href="#orderSuccess" class="md-raised md-accent">Order</md-button>
+	</md-layout>
+</div>
