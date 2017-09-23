@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import babel from 'gulp-babel';
 import childProcess from 'child_process';
 import eslint from 'gulp-eslint';
+import extractTextPlugin from 'extract-text-webpack-plugin';
 import generatePushKey from './server/push/gen_push_key';
 import gulp from 'gulp';
+import helpers from './client_ts/config/helpers.js';
 import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import path from 'path';
@@ -64,7 +67,6 @@ gulp.task('build_server_ts', () => {
   return gulp.src(['./server_ts/**/*.ts'])
     .pipe(sourcemaps.init())
     .pipe(ts.createProject('tsconfig.json')())
-    .pipe(babel())
     .on('error', (error) => {
       console.log(error);
     })
@@ -119,9 +121,9 @@ gulp.task('start_ts', () => {
     'start_db',
     'lint',
     'push_key',
-    'build_server_ts',
+    'build_server',
     'build_client_ts',
-    'start_server_ts');
+    'start_server');
 });
 
 gulp.task('start_server', () => {
@@ -209,18 +211,26 @@ gulp.task('build_client', () => {
 });
 
 gulp.task('build_client_ts', () => {
-  gulp.src([path.resolve(__dirname, 'client_ts', 'index.html'),
+  gulp.src([path.resolve(__dirname, 'client_ts', 'src', 'index.html'),
     path.resolve(__dirname, 'client_ts', 'manifest.json')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client_ts')));
   webpack({
     watch: true,
     context: path.resolve(__dirname, 'client_ts'),
     entry: {
-      bundle: './app.ts',
+      app: './src/main.ts',
+      polyfills: './src/polyfills.ts',
+      vendor: './src/vendor.ts',
       sw: './service-worker.js'},
     output: {
-      path: path.resolve(__dirname, 'out', 'client_ts'),
+      path: path.resolve(__dirname, 'out', 'client_ts', 'src'),
       filename: '[name].js'},
+    resolve: {
+      extensions: ['.js', '.ts', '.html'],
+      alias: {
+        'vew$': 'vue/dist/vue.esm.js',
+        '@': helpers.root('src'),
+      }},
     module: {
       rules: [{
         test: /\.scss$/,
@@ -234,6 +244,13 @@ gulp.task('build_client_ts', () => {
           loader: 'url-loader',
           options: {limit: 10000}}]},
       {
+        test: /\.css$/,
+        exclude: helpers.root('src', 'app'),
+        use: extractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap',
+        })},
+      {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
@@ -241,7 +258,13 @@ gulp.task('build_client_ts', () => {
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
         include: /\.min\.js$/,
-        minimize: true})]}, (err, stats) => {
+        minimize: true}),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['app', 'vendor', 'polyfills'],
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html'}),
+    ]}, (err, stats) => {
   });
 });
 
