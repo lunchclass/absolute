@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import babel from 'gulp-babel';
 import childProcess from 'child_process';
 import eslint from 'gulp-eslint';
-import extractTextPlugin from 'extract-text-webpack-plugin';
 import generatePushKey from './server/push/gen_push_key';
 import gulp from 'gulp';
 import helpers from './client_ts/config/helpers.js';
@@ -215,7 +215,7 @@ gulp.task('build_client_ts', () => {
     path.resolve(__dirname, 'client_ts', 'manifest.json')])
     .pipe(gulp.dest(path.resolve(__dirname, 'out', 'client_ts')));
   webpack({
-    watch: true,
+    watch: false,
     context: path.resolve(__dirname, 'client_ts'),
     entry: {
       app: './src/main.ts',
@@ -224,32 +224,38 @@ gulp.task('build_client_ts', () => {
       sw: './service-worker.js'},
     output: {
       path: path.resolve(__dirname, 'out', 'client_ts', 'src'),
-      filename: '[name].js'},
+      filename: '[name].js',
+      chunkFilename: '[id].chunk.js',
+      publicPath: '/'},
     resolve: {
       extensions: ['.js', '.ts', '.html'],
       alias: {
-        'vew$': 'vue/dist/vue.esm.js',
+        'vue$': 'vue/dist/vue.esm.js',
         '@': helpers.root('src'),
       }},
+    devtool:
+      'cheap-module-source-map',
     module: {
       rules: [{
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader']},
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
       {
-        test: /\.(png|jpg)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {limit: 10000}}]},
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]',
+      },
       {
         test: /\.css$/,
         exclude: helpers.root('src', 'app'),
-        use: extractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader?sourceMap',
         })},
+      {
+        test: /\.css$/,
+        include: helpers.root('src', 'app'),
+        loader: 'raw-loader',
+      },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -264,6 +270,7 @@ gulp.task('build_client_ts', () => {
       }),
       new HtmlWebpackPlugin({
         template: 'src/index.html'}),
+      new ExtractTextPlugin('[name].css'),
     ]}, (err, stats) => {
   });
 });

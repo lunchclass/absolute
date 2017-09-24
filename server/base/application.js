@@ -60,7 +60,7 @@ export default class Application {
    * @return {Application} Instance of Application.
    */
   setup() {
-    this._app.use(express.static(path.join(__dirname, '../../client_ts')));
+    this._app.use(express.static(path.join(__dirname, '../../client_ts/src')));
     this._app.use(bodyParser.json({limit: '10mb'}));
     this._app.use(bodyParser.urlencoded({
       limit: '10mb',
