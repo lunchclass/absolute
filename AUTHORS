@@ -1,0 +1,12 @@
+# Names should be added to this file with this pattern:
+#
+# For individuals:
+#   Name <email address>
+#
+# For organizations:
+#   Organization <fnmatch pattern>
+#
+# Please update your name in this file with you first change.
+# Please keep your name in alphabetical order.
+
+Jinho Bang <zino@chromium.org>
