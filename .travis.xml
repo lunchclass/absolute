@@ -1,0 +1,13 @@
+os:
+  - linux
+  - osx
+
+language: node_js
+
+branches:
+  only:
+    - absolute_2.0
+
+install:
+  # Override this section for disabling default |npm install|.
+  - ./absolute

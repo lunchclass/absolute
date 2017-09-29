@@ -1,0 +1,12 @@
+build: off
+
+platform:
+  - x86
+  - x64
+
+branches:
+  only:
+    - absolute_2.0
+
+test_script:
+  - absolute
