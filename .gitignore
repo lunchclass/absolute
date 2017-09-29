@@ -1,8 +1,5 @@
-*.swp
-.babel-cache.json
 .pkg_timestamp
-node_modules
-out
-third_party/mongodb
-third_party/node
-database
+node_modules/
+out/
+third_party/mongodb/
+third_party/node/

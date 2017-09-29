@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,4 @@
  * limitations under the License.
  */
 
-$orange: #FF8C00;
-
-p {
-  color: $orange;
-}
+console.log('Absolute 2.0');

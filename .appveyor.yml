@@ -1,8 +1,12 @@
 build: off
 
+platform:
+  - x86
+  - x64
+
 branches:
   only:
     - master
 
 test_script:
-  - ./absolute test
+  - absolute test

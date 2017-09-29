@@ -9,8 +9,7 @@ branches:
     - master
 
 install:
-  # Override this section for disabling default |npm install|.
-  - ./absolute
+  - ./absolute node -v
 
 script:
   - ./absolute test
