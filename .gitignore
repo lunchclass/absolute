@@ -1,4 +1,5 @@
 .pkg_timestamp
 node_modules/
+out/
 third_party/mongodb/
 third_party/node/

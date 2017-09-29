@@ -14,20 +14,4 @@
  * limitations under the License.
  */
 
-import * as gulp from 'gulp';
-import * as tsc from 'gulp-typescript';
-
-gulp.task('default', ['build_server']);
-
-gulp.task('build_server', () => {
-  gulp.src('./server/**/*.ts')
-    .pipe(tsc({
-      target: 'es5',
-      noImplicitReturns: true,
-      noImplicitAny: true,
-      preserveConstEnums: true,
-      sourceMap: true,
-    }))
-    .js
-    .pipe(gulp.dest('out/'));
-});
+console.log('Absolute 2.0');
