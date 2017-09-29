@@ -34,7 +34,9 @@ Contributions to Absolute are welcomed and encouraged! Please see the
 [Contributing to Absolute guide](./contribution/contribution.md)
 
 ### Building Absolute
-./absolut start
+```shell
+./absolute start
+```
 
 ### Testing Absolute
 
