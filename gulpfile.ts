@@ -15,9 +15,17 @@
  */
 
 import * as gulp from 'gulp';
+import * as nodemon from 'gulp-nodemon';
 import * as tsc from 'gulp-typescript';
 
-gulp.task('default', ['build_server']);
+gulp.task('default', ['run_server']);
+
+gulp.task('run_server', ['build_server'], () => {
+  nodemon({
+    script: 'out/server.js',
+    ignore: 'out/'
+  });
+});
 
 gulp.task('build_server', () => {
   gulp.src('./server/**/*.ts')
