@@ -43,3 +43,5 @@ for command in $(ls $(bootstrap_command_path)); do
     exit
   fi
 done
+
+gulp $@

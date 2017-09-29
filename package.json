@@ -1,2 +1,7 @@
 {
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  }
 }
