@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
-import Application from './base/application';
+import Application from '../base/application';
+import * as express from 'express';
 
-Application.start();
+@Application.route('/hello')
+export default class Test {
+  get(request: express.Request, response: express.Response) {
+    response.send('world');
+  }
+}
