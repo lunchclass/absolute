@@ -37,6 +37,8 @@ gulp.task('build_server', () => {
       noImplicitAny: true,
       preserveConstEnums: true,
       sourceMap: true,
+      lib: ['es2015'],
+      experimentalDecorators: true,
     }))
     .js
     .pipe(gulp.dest('out/'));
