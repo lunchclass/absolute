@@ -1,6 +1,6 @@
 # Contribution Guide
 
-absolute_2.0 컨트리뷰터를 위한 가이드입니다.
+absolute 컨트리뷰터를 위한 가이드입니다.
 풀리퀘스트를 보내고 패치가 머지되기까지의 과정에서 컨트리뷰터가 따라야 하는 규칙이나 참고하면 유용한 내용들을 담고 있습니다.
 
 목차
@@ -59,9 +59,35 @@ git rebase --continue
 
 
 ## 이슈등록
-기존 코드에서 버그를 발견하셨거나 새로운 아이디어가 떠오르셨다면 먼저 이슈에 올려주시길 바랍니다. (이슈등록과 관련하여 자세한 내용은 [이슈등록가이드](https://github.com/lunchclass/absolute/blob/master/docs/REPORTING_ISSUE) 란을 참조)
+기존 코드에서 버그를 발견하셨거나 새로운 아이디어가 떠오르셨다면 먼저 이슈에 올려주시길 바랍니다. 
 
 등록한 뒤에는 패치를 준비하시기 이전에 먼저 코드오너와 함께 올리신 이슈에 대해서 이야기를 해보시길 권합니다. 코드오너가 누구인지는 [CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/docs/CODEOWNERS) 를 통해 확인하실 수 있습니다.
+
+### 이슈등록시 유의사항
+* title은 이슈에 대한 내용이 명확해야 합니다.
+* comment에는 상세한 설명이 포함되어야 합니다.
+
+### labeling
+등록한 이슈에 대해 라벨을 표기할수 있습니다. 라벨의 종류는 다음과 같습니다.
+ * absolute_2.0 - absolute_2.0 branch에 코드가 반영되는 이슈는 default로 선택해야 한다.
+ * Authentication API - 인증 모듈 관련된 이슈
+ * Code Health - 코드 디자인, 코드 강건성, 리팩토링과 관련된 이슈
+ * DevOps - absolute의 build 및 bootstrap과 관련된 이슈
+ * Good First Bug - 컨트리뷰션이 익숙지 않거나 처음 오픈소스를 접하는 이들을 위한 쉬운 이슈
+ * Location API - LBS와 관련된 이슈
+ * New Design - absolute project에 새로운 SW 디자인을 제안하고자 할 때
+ * Order API - Order 모듈과 관련된 이슈
+ * Payment API - Payment 모듈과 관련된 이슈
+ * Push API - Push 모듈과 관련된 이슈
+ * Question - 궁금한 사항이 있을 때
+ * UI Framework - UI 모듈과 관련된 이슈
+
+### Projects
+None Yet
+
+### Milestone
+Sprint나 집중 개발 기간에 설정된 이슈일 경우 그에 맞는 Milestone을 선택합니다.
+
 
 ## 패치준비
 ### 패치사이즈
@@ -114,7 +140,7 @@ function bar(num: number): number {
 ```
 
 ### 파일추가
-패치가 기존에 없던 새로운 파일추가를 포함하고 있다면 라이센스를 추가하셔야 합니다. 그리고 라이센스에는 반드시 연도가 표시되어야만 합니다. 라이센스 작성과 관련하여 자세한 내용은 [LICENCE_GUIDE](https://github.com/lunchclass/absolute/blob/master/docs/LICENCE_GUIDE.md) 를 참고하시기 바랍니다.
+패치가 기존에 없던 새로운 파일추가를 포함하고 있다면 boilerplate notice를 추가하셔야 합니다. 그리고 boilerplate notice에는 반드시 연도가 표시되어야만 합니다. 자세한 내용은 [LICENCE_GUIDE](https://github.com/lunchclass/absolute/blob/master/LICENSE.md) 를 참고하시기 바랍니다.
 
 예)  
 
@@ -140,7 +166,8 @@ function bar(num: number): number {
 
 ## 커밋준비
 ### 코딩스타일
-패치가 어느정도 준비되었다면 커밋하시기 전에 먼저 코딩스타일이 본 프로젝트의 규칙을 따르고 있는지 확인이 필요합니다. [CODING_STYLE](https://github.com/lunchclass/absolute/blob/master/docs/CODING_STYLE.md) 를 참고하시길 바랍니다.
+패치가 어느정도 준비되었다면 커밋하시기 전에 먼저 코딩스타일이 본 프로젝트의 규칙을 따르고 있는지 확인이 필요합니다.
+absolute는 [Microsoft/TypeScript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines)의 coding style을 준수합니다. 
 
 ### 디스크립션
 
@@ -211,6 +238,7 @@ git blame -L 1,3 absolute.cmd
 리뷰어를 할당되면 리뷰요청이 전달됩니다.
 리뷰어 중 코드오너는 리뷰요청뒤 24시간내로 리뷰를 해야 합니다.(공휴일과 주말은 제외)
 24시간내에 리뷰가 완료되어야 함을 의미하는 것은 아닙니다만, 적어도 의미있는 피드백을 요청자에게 주어야 합니다.
+리뷰어는 리뷰이를 존중하며 리뷰시 공격적이나 상대를 비난하는 태도는 지양합니다.
 
 ### 리뷰승인
 코드오너가 *LGTM* 을 코멘트로 추가하고 Approve 를 해주어야만 리뷰가 승인됩니다. *LGTM* 는 `Looks Good to me`를 의미합니다.
