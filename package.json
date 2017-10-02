@@ -1,6 +1,9 @@
 {
   "devDependencies": {
     "@types/express": "^4.0.37",
+    "@types/gulp": "^3.8.33",
+    "@types/gulp-nodemon": "0.0.30",
+    "@types/run-sequence": "0.0.29",
     "express": "^4.16.1",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
