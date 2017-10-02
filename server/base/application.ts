@@ -24,6 +24,11 @@ export default class Application {
     this.app_.listen(8090);
   }
 
+  public static async startForTesting(): Promise<express.Application> {
+    await import('../example/example.router');
+    return this.app_;
+  }
+
   public static route(url: string) {
     const app: express.Application = this.app_;
 

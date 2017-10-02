@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-import * as express from 'express';
-import Application from '../base/application';
+import {} from 'jest';
+import * as supertest from 'supertest';
+import application from '../base/application';
 
-@Application.route('/example')
-export default class Test {
-  public get(request: express.Request, response: express.Response) {
-    response.send('hello world');
-  }
-}
+test('GET /example', async() => {
+  const request: {} = supertest(await application.startForTesting());
+  const response: {} = await request.get('/example');
+  expect(response.statusCode).toBe(200);
+  expect(response.text).toBe('hello world');
+});

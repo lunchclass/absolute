@@ -18,6 +18,7 @@ import * as gulp from 'gulp';
 import * as nodemon from 'gulp-nodemon';
 import * as runSequence from 'run-sequence';
 import tslint from 'gulp-tslint';
+import * as shell from 'gulp-shell';
 import * as tsc from 'gulp-typescript';
 
 gulp.task('default', (callback) => {
@@ -45,7 +46,7 @@ gulp.task('lint:fix', () => {
     }));
 });
 
-gulp.task('test', ['build_server']);
+gulp.task('test', shell.task('jest'));
 
 gulp.task('run_server', () => {
   nodemon({
