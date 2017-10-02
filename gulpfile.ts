@@ -17,10 +17,32 @@
 import * as gulp from 'gulp';
 import * as nodemon from 'gulp-nodemon';
 import * as runSequence from 'run-sequence';
+import tslint from 'gulp-tslint';
 import * as tsc from 'gulp-typescript';
 
 gulp.task('default', (callback) => {
   runSequence('build_server', 'run_server', callback);
+});
+
+gulp.task('lint', () => {
+  gulp.src('./server/**/*.ts')
+    .pipe(tslint({
+      formatter: 'codeFrame'
+    }))
+    .pipe(tslint.report({
+      summarizeFailureOutput: true
+    }));
+});
+
+gulp.task('lint:fix', () => {
+  gulp.src('./server/**/*.ts')
+    .pipe(tslint({
+      fix: true,
+      formatter: 'codeFrame'
+    }))
+    .pipe(tslint.report({
+      summarizeFailureOutput: true
+    }));
 });
 
 gulp.task('test', ['build_server']);

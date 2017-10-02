@@ -19,17 +19,17 @@ import * as express from 'express';
 export default class Application {
   private static app_: express.Application = express();
 
-  static async start() {
+  public static async start() {
     await import('../example/example.router');
     this.app_.listen(8090);
   }
 
-  static route(url: string) {
-    let app: express.Application = this.app_;
+  public static route(url: string) {
+    const app: express.Application = this.app_;
 
-    return function <T>(routerClass: { new(...args: any[]): T}): void {
-      let routerHandler: any = new routerClass();
-      let router = express.Router();
+    return function <T>(routerClass: { new(...args: {}[]): T}): void {
+      const routerHandler: any = new routerClass();
+      const router = express.Router();
 
       if (routerHandler.post)
         router.post(url, routerHandler.post);
@@ -44,6 +44,6 @@ export default class Application {
         router.delete(url, routerHandler.delete);
 
       app.use('/', router);
-    }
+    };
   }
 }
