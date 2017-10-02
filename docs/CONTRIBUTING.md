@@ -59,35 +59,8 @@ git rebase --continue
 
 
 ## 이슈등록
-기존 코드에서 버그를 발견하셨거나 새로운 아이디어가 떠오르셨다면 먼저 이슈에 올려주시길 바랍니다. 
-
+기존 코드에서 버그를 발견하셨거나 새로운 아이디어가 떠오르셨다면 먼저 이슈에 올려주시길 바랍니다. (이슈등록과 관련하여 자세한 내용은 [이슈등록가이드](https://github.com/lunchclass/absolute/blob/master/docs/ISSUE_REPORTING.md) 란을 참조)
 등록한 뒤에는 패치를 준비하시기 이전에 먼저 코드오너와 함께 올리신 이슈에 대해서 이야기를 해보시길 권합니다. 코드오너가 누구인지는 [CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/docs/CODEOWNERS) 를 통해 확인하실 수 있습니다.
-
-### 이슈등록시 유의사항
-* title은 이슈에 대한 내용이 명확해야 합니다.
-* comment에는 상세한 설명이 포함되어야 합니다.
-
-### labeling
-등록한 이슈에 대해 라벨을 표기할수 있습니다. 라벨의 종류는 다음과 같습니다.
- * absolute_2.0 - absolute_2.0 branch에 코드가 반영되는 이슈는 default로 선택해야 한다.
- * Authentication API - 인증 모듈 관련된 이슈
- * Code Health - 코드 디자인, 코드 강건성, 리팩토링과 관련된 이슈
- * DevOps - absolute의 build 및 bootstrap과 관련된 이슈
- * Good First Bug - 컨트리뷰션이 익숙지 않거나 처음 오픈소스를 접하는 이들을 위한 쉬운 이슈
- * Location API - LBS와 관련된 이슈
- * New Design - absolute project에 새로운 SW 디자인을 제안하고자 할 때
- * Order API - Order 모듈과 관련된 이슈
- * Payment API - Payment 모듈과 관련된 이슈
- * Push API - Push 모듈과 관련된 이슈
- * Question - 궁금한 사항이 있을 때
- * UI Framework - UI 모듈과 관련된 이슈
-
-### Projects
-None Yet
-
-### Milestone
-Sprint나 집중 개발 기간에 설정된 이슈일 경우 그에 맞는 Milestone을 선택합니다.
-
 
 ## 패치준비
 ### 패치사이즈
@@ -198,101 +171,10 @@ CI 가 정상적으로 통과하였다면 보낸 풀리퀘스트에서 "All chec
 ![ResultOfCI](https://hyungheo.github.io/png/ci.sample.png)
 
 ## 코드리뷰
-1. [리뷰준비](#리뷰준비)
-2. [리뷰어찾기](#리뷰어찾기)
-3. [리뷰요청](#리뷰요청)
-4. [리뷰승인](#리뷰승인)
+여러분이 올린 풀리퀘스트가 master에 반영되려면 리뷰 단계를 거쳐야 합니다.
+리뷰 단계를 통과하기 위해선 다음과 같은 조건이 따릅니다.
+* 리뷰 권한을 가진 리뷰어의 승인
+* CI에서 모든 test case 통과
 
-### 리뷰준비
-#### CI확인
-리뷰는 기본적으로 CI 가 모두 PASS 한 뒤에 요청하는 것을 원칙으로 합니다. CI 는 풀리퀘스트를 보냄과 동시에 자동으로 실행됩니다.
-![ResultOfCI](https://hyungheo.github.io/png/ci.sample.png)
-
-### 리뷰어찾기
-
-#### 코드오너
-[CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/docs/CODEOWNERS) 를 확인하여 코드오너를 리뷰어로 할당합니다. 코드오너가 아니더라도 리뷰는 누구나 가능하지만 머지를 위해서는 반드시 코드오너의 리뷰와 승인이 필요합니다.
-
-```
-# Order is important; the last matching pattern takes the most precedence.
-
-# Absolute Project Owners
-* @romandev
-```
-
-#### 기존코드수정시
-기존 코드를 수정해야 하는 경우 해당 코드의 컨트리뷰터를 리뷰어에 추가해 주시기를 권장합니다.
-해당 코드의 컨트리뷰터를 찾기 위해 git blame 명령어를 사용할 수 있습니다.
-
-예) absolute.cmd 의 1번부터 3번 라인을 수정한 경우
-```
-git blame -L 1,3 HEAD^ absolute.cmd
-
-git blame -L 1,3 absolute.cmd
-439684c6 (Jinho Bang 2017-09-29 19:11:25 +0900 1) :: Copyright (c) 2017 The Absolute Authors.
-439684c6 (Jinho Bang 2017-09-29 19:11:25 +0900 2) ::
-439684c6 (Jinho Bang 2017-09-29 19:11:25 +0900 3) :: Licensed under the Apache License, V
-```
-
-### 리뷰요청
-리뷰어를 할당되면 리뷰요청이 전달됩니다.
-리뷰어 중 코드오너는 리뷰요청뒤 24시간내로 리뷰를 해야 합니다.(공휴일과 주말은 제외)
-24시간내에 리뷰가 완료되어야 함을 의미하는 것은 아닙니다만, 적어도 의미있는 피드백을 요청자에게 주어야 합니다.
-리뷰어는 리뷰이를 존중하며 리뷰시 공격적이나 상대를 비난하는 태도는 지양합니다.
-
-### 리뷰승인
-코드오너가 *LGTM* 을 코멘트로 추가하고 Approve 를 해주어야만 리뷰가 승인됩니다. *LGTM* 는 `Looks Good to me`를 의미합니다.
-
-참고로 리뷰에 자주 사용되는 용어는 다음과 같습니다.
- * LGTM : Looks Good To Me
- * IMHO : In My Humble Opinion
- * PTAL : Please Take A Look
- * NIT :  A small change that may not be very important, but is technically correct.
-
-
-### 리뷰승인후
-머지전에 upstream 을 베이스로 fetch 와 리베이스를 진행하여 컨플릭이 발생하는지를 확인합니다.
-```
-git fetch upstream
-git rebase upstream/master
-
-# 컨틀릭트 파일이 존재하여 리졸브가 필요했을 경우
-git rebase --continue
-```
-
-
-## AUTHORS추가
-첫번째 패치라면 반드시 [AUTHORS](https://github.com/lunchclass/absolute/blob/master/docs/AUTHORS) 에 본인의 이름과 이메일을 추가해 주시기 바랍니다. 이름을 추가하실 때는 반드시 알파벳순서대로 기입해 주셔야 합니다.
-
-예) *Aberaham Lee* 가 첫 패치를 올릴 때 기존 AUTHORS 파일에 Jinho Bang 이 있다면
-```
-# Names should be added to this file with this pattern:
-#
-# For individuals:
-#   Name <email address>
-#
-# For organizations:
-#   Organization <fnmatch pattern>
-#
-# Please update your name in this file with you first change.
-# Please keep your name in alphabetical order.
-
-Jinho Bang <zino@chromium.org>
-```
-
-*Aberaham Lee* 는 *Jinho Bang* 위에 기입해주셔야 합니다.
-```
-# Names should be added to this file with this pattern:
-#
-# For individuals:
-#   Name <email address>
-#
-# For organizations:
-#   Organization <fnmatch pattern>
-#
-# Please update your name in this file with you first change.
-# Please keep your name in alphabetical order.
-
-Aberaham Lee <abe@lunchclass.org>
-Jinho Bang <zino@chromium.org>
-```
+리뷰 권한이 없어도 누구나 컨트리뷰터가 올린 풀리퀘스트에 대해 리뷰할 수 있으며 리뷰어는 리뷰이를 존중하며 리뷰시 공격적이나 상대를 비난하는 태도는 지양해야 합니다.
+보다 자세한 내용은 [CODE_REVIEW](https://github.com/lunchclass/absolute/blob/master/docs/CODE_REVIEW.md)를 참고 하세요.
