@@ -50,21 +50,14 @@ gulp.task('test', ['build_server']);
 gulp.task('run_server', () => {
   nodemon({
     script: 'out/server.js',
-    ignore: 'out/'
+    ignore: ['out/']
   });
 });
 
+const tsProject = tsc.createProject('tsconfig.json');
 gulp.task('build_server', () => {
-  return gulp.src('./server/**/*.ts')
-    .pipe(tsc({
-      target: 'es5',
-      noImplicitReturns: true,
-      noImplicitAny: true,
-      preserveConstEnums: true,
-      sourceMap: true,
-      lib: ['es2015'],
-      experimentalDecorators: true,
-    }))
+  return tsProject.src()
+    .pipe(tsProject())
     .js
     .pipe(gulp.dest('out/'));
 });
