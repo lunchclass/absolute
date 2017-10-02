@@ -12,7 +12,7 @@
 ## 리뷰어찾기
 
 ### 코드오너
-[CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/docs/CODEOWNERS) 를 확인하여 코드오너를 리뷰어로 할당합니다. 코드오너가 아니더라도 리뷰는 누구나 가능하지만 머지를 위해서는 반드시 코드오너의 리뷰와 승인이 필요합니다.
+[CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/CODEOWNERS) 를 확인하여 코드오너를 리뷰어로 할당합니다. 코드오너가 아니더라도 리뷰는 누구나 가능하지만 머지를 위해서는 반드시 코드오너의 리뷰와 승인이 필요합니다.
 
 ```
 # Order is important; the last matching pattern takes the most precedence.
