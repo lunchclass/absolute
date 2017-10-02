@@ -1,15 +1,15 @@
 # CODE_REVIEW
-1. [Prepare reviews](Preparereviews)
-2. [Find reviewers](Findreviewers)
-3. [Request reviews](Requestreviews)
-4. [Approve reviews](Approvereviews)
+1. [Prepare reviews](#preparereviews)
+2. [Find reviewers](#findreviewers)
+3. [Request reviews](#requestreviews)
+4. [Approve reviews](#approvereviews)
 
-## [Preparereviews]Prepare reviews
+## <a name="preparereviews"></a>Prepare reviews
 ### Check CI
 Reviews should be started after passing all CI tests. CI is automatically ran when you create a pull-request.
 ![ResultOfCI](https://hyungheo.github.io/png/ci.sample.png)
 
-## [Findreviewers]Find reviewers
+## <a name="findreviewers"></a>Find reviewers
 
 ### Code Owners
 You can assign reviewers for your pull-requests but an approval of code owners is required to merge you patch to the mater branch.
@@ -36,12 +36,12 @@ ex) If you want to know who modified source code line 1 ~ 3 in absolute.cmd
    439684c6 (tester 2017-09-29 19:11:25 +0900 3) :: Licensed under the Apache License, V
    ```
 
-## [Requestreviews]Request reviews
+## <a name="requestreviews"></a>Request reviews
 If you are a code owner, please review within 24 hours when you get review requests. (Exclude holidays and weekends)
 At least reviewers should leave the meaningful comment.
 Do not critisize and aggressive to reviewees. Please respect. :D
 
-## [Approvereviews]Approve reviews
+## <a name="approvereviews"></a>Approve reviews
 Reviews are approved when code owners comment *LGTM* then approve. *LGTM* means `Looks Good to me`.
 
 Those acronyms are often used.
