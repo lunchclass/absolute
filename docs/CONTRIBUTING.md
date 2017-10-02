@@ -178,3 +178,40 @@ CI 가 정상적으로 통과하였다면 보낸 풀리퀘스트에서 "All chec
 
 리뷰 권한이 없어도 누구나 컨트리뷰터가 올린 풀리퀘스트에 대해 리뷰할 수 있으며 리뷰어는 리뷰이를 존중하며 리뷰시 공격적이나 상대를 비난하는 태도는 지양해야 합니다.
 보다 자세한 내용은 [CODE_REVIEW](https://github.com/lunchclass/absolute/blob/master/docs/CODE_REVIEW.md)를 참고 하세요.
+
+## AUTHORS추가
+첫번째 패치라면 반드시 [AUTHORS](https://github.com/lunchclass/absolute/blob/master/docs/AUTHORS) 에 본인의 이름과 이메일을 추가해 주시기 바랍니다. 이름을 추가하실 때는 반드시 알파벳순서대로 기입해 주셔야 합니다.
+
+예) *Aberaham Lee* 가 첫 패치를 올릴 때 기존 AUTHORS 파일에 Jinho Bang 이 있다면
+```
+# Names should be added to this file with this pattern:
+#
+# For individuals:
+#   Name <email address>
+#
+# For organizations:
+#   Organization <fnmatch pattern>
+#
+# Please update your name in this file with you first change.
+# Please keep your name in alphabetical order.
+
+Jinho Bang <zino@chromium.org>
+```
+
+*Aberaham Lee* 는 *Jinho Bang* 위에 기입해주셔야 합니다.
+```
+# Names should be added to this file with this pattern:
+#
+# For individuals:
+#   Name <email address>
+#
+# For organizations:
+#   Organization <fnmatch pattern>
+#
+# Please update your name in this file with you first change.
+# Please keep your name in alphabetical order.
+
+Aberaham Lee <abe@lunchclass.org>
+Jinho Bang <zino@chromium.org>
+```
+
