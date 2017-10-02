@@ -31,9 +31,9 @@ ex) If you want to know who modified source code line 1 ~ 3 in absolute.cmd
    git blame -L 1,3 HEAD^ absolute.cmd
 
    git blame -L 1,3 absolute.cmd
-   439684c6 (Jinho Bang 2017-09-29 19:11:25 +0900 1) :: Copyright (c) 2017 The Absolute Authors.
-   439684c6 (Jinho Bang 2017-09-29 19:11:25 +0900 2) ::
-   439684c6 (Jinho Bang 2017-09-29 19:11:25 +0900 3) :: Licensed under the Apache License, V
+   439684c6 (tester 2017-09-29 19:11:25 +0900 1) :: Copyright (c) 2017 The Absolute Authors.
+   439684c6 (tester 2017-09-29 19:11:25 +0900 2) ::
+   439684c6 (tester 2017-09-29 19:11:25 +0900 3) :: Licensed under the Apache License, V
    ```
 
 ## Request reviews
