@@ -16,8 +16,8 @@
 
 import * as gulp from 'gulp';
 import * as nodemon from 'gulp-nodemon';
-import * as tsc from 'gulp-typescript';
 import * as runSequence from 'run-sequence';
+import * as tsc from 'gulp-typescript';
 
 gulp.task('default', () => {
   runSequence('build_server', 'run_server');
