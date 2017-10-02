@@ -49,6 +49,7 @@ Those acronyms are often used.
  * IMHO : In My Humble Opinion
  * PTAL : Please Take A Look
  * NIT :  A small change that may not be very important, but is technically correct.
+ * ditto : The same
 
 
 ## After approving reviews
