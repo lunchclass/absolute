@@ -7,7 +7,7 @@
 ## Prepare reviews
 ### Check CI
 Reviews should be started after passing all CI tests. CI is automatically ran when you create a pull-request.
-![ResultOfCI](docs/images/ci_status.png)
+![ResultOfCI](/docs/images/ci_status.png)
 
 ## Find reviewers
 ### Code Owners
