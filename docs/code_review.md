@@ -48,6 +48,7 @@ Those acronyms are often used.
 - **IMHO**: **I**n **M**y **H**umble **O**pinion
 - **PTAL**: **P**lease **T**ake **A** **L**ook
 - **nit**:  A small change that may not be very important, but is technically correct.
+- **ditto**: The same
 
 ## After approving reviews
 You have to check if the conflicting occurs when fetch and rebase based on upstream before merging.
