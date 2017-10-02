@@ -17,12 +17,15 @@
 import * as gulp from 'gulp';
 import * as nodemon from 'gulp-nodemon';
 import * as tsc from 'gulp-typescript';
+import * as runSequence from 'run-sequence';
 
-gulp.task('default', ['run_server']);
+gulp.task('default', () => {
+  runSequence('build_server', 'run_server');
+});
 
 gulp.task('test', ['build_server']);
 
-gulp.task('run_server', ['build_server'], () => {
+gulp.task('run_server', () => {
   nodemon({
     script: 'out/server.js',
     ignore: 'out/'
@@ -30,7 +33,7 @@ gulp.task('run_server', ['build_server'], () => {
 });
 
 gulp.task('build_server', () => {
-  gulp.src('./server/**/*.ts')
+  return gulp.src('./server/**/*.ts')
     .pipe(tsc({
       target: 'es5',
       noImplicitReturns: true,
