@@ -1,5 +1,6 @@
-# Contribution Guide(본 문서는 영어로 번역이 필요합니다.)
+**NOTE: This document should be translated to English.**
 
+# Contribution Guide
 Absolute 컨트리뷰터를 위한 가이드입니다. 풀리퀘스트를 보내고 패치가 머지되기까지의 과정에서 컨트리뷰터가 따라야 하는 규칙이나 참고하면 유용한 내용들을 담고 있습니다.
 
 - [준비](#준비)
