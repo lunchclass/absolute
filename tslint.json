@@ -1,3 +1,6 @@
 {
-  "extends": "tslint-microsoft-contrib"
+  "extends": "tslint-microsoft-contrib",
+  "rules": {
+	  "no-relative-imports": false
+  }
 }
