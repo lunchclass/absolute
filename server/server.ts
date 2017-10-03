@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-import Application from './base/application';
+import application from './base/application';
 
-Application.start();
+application.start();

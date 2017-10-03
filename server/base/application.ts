@@ -26,27 +26,32 @@ export default class Application {
 
   public static async startForTesting(): Promise<express.Application> {
     await import('../example/example.router');
+
     return this.app_;
   }
 
   public static route(url: string) {
     const app: express.Application = this.app_;
 
-    return function <T>(routerClass: { new(...args: {}[]): T}): void {
+    return <T>(routerClass: { new(...args: {}[]): T}): void => {
       const routerHandler: any = new routerClass();
       const router = express.Router();
 
-      if (routerHandler.post)
+      if (routerHandler.post) {
         router.post(url, routerHandler.post);
+      }
 
-      if (routerHandler.put)
+      if (routerHandler.put) {
         router.put(url, routerHandler.put);
+      }
 
-      if (routerHandler.get)
+      if (routerHandler.get) {
         router.get(url, routerHandler.get);
+      }
 
-      if (routerHandler.delete)
+      if (routerHandler.delete) {
         router.delete(url, routerHandler.delete);
+      }
 
       app.use('/', router);
     };
