@@ -1,6 +1,8 @@
 {
   "extends": "tslint-microsoft-contrib",
   "rules": {
+	  "no-suspicious-comment": false,
+	  "no-reserved-keywords": false,
 	  "no-relative-imports": false
   }
 }
