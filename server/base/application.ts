@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-/**
- * FIXME: add javadoc
- */
 import * as express from 'express';
 
 export default class Application {
