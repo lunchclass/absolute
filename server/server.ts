@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * FIXME: add javadoc
+ */
 import application from './base/application';
 
 application.start();
