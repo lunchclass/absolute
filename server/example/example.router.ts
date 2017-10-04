@@ -18,8 +18,8 @@ import * as express from 'express';
 import application from '../base/application';
 
 @application.route('/example')
-export default class Test {
-  public get(request: express.Request, response: express.Response) {
+export class Test {
+  public get(request: express.Request, response: express.Response): void {
     response.send('hello world');
   }
 }
