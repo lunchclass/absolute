@@ -16,7 +16,7 @@
 
 import * as express from 'express';
 
-export default class Application {
+export class Application {
   private static app_: express.Application = express();
 
   public static async start() {
