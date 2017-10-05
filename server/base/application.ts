@@ -17,21 +17,21 @@
 import * as express from 'express';
 
 export class Application {
-  private static app_: express.Application = express();
+  private static app: express.Application = express();
 
   public static async start() {
     await import('../example/example.router');
-    this.app_.listen(8090);
+    this.app.listen(8090);
   }
 
   public static async startForTesting(): Promise<express.Application> {
     await import('../example/example.router');
 
-    return this.app_;
+    return this.app;
   }
 
   public static route(url: string) {
-    const app: express.Application = this.app_;
+    const app: express.Application = this.app;
 
     return <T>(routerClass: { new(...args: {}[]): T}): void => {
       const routerHandler: any = new routerClass();
