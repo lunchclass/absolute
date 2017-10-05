@@ -30,7 +30,7 @@ export class Application {
     return this.app;
   }
 
-  public static route(url: string) {
+  public static ROUTE(url: string) {
     const app: express.Application = this.app;
 
     return <T>(routerClass: { new(...args: {}[]): T}): void => {
