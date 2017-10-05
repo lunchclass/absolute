@@ -16,4 +16,4 @@
 
 import {Application} from './base/application';
 
-Application.start();
+Application.START();
