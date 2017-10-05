@@ -24,7 +24,7 @@ export class Application {
     this.app.listen(8090);
   }
 
-  public static async startForTesting(): Promise<express.Application> {
+  public static async START_FOR_TESTING(): Promise<express.Application> {
     await import('../example/example.router');
 
     return this.app;
