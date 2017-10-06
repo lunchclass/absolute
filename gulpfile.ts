@@ -56,8 +56,8 @@ gulp.task('run_server', () => {
   });
 });
 
-gulp.task('clean', (callback) => {
-    return del('out/*', {force: true});
+gulp.task('clean', () => {
+    return del('out', {force: true});
 });
 
 const tsProject = tsc.createProject('tsconfig.json');
