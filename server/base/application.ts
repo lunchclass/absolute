@@ -19,7 +19,7 @@ import * as express from 'express';
 export class Application {
   private static app: express.Application = express();
 
-  public static async START() {
+  public static async START(): Promise<void> {
     await import('../example/example.router');
     this.app.listen(8090);
   }
