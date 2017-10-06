@@ -16,26 +16,26 @@
 
 import * as express from 'express';
 
-export default class Application {
-  private static app_: express.Application = express();
+export class Application {
+  private static app: express.Application = express();
 
-  public static async start() {
+  public static async START(): Promise<void> {
     await import('../example/example.router');
-    this.app_.listen(8090);
+    this.app.listen(8090);
   }
 
-  public static async startForTesting(): Promise<express.Application> {
+  public static async START_FOR_TESTING(): Promise<express.Application> {
     await import('../example/example.router');
 
-    return this.app_;
+    return this.app;
   }
 
-  public static route(url: string) {
-    const app: express.Application = this.app_;
+  public static ROUTE(url: string) {
+    const app: express.Application = this.app;
 
     return <T>(routerClass: { new(...args: {}[]): T}): void => {
       const routerHandler: any = new routerClass();
-      const router = express.Router();
+      const router: express.Router = express.Router();
 
       if (routerHandler.post) {
         router.post(url, routerHandler.post);

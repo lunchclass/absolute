@@ -16,10 +16,10 @@
 
 import {} from 'jest';
 import * as supertest from 'supertest';
-import application from '../base/application';
+import {Application} from '../base/application';
 
 test('GET /example', async() => {
-  const request: {} = supertest(await application.startForTesting());
+  const request: {} = supertest(await Application.START_FOR_TESTING());
   const response: {} = await request.get('/example');
   expect(response.statusCode).toBe(200);
   expect(response.text).toBe('hello world');

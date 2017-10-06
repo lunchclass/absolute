@@ -15,9 +15,9 @@
  */
 
 import * as express from 'express';
-import application from '../base/application';
+import {Application} from '../base/application';
 
-@application.route('/example')
+@Application.ROUTE('/example')
 export class Test {
   public get(request: express.Request, response: express.Response): void {
     response.send('hello world');
