@@ -3,16 +3,16 @@ A guide for the Absolute contributors.
 It contains the rules that the contributor should follow and useful content such as the process of a pull-request.  
 
 - [Preparations](#preparations)  
-- [Creating an issue](#creating_an_issue)
+- [Creating an issue](#creating-an-issue)
 - [Patch](#patch)  
-  - [Patch size](#patch_size)  
-  - [Add file](#add_file)
+  - [Patch size](#patch-size)  
+  - [Add file](#add-file)
 - [Commit](#commit)  
-  - [Coding style](#coding_style)  
+  - [Coding style](#coding-style)  
   - [Description](#description)
 - [Pull-request](#pull-request)
-- [Code review](#code_review)
-- [Add AUTHORS](#add_authors)
+- [Code review](#code-review)
+- [Add AUTHORS](#add-authors)
 
 ## Preparations
 Fork a lunchclass/absolute repo & add into your github repo.  
@@ -49,14 +49,14 @@ git rebase upstream/master
 git rebase --continue
 ```
 
-## Creating_an_issue
+## Creating an issue
 If you've found a bug in existing code, or have come up with a new idea, please post it on the issue first.
 (For more information, see the [Issue Reporting](/docs/issue_reporting.md) section.)
 Talk to the code owners about your issue before patching them.
 You can find out who is the code owner through [CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/docs/CODEOWNERS).
 
 ## Patch
-### Patch_size
+### Patch size
 Small size patches are recommended. This rule makes faster and better code reviews possible.
 Also it is easy to catch issues you may find in the review process.
 Nonetheless, if you have a lot of fixes due to the new implementation, it is a good idea to divide the patches into small steps.
@@ -108,7 +108,7 @@ function bar(num: number): number {
 }
 ```
 
-### Add_file
+### Add file
 If the patch contains new file additions, you should add boilerplate notice and it must show the year. For more information, see [LICENSE.md](/LICENSE.md).  
 ex)  
 ```TypeScript
@@ -132,7 +132,7 @@ ex)
 ```
 
 ## Commit
-### Coding_style
+### Coding style
 Before committing, you need to make sure that your coding style follows the rules of this project. Absolute conforms to the coding style of
 [Microsoft / TypeScript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines).  
 
@@ -165,7 +165,7 @@ At the same time as the pull-request is sent out, the CI will perform the build 
 If CI passes normally, you can see "All checks have passed" in the pull-request webpage.
 ![ResultOfCI](https://hyungheo.github.io/png/ci.sample.png)
 
-## Code_review
+## Code review
 In order for your pull-request to be applied to the master branch, you have to go through the review phase.
 To pass, the following conditions apply:
 - Approval of reviewers with the review authority
@@ -175,7 +175,7 @@ Even if you do not have permission to review, you can review the pull-requests o
 But reviewers should respect and avoid being aggressive in their reviews or blaming them.
 For more information, see [docs / code_review.md](/docs/code_review.md).
 
-## Add_AUTHORS
+## Add AUTHORS
 If this is your first patch, be sure to add your name and email to [AUTHORS](https://github.com/lunchclass/absolute/blob/master/docs/AUTHORS). When adding names, be sure to fill in **alphabetical order**.
 
 ex) When *Aberaham Lee* uploads the first patch, if there is a Jinho Bang in the existing AUTHORS file...
