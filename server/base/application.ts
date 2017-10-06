@@ -35,7 +35,7 @@ export class Application {
 
     return <T>(routerClass: { new(...args: {}[]): T}): void => {
       const routerHandler: any = new routerClass();
-      const router = express.Router();
+      const router: express.Router = express.Router();
 
       if (routerHandler.post) {
         router.post(url, routerHandler.post);
