@@ -1,6 +1,6 @@
 # Contribution Guide
-A guide for the Absolute contributors.
-It contains the rules that the contributor should follow and useful content such as the process of a pull-request.  
+A guide for Absolute contributors.
+It contains the rules that the contributor should follow. It also contains useful content such as the process of generating a pull-request.  
 
 - [Preparations](#preparations)  
 - [Creating an issue](#creating-an-issue)
@@ -23,7 +23,7 @@ Click **Fork** in lunchclass/absolute repo,
 Select your repo for creating the project.  
 ![fork-2](https://hyungheo.github.io/png/fork-2.png)
 
-Clone the forked project into your local git. (*If your account is **hyungheo***)
+Clone the forked project into your local machine (*git*). (*If your account is **hyungheo***)
 ```
 git clone https://github.com/hyungheo/absolute.git
 ```
@@ -50,7 +50,7 @@ git rebase --continue
 ```
 
 ## Creating an issue
-If you've found a bug in existing code, or have come up with a new idea, please post it on the issue first.
+If you've found a bug in existing code, or you have come up with a new idea, please post it on the Issue first.
 (For more information, see the [Issue Reporting](/docs/issue_reporting.md) section.)
 Talk to the code owners about your issue before patching them.
 You can find out who is the code owner through [CODEOWNERS](https://github.com/lunchclass/absolute/blob/master/docs/CODEOWNERS).
@@ -61,8 +61,9 @@ Small size patches are recommended. This rule makes faster and better code revie
 Also it is easy to catch issues you may find in the review process.
 Nonetheless, if you have a lot of fixes due to the new implementation, it is a good idea to divide the patches into small steps.
 
-ex)   
-First, upload frame of functions without content
+eg:
+
+First, upload frame of functions without any content
 ```TypeScript
 function foo(num: number): number {
   // Not Implemented
@@ -73,7 +74,7 @@ function foo(num: number): number {
 }
 ```
 
-Next, implement in one
+Next, implement the first function.
 ```TypeScript
 function foo(num: number): number {
   let ret : number = 0;
@@ -90,7 +91,7 @@ function foo(num: number): number {
 }
 ```
 
-Finally, implement in the other
+Finally, implement the second function and so on.
 ```TypeScript
 function foo(num: number): number {
   let ret : number = 0;
@@ -108,9 +109,12 @@ function bar(num: number): number {
 }
 ```
 
+
 ### Add file
 If the patch contains new file additions, you should add boilerplate notice and it must show the year. For more information, see [LICENSE.md](/LICENSE.md).  
-ex)  
+
+eg:
+
 ```TypeScript
 /*
  * Copyright (c) 2017 The Absolute Authors.
@@ -137,7 +141,7 @@ Before committing, you need to make sure that your coding style follows the rule
 [Microsoft / TypeScript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines).  
 
 ### Description
-Please consider the following rules to create a commit message. Consistently writing is the best way to collaborate with other contributors. For more infomation, see
+Please consider the following rules to create a commit message. Consistent writing is the best way to collaborate with other contributors. For more infomation, see
 [here](https://chris.beams.io/posts/git-commit).  
 
 - Separate text and titles using blank lines
@@ -176,9 +180,10 @@ But reviewers should respect and avoid being aggressive in their reviews or blam
 For more information, see [docs / code_review.md](/docs/code_review.md).
 
 ## Add AUTHORS
-If this is your first patch, be sure to add your name and email to [AUTHORS](https://github.com/lunchclass/absolute/blob/master/docs/AUTHORS). When adding names, be sure to fill in **alphabetical order**.
+If this is your first patch, be sure to add your name and email to [AUTHORS](https://github.com/lunchclass/absolute/blob/master/docs/AUTHORS). When adding names, be sure to fill it in **alphabetical order**.
 
-ex) When *Aberaham Lee* uploads the first patch, if there is a Jinho Bang in the existing AUTHORS file...
+eg:
+ When *Aberaham Lee* uploads the first patch, if there is a Jinho Bang in the existing AUTHORS file...
 ```
 # Names should be added to this file with this pattern:
 #
