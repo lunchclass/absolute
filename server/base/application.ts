@@ -15,12 +15,14 @@
  */
 
 import * as express from 'express';
+import * as path from 'path';
 
 export class Application {
   private static app: express.Application = express();
 
   public static async START(): Promise<void> {
     await import('../example/example.router');
+    this.app.use(express.static(path.join(__dirname, '../../client')));
     this.app.listen(8090);
   }
 
