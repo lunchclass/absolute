@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import * as del from 'del';
 import * as gulp from 'gulp';
 import * as nodemon from 'gulp-nodemon';
 import * as runSequence from 'run-sequence';
@@ -53,6 +54,10 @@ gulp.task('run_server', () => {
     script: 'out/server.js',
     ignore: ['out/']
   });
+});
+
+gulp.task('clean', () => {
+    return del('out', {force: true});
 });
 
 const tsProject = tsc.createProject('tsconfig.json');

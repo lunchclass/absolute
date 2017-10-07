@@ -10,7 +10,8 @@
     "target": "es5"
   },
   "exclude": [
-    "server/**/*.test.ts"
+    "server/**/*.test.ts",
+    "bootstrap/**/*.test.ts"
   ],
   "include": [
     "server/**/*.ts"
