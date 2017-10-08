@@ -22,5 +22,4 @@ test('GET /', async() => {
   const request: {} = supertest(await Application.START_FOR_TESTING());
   const response: {} = await request.get('/');
   expect(response.statusCode).toBe(200);
-  expect(response.text).toBe('hello world');
 });
