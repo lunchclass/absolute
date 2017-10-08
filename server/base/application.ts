@@ -28,7 +28,7 @@ export class Application {
 
   public static async START_FOR_TESTING(): Promise<express.Application> {
     await import('../example/example.router');
-
+    this.app.use(express.static(path.join(__dirname, '../../client')));
     return this.app;
   }
 
