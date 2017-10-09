@@ -22,8 +22,10 @@ import tslint from 'gulp-tslint';
 import * as shell from 'gulp-shell';
 import * as tsc from 'gulp-typescript';
 
+const webpack = require('webpack-stream');
+
 gulp.task('default', (callback) => {
-  runSequence('build_server', 'run_server', callback);
+  runSequence('webpack', 'build_server', 'run_server', callback);
 });
 
 gulp.task('lint', () => {
@@ -47,7 +49,7 @@ gulp.task('lint:fix', () => {
     }));
 });
 
-gulp.task('test', shell.task('jest'));
+gulp.task('test', ['webpack'], shell.task('jest'));
 
 gulp.task('run_server', () => {
   nodemon({
@@ -58,6 +60,12 @@ gulp.task('run_server', () => {
 
 gulp.task('clean', () => {
     return del('out', {force: true});
+});
+
+gulp.task('webpack', () => {
+  return gulp.src('./client/src/*.ts')
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('out/client'))
 });
 
 const tsProject = tsc.createProject('tsconfig.json');

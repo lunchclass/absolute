@@ -11,6 +11,7 @@
   },
   "exclude": [
     "server/**/*.test.ts",
+    "client/**/*.test.ts",
     "bootstrap/**/*.test.ts"
   ],
   "include": [
