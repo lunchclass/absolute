@@ -20,6 +20,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         absolute: './client/src/absolute.ts',
+        absolute_service_worker: './client/src/service_worker.ts',
     },
     module: {
         rules: [
