@@ -14,4 +14,10 @@
  * limitations under the License.
  */
 
-console.log("Hello, Absolute!");
+import absolute from './apis/absolute';
+
+async function main() {
+  console.log(await absolute.push.register('key'));
+}
+
+main();

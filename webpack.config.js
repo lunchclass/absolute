@@ -19,7 +19,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        absolute: './client/src/absolute.ts',
+        absolute: './client/absolute.ts',
     },
     module: {
         rules: [
@@ -35,7 +35,7 @@ module.exports = {
     },
     plugins: [
       new CopyWebpackPlugin([
-        { from: './client/static' },
+        { from: './client', ignore: ['*.ts'] },
       ])
     ],
     output: {
