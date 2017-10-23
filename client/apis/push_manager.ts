@@ -25,7 +25,7 @@ export default class PushManager {
     return false;
   }
 
-  async unreigster(): Promise<boolean> {
+  async unregister(): Promise<boolean> {
     // Not implemented yet
     return false;
   }
