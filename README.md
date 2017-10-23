@@ -2,8 +2,8 @@ Absolute v2
 ===========
 [![Linux/Max Build Status](https://travis-ci.org/lunchclass/absolute.svg?branch=master)](https://travis-ci.org/lunchclass/absolute/branches)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/099u4iekeny4lpsa/branch/master?svg=true)](https://ci.appveyor.com/project/romandev/absolute/branch/master)
-[![Slack](https://img.shields.io/badge/slack-online-green.svg)](https://lunchclass.slack.com)
 [![License Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Slack Status](https://img.shields.io/badge/slack-online-green.svg)](https://bit.ly/lunchclass_slack)
 
 Absolute is a web-based ordering platform like Siren-Order for Starbucks.
 We are focused on creating a platform that is portable, cheaper, easier,
