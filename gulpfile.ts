@@ -64,7 +64,7 @@ gulp.task('clean', () => {
 
 gulp.task('webpack', () => {
   return gulp.src('./client/src/*.ts')
-    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(webpack(require('./webpack.config.ts')))
     .pipe(gulp.dest('out/client'))
 });
 
