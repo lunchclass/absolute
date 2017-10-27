@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
-import {ServiceWorkerController} from "./service_worker_controller";
+/// <reference path="../../node_modules/typescript/lib/lib.webworker.d.ts"/>
 
-const controller:ServiceWorkerController = new ServiceWorkerController();
+declare var s: ServiceWorkerGlobalScope;
+
+self.addEventListener('install', (event: ExtendableEvent) => {
+  console.log(event.waitUntil(s.skipWaiting()));
+});
+
+self.addEventListener('fetch', (event: FetchEvent) => {
+  console.log(event);
+});
