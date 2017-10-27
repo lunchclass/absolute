@@ -22,12 +22,14 @@ export class ServiceWorkerController {
 
   constructor() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/absolute_service_worker.js').then((registration: ServiceWorkerRegistration) => {
-        this.isRegistered = true;
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }).catch((err: Error) => {
-        console.log('ServiceWorker registration failed: ', err);
-      });
+      navigator.serviceWorker.register('/absolute_service_worker.js')
+        .then((registration: ServiceWorkerRegistration) => {
+          this.isRegistered = true;
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        })
+        .catch((err: Error) => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
     }
   }
 }
