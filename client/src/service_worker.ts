@@ -19,9 +19,9 @@
 declare var s: ServiceWorkerGlobalScope;
 
 self.addEventListener('install', (event: ExtendableEvent) => {
-    console.log(event.waitUntil(s.skipWaiting()));
+  console.log(event.waitUntil(s.skipWaiting()));
 });
 
 self.addEventListener('fetch', (event: FetchEvent) => {
-    console.log(event);
+  console.log(event);
 });
