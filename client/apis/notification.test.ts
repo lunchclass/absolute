@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-import PushManager from './push_manager';
-import Notification from './notification';
+import {} from 'jest';
+import absolute from './absolute';
 
-export default class absolute {
-  static push: PushManager = new PushManager();
-  static noti: Notification = new Notification();
-}
+test('absolute.notification.close()', async() => {
+  expect(await absolute.notification.close()).toBe(false);
+});
+
+test('absolute.notification.requestPermission()', async() => {
+  expect(await absolute.notification.requestPermission()).toBe(false);
+});
