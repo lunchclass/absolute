@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-/// <reference path="../../node_modules/typescript/lib/lib.webworker.d.ts"/>
+import absolute from './absolute';
 
-declare var s: ServiceWorkerGlobalScope;
+async function main() {
+  console.log(await absolute.push.register('key'));
+}
 
-self.addEventListener('install', (event: ExtendableEvent) => {
-  console.log(event.waitUntil(s.skipWaiting()));
-});
-
-self.addEventListener('fetch', (event: FetchEvent) => {
-  console.log(event);
-});
+main();

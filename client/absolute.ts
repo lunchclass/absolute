@@ -14,22 +14,8 @@
  * limitations under the License.
  */
 
-declare var navigator: any;
+import PushManager from './push/push_manager';
 
-export class ServiceWorkerController {
-
-  private isRegistered: boolean = false;
-
-  constructor() {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/absolute_service_worker.js')
-        .then((registration: ServiceWorkerRegistration) => {
-          this.isRegistered = true;
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        })
-        .catch((err: Error) => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-    }
-  }
+export default class absolute {
+  static push: PushManager = new PushManager();
 }

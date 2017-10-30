@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
-import {ServiceWorkerController} from "./service_worker_controller";
+/// <reference path="../../node_modules/typescript/lib/lib.webworker.d.ts"/>
 
-const controller:ServiceWorkerController = new ServiceWorkerController();
+// FIXME(zino): Unable to access ServiceWorkerGlobalScope via 'self'.
+const self_ = self as ServiceWorkerGlobalScope;
+
+self_.addEventListener('install', (event: ExtendableEvent) => {
+  event.waitUntil(self_.skipWaiting());
+});
