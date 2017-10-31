@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-
 export default class Notification {
     private _notifications: Object = {};
 
     constructor() {
     }
 
-    async create(event): Promise<boolean> {
+    async create(NotificationEvent: Event): Promise<boolean> {
         // Not implemented yet
         return false;
     }
-    async close(event): Promise<boolean> {
+    async close(NotificationEvent: Event): Promise<boolean> {
         // Not implemented yet
         return false;
     }
-    async processClickEvent(event): Promise<boolean> {
+    async processClickEvent(NotificationEvent: Event): Promise<boolean> {
         // Not implemented yet
         return false;
     }

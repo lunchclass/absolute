@@ -18,11 +18,14 @@ import { } from 'jest';
 import absolute from '../absolute';
 
 test('absolute.notification.create()', async () => {
-  expect(await absolute.notification.create(event)).toBe(false);
+  let NotificationEvent  = new Event("click");
+  expect(await absolute.notification.create(NotificationEvent)).toBe(false);
 });
 test('absolute.notification.close()', async () => {
-  expect(await absolute.notification.close(event)).toBe(false);
+  let NotificationEvent  = new Event("click");
+  expect(await absolute.notification.close(NotificationEvent)).toBe(false);
 });
 test('absolute.notification.processClickEvent()', async () => {
-  expect(await absolute.notification.processClickEvent(event)).toBe(false);
+  let NotificationEvent  = new Event("click");
+  expect(await absolute.notification.processClickEvent(NotificationEvent)).toBe(false);
 });
