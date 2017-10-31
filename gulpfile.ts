@@ -21,6 +21,7 @@ import * as runSequence from 'run-sequence';
 import tslint from 'gulp-tslint';
 import * as shell from 'gulp-shell';
 import * as tsc from 'gulp-typescript';
+import * as process from 'child_process';
 
 const webpack = require('webpack-stream');
 
@@ -75,3 +76,17 @@ gulp.task('build_server', () => {
     .js
     .pipe(gulp.dest('out/'));
 });
+
+const mongodb_path = './third_party/mongodb';
+gulp.task('start-mongo', runCommand(`${mongodb_path}/bin/mongod --dbpath ${mongodb_path}`));
+gulp.task('stop-mongo', runCommand(`${mongodb_path}/bin/mongo --eval "use admin; db.shutdownServer();`));
+
+function runCommand(command: string) {
+  return (cb: any) => {
+      process.exec(command, function (err, stdout, stderr) {
+          console.log(stdout);
+          console.log(stderr);
+          cb(err);
+      });
+  }
+}
