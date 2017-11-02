@@ -22,7 +22,8 @@ test('absolute.push.isRegistered()', async() => {
 });
 
 test('absolute.push.register()', async() => {
-  expect(await absolute.push.register('test_key')).toBe(false);
+  const registered: Promise<any> = await absolute.push.register('test_key')
+  expect(registered).rejects.toBe('register failed');
 });
 
 test('absolute.push.unregister()', async() => {

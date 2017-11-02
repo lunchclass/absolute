@@ -17,28 +17,51 @@
 declare var navigator: any;
 
 export default class PushManager {
-  private isRegistered_: boolean = false;
 
-  constructor() {
-    if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('/push_service_worker.js')
-        .then((registration: ServiceWorkerRegistration) => {
-          this.isRegistered_ = true;
-        })
-        .catch((error: Error) => {
-          // FIXME(zino): What should we do?
-        });
-    }
-  }
+  constructor() {}
 
   async isRegistered(): Promise<boolean> {
     // Not implemented yet
     return false;
   }
 
-  async register(key: string): Promise<boolean> {
+  async register(key: string): Promise<any> {
     // Not implemented yet
-    return false;
+
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/push_service_worker.js')
+      .then((registration: ServiceWorkerRegistration) => {
+
+        if (!registration.pushManager) {
+          // The browser doesn't support push notification.
+        }
+
+        registration.pushManager.getSubscription()
+        .then((subscription: PushSubscription) => {
+          if (subscription) {
+            // Not implemented yet
+          }
+
+          registration.pushManager.subscribe({
+            userVisibleOnly: true
+          })
+          .then((subscription: PushSubscription) => {
+            // Not implemented yet
+            // Subscribed successfully
+            return subscription.endpoint;
+          })
+          .catch((error: Error) => {
+            // Not implemented yet
+          })
+        })
+
+      })
+      .catch((error: Error) => {
+        // FIXME(zino): What should we do?
+      });
+    }
+
+    return 'register failed';
   }
 
   async unregister(): Promise<boolean> {
