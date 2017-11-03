@@ -21,7 +21,7 @@ export default class PushManager {
 
   constructor() {
     if (navigator.serviceWorker) {
-      navigator.serviceWorker.register('/push_service_worker.ts')
+      navigator.serviceWorker.register('/push_service_worker.js')
         .then((registration: ServiceWorkerRegistration) => {
           this.isRegistered_ = true;
         })
