@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+import CacheManager from './cache/cache_manager';
 import PushManager from './push/push_manager';
 
 export default class absolute {
   static push: PushManager = new PushManager();
+  static cache: CacheManager = new CacheManager();
 }

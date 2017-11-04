@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-import absolute from './absolute';
+// const self_ = self as ServiceWorkerGlobalScope;
 
-async function main() {
-  console.log(await absolute.push.register('key'));
-  console.log(await absolute.cache.register('key'));
-}
-
-main();
+self.addEventListener('install', function(event: ExtendableEvent) {
+    event.waitUntil(
+        caches.open('absolute-cache-v1')
+            .then(function (cache) {
+                cache.addAll([
+                    '/', '/client/'
+                ]);
+            })
+    );
+});

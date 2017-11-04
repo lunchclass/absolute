@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-import absolute from './absolute';
+import {} from 'jest';
+import absolute from '../absolute';
 
-async function main() {
-  console.log(await absolute.push.register('key'));
-  console.log(await absolute.cache.register('key'));
-}
+test('absolute.cache.isRegistered()', async() => {
+    expect(await absolute.cache.isRegistered()).toBe(false);
+});
 
-main();
+test('absolute.cache.register()', async() => {
+    expect(await absolute.cache.register('test_key')).toBe(false);
+});
+
+test('absolute.cache.unregister()', async() => {
+    expect(await absolute.cache.unregister()).toBe(false);
+});
