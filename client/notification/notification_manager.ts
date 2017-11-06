@@ -14,12 +14,22 @@
  * limitations under the License.
  */
 
-import CacheManager from './cache/cache_manager';
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
+export default class Notification {
+    private _notifications: Object = {};
 
-export default class absolute {
-  static push: PushManager = new PushManager();
-  static cache: CacheManager = new CacheManager();
-  static notification: Notification = new Notification();
+    constructor() {
+    }
+
+    async create(NotificationEvent: Event): Promise<boolean> {
+        // Not implemented yet
+        return false;
+    }
+    async close(NotificationEvent: Event): Promise<boolean> {
+        // Not implemented yet
+        return false;
+    }
+    async processClickEvent(NotificationEvent: Event): Promise<boolean> {
+        // Not implemented yet
+        return false;
+    }
 }
