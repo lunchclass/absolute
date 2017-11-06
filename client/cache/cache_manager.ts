@@ -26,7 +26,7 @@ export default class CacheManager {
                     this.isRegistered_ = true;
                 })
                 .catch((error: Error) => {
-                    //
+                    // Not implement yet
                 });
         }
     }

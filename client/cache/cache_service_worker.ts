@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-// const self_ = self as ServiceWorkerGlobalScope;
-
 self.addEventListener('install', function(event: ExtendableEvent) {
     event.waitUntil(
         caches.open('absolute-cache-v1')
             .then(function (cache) {
+                //Specify the list to register want to be cached
                 cache.addAll([
                     '/', '/client/'
                 ]);
