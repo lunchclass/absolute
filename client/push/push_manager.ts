@@ -25,7 +25,7 @@ export default class PushManager {
     return false;
   }
 
-  async register(key: string): Promise<any> {
+  async register(key: string): Promise<string> {
     // Not implemented yet
 
     if (navigator.serviceWorker) {
@@ -43,7 +43,8 @@ export default class PushManager {
           }
 
           registration.pushManager.subscribe({
-            userVisibleOnly: true
+            userVisibleOnly: true,
+            applicationServerKey: key
           })
           .then((subscription: PushSubscription) => {
             // Not implemented yet
@@ -61,7 +62,7 @@ export default class PushManager {
       });
     }
 
-    return 'register failed';
+    return null;
   }
 
   async unregister(): Promise<boolean> {

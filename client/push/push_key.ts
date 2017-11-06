@@ -14,18 +14,8 @@
  * limitations under the License.
  */
 
-import {} from 'jest';
-import absolute from '../absolute';
-
-test('absolute.push.isRegistered()', async() => {
-  expect(await absolute.push.isRegistered()).toBe(false);
-});
-
-test('absolute.push.register()', async() => {
-  const registered: Promise<any> = await absolute.push.register('test_key')
-  expect(registered).rejects.toBe(null);
-});
-
-test('absolute.push.unregister()', async() => {
-  expect(await absolute.push.unregister()).toBe(false);
-});
+export default {
+    'pushVapidKeys': {
+      'publicKey': 'BIIRaJLExnx2i0LLD8ROMfWazpjE7dQJo6UQo9zqbqu-rNSJFK2tyKM1FykWvrJSi9062j3xurAovn3jmli7Fws'
+    }
+  }
