@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 export default class IndexedDB{
 
   constructor() {}
