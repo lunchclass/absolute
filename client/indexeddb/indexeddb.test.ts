@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
-import IndexedDB from './indexeddb/indexeddb';
+import { } from 'jest';
+import absolute from '../absolute';
 
-export default class absolute {
-  static push: PushManager = new PushManager();
-  static notification: Notification = new Notification();
-  static indexeddb: IndexedDB = new IndexedDB();
-}
+test('absolute.indexeddb.set()', async () => {
+  expect(await absolute.indexeddb.set()).toBe();
+});
+
+test('absolute.indexeddb.get()', async () => {
+  expect(await absolute.indexeddb.get()).toBe(null);
+});
+
+test('absolute.indexeddb.remove()', async () => {
+  expect(await absolute.indexeddb.remove()).toBe(null);
+});

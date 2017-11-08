@@ -14,12 +14,22 @@
  * limitations under the License.
  */
 
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
-import IndexedDB from './indexeddb/indexeddb';
+export default class IndexedDB{
 
-export default class absolute {
-  static push: PushManager = new PushManager();
-  static notification: Notification = new Notification();
-  static indexeddb: IndexedDB = new IndexedDB();
+  constructor() {}
+
+  async set(key: string, value: object): Promise<void> {
+    // Not implemented yet
+    return;
+  }
+
+  async get(key: string): Promise<object> {
+    // Not implemented yet
+    return null;
+  }
+
+  async remove(key: string): Promise<object> {
+    // Not implemented yet
+    return null;
+  }
 }
