@@ -25,4 +25,15 @@ export class ExampleRouter {
   public get(request: express.Request, response: express.Response): void {
     response.send('hello world');
   }
+  public post(request: express.Request, response: express.Response): void {
+    if (request.body) {
+      if (request.body.exampleParam === 'example') {
+        response.sendStatus(200);
+      } else {
+        response.sendStatus(400);
+      }
+    } else {
+      response.sendStatus(501);
+    }
+  }
 }
