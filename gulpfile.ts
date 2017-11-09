@@ -19,13 +19,13 @@ import * as gulp from 'gulp';
 import * as nodemon from 'gulp-nodemon';
 import * as runSequence from 'run-sequence';
 import tslint from 'gulp-tslint';
-import * as shell from 'gulp-shell';
 import * as tsc from 'gulp-typescript';
 
 const webpack = require('webpack-stream');
+const { exec } = require('child_process');
 
 gulp.task('default', (callback) => {
-  runSequence('webpack', 'build_server', 'run_server', callback);
+  runSequence('webpack', 'build_server', 'run_server', 'start-mongo', callback);
 });
 
 gulp.task('lint', () => {
@@ -49,7 +49,7 @@ gulp.task('lint:fix', () => {
     }));
 });
 
-gulp.task('test', ['webpack'], shell.task('jest'));
+gulp.task('test', ['webpack'], runCommand(`jest`));
 
 gulp.task('run_server', () => {
   nodemon({
@@ -75,3 +75,17 @@ gulp.task('build_server', () => {
     .js
     .pipe(gulp.dest('out/'));
 });
+
+const mongodb_path = './third_party/mongodb';
+gulp.task('start-mongo', runCommand(`${mongodb_path}/bin/mongod --dbpath ${mongodb_path}`));
+gulp.task('stop-mongo', runCommand(`${mongodb_path}/bin/mongo --eval "use admin; db.shutdownServer();`));
+
+function runCommand(command: string) {
+  return (cb: any) => {
+    exec(command, (error: any, stdout: any, stderr: any) => {
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+        cb(error);
+    });
+  }
+}
