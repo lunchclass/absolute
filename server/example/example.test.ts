@@ -24,3 +24,12 @@ test('GET /example', async() => {
   expect(response.statusCode).toBe(200);
   expect(response.text).toBe('hello world');
 });
+
+test('POST /example', async() => {
+  const request: {} = supertest(await Application.START_FOR_TESTING());
+  const response: {} = await request.post('/example')
+                                    .set('Content-Type', 'application/x-www-form-urlencoded')
+                                    .send('userId=absolute');
+  expect(response.statusCode).toBe(200);
+  expect(response.text).toBe('hello world');
+});
