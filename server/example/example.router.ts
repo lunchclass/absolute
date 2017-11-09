@@ -22,4 +22,15 @@ export class Test {
   public get(request: express.Request, response: express.Response): void {
     response.send('hello world');
   }
+  public post(request: express.Request, response: express.Response): void {
+    if (request.body) {
+      if (request.body.userId === 'absolute') {
+        response.status(200); 
+      } else {
+        response.sendStatus(400);
+      }
+    } else {
+      response.sendStatus(501);
+    }
+  } 
 }
