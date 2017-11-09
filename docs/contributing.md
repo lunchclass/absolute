@@ -69,7 +69,7 @@ function foo(num: number): number {
   // Not Implemented
 }
 
-function foo(num: number): number {
+function bar(num: number): number {
   // Not Implemented
 }
 ```
@@ -86,7 +86,7 @@ function foo(num: number): number {
   return ret;
 }
 
-function foo(num: number): number {
+function bar(num: number): number {
   // Not Implemented
 }
 ```
