@@ -19,7 +19,7 @@ import PushManager from './push/push_manager';
 import Notification from './notification/notification_manager';
 
 export default class absolute {
-  static push: PushManager = new PushManager();
   static cache: CacheManager = new CacheManager();
+  static push: PushManager = new PushManager();
   static notification: Notification = new Notification();
 }

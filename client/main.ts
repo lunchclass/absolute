@@ -18,7 +18,6 @@ import absolute from './absolute';
 
 async function main() {
   console.log(await absolute.push.register('key'));
-  console.log(await absolute.cache.register('key'));
 }
 
 main();
