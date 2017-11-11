@@ -14,18 +14,22 @@
  * limitations under the License.
  */
 
-import {} from 'jest';
-import absolute from '../absolute';
+export default class IndexedDB{
 
-test('absolute.push.isRegistered()', async() => {
-  expect(await absolute.push.isRegistered()).toBe(false);
-});
+  constructor() {}
 
-test('absolute.push.register()', async() => {
-  const registered: Promise<any> = await absolute.push.register('test_key')
-  expect(registered).rejects.toBe(null);
-});
+  async set(key: string, value: object): Promise<void> {
+    // Not implemented yet
+    return;
+  }
 
-test('absolute.push.unregister()', async() => {
-  expect(await absolute.push.unregister()).toBe(false);
-});
+  async get(key: string): Promise<object> {
+    // Not implemented yet
+    return null;
+  }
+
+  async remove(key: string): Promise<object> {
+    // Not implemented yet
+    return null;
+  }
+}

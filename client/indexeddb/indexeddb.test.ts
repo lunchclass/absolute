@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-import {} from 'jest';
+import { } from 'jest';
 import absolute from '../absolute';
 
-test('absolute.push.isRegistered()', async() => {
-  expect(await absolute.push.isRegistered()).toBe(false);
+test('absolute.indexeddb.set()', async () => {
+  expect(await absolute.indexeddb.set()).toBe();
 });
 
-test('absolute.push.register()', async() => {
-  const registered: Promise<any> = await absolute.push.register('test_key')
-  expect(registered).rejects.toBe(null);
+test('absolute.indexeddb.get()', async () => {
+  expect(await absolute.indexeddb.get()).toBe(null);
 });
 
-test('absolute.push.unregister()', async() => {
-  expect(await absolute.push.unregister()).toBe(false);
+test('absolute.indexeddb.remove()', async () => {
+  expect(await absolute.indexeddb.remove()).toBe(null);
 });

@@ -14,7 +14,6 @@
     "express": "^4.16.1",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
-    "gulp-shell": "^0.6.3",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "jest": "^21.2.1",
