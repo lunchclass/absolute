@@ -18,13 +18,13 @@ import { } from 'jest';
 import absolute from '../absolute';
 
 test('absolute.indexeddb.set()', async () => {
-  expect(await absolute.indexeddb.set()).toBe();
+  expect(await absolute.indexeddb.set('test_key', {v: 'value'})).toBe(false);
 });
 
 test('absolute.indexeddb.get()', async () => {
-  expect(await absolute.indexeddb.get()).toBe(null);
+  expect(await absolute.indexeddb.get('test_key')).toBe(null);
 });
 
 test('absolute.indexeddb.remove()', async () => {
-  expect(await absolute.indexeddb.remove()).toBe(null);
+  expect(await absolute.indexeddb.remove('test_key')).toBe(null);
 });
