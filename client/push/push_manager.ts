@@ -26,8 +26,6 @@ export default class PushManager {
   }
 
   async register(key: string): Promise<string> {
-    // Not implemented yet
-
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register('/push_service_worker.js')
       .then((registration: ServiceWorkerRegistration) => {
@@ -66,7 +64,28 @@ export default class PushManager {
   }
 
   async unregister(): Promise<boolean> {
-    // Not implemented yet
+    if (!navigator.serviceWorker) {
+      return false;
+    }
+
+    navigator.serviceWorker.ready
+    .then((registration: ServiceWorkerRegistration) => {
+      registration.pushManager.getSubscription()
+      .then((subscription: PushSubscription) => {
+        if (subscription) {
+          subscription.unsubscribe();
+          return true;
+        } 
+        return false;
+      })
+      .catch((error: Error) => {
+        // Not implemented yet
+      })
+    })
+    .catch((error: Error) => {
+      // Not implemented yet
+    })
+
     return false;
   }
 }

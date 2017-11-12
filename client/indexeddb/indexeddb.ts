@@ -18,9 +18,9 @@ export default class IndexedDB{
 
   constructor() {}
 
-  async set(key: string, value: object): Promise<void> {
+  async set(key: string, value: object): Promise<boolean> {
     // Not implemented yet
-    return;
+    return false;
   }
 
   async get(key: string): Promise<object> {
