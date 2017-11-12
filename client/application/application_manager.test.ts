@@ -18,5 +18,5 @@ import {} from 'jest';
 import absolute from '../absolute';
 
 test('absolute.appManager.isCromeBrowser()', async() => {
-  expect(await absolute.appManager.isCromeBrowser()).toBe(true);
+  expect(await absolute.appManager.isCromeBrowser()).toBe(false);
 });
