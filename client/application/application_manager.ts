@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
-import AppManager from './application/application_manager';
-import IndexedDB from './indexeddb/indexeddb';
+declare var navigator: any;
 
-export default class absolute {
-  static push: PushManager = new PushManager();
-  static notification: Notification = new Notification();
-  static app: AppManager = new AppManager();
-  static indexeddb: IndexedDB = new IndexedDB();
+export default class ApplicationManager {
+
+  async isCromeBrowser(): Promise<boolean> {
+
+    return false;
+  }
 }
