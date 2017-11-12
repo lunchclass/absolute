@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
+declare var navigator: any;
+
 export default class CacheManager {
 
     constructor() {
         //register to the page to begin the installation process
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register('cache_service_worker.js')
+                .then((registration: ServiceWorkerRegistration) => {
+                    // Registration was successful
+                }).catch((error: Error) => {
+                    // Registration failed
+            });
+        }
     }
 
-    async install(): Promise<boolean> {
-        // Not implemented yet
-        return false;
-    }
-
-    async fetch(): Promise<boolean> {
-        // Not implemented yet
-        return false;
-    }
-
-    async activate(): Promise<boolean> {
+    async register(): Promise<boolean> {
         // Not implemented yet
         return false;
     }

@@ -14,9 +14,17 @@
  * limitations under the License.
  */
 
-import {} from 'jest';
-import absolute from '../absolute';
+self_.addEventListener('install', (event: ExtendableEvent) => {
+    event.waitUntil(
+        caches.open('absolute-cache-v1')
+            .then(function (cache) {
+                cache.addAll([
+                    '/'
+                ]);
+            })
+    );
+});
 
-test('absolute.cache.register()', async() => {
-    expect(await absolute.cache.register()).toBe(false);
+self_.addEventListener('fetch', event => {
+    // Not implemented yet
 });
