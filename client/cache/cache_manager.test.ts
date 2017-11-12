@@ -17,14 +17,14 @@
 import {} from 'jest';
 import absolute from '../absolute';
 
-test('absolute.cache.isRegistered()', async() => {
+test('absolute.cache.install()', async() => {
     expect(await absolute.cache.install()).toBe(false);
 });
 
-test('absolute.cache.register()', async() => {
+test('absolute.cache.fetch()', async() => {
     expect(await absolute.cache.fetch()).toBe(false);
 });
 
-test('absolute.cache.unregister()', async() => {
+test('absolute.cache.activate()', async() => {
     expect(await absolute.cache.activate()).toBe(false);
 });
