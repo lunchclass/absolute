@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-declare var navigator: any;
-
 export default class ApplicationManager {
 
   async isCromeBrowser(): Promise<boolean> {
-
-    return false;
+    var agent = navigator.userAgent.toLowerCase();
+    if(agent.indexOf('chrome') != -1){
+      return true;
+    } else {
+      return false;
+    }
   }
 }
