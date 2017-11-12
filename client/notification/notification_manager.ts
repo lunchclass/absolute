@@ -13,23 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/// <reference path="../../references.ts" />
+
+declare var self: ServiceWorkerGlobalScope;
+
+declare var navigator: any;
 
 export default class Notification {
-    private _notifications: Object = {};
 
-    constructor() {
+    constructor() { }
+
+    async showNotification(title: string, options: object): Promise<boolean> {
+        if (!navigator.serviceWorker) {
+            return false;
+        }
+
+        self.registration.showNotification(title, options);
+        return true;
     }
 
-    async create(NotificationEvent: Event): Promise<boolean> {
-        // Not implemented yet
-        return false;
-    }
-    async close(NotificationEvent: Event): Promise<boolean> {
-        // Not implemented yet
-        return false;
-    }
-    async processClickEvent(NotificationEvent: Event): Promise<boolean> {
-        // Not implemented yet
-        return false;
+    async processClickEvent(event: NotificationEvent, url: string): Promise<object> {
+        if (!navigator.serviceWorker) {
+            return null;
+        }
+        console.log('[Service Worker] Notification click Received.');
+
+        event.notification.close();
+
+        event.waitUntil(
+            self.clients.openWindow(url)
+        );
+        return null;
     }
 }
