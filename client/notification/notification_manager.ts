@@ -19,7 +19,8 @@ declare var self: ServiceWorkerGlobalScope;
 
 declare var navigator: any;
 
-export default class Notification {
+export default class NotificationManager {
+    private notification: Notification;
 
     constructor() { }
 
@@ -28,21 +29,26 @@ export default class Notification {
             return false;
         }
 
+        this.notification = new Notification(title, options);
+
         self.registration.showNotification(title, options);
-        return true;
+        return false;
     }
 
-    async processClickEvent(event: NotificationEvent, url: string): Promise<object> {
+    async processClickEvent(event: Event, url: string): Promise<boolean> {
         if (!navigator.serviceWorker) {
-            return null;
+            return false;
         }
         console.log('[Service Worker] Notification click Received.');
 
-        event.notification.close();
+        var init = { notification: this.notification };
+        var myNotificationEvent = new NotificationEvent(event.type, init);
 
-        event.waitUntil(
+        myNotificationEvent.notification.close();
+
+        myNotificationEvent.waitUntil(
             self.clients.openWindow(url)
         );
-        return null;
+        return false;
     }
 }
