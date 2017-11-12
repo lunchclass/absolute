@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+const RUNTIME = 'runtime';
+
 self_.addEventListener('install', (event: ExtendableEvent) => {
     event.waitUntil(
         caches.open('absolute-cache-v1')
@@ -26,5 +28,22 @@ self_.addEventListener('install', (event: ExtendableEvent) => {
 });
 
 self_.addEventListener('fetch', event => {
-    // Not implemented yet
+    if (event.request.url.startsWith(self_.location.origin)) {
+        event.respondWith(
+            caches.match(event.request).then(cachedResponse => {
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
+
+                return caches.open(RUNTIME).then(cache => {
+                    return fetch(event.request).then(response => {
+                        // Put a copy of the response in the runtime cache.
+                        return cache.put(event.request, response.clone()).then(() => {
+                            return response;
+                        });
+                    });
+                });
+            })
+        );
+    }
 });

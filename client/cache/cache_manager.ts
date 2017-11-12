@@ -23,15 +23,17 @@ export default class CacheManager {
         if (navigator.serviceWorker) {
             navigator.serviceWorker.register('cache_service_worker.js')
                 .then((registration: ServiceWorkerRegistration) => {
+                    // Not implemented yet
                     // Registration was successful
                 }).catch((error: Error) => {
-                    // Registration failed
+                // Not implemented yet
+                // Registration failed
             });
         }
     }
 
     async register(): Promise<boolean> {
-        // Not implemented yet
+        //Not implemented yet
         return false;
     }
 }
