@@ -15,8 +15,8 @@
  */
 
 import {} from 'jest';
+import {Application} from 'server/base/application';
 import * as supertest from 'supertest';
-import {Application} from '../base/application';
 
 test('GET /', async() => {
   const request: {} = supertest(await Application.START_FOR_TESTING());

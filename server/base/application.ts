@@ -17,6 +17,9 @@
 import * as express from 'express';
 import * as path from 'path';
 
+/**
+ * Application
+ */
 export class Application {
   private static app: express.Application = express();
 
@@ -29,13 +32,15 @@ export class Application {
   public static async START_FOR_TESTING(): Promise<express.Application> {
     await import('../example/example.router');
     this.app.use(express.static(path.join(__dirname, '../../out/client')));
+
     return this.app;
   }
 
-  public static ROUTE(url: string) {
+  public static ROUTE(url: string): Function {
     const app: express.Application = this.app;
 
     return <T>(routerClass: { new(...args: {}[]): T}): void => {
+      // tslint:disable-next-line
       const routerHandler: any = new routerClass();
       const router: express.Router = express.Router();
 
