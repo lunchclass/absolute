@@ -1,6 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "baseUrl": ".",
     "experimentalDecorators": true,
     "lib": ["webworker", "es6", "scripthost"],
     "noImplicitAny": true,

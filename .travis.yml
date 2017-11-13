@@ -12,4 +12,4 @@ install:
   - ./absolute node -v
 
 script:
-  - ./absolute test
+  - ./absolute lint && ./absolute test

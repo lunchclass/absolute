@@ -9,4 +9,4 @@ branches:
     - master
 
 test_script:
-  - absolute test
+  - absolute lint && absolute test
