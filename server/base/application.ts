@@ -22,15 +22,18 @@ export class Application {
 
   public static async START(): Promise<void> {
     await import('../example/example.router');
+    await import('../push/push.router');
     this.app.use(express.static(path.join(__dirname, '../client')));
     this.app.listen(8090);
   }
 
   public static async START_FOR_TESTING(): Promise<express.Application> {
     await import('../example/example.router');
+    await import('../push/push.router');
     this.app.use(express.static(path.join(__dirname, '../../out/client')));
     return this.app;
   }
+
 
   public static ROUTE(url: string) {
     const app: express.Application = this.app;
