@@ -15,10 +15,13 @@
  */
 
 import * as express from 'express';
-import {Application} from '../base/application';
+import {Application} from 'server/base/application';
 
+/**
+ * ExampleRouter
+ */
 @Application.ROUTE('/example')
-export class Test {
+export class ExampleRouter {
   public get(request: express.Request, response: express.Response): void {
     response.send('hello world');
   }
