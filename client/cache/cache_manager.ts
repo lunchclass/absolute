@@ -20,20 +20,19 @@ export default class CacheManager {
 
     constructor() {
         //register to the page to begin the installation process
-        if (navigator.serviceWorker) {
-            navigator.serviceWorker.register('cache_service_worker.js')
-                .then((registration: ServiceWorkerRegistration) => {
-                    // Not implemented yet
-                    // Registration was successful
-                }).catch((error: Error) => {
-                // Not implemented yet
-                // Registration failed
-            });
-        }
+        this.register('cache_service_worker.js');
     }
 
-    async register(): Promise<boolean> {
-        //Not implemented yet
-        return false;
+    async register(worker: string): Promise<void> {
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register(worker)
+                .then((registration: ServiceWorkerRegistration) => {
+                    // registration worked
+                    console.log('Registration succeed Scope is ' + registration.scope);
+                }).catch((error: Error) => {
+                // Not implemented yet
+                console.log('Registration failed with ' + error);
+            });
+        }
     }
 }

@@ -14,36 +14,20 @@
  * limitations under the License.
  */
 
-const RUNTIME = 'runtime';
-
-self_.addEventListener('install', (event: ExtendableEvent) => {
+self_.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('absolute-cache-v1')
-            .then(function (cache) {
-                cache.addAll([
-                    '/'
-                ]);
-            })
+        caches.open('absolute-cache-v1').then(function (cache) {
+            return cache.addAll([
+                '/'
+            ]);
+        })
     );
 });
 
-self_.addEventListener('fetch', event => {
-    if (event.request.url.startsWith(self_.location.origin)) {
-        event.respondWith(
-            caches.match(event.request).then(cachedResponse => {
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
-
-                return caches.open(RUNTIME).then(cache => {
-                    return fetch(event.request).then(response => {
-                        // Put a copy of the response in the runtime cache.
-                        return cache.put(event.request, response.clone()).then(() => {
-                            return response;
-                        });
-                    });
-                });
-            })
-        );
-    }
+self_.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            return response || fetch(event.request);
+        })
+    );
 });

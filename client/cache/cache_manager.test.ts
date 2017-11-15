@@ -18,5 +18,5 @@ import {} from 'jest';
 import absolute from '../absolute';
 
 test('absolute.cache.register()', async() => {
-    expect(await absolute.cache.register()).toBe(false);
+    expect(await absolute.cache.register('cache_service_worker.js')).toBe(undefined);
 });
