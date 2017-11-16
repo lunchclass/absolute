@@ -25,7 +25,7 @@ export class Application {
   private static app: express.Application = express();
 
   public static async START(): Promise<void> {
-    this.app.use(express.static(path.join(__dirname, '../client')));
+    this.app.use(express.static(path.join(__dirname, '../../client')));
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     await import('../example/example.router');
