@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as path from 'path';
 
@@ -24,14 +25,18 @@ export class Application {
   private static app: express.Application = express();
 
   public static async START(): Promise<void> {
-    await import('../example/example.router');
     this.app.use(express.static(path.join(__dirname, '../client')));
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    await import('../example/example.router');
     this.app.listen(8090);
   }
 
   public static async START_FOR_TESTING(): Promise<express.Application> {
-    await import('../example/example.router');
     this.app.use(express.static(path.join(__dirname, '../../out/client')));
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    await import('../example/example.router');
 
     return this.app;
   }
