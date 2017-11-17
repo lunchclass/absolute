@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
-import CacheManager from './cache/cache_manager';
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
-import IndexedDB from './indexeddb/indexeddb';
+self_.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open('absolute-cache-v1').then(function (cache) {
+      return cache.addAll(['/']);
+    })
+  );
+});
 
-export default class absolute {
-  static cache: CacheManager = new CacheManager();
-  static push: PushManager = new PushManager();
-  static notification: Notification = new Notification();
-  static indexeddb: IndexedDB = new IndexedDB();
-}
+self_.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
+});
