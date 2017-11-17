@@ -9,11 +9,11 @@
     "@types/request": "^2.0.3",
     "@types/run-sequence": "0.0.29",
     "@types/supertest": "^2.0.3",
-    "copy-webpack-plugin": "^4.1.1",
     "del": "^3.0.0",
     "express": "^4.16.1",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
+    "gulp-shell": "^0.6.3",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.2",
     "jest": "^21.2.1",
@@ -21,19 +21,12 @@
     "run-sequence": "^2.2.0",
     "supertest": "^3.0.0",
     "ts-jest": "^21.0.1",
-    "ts-loader": "^2.3.7",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "^2.5.3",
-    "webpack": "^3.6.0",
-    "webpack-stream": "^4.0.0"
+    "typescript": "^2.5.3"
   },
   "jest": {
-    "moduleDirectories": [
-      ".",
-      "node_modules"
-    ],
     "moduleFileExtensions": [
       "js",
       "json",
