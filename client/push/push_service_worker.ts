@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-/// <reference path="../../node_modules/typescript/lib/lib.webworker.d.ts"/>
-
 // FIXME(zino): Unable to access ServiceWorkerGlobalScope via 'self'.
 const self_ = self as ServiceWorkerGlobalScope;
 

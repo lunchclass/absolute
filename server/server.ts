@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-import {Application} from './base/application';
+import {Application} from 'server/base/application';
 
 Application.START();
