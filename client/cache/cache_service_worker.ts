@@ -15,19 +15,17 @@
  */
 
 self_.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open('absolute-cache-v1').then(function (cache) {
-            return cache.addAll([
-                '/'
-            ]);
-        })
-    );
+  event.waitUntil(
+    caches.open('absolute-cache-v1').then(function (cache) {
+      return cache.addAll(['/']);
+    })
+  );
 });
 
 self_.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request).then(function(response) {
-            return response || fetch(event.request);
-        })
-    );
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
 });

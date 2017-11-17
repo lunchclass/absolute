@@ -18,21 +18,21 @@ declare var navigator: any;
 
 export default class CacheManager {
 
-    constructor() {
-        //register to the page to begin the installation process
-        this.register('cache_service_worker.js');
-    }
+  constructor() {
+    //register to the page to begin the installation process
+    this.register('cache_service_worker.js');
+  }
 
-    async register(worker: string): Promise<void> {
-        if (navigator.serviceWorker) {
-            navigator.serviceWorker.register(worker)
-                .then((registration: ServiceWorkerRegistration) => {
-                    // registration worked
-                    console.log('Registration succeed Scope is ' + registration.scope);
-                }).catch((error: Error) => {
-                // Not implemented yet
-                console.log('Registration failed with ' + error);
-            });
-        }
+  async register(worker: string): Promise<void> {
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register(worker).then((registration: ServiceWorkerRegistration) => {
+        // registration worked
+        console.log('Registration succeed Scope is ' + registration.scope);
+      })
+      .catch((error: Error) => {
+        // Not implemented yet
+        console.log('Registration failed with ' + error);
+      });
     }
+  }
 }
