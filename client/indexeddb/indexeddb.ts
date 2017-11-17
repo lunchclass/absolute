@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +14,22 @@
  * limitations under the License.
  */
 
-import * as express from 'express';
-import {Application} from 'server/base/application';
+export default class IndexedDB{
 
-/**
- * ExampleRouter
- */
-@Application.ROUTE('/example')
-export class ExampleRouter {
-  public get(request: express.Request, response: express.Response): void {
-    response.send('hello world');
+  constructor() {}
+
+  async set(key: string, value: object): Promise<boolean> {
+    // Not implemented yet
+    return false;
   }
-  public post(request: express.Request, response: express.Response): void {
-    if (request.body) {
-      if (request.body.exampleParam === 'example') {
-        response.sendStatus(200);
-      } else {
-        response.sendStatus(400);
-      }
-    } else {
-      response.sendStatus(501);
-    }
+
+  async get(key: string): Promise<object> {
+    // Not implemented yet
+    return null;
+  }
+
+  async remove(key: string): Promise<object> {
+    // Not implemented yet
+    return null;
   }
 }

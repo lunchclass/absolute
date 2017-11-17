@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +14,22 @@
  * limitations under the License.
  */
 
-import * as express from 'express';
-import {Application} from 'server/base/application';
+export default class Notification {
+    private _notifications: Object = {};
 
-/**
- * ExampleRouter
- */
-@Application.ROUTE('/example')
-export class ExampleRouter {
-  public get(request: express.Request, response: express.Response): void {
-    response.send('hello world');
-  }
-  public post(request: express.Request, response: express.Response): void {
-    if (request.body) {
-      if (request.body.exampleParam === 'example') {
-        response.sendStatus(200);
-      } else {
-        response.sendStatus(400);
-      }
-    } else {
-      response.sendStatus(501);
+    constructor() {
     }
-  }
+
+    async create(NotificationEvent: Event): Promise<boolean> {
+        // Not implemented yet
+        return false;
+    }
+    async close(NotificationEvent: Event): Promise<boolean> {
+        // Not implemented yet
+        return false;
+    }
+    async processClickEvent(NotificationEvent: Event): Promise<boolean> {
+        // Not implemented yet
+        return false;
+    }
 }

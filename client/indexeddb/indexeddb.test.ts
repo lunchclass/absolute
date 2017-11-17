@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +14,17 @@
  * limitations under the License.
  */
 
-import * as express from 'express';
-import {Application} from 'server/base/application';
+import { } from 'jest';
+import absolute from '../absolute';
 
-/**
- * ExampleRouter
- */
-@Application.ROUTE('/example')
-export class ExampleRouter {
-  public get(request: express.Request, response: express.Response): void {
-    response.send('hello world');
-  }
-  public post(request: express.Request, response: express.Response): void {
-    if (request.body) {
-      if (request.body.exampleParam === 'example') {
-        response.sendStatus(200);
-      } else {
-        response.sendStatus(400);
-      }
-    } else {
-      response.sendStatus(501);
-    }
-  }
-}
+test('absolute.indexeddb.set()', async () => {
+  expect(await absolute.indexeddb.set('test_key', {v: 'value'})).toBe(false);
+});
+
+test('absolute.indexeddb.get()', async () => {
+  expect(await absolute.indexeddb.get('test_key')).toBe(null);
+});
+
+test('absolute.indexeddb.remove()', async () => {
+  expect(await absolute.indexeddb.remove('test_key')).toBe(null);
+});

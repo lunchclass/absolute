@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +14,12 @@
  * limitations under the License.
  */
 
-import * as express from 'express';
+import {} from 'jest';
 import {Application} from 'server/base/application';
+import * as supertest from 'supertest';
 
-/**
- * ExampleRouter
- */
-@Application.ROUTE('/example')
-export class ExampleRouter {
-  public get(request: express.Request, response: express.Response): void {
-    response.send('hello world');
-  }
-  public post(request: express.Request, response: express.Response): void {
-    if (request.body) {
-      if (request.body.exampleParam === 'example') {
-        response.sendStatus(200);
-      } else {
-        response.sendStatus(400);
-      }
-    } else {
-      response.sendStatus(501);
-    }
-  }
-}
+test('GET /', async() => {
+  const request: {} = supertest(await Application.START_FOR_TESTING());
+  const response: {} = await request.get('/');
+  expect(response.statusCode).toBe(200);
+});

@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-import {Application} from './base/application';
+import {Application} from 'server/base/application';
 
 Application.START();

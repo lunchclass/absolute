@@ -1,4 +1,5 @@
-/*
+"use strict";
+/**
  * Copyright (c) 2017 The Absolute Authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,27 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import * as express from 'express';
-import {Application} from 'server/base/application';
-
-/**
- * ExampleRouter
- */
-@Application.ROUTE('/example')
-export class ExampleRouter {
-  public get(request: express.Request, response: express.Response): void {
-    response.send('hello world');
-  }
-  public post(request: express.Request, response: express.Response): void {
-    if (request.body) {
-      if (request.body.exampleParam === 'example') {
-        response.sendStatus(200);
-      } else {
-        response.sendStatus(400);
-      }
-    } else {
-      response.sendStatus(501);
-    }
-  }
-}
+Object.defineProperty(exports, "__esModule", { value: true });
+var application_1 = require("server/base/application");
+application_1.Application.START();
+//# sourceMappingURL=server.js.map

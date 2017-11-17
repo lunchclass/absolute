@@ -1,0 +1,8 @@
+{
+  "short_name": "Absolute",
+  "name": "Absolute",
+  "display": "standalone",
+  "theme_color": "#ECEFF1",
+  "background_color": "#ECEFF1",
+  "start_url": "index.html?launcher=true"
+}
