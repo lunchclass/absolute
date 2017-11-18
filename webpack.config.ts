@@ -20,6 +20,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         main: './client/main.ts',
+        cache_service_worker: './client/cache/cache_service_worker.ts',
         push_service_worker: './client/push/push_service_worker.ts'
     },
     module: {

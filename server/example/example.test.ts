@@ -15,12 +15,24 @@
  */
 
 import {} from 'jest';
+import {Application} from 'server/base/application';
 import * as supertest from 'supertest';
-import {Application} from '../base/application';
 
 test('GET /example', async() => {
   const request: {} = supertest(await Application.START_FOR_TESTING());
   const response: {} = await request.get('/example');
   expect(response.statusCode).toBe(200);
   expect(response.text).toBe('hello world');
+});
+
+test('POST x-www-form-urlencoded', async() => {
+  const request: {} = supertest(await Application.START_FOR_TESTING());
+  const response: {} = await request.post('/example').set('Content-Type', 'application/x-www-form-urlencoded').send('exampleParam=example');
+  expect(response.statusCode).toBe(200);
+});
+
+test('POST json', async() => {
+  const request: {} = supertest(await Application.START_FOR_TESTING());
+  const response: {} = await request.post('/example').set('Content-Type', 'application/json').send('{"exampleParam": "example"}');
+  expect(response.statusCode).toBe(200);
 });

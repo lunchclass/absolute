@@ -30,6 +30,10 @@
     "webpack-stream": "^4.0.0"
   },
   "jest": {
+    "moduleDirectories": [
+      ".",
+      "node_modules"
+    ],
     "moduleFileExtensions": [
       "js",
       "json",

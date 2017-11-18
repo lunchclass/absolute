@@ -52,8 +52,9 @@ gulp.task('lint:fix', () => {
 gulp.task('test', ['webpack'], runCommand('jest'));
 
 gulp.task('run_server', () => {
+  process.env.NODE_PATH = "out/";
   nodemon({
-    script: 'out/server.js',
+    script: 'out/server/server.js',
     ignore: ['out/']
   });
 });
@@ -73,7 +74,7 @@ gulp.task('build_server', () => {
   return tsProject.src()
     .pipe(tsProject())
     .js
-    .pipe(gulp.dest('out/'));
+    .pipe(gulp.dest('out/server/'));
 });
 
 const mongodb_path = './third_party/mongodb';

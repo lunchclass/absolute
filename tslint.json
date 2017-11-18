@@ -1,3 +1,9 @@
 {
-  "extends": "tslint-microsoft-contrib"
+  "extends": "tslint-microsoft-contrib",
+  "rules": {
+    "export-name": false,
+    "no-backbone-get-set-outside-model": false,
+    "no-reserved-keywords": false,
+    "no-stateless-class": false
+  }
 }
