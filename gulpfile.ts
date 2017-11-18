@@ -29,24 +29,30 @@ gulp.task('default', (callback) => {
 });
 
 gulp.task('lint', () => {
-  gulp.src('./server/**/*.ts')
-    .pipe(tslint({
-      formatter: 'codeFrame'
-    }))
-    .pipe(tslint.report({
-      summarizeFailureOutput: true
-    }));
+  gulp.src([
+    './server/**/*.ts',
+    './client/**/*.ts'
+  ])
+  .pipe(tslint({
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
 });
 
 gulp.task('lint:fix', () => {
-  gulp.src('./server/**/*.ts')
-    .pipe(tslint({
-      fix: true,
-      formatter: 'codeFrame'
-    }))
-    .pipe(tslint.report({
-      summarizeFailureOutput: true
-    }));
+  gulp.src([
+    './server/**/*.ts',
+    './client/**/*.ts'
+  ])
+  .pipe(tslint({
+    fix: true,
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
 });
 
 gulp.task('test', ['webpack'], runCommand('jest'));
