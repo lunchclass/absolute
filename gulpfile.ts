@@ -29,7 +29,10 @@ gulp.task('default', (callback) => {
 });
 
 gulp.task('lint', () => {
-  gulp.src('./server/**/*.ts')
+    gulp.src([
+      './server/**/*.ts',
+      './client/**/*.ts'
+    ])
     .pipe(tslint({
       formatter: 'codeFrame'
     }))
@@ -39,7 +42,10 @@ gulp.task('lint', () => {
 });
 
 gulp.task('lint:fix', () => {
-  gulp.src('./server/**/*.ts')
+    gulp.src([
+      './server/**/*.ts',
+      './client/**/*.ts'
+    ])
     .pipe(tslint({
       fix: true,
       formatter: 'codeFrame'
