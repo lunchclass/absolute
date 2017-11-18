@@ -31,10 +31,8 @@ set_path_env $(absolute_path)/node_modules/.bin
 sync_node
 sync_mongodb
 
-# NPM install or update
-if [ ! -f .pkg_timestamp ]; then
-  npm install && > .pkg_timestamp
-elif [ package.json -nt .pkg_timestamp ]; then
+# NPM update
+if [ ! -f .pkg_timestamp ] || [ package.json -nt .pkg_timestamp ]; then
   npm update && > .pkg_timestamp
 fi
 
