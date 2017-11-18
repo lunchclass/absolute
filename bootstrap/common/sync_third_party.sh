@@ -18,7 +18,7 @@
 . $ABSOLUTE_PATH/bootstrap/common/util.sh
 
 function sync_node() {
-  local target_path="third_party/node"
+  local target_path="./third_party/node"
   local base_url="https://nodejs.org/dist/v8.9.1"
 
   case $(get_platform_name) in
@@ -57,7 +57,7 @@ function sync_third_party() {
   fi
 
   if is_windows_platform; then
-    local temp_path=C:/tmp_$RANDOM
+    local temp_path=C:/t_$RANDOM
     mkdir -p $temp_path
   else
     local temp_path=$(mktemp -d)
