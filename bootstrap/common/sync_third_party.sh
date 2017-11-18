@@ -18,7 +18,7 @@
 . $ABSOLUTE_PATH/bootstrap/common/util.sh
 
 function sync_node() {
-  local target_path="./third_party/node"
+  local target_path="third_party/node"
   local base_url="https://nodejs.org/dist/v8.9.1"
 
   case $(get_platform_name) in
