@@ -57,7 +57,7 @@ function sync_third_party() {
   fi
 
   if is_windows_platform; then
-    local temp_path=C:/t_
+    local temp_path=C:/tmp_$RANDOM
     mkdir -p $temp_path
   else
     local temp_path=$(mktemp -d)
@@ -74,11 +74,14 @@ function sync_third_party() {
   fi
 
   # Extract the archive file into $temp_path/extract_$file_name.
-  local extracted_path=$temp_path/extract_$filename
-  if ! extract_archive $temp_path/$filename $extracted_path; then
-    return 3
+  if is_windows_platform; then
+    local extracted_path=$temp_path/tt_
+  else
+    local extracted_path=$temp_path/extract_$filename
+    if ! extract_archive $temp_path/$filename $extracted_path; then
+      return 3
+    fi
   fi
-
   # Remove container directory if needed.
   if has_container_directory $extracted_path; then
     local container=$(ls $extracted_path)
