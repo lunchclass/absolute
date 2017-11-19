@@ -31,9 +31,9 @@ set_path_env $(absolute_path)/node_modules/.bin
 sync_node
 sync_mongodb
 
-# NPM update
-if [ ! -f .pkg_timestamp ] || [ package.json -nt .pkg_timestamp ]; then
-  npm update && > .pkg_timestamp
+# Install npm only when package.json is modified. 
+if [ ! -f .last_update ] || [ package.json -nt .last_update ]; then
+  npm install && > .last_update
 fi
 
 for command in $(ls $(bootstrap_command_path)); do
