@@ -75,7 +75,7 @@ function sync_third_party() {
 
   # Extract the archive file into $temp_path/extract_$file_name.
   if is_windows_platform; then
-    local extracted_path=$temp_path/tt_
+    local extracted_path=$temp_path/$filename
   else
     local extracted_path=$temp_path/extract_$filename
   fi
