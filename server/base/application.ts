@@ -29,6 +29,7 @@ export class Application {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     await import('../example/example.router');
+    await import('../push/push.router');
     this.app.listen(8090);
   }
 
@@ -37,6 +38,7 @@ export class Application {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     await import('../example/example.router');
+    await import('../push/push.router');
 
     return this.app;
   }
