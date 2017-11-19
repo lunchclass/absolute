@@ -78,10 +78,12 @@ function sync_third_party() {
     local extracted_path=$temp_path/tt_
   else
     local extracted_path=$temp_path/extract_$filename
-    if ! extract_archive $temp_path/$filename $extracted_path; then
-      return 3
-    fi
   fi
+
+  if ! extract_archive $temp_path/$filename $extracted_path; then
+    return 3
+  fi
+
   # Remove container directory if needed.
   if has_container_directory $extracted_path; then
     local container=$(ls $extracted_path)
