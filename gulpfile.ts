@@ -29,10 +29,7 @@ gulp.task('default', (callback) => {
 });
 
 gulp.task('lint', () => {
-  gulp.src([
-    './server/**/*.ts',
-    './client/**/*.ts'
-  ])
+  gulp.src('./server/**/*.ts')
   .pipe(tslint({
     formatter: 'codeFrame'
   }))
@@ -42,10 +39,28 @@ gulp.task('lint', () => {
 });
 
 gulp.task('lint:fix', () => {
-  gulp.src([
-    './server/**/*.ts',
-    './client/**/*.ts'
-  ])
+  gulp.src('./server/**/*.ts')
+  .pipe(tslint({
+    fix: true,
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
+});
+
+gulp.task('lint_client', () => {
+  gulp.src('./client/**/*.ts')
+  .pipe(tslint({
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
+});
+
+gulp.task('lint_client:fix', () => {
+  gulp.src('./client/**/*.ts')
   .pipe(tslint({
     fix: true,
     formatter: 'codeFrame'
