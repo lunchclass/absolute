@@ -14,24 +14,27 @@
  * limitations under the License.
  */
 
-import {} from 'jest';
-import {Application} from 'server/base/application';
+import { } from 'jest';
+import { Application } from 'server/base/application';
 import * as supertest from 'supertest';
 
-test('POST x-www-form-urlencoded', async() => {
+test('POST x-www-form-urlencoded', async () => {
   const request: {} = supertest(await Application.START_FOR_TESTING());
-  const response: {} = await request.post('/push/register').set('Content-Type', 'application/x-www-form-urlencoded').send('param=register');
+  const response: {} = await request.post('/push/register').set
+    ('Content-Type', 'application/x-www-form-urlencoded').send('param=register');
   expect(response.statusCode).toBe(200);
 });
 
-test('POST x-www-form-urlencoded', async() => {
+test('POST x-www-form-urlencoded', async () => {
   const request: {} = supertest(await Application.START_FOR_TESTING());
-  const response: {} = await request.post('/push/unregister').set('Content-Type', 'application/x-www-form-urlencoded').send('param=unregister');
+  const response: {} = await request.post('/push/unregister').set
+    ('Content-Type', 'application/x-www-form-urlencoded').send('param=unregister');
   expect(response.statusCode).toBe(200);
 });
 
-test('POST x-www-form-urlencoded', async() => {
+test('POST x-www-form-urlencoded', async () => {
   const request: {} = supertest(await Application.START_FOR_TESTING());
-  const response: {} = await request.post('/push/send').set('Content-Type', 'application/x-www-form-urlencoded').send('param=send');
+  const response: {} = await request.post('/push/send').set
+    ('Content-Type', 'application/x-www-form-urlencoded').send('param=send');
   expect(response.statusCode).toBe(200);
 });

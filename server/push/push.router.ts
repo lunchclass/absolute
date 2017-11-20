@@ -50,7 +50,6 @@ export class Unregister {
   }
 }
 
-
 @Application.ROUTE('/push/send')
 export class Send {
   public post(request: express.Request, response: express.Response): void {
