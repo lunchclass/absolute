@@ -30,23 +30,48 @@ gulp.task('default', (callback) => {
 
 gulp.task('lint', () => {
   gulp.src('./server/**/*.ts')
-    .pipe(tslint({
-      formatter: 'codeFrame'
-    }))
-    .pipe(tslint.report({
-      summarizeFailureOutput: true
-    }));
+  .pipe(tslint({
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
 });
 
 gulp.task('lint:fix', () => {
   gulp.src('./server/**/*.ts')
-    .pipe(tslint({
-      fix: true,
-      formatter: 'codeFrame'
-    }))
-    .pipe(tslint.report({
-      summarizeFailureOutput: true
-    }));
+  .pipe(tslint({
+    fix: true,
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
+});
+
+// FIXME(sapzape): Temporarily separated until the lint error in the client area
+// is resolved. Please see https://github.com/lunchclass/absolute/issues/533
+gulp.task('lint_client', () => {
+  gulp.src('./client/**/*.ts')
+  .pipe(tslint({
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
+});
+
+// FIXME(sapzape): Temporarily separated until the lint error in the client area
+// is resolved. Please see https://github.com/lunchclass/absolute/issues/533
+gulp.task('lint_client:fix', () => {
+  gulp.src('./client/**/*.ts')
+  .pipe(tslint({
+    fix: true,
+    formatter: 'codeFrame'
+  }))
+  .pipe(tslint.report({
+    summarizeFailureOutput: true
+  }));
 });
 
 gulp.task('test', ['webpack'], runCommand('jest'));
