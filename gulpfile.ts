@@ -108,10 +108,10 @@ gulp.task('stop-mongo', runCommand(`${mongodb_path}/bin/mongo --eval "use admin;
 
 function runCommand(command: string) {
   return (cb: any) => {
-    childProcess.exec(command, (error: any, stdout: any, stderr: any) => {
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
-        cb(error);
+    childProcess.spawn(command, [], {
+      shell: true,
+      stdio : ['inherit', 'inherit', 'inherit']
     });
+    cb();
   }
 }
