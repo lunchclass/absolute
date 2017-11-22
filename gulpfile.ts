@@ -49,6 +49,7 @@ gulp.task('lint:fix', () => {
   }));
 });
 
+// FIXME(sapzape): Temporarily separated until the lint error in the client area is resolved.
 gulp.task('lint_client', () => {
   gulp.src('./client/**/*.ts')
   .pipe(tslint({
@@ -59,6 +60,7 @@ gulp.task('lint_client', () => {
   }));
 });
 
+// FIXME(sapzape): Temporarily separated until the lint error in the client area is resolved.
 gulp.task('lint_client:fix', () => {
   gulp.src('./client/**/*.ts')
   .pipe(tslint({
