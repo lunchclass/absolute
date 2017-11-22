@@ -14,16 +14,14 @@
  * limitations under the License.
  */
 
-import CacheManager from './cache/cache_manager';
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
-import AppManager from './application/application_manager';
-import IndexedDB from './indexeddb/indexeddb';
+export default class ApplicationManager {
 
-export default class absolute {
-  static cache: CacheManager = new CacheManager();
-  static push: PushManager = new PushManager();
-  static notification: Notification = new Notification();
-  static appManager: AppManager = new AppManager();
-  static indexeddb: IndexedDB = new IndexedDB();
+  async isCromeBrowser(): Promise<boolean> {
+    var agent = navigator.userAgent.toLowerCase();
+    if(agent.indexOf('chrome') != -1){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
