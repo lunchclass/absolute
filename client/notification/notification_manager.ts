@@ -13,23 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/// <reference path="../../references.ts" />
 
-export default class Notification {
-    private _notifications: Object = {};
+declare var self: ServiceWorkerGlobalScope;
 
-    constructor() {
-    }
+declare var navigator: any;
 
-    async create(NotificationEvent: Event): Promise<boolean> {
-        // Not implemented yet
+export default class NotificationManager {
+    private notification: Notification;
+
+    constructor() { }
+
+    async showNotification(title: string, options: object): Promise<boolean> {
+        if (!navigator.serviceWorker) {
+            return false;
+        }
+
+        this.notification = new Notification(title, options);
+
+        self.registration.showNotification(title, options);
         return false;
     }
-    async close(NotificationEvent: Event): Promise<boolean> {
-        // Not implemented yet
-        return false;
-    }
-    async processClickEvent(NotificationEvent: Event): Promise<boolean> {
-        // Not implemented yet
+
+    async processClickEvent(event: Event, url: string): Promise<boolean> {
+        if (!navigator.serviceWorker) {
+            return false;
+        }
+        console.log('[Service Worker] Notification click Received.');
+
+        var init = { notification: this.notification };
+        var myNotificationEvent = new NotificationEvent(event.type, init);
+
+        myNotificationEvent.notification.close();
+
+        myNotificationEvent.waitUntil(
+            self.clients.openWindow(url)
+        );
         return false;
     }
 }

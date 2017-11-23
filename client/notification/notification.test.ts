@@ -17,15 +17,17 @@
 import { } from 'jest';
 import absolute from '../absolute';
 
-test('absolute.notification.create()', async () => {
-  let NotificationEvent  = new Event("click");
-  expect(await absolute.notification.create(NotificationEvent)).toBe(false);
-});
-test('absolute.notification.close()', async () => {
-  let NotificationEvent  = new Event("click");
-  expect(await absolute.notification.close(NotificationEvent)).toBe(false);
+test('absolute.notification.showNotification()', async () => {
+  const title = 'Push Codelab';
+  const options = {
+    body: 'Yay it works.',
+    icon: 'images/icon.png',
+    badge: 'images/badge.png'
+  };
+  expect(await absolute.notification.showNotification(title, options)).toBe(false);
 });
 test('absolute.notification.processClickEvent()', async () => {
-  let NotificationEvent  = new Event("click");
-  expect(await absolute.notification.processClickEvent(NotificationEvent)).toBe(false);
+  const event = new Event('click');
+  const url = 'https://developers.google.com/web/';
+  expect(await absolute.notification.processClickEvent(event, url)).toBe(false);
 });
