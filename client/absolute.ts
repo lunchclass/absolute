@@ -15,13 +15,13 @@
  */
 
 import CacheManager from './cache/cache_manager';
-import PushManager from './push/push_manager';
-import Notification from './notification/notification_manager';
 import IndexedDB from './indexeddb/indexeddb';
+import Notification from './notification/notification_manager';
+import PushManager from './push/push_manager';
 
 export default class absolute {
-  static cache: CacheManager = new CacheManager();
-  static push: PushManager = new PushManager();
-  static notification: Notification = new Notification();
-  static indexeddb: IndexedDB = new IndexedDB();
+  public static cache: CacheManager = new CacheManager();
+  public static push: PushManager = new PushManager();
+  public static notification: Notification = new Notification();
+  public static indexeddb: IndexedDB = new IndexedDB();
 }

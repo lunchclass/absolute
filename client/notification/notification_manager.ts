@@ -20,15 +20,15 @@ export default class Notification {
     constructor() {
     }
 
-    async create(NotificationEvent: Event): Promise<boolean> {
+    public async create(NotificationEvent: Event): Promise<boolean> {
         // Not implemented yet
         return false;
     }
-    async close(NotificationEvent: Event): Promise<boolean> {
+    public async close(NotificationEvent: Event): Promise<boolean> {
         // Not implemented yet
         return false;
     }
-    async processClickEvent(NotificationEvent: Event): Promise<boolean> {
+    public async processClickEvent(NotificationEvent: Event): Promise<boolean> {
         // Not implemented yet
         return false;
     }

@@ -22,7 +22,7 @@ test('absolute.push.isRegistered()', async() => {
 });
 
 test('absolute.push.register()', async() => {
-  const registered: Promise<any> = await absolute.push.register('test_key')
+  const registered: Promise<{}> = await absolute.push.register('test_key');
   expect(registered).rejects.toBe(null);
 });
 

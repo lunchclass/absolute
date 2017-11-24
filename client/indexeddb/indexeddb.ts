@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-export default class IndexedDB{
+export default class IndexedDB {
 
   constructor() {}
 
-  async set(key: string, value: object): Promise<boolean> {
+  public async set(key: string, value: object): Promise<boolean> {
     // Not implemented yet
     return false;
   }
 
-  async get(key: string): Promise<object> {
+  public async get(key: string): Promise<object> {
     // Not implemented yet
     return null;
   }
 
-  async remove(key: string): Promise<object> {
+  public async remove(key: string): Promise<object> {
     // Not implemented yet
     return null;
   }
