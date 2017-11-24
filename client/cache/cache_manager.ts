@@ -23,7 +23,7 @@ export default class CacheManager {
     this.register('cache_service_worker.js');
   }
 
-  async register(worker: string): Promise<void> {
+  public async register(worker: string): Promise<void> {
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register(worker).then((registration: ServiceWorkerRegistration) => {
         // registration worked

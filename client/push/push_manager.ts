@@ -20,7 +20,7 @@ export default class PushManager {
 
   constructor() {}
 
-  async isRegistered(): Promise<boolean> {
+  public async isRegistered(): Promise<boolean> {
     if (!navigator.serviceWorker) {
       return false;
     }
@@ -32,21 +32,21 @@ export default class PushManager {
         if (subscription) {
           return true;
         }
-        
+
         return false;
       })
       .catch((error: Error) => {
         // Not implemented yet
-      })
+      });
     })
     .catch((error: Error) => {
       // Not implemented yet
-    })
+    });
 
     return false;
   }
 
-  async register(key: string): Promise<string> {
+  public async register(key: string): Promise<string> {
     if (navigator.serviceWorker) {
       navigator.serviceWorker.register('/push_service_worker.js')
       .then((registration: ServiceWorkerRegistration) => {
@@ -72,8 +72,8 @@ export default class PushManager {
           })
           .catch((error: Error) => {
             // Not implemented yet
-          })
-        })
+          });
+        });
 
       })
       .catch((error: Error) => {
@@ -84,7 +84,7 @@ export default class PushManager {
     return null;
   }
 
-  async unregister(): Promise<boolean> {
+  public async unregister(): Promise<boolean> {
     if (!navigator.serviceWorker) {
       return false;
     }
@@ -96,16 +96,16 @@ export default class PushManager {
         if (subscription) {
           subscription.unsubscribe();
           return true;
-        } 
+        }
         return false;
       })
       .catch((error: Error) => {
         // Not implemented yet
-      })
+      });
     })
     .catch((error: Error) => {
       // Not implemented yet
-    })
+    });
 
     return false;
   }
