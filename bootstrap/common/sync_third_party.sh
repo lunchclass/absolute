@@ -19,14 +19,14 @@
 
 function sync_node() {
   local target_path="./third_party/node"
-  local base_url="https://nodejs.org/dist/v6.9.5"
+  local base_url="https://nodejs.org/dist/v9.2.0"
 
   case $(get_platform_name) in
-    windows_x86) local target_url="/node-v6.9.5-win-x86.zip" ;;
-    windows_x86_64) local target_url="/node-v6.9.5-win-x64.zip" ;;
-    linux_x86) local target_url="/node-v6.9.5-linux-x86.tar.gz" ;;
-    linux_x86_64) local target_url="/node-v6.9.5-linux-x64.tar.gz" ;;
-    darwin_x86_64) local target_url="/node-v6.9.5-darwin-x64.tar.gz" ;;
+    windows_x86) local target_url="/node-v9.2.0-win-x86.zip" ;;
+    windows_x86_64) local target_url="/node-v9.2.0-win-x64.zip" ;;
+    linux_x86) local target_url="/node-v9.2.0-linux-x86.tar.gz" ;;
+    linux_x86_64) local target_url="/node-v9.2.0-linux-x64.tar.gz" ;;
+    darwin_x86_64) local target_url="/node-v9.2.0-darwin-x64.tar.gz" ;;
   esac
 
   sync_third_party $base_url$target_url $target_path
@@ -74,9 +74,16 @@ function sync_third_party() {
   fi
 
   # Extract the archive file into $temp_path/extract_$file_name.
-  local extracted_path=$temp_path/extract_$filename
-  if ! extract_archive $temp_path/$filename $extracted_path; then
-    return 3
+  if is_windows_platform; then
+    local extracted_path=$temp_path/$filename
+    if ! extract_archive $temp_path/$filename $extracted_path; then
+      return 3
+    fi
+  else
+    local extracted_path=$temp_path/extract_$filename
+    if ! extract_archive $temp_path/$filename $extracted_path; then
+      return 3
+    fi
   fi
 
   # Remove container directory if needed.
