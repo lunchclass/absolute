@@ -19,14 +19,14 @@
 
 function sync_node() {
   local target_path="./third_party/node"
-  local base_url="https://nodejs.org/dist/v6.9.5"
+  local base_url="https://nodejs.org/dist/v8.9.1"
 
   case $(get_platform_name) in
-    windows_x86) local target_url="/node-v6.9.5-win-x86.zip" ;;
-    windows_x86_64) local target_url="/node-v6.9.5-win-x64.zip" ;;
-    linux_x86) local target_url="/node-v6.9.5-linux-x86.tar.gz" ;;
-    linux_x86_64) local target_url="/node-v6.9.5-linux-x64.tar.gz" ;;
-    darwin_x86_64) local target_url="/node-v6.9.5-darwin-x64.tar.gz" ;;
+    windows_x86) local target_url="/node-v8.9.1-win-x86.zip" ;;
+    windows_x86_64) local target_url="/node-v8.9.1-win-x64.zip" ;;
+    linux_x86) local target_url="/node-v8.9.1-linux-x86.tar.gz" ;;
+    linux_x86_64) local target_url="/node-v8.9.1-linux-x64.tar.gz" ;;
+    darwin_x86_64) local target_url="/node-v8.9.1-darwin-x64.tar.gz" ;;
   esac
 
   sync_third_party $base_url$target_url $target_path
@@ -65,8 +65,8 @@ function sync_third_party() {
 
   # Install a trap to remove temporary path if this script is finished.
   # The trap will work well when unknown breaking happens like ctrl+c.
-  export TRAP_COMMAND="rm -rf $temp_path;$TRAP_COMMAND"
-  trap "$TRAP_COMMAND" EXIT
+#  export TRAP_COMMAND="rm -rf $temp_path;$TRAP_COMMAND"
+#  trap "$TRAP_COMMAND" EXIT
 
   # Download the file of url into temporary path.
   if ! download $url $temp_path; then
