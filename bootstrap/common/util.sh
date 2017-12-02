@@ -81,3 +81,8 @@ function extract_archive() {
 
   return $?
 }
+
+# Print red color log.
+function error_log() {
+  echo -e "\e[31m$1"
+}

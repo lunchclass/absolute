@@ -30,6 +30,14 @@ function sync_node() {
   esac
 
   sync_third_party $base_url$target_url $target_path
+
+  if [ $? -eq 2 ]; then
+    error_log "node download fail"
+    exit
+  elif [ $? -eq 3 ]; then
+    error_log "node extract fail"
+    exit
+  fi
 }
 
 function sync_mongodb() {
@@ -45,6 +53,15 @@ function sync_mongodb() {
   esac
 
   sync_third_party $base_url$target_url $target_path
+
+  if [ $? -eq 2 ]; then
+    error_log "mongodb download fail"
+    exit
+  elif [ $? -eq 3 ]; then
+    error_log "mongodb extract fail"
+    exit
+  fi
+
 }
 
 function sync_third_party() {
