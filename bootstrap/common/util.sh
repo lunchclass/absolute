@@ -77,6 +77,7 @@ function extract_archive() {
   case $src_path in
     *.tar.gz|*.tgz) tar -xvzf $src_path -C $dest_path > /dev/null 2>&1 ;;
     *.zip) unzip $src_path -d $dest_path > /dev/null 2>&1 ;;
+    *) return 3 ;;
   esac
 
   return $?

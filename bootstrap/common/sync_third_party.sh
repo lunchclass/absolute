@@ -31,10 +31,11 @@ function sync_node() {
 
   sync_third_party $base_url$target_url $target_path
 
-  if [ $? -eq 2 ]; then
+  local result=$?
+  if [ $result -eq 2 ]; then
     error_log "node download fail"
     exit
-  elif [ $? -eq 3 ]; then
+  elif [ $result -eq 3 ]; then
     error_log "node extract fail"
     exit
   fi
@@ -54,10 +55,11 @@ function sync_mongodb() {
 
   sync_third_party $base_url$target_url $target_path
 
-  if [ $? -eq 2 ]; then
+  local result=$?
+  if [ $result -eq 2 ]; then
     error_log "mongodb download fail"
     exit
-  elif [ $? -eq 3 ]; then
+  elif [ $result -eq 3 ]; then
     error_log "mongodb extract fail"
     exit
   fi
