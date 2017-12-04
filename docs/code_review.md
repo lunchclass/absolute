@@ -23,7 +23,7 @@ Code owners are requested as reviewers automatically if your patch includes the 
 
 ### When modifying existing code
 It is recommended to add contributors who related to your patches as reviewers.
-You can find the contributor who commited related code using "git blame".
+You can find the contributor who committed related code using "git blame".
 
 ex) If you want to know who modified source code line 1 ~ 3 in absolute.cmd
 ```
@@ -38,7 +38,7 @@ git blame -L 1,3 absolute.cmd
 ## Request reviews
 If you are a code owner, please review within 24 hours when you get review requests. (Exclude holidays and weekends)
 At least reviewers should leave the meaningful comment.
-Do not critisize and aggressive to reviewees. Please respect. :D
+Do not criticize and aggressive to reviewees. Please respect. :D
 
 ## Approve reviews
 Reviews are approved when code owners comment *LGTM* then approve. *LGTM* means `Looks Good to me`.
