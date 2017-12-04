@@ -84,5 +84,5 @@ function extract_archive() {
 
 # Print red color log.
 function error_log() {
-  echo -e "\e[31m$1"
+  echo -e "\e[31m$1\e[39m"
 }
