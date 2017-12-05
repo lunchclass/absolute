@@ -53,7 +53,7 @@ function sync_third_party() {
   local filename=$(basename $url)
 
   if ! needs_sync $url $target_path; then
-    return 1
+    return 0
   fi
 
   if is_windows_platform; then
