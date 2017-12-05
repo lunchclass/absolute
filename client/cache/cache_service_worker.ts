@@ -25,7 +25,17 @@ self_.addEventListener('install', (event) => {
 self_.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
+      return response || fetch(event.request).then(function (response) {
+        const responseClone = response.clone();
+
+        caches.open('absolute-cache-v1').then(function (cache) {
+          cache.put(event.request, responseClone);
+        });
+        return response;
+      }).catch(function () {
+        //TODO(sapzape): Add code to return in a fallback response.
+        return;
+      });
     })
   );
 });
