@@ -141,7 +141,7 @@ Before committing, you need to make sure that your coding style follows the rule
 [Microsoft / TypeScript](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines).  
 
 ### Description
-Please consider the following rules to create a commit message. Consistent writing is the best way to collaborate with other contributors. For more infomation, see
+Please consider the following rules to create a commit message. Consistent writing is the best way to collaborate with other contributors. For more information, see
 [here](https://chris.beams.io/posts/git-commit).  
 
 - Separate text and titles using blank lines
