@@ -33,6 +33,7 @@ function download() {
   local path=${2:-./}
 
   if [ -z "$url" ]; then
+    error_log "download fail - no url"
     return 1
   fi
 
@@ -44,7 +45,12 @@ function download() {
         { curl -LO $url > /dev/null 2>&1; cd - > /dev/null; }
   fi
 
-  return $?
+  if [ $? -ne 0 ]; then
+    error_log "download fail - invalid url or network disconnected"
+    return 2
+  else
+    return 0
+  fi
 }
 
 function has_container_directory() {
@@ -61,10 +67,12 @@ function extract_archive() {
   local dest_path=${2:-./}
 
   if [ -z "$src_path" ]; then
+    error_log "extract fail - no path"
     return 1
   fi
 
   if [ ! -f "$src_path" ]; then
+    error_log "extract fail - invalid path"
     return 2
   fi
 
@@ -77,10 +85,15 @@ function extract_archive() {
   case $src_path in
     *.tar.gz|*.tgz) tar -xvzf $src_path -C $dest_path > /dev/null 2>&1 ;;
     *.zip) unzip $src_path -d $dest_path > /dev/null 2>&1 ;;
-    *) return 3 ;;
+    *) error_log "extract fail - invalid file";return 3 ;;
   esac
 
-  return $?
+  if [ $? -ne 0 ]; then
+    error_log "extract fail - tar or unzip fail"
+    return 4
+  else
+    return 0
+  fi
 }
 
 # Print red color log.
