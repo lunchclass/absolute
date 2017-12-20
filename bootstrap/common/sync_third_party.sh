@@ -29,7 +29,7 @@ function sync_node() {
     darwin_x86_64) local target_url="/node-v6.9.5-darwin-x64.tar.gz" ;;
   esac
 
-  sync_third_party $base_url$target_url $target_path
+  sync_third_party $base_url$target_url $target_path || exit
 }
 
 function sync_mongodb() {
@@ -44,7 +44,7 @@ function sync_mongodb() {
     darwin_x86_64) local target_url="/osx/mongodb-osx-x86_64-3.2.12.tgz" ;;
   esac
 
-  sync_third_party $base_url$target_url $target_path
+  sync_third_party $base_url$target_url $target_path || exit
 }
 
 function sync_third_party() {
@@ -53,7 +53,7 @@ function sync_third_party() {
   local filename=$(basename $url)
 
   if ! needs_sync $url $target_path; then
-    return 1
+    return 0
   fi
 
   if is_windows_platform; then
