@@ -33,3 +33,5 @@ There is no additional work for testing Absolute project.
   - ```./absolute```
 - If you are using CMD or PowerShell, you should run the following command without ```./``` prefix.
   - ```absolute```
+
+All Rights Reserved lunchclass/absolute
